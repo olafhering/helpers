@@ -14,9 +14,17 @@ if test $# -gt 1
 then
 	shift 2
 fi
-case "$1" in
-	*.spec) spec=$1 ; shift ;;
-esac
+while test $# -gt 0
+do
+	case "$1" in
+	-d|--debug|--debuginfo) dbg=--debuginfo ;;
+	*.spec) spec=$1 ;;
+	--*) args=( "${args[@]}" $1 ) ;;
+	-t|-j|-x|-k|-p) args=( "${args[@]}" $1 $2 ) ; shift ;;
+	-*) args=( "${args[@]}" $1  ) ;;
+	esac
+	shift
+done
 if test -e .osc/_project
 then
 	read prj < .osc/_project
@@ -43,9 +51,10 @@ then
 		--no-verify \
 		--no-checks \
 		--release=`date -u +%y%m%d%H%M%S`.0 \
+		"${args[@]}" \
 		--root=${root}/${pkg}.${api}.${prj}.${repo}.${arch} \
 		${repo} \
 		${arch} \
-		"$@"
+		${spec}
 	fi
 fi
