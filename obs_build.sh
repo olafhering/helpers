@@ -14,17 +14,15 @@ if test $# -gt 1
 then
 	shift 2
 fi
-: $1
-case "$1" in
-	*.spec) spec=$1 ; shift ;;
-esac
 while test $# -gt 0
 do
-	: $1
 	case "$1" in
-	-d|--debug) dbg= ;;
+	-d|--debug|--debuginfo) dbg=--debuginfo ;;
+	*.spec) spec=$1 ;;
+	--*) args=( "${args[@]}" $1 ) ;;
+	-t|-j|-x|-k|-p) args=( "${args[@]}" $1 $2 ) ; shift ;;
+	-*) args=( "${args[@]}" $1  ) ;;
 	esac
-	args=( "${args[@]}" $1 )
 	shift
 done
 if test -e .osc/_project
