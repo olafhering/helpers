@@ -7,11 +7,18 @@ arch=
 force=$1
 last=
 : $PWD
-cd .osc
-read apiurl < _apiurl
-read project < _project
-read package < _package
-cd ..
+if pushd .osc > /dev/null
+then
+	read apiurl < _apiurl
+	read project < _project
+	read package < _package
+	test -n "${apiurl}" || exit 1
+	test -n "${project}" || exit 1
+	test -n "${package}" || exit 1
+	popd > /dev/null
+else
+	exit 1
+fi
 osc -A "${apiurl}" results ${project} ${package} | while read repo arch state rest
 do
 	rbl=.log.${project}.${package}.${repo}.${arch}.txt
