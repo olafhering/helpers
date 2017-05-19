@@ -1,2 +1,3 @@
 #/bin/sh
-exec /usr/bin/osc --config=$HOME/.osc/oscrc -A https://api.opensuse.org "$@"
+export OSC_CONFIG=$HOME/.osc/oscrc
+exec /usr/bin/osc --config=$OSC_CONFIG -A https://api.opensuse.org "$@"
