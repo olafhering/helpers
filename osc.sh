@@ -1,2 +1,3 @@
 #!/bin/sh
-exec /usr/bin/osc --config=$HOME/.osc/oscrc "$@"
+export OSC_CONFIG=$HOME/.osc/oscrc
+exec /usr/bin/osc --config=$OSC_CONFIG "$@"
