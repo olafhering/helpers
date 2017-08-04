@@ -21,6 +21,11 @@ else
 fi
 osc -A "${apiurl}" results ${project} ${package} | while read repo arch state rest
 do
+	if test -n "${rest}"
+	then
+		package="${state}"
+		state="${rest}"
+	fi
 	rbl=.log.${project}.${package}.${repo}.${arch}.txt
 	if test -n "$force"
 	then
