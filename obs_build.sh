@@ -45,7 +45,6 @@ then
 	then
 		time \
 		obs build \
-		--disable-cpio-bulk-download \
 		${dbg} \
 		--no-service \
 		--no-verify \

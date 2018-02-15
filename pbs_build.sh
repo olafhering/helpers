@@ -45,7 +45,6 @@ then
 	then
 		time \
 		pbs build \
-		--disable-cpio-bulk-download \
 		${dbg} \
 		--no-service \
 		--no-verify \
