@@ -24,6 +24,16 @@ push_master() {
 )
 }
 #
+claws() {
+(
+if pushd claws.git > /dev/null
+then
+  fetch_and_push
+  push_master
+  popd > /dev/null
+fi
+) &> ${td}/ipxe.log < /dev/null &
+}
 ipxe() {
 (
 if pushd ipxe.git > /dev/null
@@ -153,6 +163,8 @@ then
 fi
 ) &> ${td}/xen.log < /dev/null &
 }
+#
+claws
 #
 ipxe
 #

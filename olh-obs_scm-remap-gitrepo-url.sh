@@ -13,6 +13,8 @@ case "${mode}" in
 esac
 unset unhandled
 #
+claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
+claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
 gnulib_url()       { echo "git://github.com/coreutils/gnulib.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
@@ -38,6 +40,7 @@ sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
 xen_dir()          { readlink -f ~/git/for_obs/xen.git ; }
 xen_url()          { echo "git://github.com/olafhering/xen.git" ; }
 #
+claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
 ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; esac }
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
@@ -53,6 +56,7 @@ xen() { case "${mode}" in dir) xen_dir ;; url) xen_url ;; *) echo "xen" ;; esac 
 #
 case "${url}" in
   git://anongit.freedesktop.org/pixman) unhandled=1 ;;
+  git://git.claws-mail.org/claws.git) claws ;;
   git://git.ipxe.org/ipxe.git) ipxe ;;
   git://git.qemu-project.org/SLOF.git) unhandled=1 ;;
   git://git.qemu-project.org/dtc.git) unhandled=1 ;;
