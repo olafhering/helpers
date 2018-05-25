@@ -95,6 +95,7 @@ case "${url}" in
   git@github.com:olafhering/qemu.git) qemu ;;
   git@github.com:olafhering/xen.git) xen ;;
   git@gitlab.com:olafhering/xen.git) xen ;;
+  http://git.claws-mail.org/readonly/claws.git) claws ;;
   https://git.savannah.gnu.org/git/gnulib.git) gnulib ;;
   https://git.savannah.gnu.org/git/gnulib.git/) gnulib ;;
   https://git.sv.gnu.org/git/gnulib.git) gnulib ;;
