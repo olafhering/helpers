@@ -39,6 +39,8 @@ seabios_dir()      { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_url()      { echo "git://git.seabios.org/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
 sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
+valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
+valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
 xen_dir()          { readlink -f ~/git/for_obs/xen.git ; }
 xen_url()          { echo "git://github.com/olafhering/xen.git" ; }
 #
@@ -55,6 +57,7 @@ qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo
 qemu_xen_trad() { case "${mode}" in dir) qemu_xen_trad_dir ;; url) qemu_xen_trad_url ;; *) echo "qemu_xen_trad" ;; esac }
 seabios() { case "${mode}" in dir) seabios_dir ;; url) seabios_url ;; *) echo "seabios" ;; esac }
 sgabios() { case "${mode}" in dir) sgabios_dir ;; url) sgabios_url ;; *) echo "sgabios" ;; esac }
+valgrind() { case "${mode}" in dir) valgrind_dir ;; url) valgrind_url ;; *) echo "valgrind" ;; esac }
 xen() { case "${mode}" in dir) xen_dir ;; url) xen_url ;; *) echo "xen" ;; esac }
 #
 case "${url}" in
@@ -105,6 +108,7 @@ case "${url}" in
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
+  git://sourceware.org/git/valgrind.git) valgrind ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
 esac
 #
