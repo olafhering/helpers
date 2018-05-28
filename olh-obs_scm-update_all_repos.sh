@@ -64,6 +64,20 @@ then
 fi
 ) &> ${td}/mini_os.log < /dev/null &
 }
+mutt() {
+(
+t=`mktemp --directory $td/mutt.XXX`
+export t
+if pushd mutt.git > /dev/null
+then
+  git fetch --all
+  push_master
+  wait
+  cat $t/*
+  popd > /dev/null
+fi
+) &> ${td}/mutt.log < /dev/null &
+}
 ovmf() {
 (
 t=`mktemp --directory $td/ovmf.XXX`
@@ -216,6 +230,8 @@ claws
 ipxe
 #
 mini_os
+#
+mutt
 #
 ovmf
 #

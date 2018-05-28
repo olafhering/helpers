@@ -25,6 +25,8 @@ libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
 libvirt_url()      { echo "git://github.com/libvirt/libvirt.git" ; }
 minios_dir()       { readlink -f ~/git/for_obs/mini-os.git ; }
 minios_url()       { echo "git://xenbits.xen.org/mini-os.git" ; }
+mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
+mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
 ovmf_url()          { echo "git://github.com/tianocore/edk2" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
@@ -46,6 +48,7 @@ ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; e
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
 libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "libvirt" ;; esac }
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
+mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
 ovmf() { case "${mode}" in dir) ovmf_dir ;; url) ovmf_url ;; *) echo "ovmf" ;; esac }
 qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; esac }
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
@@ -101,6 +104,7 @@ case "${url}" in
   https://git.sv.gnu.org/git/gnulib.git) gnulib ;;
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
+  https://gitlab.com/muttmua/mutt.git) mutt ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
 esac
 #
