@@ -8,8 +8,8 @@ export TMPDIR=$td
 trap "rm -rf $td" EXIT
 #
 fetch_and_push() {
-  git fetch --all
-  git fetch --tags upstream
+  git fetch --all &> $t/fetch_all_repos
+  git fetch --tags upstream &> $t/fetch_all_tags_upstream
   git push --tags github_olafhering &> $t/fetch_and_push.github_olafhering &
   git push --tags gitlab_olafhering &> $t/fetch_and_push.gitlab_olafhering &
   git push --tags gitlab_olh        &> $t/fetch_and_push.gitlab_olh        &
