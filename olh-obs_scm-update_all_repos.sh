@@ -23,6 +23,14 @@ push_master() {
 )
 }
 #
+finish() {
+  local t=$1
+
+  wait
+  sed '/Everything up-to-date/d' $t/*
+  popd > /dev/null
+}
+#
 claws() {
 (
 t=`mktemp --directory $td/claws.XXX`
@@ -31,9 +39,7 @@ if pushd claws.git > /dev/null
 then
   fetch_and_push
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/ipxe.log < /dev/null &
 }
@@ -44,9 +50,7 @@ export t
 if pushd ipxe.git > /dev/null
 then
   fetch_and_push
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/ipxe.log < /dev/null &
 }
@@ -58,9 +62,7 @@ if pushd mini-os.git > /dev/null
 then
   fetch_and_push
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/mini_os.log < /dev/null &
 }
@@ -72,9 +74,7 @@ if pushd mutt.git > /dev/null
 then
   git fetch --all
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/mutt.log < /dev/null &
 }
@@ -86,9 +86,7 @@ if pushd ovmf.git > /dev/null
 then
   git fetch --all
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/ovmf.log < /dev/null &
 }
@@ -103,9 +101,7 @@ then
   git push github_olafhering 'refs/remotes/upstream/stable-2.*:refs/heads/stable-2.*' &> $t/qemu.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/stable-2.*:refs/heads/stable-2.*' &> $t/qemu.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/stable-2.*:refs/heads/stable-2.*' &> $t/qemu.gitlab_olh        &
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/qemu.log < /dev/null &
 }
@@ -123,9 +119,7 @@ then
   git push github_olafhering 'refs/remotes/upstream/staging-4.*:refs/heads/staging-4.*' &> $t/qemu_xen.staging-4.4.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/staging-4.*:refs/heads/staging-4.*' &> $t/qemu_xen.staging-4.4.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/staging-4.*:refs/heads/staging-4.*' &> $t/qemu_xen.staging-4.4.gitlab_olh        &
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/qemu_xen.log < /dev/null &
 }
@@ -140,9 +134,7 @@ then
   git push github_olafhering 'refs/remotes/upstream/stable-4.*:refs/heads/stable-4.*' &> $t/qemu_xen_traditional.stable-4.4.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/stable-4.*:refs/heads/stable-4.*' &> $t/qemu_xen_traditional.stable-4.4.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/stable-4.*:refs/heads/stable-4.*' &> $t/qemu_xen_traditional.stable-4.4.gitlab_olh        &
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/qemu_xen_traditional.log < /dev/null &
 }
@@ -154,9 +146,7 @@ if pushd keycodemapdb.git > /dev/null
 then
   fetch_and_push
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/keycodemapdb.log < /dev/null &
 }
@@ -168,9 +158,7 @@ if pushd libvirt.git > /dev/null
 then
   fetch_and_push
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/libvirt.log < /dev/null &
 }
@@ -188,9 +176,7 @@ then
   git push github_olafhering 'refs/remotes/upstream/1.9-stable:refs/heads/1.9-stable' &> $t/qemu_xen_traditional.stable-1.9.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/1.9-stable:refs/heads/1.9-stable' &> $t/qemu_xen_traditional.stable-1.9.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/1.9-stable:refs/heads/1.9-stable' &> $t/qemu_xen_traditional.stable-1.9.gitlab_olh        &
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/seabios.log < /dev/null &
 }
@@ -202,9 +188,7 @@ if pushd valgrind.git > /dev/null
 then
   fetch_and_push
   push_master
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/valgrind.log < /dev/null &
 }
@@ -218,9 +202,7 @@ then
   git push github_olafhering 'refs/remotes/upstream/staging*:refs/heads/staging*' &> $t/xen.staging.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/staging*:refs/heads/staging*' &> $t/xen.staging.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/staging*:refs/heads/staging*' &> $t/xen.staging.gitlab_olh        &
-  wait
-  cat $t/*
-  popd > /dev/null
+  finish $t
 fi
 ) &> ${td}/xen.log < /dev/null &
 }
