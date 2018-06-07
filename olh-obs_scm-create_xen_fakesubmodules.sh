@@ -127,6 +127,17 @@ create_submodule \
 	"${seabios_tag}" \
 	"${seabios_extract_dir}"
 #
+minios_git_url=`sed -n '/^MINIOS_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
+minios_tag=`sed -n '/^MINIOS_UPSTREAM_REVISION/{/OVMF_UPSTREAM_TAG/d;s@^.* @@;p;q}' ${xf}`
+minios_extract_dir=extras/mini-os-remote
+if test -n "${minios_git_url}" && test -n "${minios_tag}"
+then
+	create_submodule \
+	"${minios_git_url}" \
+	"${minios_tag}" \
+	"${minios_extract_dir}"
+fi
+#
 ovmf_git_url=`sed -n '/^OVMF_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
 ovmf_tag=`sed -n '/^OVMF_UPSTREAM_REVISION/{/OVMF_UPSTREAM_TAG/d;s@^.* @@;p;q}' ${xf}`
 ovmf_extract_dir=tools/firmware/ovmf-dir-remote
@@ -144,15 +155,4 @@ create_submodule \
 	"${ipxe_git_url}" \
 	"${ipxe_tag}" \
 	"${ipxe_extract_dir}"
-#
-minios_git_url=`sed -n '/^MINIOS_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
-minios_tag=`sed -n '/^MINIOS_UPSTREAM_REVISION/{/OVMF_UPSTREAM_TAG/d;s@^.* @@;p;q}' ${xf}`
-minios_extract_dir=extras/mini-os-remote
-if test -n "${minios_git_url}" && test -n "${minios_tag}"
-then
-	create_submodule \
-	"${minios_git_url}" \
-	"${minios_tag}" \
-	"${minios_extract_dir}"
-fi
 #
