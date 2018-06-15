@@ -41,7 +41,7 @@ then
   push_master
   finish $t
 fi
-) &> ${td}/ipxe.log < /dev/null &
+) &> ${td}/claws.log < /dev/null &
 }
 ipxe() {
 (
