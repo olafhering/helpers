@@ -6,20 +6,28 @@ pushd ~/git/for_obs
 td=`mktemp --directory --tmpdir=/dev/shm XXX`
 export TMPDIR=$td
 trap "rm -rf $td" EXIT
+push=true
+test "$1" = "-np" && push=false
 #
 fetch_and_push() {
   git fetch --all &> $t/fetch_all_repos
   git fetch --tags upstream &> $t/fetch_all_tags_upstream
+  if ${push}
+  then
   git push --tags github_olafhering &> $t/fetch_and_push.github_olafhering &
   git push --tags gitlab_olafhering &> $t/fetch_and_push.gitlab_olafhering &
   git push --tags gitlab_olh        &> $t/fetch_and_push.gitlab_olh        &
+  fi
 }
 #
 push_master() {
 (
+  if ${push}
+  then
   git push github_olafhering 'refs/remotes/upstream/master:refs/heads/master' &> $t/push_master.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/master:refs/heads/master' &> $t/push_master.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/master:refs/heads/master' &> $t/push_master.gitlab_olh        &
+  fi
 )
 }
 #
@@ -98,9 +106,12 @@ if pushd qemu.git > /dev/null
 then
   fetch_and_push
   push_master
+  if ${push}
+  then
   git push github_olafhering 'refs/remotes/upstream/stable-2.*:refs/heads/stable-2.*' &> $t/qemu.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/stable-2.*:refs/heads/stable-2.*' &> $t/qemu.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/stable-2.*:refs/heads/stable-2.*' &> $t/qemu.gitlab_olh        &
+  fi
   finish $t
 fi
 ) &> ${td}/qemu.log < /dev/null &
@@ -113,12 +124,15 @@ if pushd qemu-xen.git > /dev/null
 then
   fetch_and_push
   push_master
+  if ${push}
+  then
   git push github_olafhering 'refs/remotes/upstream/staging:refs/heads/staging'         &> $t/qemu_xen.staging.github_olafhering     &
   git push gitlab_olafhering 'refs/remotes/upstream/staging:refs/heads/staging'         &> $t/qemu_xen.staging.gitlab_olafhering     &
   git push gitlab_olh        'refs/remotes/upstream/staging:refs/heads/staging'         &> $t/qemu_xen.staging.gitlab_olh            &
   git push github_olafhering 'refs/remotes/upstream/staging-4.*:refs/heads/staging-4.*' &> $t/qemu_xen.staging-4.4.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/staging-4.*:refs/heads/staging-4.*' &> $t/qemu_xen.staging-4.4.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/staging-4.*:refs/heads/staging-4.*' &> $t/qemu_xen.staging-4.4.gitlab_olh        &
+  fi
   finish $t
 fi
 ) &> ${td}/qemu_xen.log < /dev/null &
@@ -131,9 +145,12 @@ if pushd qemu-xen-traditional.git > /dev/null
 then
   fetch_and_push
   push_master
+  if ${push}
+  then
   git push github_olafhering 'refs/remotes/upstream/stable-4.*:refs/heads/stable-4.*' &> $t/qemu_xen_traditional.stable-4.4.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/stable-4.*:refs/heads/stable-4.*' &> $t/qemu_xen_traditional.stable-4.4.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/stable-4.*:refs/heads/stable-4.*' &> $t/qemu_xen_traditional.stable-4.4.gitlab_olh        &
+  fi
   finish $t
 fi
 ) &> ${td}/qemu_xen_traditional.log < /dev/null &
@@ -170,12 +187,15 @@ if pushd seabios.git > /dev/null
 then
   fetch_and_push
   push_master
+  if ${push}
+  then
   git push github_olafhering 'refs/remotes/upstream/1.8-stable:refs/heads/1.8-stable' &> $t/qemu_xen_traditional.stable-1.8.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/1.8-stable:refs/heads/1.8-stable' &> $t/qemu_xen_traditional.stable-1.8.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/1.8-stable:refs/heads/1.8-stable' &> $t/qemu_xen_traditional.stable-1.8.gitlab_olh        &
   git push github_olafhering 'refs/remotes/upstream/1.9-stable:refs/heads/1.9-stable' &> $t/qemu_xen_traditional.stable-1.9.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/1.9-stable:refs/heads/1.9-stable' &> $t/qemu_xen_traditional.stable-1.9.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/1.9-stable:refs/heads/1.9-stable' &> $t/qemu_xen_traditional.stable-1.9.gitlab_olh        &
+  fi
   finish $t
 fi
 ) &> ${td}/seabios.log < /dev/null &
@@ -199,9 +219,12 @@ export t
 if pushd xen.git > /dev/null
 then
   fetch_and_push
+  if ${push}
+  then
   git push github_olafhering 'refs/remotes/upstream/staging*:refs/heads/staging*' &> $t/xen.staging.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/staging*:refs/heads/staging*' &> $t/xen.staging.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/staging*:refs/heads/staging*' &> $t/xen.staging.gitlab_olh        &
+  fi
   finish $t
 fi
 ) &> ${td}/xen.log < /dev/null &
