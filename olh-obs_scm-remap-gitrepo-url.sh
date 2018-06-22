@@ -36,7 +36,7 @@ qemu_xen_url()     { echo "git://xenbits.xen.org/qemu-xen.git" ; }
 qemu_xen_trad_dir(){ readlink -f ~/git/for_obs/qemu-xen-traditional.git ; }
 qemu_xen_trad_url(){ echo "git://xenbits.xen.org/qemu-xen-traditional.git" ; }
 seabios_dir()      { readlink -f ~/git/for_obs/seabios.git ; }
-seabios_url()      { echo "https://git.seabios.org/cgit/seabios.git/" ; }
+seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
 sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
 valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
