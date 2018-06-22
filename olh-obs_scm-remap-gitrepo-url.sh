@@ -17,6 +17,8 @@ claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
 gnulib_url()       { echo "git://github.com/coreutils/gnulib.git" ; }
+grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
+grub_url()         { echo "git://git.savannah.gnu.org/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
 ipxe_url()         { echo "git://git.ipxe.org/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
@@ -46,6 +48,7 @@ xen_url()          { echo "git://github.com/olafhering/xen.git" ; }
 #
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
+grub() { case "${mode}" in dir) grub_dir ;; url) grub_url ;; *) echo "grub" ;; esac }
 ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; esac }
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
 libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "libvirt" ;; esac }
@@ -81,6 +84,7 @@ case "${url}" in
   git://git.qemu.org/skiboot.git) unhandled=1 ;;
   git://git.qemu.org/u-boot-sam460ex.git) unhandled=1 ;;
   git://git.savannah.gnu.org/gnulib.git) gnulib ;;
+  git://git.savannah.gnu.org/grub.git) grub ;;
   git://git.seabios.org/seabios.git) seabios ;;
   git://git.sv.gnu.org/gnulib.git) gnulib ;;
   git://github.com/coreutils/gnulib.git) gnulib ;;
