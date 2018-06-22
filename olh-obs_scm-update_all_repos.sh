@@ -51,6 +51,18 @@ then
 fi
 ) &> ${td}/claws.log < /dev/null &
 }
+grub() {
+(
+t=`mktemp --directory $td/grub.XXX`
+export t
+if pushd grub.git > /dev/null
+then
+  fetch_and_push
+  push_master
+  finish $t
+fi
+) &> ${td}/grub.log < /dev/null &
+}
 ipxe() {
 (
 t=`mktemp --directory $td/ipxe.XXX`
@@ -231,6 +243,8 @@ fi
 }
 #
 claws
+#
+grub
 #
 ipxe
 #
