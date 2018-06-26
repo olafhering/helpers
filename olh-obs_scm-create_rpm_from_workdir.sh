@@ -77,7 +77,12 @@ _sed "
  /^Source[0-9]:/d
  /^Source[0-9][0-9]:/d
  /^Source[0-9][0-9][0-9]:/d
- /^Name:.*/s@^.*@Name:           ${pkg_tag}@
+ /^Source[0-9][0-9][0-9]:/d
+ /^Version:/d
+ /^Release:/d
+ /^Name:.*/s@^.*@Name:           ${pkg_tag}\\
+Version:        0\\
+Release:        0@
  /^Version:.*/s@^.*@Version:        0@
 " "${rpm_spec}" |
 _sed -n "
