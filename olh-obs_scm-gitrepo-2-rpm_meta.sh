@@ -282,11 +282,11 @@ then
     <param name="basename">${src_path}</param>
   </service>
 _EOS_
-  echo "Source@SOURCE_COUNTER@: %{name}-%{version}.tar" >> spec.Patch.txt
+  echo "NoSource@SOURCE_COUNTER@: %{name}-%{version}.tar" >> spec.Patch.txt
 else
   {
     echo "%define ${src_path}_version ${git_hash}"
-    echo "Source@SOURCE_COUNTER@: ${src_path}-%{${src_path}_version}.tar"
+    echo "NoSource@SOURCE_COUNTER@: ${src_path}-%{${src_path}_version}.tar"
   } >> spec.Patch.txt
 fi
 #
