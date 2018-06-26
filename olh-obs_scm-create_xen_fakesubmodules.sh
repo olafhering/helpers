@@ -54,7 +54,13 @@ g() {
 #
 get_tag_hash() {
   local tag=$1
-  g log --max-count=1 '--pretty=format:%H%n' "${tag}" > "${t}"
+  if g log --max-count=1 '--pretty=format:%H%n' "${tag}" > "${t}" 2>/dev/null
+  then
+    : good
+  elif g log --max-count=1 '--pretty=format:%H%n' "${git_upstream_remote}/${tag}" > "${t}"
+  then
+    : also good
+  fi
   test -s "${t}"
 }
 #
