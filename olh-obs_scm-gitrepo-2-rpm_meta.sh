@@ -283,11 +283,13 @@ then
   </service>
 _EOS_
   echo "Source@SOURCE_COUNTER@: %{name}-%{version}.tar" >> spec.Patch.txt
+  echo "#KEEP NOSOURCE DEBUGINFO" >> spec.Patch.txt
   echo "NoSource: @SOURCE_COUNTER@" >> spec.Patch.txt
 else
   {
     echo "%define ${src_path}_version ${git_hash}"
     echo "Source@SOURCE_COUNTER@: ${src_path}-%{${src_path}_version}.tar"
+    echo "#KEEP NOSOURCE DEBUGINFO" >> spec.Patch.txt
     echo "NoSource: @SOURCE_COUNTER@"
   } >> spec.Patch.txt
 fi
