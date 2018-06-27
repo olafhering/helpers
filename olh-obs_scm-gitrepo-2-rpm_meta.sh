@@ -11,6 +11,7 @@ git_dir=
 git_fixes_base=
 git_fixes_branch=
 git_fixes_tag=
+git_fixes_upstream_branch=
 git_fixes_remote=
 git_upstream_branch=
 git_upstream_commit=
@@ -112,6 +113,7 @@ do
     --git-fixes-base) git_fixes_base=$2 ; shift ;;
     --git-fixes-branch) git_fixes_branch=$2 ; shift ;;
     --git-fixes-tag) git_fixes_tag="-$2" ; shift ;;
+    --git-fixes-upstream-branch) git_fixes_upstream_branch="$2" ; shift ;;
     --pkg-tag) pkg_tag=$2 ; shift ;;
     --submodule-tag) submodule_tag=$2 ; shift ;;
     --pkg-patch-basedir) pkg_patch_basedir=$2 ; shift ;;
@@ -186,8 +188,10 @@ then
     echo
   } > spec.Commit.txt
   #
-  fixes_from="${git_fixes_remote}/${git_fixes_base}${git_fixes_tag+${git_fixes_tag}}-${git_upstream_branch}"
-  fixes_to="${git_fixes_remote}/${git_fixes_branch}${git_fixes_tag+${git_fixes_tag}}-${git_upstream_branch}"
+  upstream_branch=${git_upstream_branch}
+  test -n "${git_fixes_upstream_branch}" && upstream_branch=${git_fixes_upstream_branch}
+  fixes_from="${git_fixes_remote}/${git_fixes_base}${git_fixes_tag+${git_fixes_tag}}-${upstream_branch}"
+  fixes_to="${git_fixes_remote}/${git_fixes_branch}${git_fixes_tag+${git_fixes_tag}}-${upstream_branch}"
   echo "${git_upstream_url##*/} ${fixes_from}..${fixes_to}"
   if g log --max-count=1 '--pretty=format:%H%n' "${fixes_from}" > "${tf}" 2>/dev/null && test -s "${tf}"
   then
@@ -314,6 +318,7 @@ do
 	--git-fixes-base   "${git_fixes_base}" \
 	--git-fixes-branch "${git_fixes_branch}" \
 	--git-fixes-tag "${pkg_tag}" \
+	--git-fixes-upstream-branch "${git_fixes_upstream_branch}" \
 	--pkg-tag "${pkg_tag}" \
 	--pkg-patch-basedir "${pkg_patch_basedir}/${path}" \
 	--patches-dir "${patches_dir}" \
