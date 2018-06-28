@@ -48,18 +48,28 @@ pushd "${work_dir}" > /dev/null
 #
 counter=0
 {
-  for i in */spec.Patch.txt
+  for i in */spec.Commit.txt
   do
-    _sed "s/@SOURCE_COUNTER@/$(( counter++ ))/" "${i}"
+    f=${i%/*}/spec.Patch.txt
+    if test -e "${f}"
+    then
+      _sed "s/@SOURCE_COUNTER@/${counter}/" "${f}"
+    fi
+  counter=$(( $counter + 1 ))
   done
 } > spec.Patch.txt
 #
 counter=0
 {
   echo "%setup -q"
-  for i in */spec.patch.txt
+  for i in */spec.Commit.txt
   do
-    _sed "s/@SOURCE_COUNTER@/$(( counter++ ))/" "${i}"
+    f=${i%/*}/spec.patch.txt
+    if test -e "${f}"
+    then
+      _sed "s/@SOURCE_COUNTER@/${counter}/" "${f}"
+    fi
+  counter=$(( $counter + 1 ))
   done
   echo ""
 } > spec.patch.txt
