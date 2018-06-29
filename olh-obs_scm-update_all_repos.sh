@@ -2,16 +2,19 @@
 set -e
 unset LANG
 unset ${!LC_*}
-pushd ~/git/for_obs
-td=`mktemp --directory --tmpdir=/dev/shm XXX`
-export TMPDIR=$td
-trap "rm -rf $td" EXIT
+myself="`readlink -f \"$0\"`"
 push=true
-test "$1" = "-np" && push=false
+do_fetch_all=
+do_fetch_and_push=
+do_push_master=
+forked=
 #
-fetch_and_push() {
-  git fetch --all &> $t/fetch_all_repos
-  git fetch --tags upstream &> $t/fetch_all_tags_upstream
+fn_fetch_all() {
+  git fetch --all &> $t/x.fetch_all_repos
+}
+fn_fetch_and_push() {
+  fn_fetch_all
+  git fetch --tags upstream &> $t/x.fetch_all_tags_upstream
   if ${push}
   then
   git push --tags github_olafhering &> $t/fetch_and_push.github_olafhering &
@@ -19,101 +22,167 @@ fetch_and_push() {
   git push --tags gitlab_olh        &> $t/fetch_and_push.gitlab_olh        &
   fi
 }
-#
-push_master() {
-(
+fn_push_master() {
   if ${push}
   then
   git push github_olafhering 'refs/remotes/upstream/master:refs/heads/master' &> $t/push_master.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/master:refs/heads/master' &> $t/push_master.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/master:refs/heads/master' &> $t/push_master.gitlab_olh        &
   fi
-)
+}
+#
+while test $# -gt 0
+do
+  : $1
+  case "$1" in
+    -forked) forked=true ;;
+    -simple_fetch_all) do_fetch_all=true ;;
+    -fetch_and_push) do_fetch_and_push=true ;;
+    -push_master) do_push_master=true ;;
+    -tmpdir) t="$2" ; shift ;;
+    -np) push=false ;;
+    *) echo "UNHANDLED: $0 $*" >&2 ; exit 1 ;;
+  esac
+  shift
+done
+if test -n "${forked}"
+then
+  export TMPDIR=$t
+  test -n "${do_fetch_all}"      && fn_fetch_all
+  test -n "${do_fetch_and_push}" && fn_fetch_and_push
+  test -n "${do_push_master}"    && fn_push_master
+  wait
+  exit 0
+fi
+#
+pushd ~/git/for_obs
+td=`mktemp --directory --tmpdir=/dev/shm XXX`
+export TMPDIR=$td
+trap "rm -rf $td" EXIT
+#
+simple_fetch_all() {
+ do_fetch_all=true
+}
+#
+fetch_and_push() {
+ do_fetch_and_push=true
+}
+#
+push_master() {
+{
+ do_push_master=true
+}
 }
 #
 finish() {
+  local f
   local t=$1
-
-  wait
-  sed '/Everything up-to-date/d' $t/*
+  local args=
+  test -n "${do_fetch_all}" && args="${args} -simple_fetch_all"
+  test -n "${do_fetch_and_push}" && args="${args} -fetch_and_push"
+  test -n "${do_push_master}" && args="${args} -push_master"
+  test "${push}" = "false" && args="${args} -np"
+  bash "${myself}" ${args} -tmpdir "${t}" -forked
+  for f in "$t"/*
+  do
+  sed "
+  /Everything up-to-date/d
+  /^Fetching /d
+  s@^@${f##*.}: @
+  " "$f"
+  done
   popd > /dev/null
 }
 #
 claws() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/claws.XXX`
-export t
 if pushd claws.git > /dev/null
 then
   fetch_and_push
   push_master
   finish $t
 fi
-) &> ${td}/claws.log < /dev/null &
+} &> ${td}/claws.log < /dev/null &
 }
 grub() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/grub.XXX`
-export t
 if pushd grub.git > /dev/null
 then
   fetch_and_push
   push_master
   finish $t
 fi
-) &> ${td}/grub.log < /dev/null &
+} &> ${td}/grub.log < /dev/null &
 }
 ipxe() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/ipxe.XXX`
-export t
 if pushd ipxe.git > /dev/null
 then
   fetch_and_push
   finish $t
 fi
-) &> ${td}/ipxe.log < /dev/null &
+} &> ${td}/ipxe.log < /dev/null &
 }
 mini_os() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/mini_os.XXX`
-export t
 if pushd mini-os.git > /dev/null
 then
   fetch_and_push
   push_master
   finish $t
 fi
-) &> ${td}/mini_os.log < /dev/null &
+} &> ${td}/mini_os.log < /dev/null &
 }
 mutt() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/mutt.XXX`
-export t
 if pushd mutt.git > /dev/null
 then
-  git fetch --all
+  simple_fetch_all
   push_master
   finish $t
 fi
-) &> ${td}/mutt.log < /dev/null &
+} &> ${td}/mutt.log < /dev/null &
 }
 ovmf() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/ovmf.XXX`
-export t
 if pushd ovmf.git > /dev/null
 then
-  git fetch --all
+  simple_fetch_all
   push_master
   finish $t
 fi
-) &> ${td}/ovmf.log < /dev/null &
+} &> ${td}/ovmf.log < /dev/null &
 }
 qemu() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/qemu.XXX`
-export t
 if pushd qemu.git > /dev/null
 then
   fetch_and_push
@@ -126,12 +195,14 @@ then
   fi
   finish $t
 fi
-) &> ${td}/qemu.log < /dev/null &
+} &> ${td}/qemu.log < /dev/null &
 }
 qemu_xen() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/qemu_xen.XXX`
-export t
 if pushd qemu-xen.git > /dev/null
 then
   fetch_and_push
@@ -147,12 +218,14 @@ then
   fi
   finish $t
 fi
-) &> ${td}/qemu_xen.log < /dev/null &
+} &> ${td}/qemu_xen.log < /dev/null &
 }
 qemu_xen_traditional() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/qemu_xen_trad.XXX`
-export t
 if pushd qemu-xen-traditional.git > /dev/null
 then
   fetch_and_push
@@ -165,36 +238,42 @@ then
   fi
   finish $t
 fi
-) &> ${td}/qemu_xen_traditional.log < /dev/null &
+} &> ${td}/qemu_xen_traditional.log < /dev/null &
 }
 keycodemapdb() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/keycodemapdb.XXX`
-export t
 if pushd keycodemapdb.git > /dev/null
 then
   fetch_and_push
   push_master
   finish $t
 fi
-) &> ${td}/keycodemapdb.log < /dev/null &
+} &> ${td}/keycodemapdb.log < /dev/null &
 }
 libvirt() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/libvirt.XXX`
-export t
 if pushd libvirt.git > /dev/null
 then
   fetch_and_push
   push_master
   finish $t
 fi
-) &> ${td}/libvirt.log < /dev/null &
+} &> ${td}/libvirt.log < /dev/null &
 }
 seabios() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/seabios.XXX`
-export t
 if pushd seabios.git > /dev/null
 then
   fetch_and_push
@@ -210,24 +289,28 @@ then
   fi
   finish $t
 fi
-) &> ${td}/seabios.log < /dev/null &
+} &> ${td}/seabios.log < /dev/null &
 }
 valgrind() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/valgrind.XXX`
-export t
 if pushd valgrind.git > /dev/null
 then
   fetch_and_push
   push_master
   finish $t
 fi
-) &> ${td}/valgrind.log < /dev/null &
+} &> ${td}/valgrind.log < /dev/null &
 }
 xen() {
-(
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
 t=`mktemp --directory $td/xen.XXX`
-export t
 if pushd xen.git > /dev/null
 then
   fetch_and_push
@@ -239,7 +322,7 @@ then
   fi
   finish $t
 fi
-) &> ${td}/xen.log < /dev/null &
+} &> ${td}/xen.log < /dev/null &
 }
 #
 claws
@@ -272,3 +355,4 @@ xen
 #
 time wait
 head -n 12345 "${td}"/*.log
+date
