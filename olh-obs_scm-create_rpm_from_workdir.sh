@@ -48,7 +48,7 @@ pushd "${work_dir}" > /dev/null
 #
 counter=0
 {
-  for i in */spec.Commit.txt
+  for i in */service.txt
   do
     f=${i%/*}/spec.Patch.txt
     if test -e "${f}"
@@ -62,7 +62,7 @@ counter=0
 counter=0
 {
   echo "%setup -q"
-  for i in */spec.Commit.txt
+  for i in */service.txt
   do
     f=${i%/*}/spec.patch.txt
     if test -e "${f}"
