@@ -10,11 +10,11 @@ do_push_master=
 forked=
 #
 fn_fetch_all() {
-  git fetch --all &> $t/x.fetch_all_repos
+  git fetch --all &> $t/a.fetch_all_repos
 }
 fn_fetch_and_push() {
   fn_fetch_all
-  git fetch --tags upstream &> $t/x.fetch_all_tags_upstream
+  git fetch --tags upstream &> $t/a.fetch_all_tags_upstream
   if ${push}
   then
   git push --tags github_olafhering &> $t/fetch_and_push.github_olafhering &
