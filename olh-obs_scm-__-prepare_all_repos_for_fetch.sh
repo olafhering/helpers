@@ -225,6 +225,7 @@ else
   git init
   git remote add    --tags upstream          https://git.seabios.org/cgit/seabios.git/
   git remote add --no-tags seabios_seabios   https://git.seabios.org/cgit/seabios.git/
+  git remote add --no-tags seabios_xenbits   git://xenbits.xen.org/seabios.git
   git remote add --no-tags github_olafhering git@github.com:olafhering/seabios.git
   git remote add --no-tags gitlab_olafhering git@gitlab.com:olafhering/seabios.git
   git remote add --no-tags gitlab_olh        gitlab@gitlab.suse.de:olh/seabios.git
