@@ -134,7 +134,7 @@ create_submodule \
 	"${seabios_extract_dir}"
 #
 minios_git_url=`sed -n '/^MINIOS_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
-minios_tag=`sed -n '/^MINIOS_UPSTREAM_REVISION/{/OVMF_UPSTREAM_TAG/d;s@^.* @@;p;q}' ${xf}`
+minios_tag=`sed -n '/^MINIOS_UPSTREAM_REVISION/{s@^.* @@;p;q}' ${xf}`
 minios_extract_dir=extras/mini-os-remote
 if test -n "${minios_git_url}" && test -n "${minios_tag}"
 then
