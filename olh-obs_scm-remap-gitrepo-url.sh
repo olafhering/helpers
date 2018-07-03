@@ -95,6 +95,7 @@ case "${url}" in
   git://github.com/tianocore/edk2) ovmf ;;
   git://github.com/xen-project/xen.git) xen ;;
   git://libvirt.org/libvirt.git) libvirt ;;
+  git://sourceware.org/git/valgrind.git) valgrind ;;
   git://xenbits.xen.org/mini-os.git) minios ;;
   git://xenbits.xen.org/ovmf.git) ovmf ;;
   git://xenbits.xen.org/qemu-xen-traditional.git) qemu_xen_trad ;;
@@ -116,7 +117,6 @@ case "${url}" in
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
-  git://sourceware.org/git/valgrind.git) valgrind ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
 esac
 #
