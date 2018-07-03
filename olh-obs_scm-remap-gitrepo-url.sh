@@ -39,6 +39,8 @@ qemu_xen_trad_dir(){ readlink -f ~/git/for_obs/qemu-xen-traditional.git ; }
 qemu_xen_trad_url(){ echo "git://xenbits.xen.org/qemu-xen-traditional.git" ; }
 seabios_dir()      { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
+seabios_xenbits_dir() { readlink -f ~/git/for_obs/seabios.git ; }
+seabios_xenbits_url() { echo "git://xenbits.xen.org/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
 sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
 valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
@@ -59,6 +61,7 @@ qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; e
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
 qemu_xen_trad() { case "${mode}" in dir) qemu_xen_trad_dir ;; url) qemu_xen_trad_url ;; *) echo "qemu_xen_trad" ;; esac }
 seabios() { case "${mode}" in dir) seabios_dir ;; url) seabios_url ;; *) echo "seabios" ;; esac }
+seabios_xenbits() { case "${mode}" in dir) seabios_xenbits_dir ;; url) seabios_xenbits_url ;; *) echo "seabios_xenbits" ;; esac }
 sgabios() { case "${mode}" in dir) sgabios_dir ;; url) sgabios_url ;; *) echo "sgabios" ;; esac }
 valgrind() { case "${mode}" in dir) valgrind_dir ;; url) valgrind_url ;; *) echo "valgrind" ;; esac }
 xen() { case "${mode}" in dir) xen_dir ;; url) xen_url ;; *) echo "xen" ;; esac }
@@ -108,7 +111,7 @@ case "${url}" in
   git://xenbits.xen.org/ovmf.git) ovmf ;;
   git://xenbits.xen.org/qemu-xen-traditional.git) qemu_xen_trad ;;
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
-  git://xenbits.xen.org/seabios.git) seabios ;;
+  git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/qemu.git) qemu ;;
