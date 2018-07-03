@@ -109,8 +109,8 @@ echo "${xen_version}" > version_prefix.txt
 #
 #
 get_xen_file Config.mk
-qemu_xen_traditional_git_url=` sed -n '/^QEMU_\(TRADITIONAL_URL\|REMOTE\).*git:\/\//{s@^.* @@;p;q}' ${xf} `
-qemu_xen_traditional_tag=` sed -n '/^QEMU_\(TRADITIONAL_REVISION\|TAG\)/{s@^.* @@;p;q};/^QEMU_TAG/{s@^.* @@;p;q}' ${xf} `
+qemu_xen_traditional_git_url=` sed -n '/^QEMU_\(TRADITIONAL_URL\|REMOTE\).*git:\/\//{s@^[^=]\+=[[:blank:]]*@@;p;q}' ${xf} `
+qemu_xen_traditional_tag=` sed -n '/^QEMU_\(TRADITIONAL_REVISION\|TAG\)/{s@^.* @@;p;q}' ${xf} `
 qemu_xen_traditional_extract_dir=tools/qemu-xen-traditional-dir-remote
 create_submodule \
 	"${qemu_xen_traditional_git_url}" \

@@ -109,6 +109,8 @@ case "${url}" in
   git://sourceware.org/git/valgrind.git) valgrind ;;
   git://xenbits.xen.org/mini-os.git) minios ;;
   git://xenbits.xen.org/ovmf.git) ovmf ;;
+  git://xenbits.xen.org/qemu-upstream-4.2-testing.git) qemu_xen ;;
+  git://xenbits.xen.org/qemu-xen-4.2-testing.git) qemu_xen_trad ;;
   git://xenbits.xen.org/qemu-xen-traditional.git) qemu_xen_trad ;;
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
