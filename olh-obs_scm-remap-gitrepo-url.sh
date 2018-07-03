@@ -102,6 +102,7 @@ case "${url}" in
   git://github.com/tianocore/edk2) ovmf ;;
   git://github.com/xen-project/xen.git) xen ;;
   git://libvirt.org/libvirt.git) libvirt ;;
+  git://repo.or.cz/qemu-palcode.git) unhandled=1 ;;
   git://sourceware.org/git/valgrind.git) valgrind ;;
   git://xenbits.xen.org/mini-os.git) minios ;;
   git://xenbits.xen.org/ovmf.git) ovmf ;;
