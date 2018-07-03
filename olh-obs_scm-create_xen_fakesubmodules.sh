@@ -145,7 +145,7 @@ then
 fi
 #
 ovmf_git_url=`sed -n '/^OVMF_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
-ovmf_tag=`sed -n '/^OVMF_UPSTREAM_REVISION/{/OVMF_UPSTREAM_TAG/d;s@^.* @@;p;q}' ${xf}`
+ovmf_tag=`sed -n '/^OVMF_UPSTREAM_REVISION/{s@^.* @@;p;q}' ${xf}`
 ovmf_extract_dir=tools/firmware/ovmf-dir-remote
 case "${xen_version}" in
   3.*|4.0|4.1|4.2|4.3|4.4|4.5|4.6) ;;
