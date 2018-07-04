@@ -134,6 +134,7 @@ fi
 
 for patch in "${work_dir}"/*/*.patch
 do
+  test -f "${patch}" || continue
   update_patch=true
   old_patch=".osc/${patch##*/}"
   wc_patch="${patch##*/}"
