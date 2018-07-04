@@ -61,7 +61,7 @@ qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; e
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
 qemu_xen_trad() { case "${mode}" in dir) qemu_xen_trad_dir ;; url) qemu_xen_trad_url ;; *) echo "qemu_xen_trad" ;; esac }
 seabios() { case "${mode}" in dir) seabios_dir ;; url) seabios_url ;; *) echo "seabios" ;; esac }
-seabios_xenbits() { case "${mode}" in dir) seabios_xenbits_dir ;; url) seabios_xenbits_url ;; *) echo "seabios_xenbits" ;; esac }
+seabios_xenbits() { case "${mode}" in dir) seabios_xenbits_dir ;; url) seabios_xenbits_url ;; *) echo "seabios" ;; esac }
 sgabios() { case "${mode}" in dir) sgabios_dir ;; url) sgabios_url ;; *) echo "sgabios" ;; esac }
 valgrind() { case "${mode}" in dir) valgrind_dir ;; url) valgrind_url ;; *) echo "valgrind" ;; esac }
 xen() { case "${mode}" in dir) xen_dir ;; url) xen_url ;; *) echo "xen" ;; esac }
