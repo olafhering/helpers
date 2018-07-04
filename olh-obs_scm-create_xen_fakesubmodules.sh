@@ -110,7 +110,7 @@ echo "${xen_version}" > version_prefix.txt
 #
 get_xen_file Config.mk
 qemu_xen_traditional_git_url=` sed -n '/^QEMU_\(TRADITIONAL_URL\|REMOTE\).*git:\/\//{s@^[^=]\+=[[:blank:]]*@@;p;q}' ${xf} `
-qemu_xen_traditional_tag=` sed -n '/^QEMU_\(TRADITIONAL_REVISION\|TAG\)/{s@^.* @@;p;q}' ${xf} `
+qemu_xen_traditional_tag=` sed -n '/^QEMU_TRADITIONAL_REVISION/{/QEMU_TAG/d;s@^.* @@;p;q};/^QEMU_TAG/{s@^.* @@;p;q}' ${xf} `
 qemu_xen_traditional_extract_dir=tools/qemu-xen-traditional-dir-remote
 create_submodule \
 	"${qemu_xen_traditional_git_url}" \
@@ -126,7 +126,7 @@ create_submodule \
 	"${qemu_xen_upstream_extract_dir}"
 #
 seabios_git_url=`sed -n '/^SEABIOS_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
-seabios_tag=`sed -n '/^SEABIOS_UPSTREAM_\(REVISION\|TAG\)/{s@^.* @@;p;q}' ${xf}`
+seabios_tag=`sed -n '/^SEABIOS_UPSTREAM_REVISION/{/SEABIOS_UPSTREAM_TAG/d;s@^.* @@;p;q};/^SEABIOS_UPSTREAM_TAG/{;s@^.* @@;p;q}' ${xf}`
 seabios_extract_dir=tools/firmware/seabios-dir-remote
 create_submodule \
 	"${seabios_git_url}" \
