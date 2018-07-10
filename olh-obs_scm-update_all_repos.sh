@@ -131,6 +131,7 @@ t=`mktemp --directory $td/ipxe.XXX`
 if pushd ipxe.git > /dev/null
 then
   fetch_and_push
+  push_master
   finish $t
 fi
 } &> ${td}/ipxe.log < /dev/null &
