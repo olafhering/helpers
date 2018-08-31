@@ -128,6 +128,7 @@ case "${url}" in
   https://git.seabios.org/seabios.git/) seabios ;;
   https://git.sv.gnu.org/git/gnulib.git) gnulib ;;
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
+  https://github.com/openssl/openssl) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
