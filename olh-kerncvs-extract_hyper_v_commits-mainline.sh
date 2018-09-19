@@ -180,6 +180,7 @@ git --git-dir="${upstream_git}/.git" \
 		arch/x86/hyperv \
 		arch/x86/include/asm/hyperv.h \
 		arch/x86/include/asm/mshyperv.h \
+		arch/x86/include/asm/hyperv-tlfs.h \
 		arch/x86/include/uapi/asm/hyperv.h \
 		arch/x86/kernel/cpu/mshyperv.c \
 		drivers/hid/hid-hyperv.c \
