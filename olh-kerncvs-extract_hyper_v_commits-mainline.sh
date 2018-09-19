@@ -183,6 +183,7 @@ git --git-dir="${upstream_git}/.git" \
 		arch/x86/include/asm/hyperv-tlfs.h \
 		arch/x86/include/uapi/asm/hyperv.h \
 		arch/x86/kernel/cpu/mshyperv.c \
+		arch/x86/kvm/hyperv.c \
 		drivers/hid/hid-hyperv.c \
 		drivers/hv \
 		drivers/input/serio/hyperv-keyboard.c \
