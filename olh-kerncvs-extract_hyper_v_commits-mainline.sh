@@ -178,9 +178,10 @@ git --git-dir="${upstream_git}/.git" \
 	--no-merges \
 	${from_to} -- \
 		arch/x86/hyperv \
+		arch/x86/include/asm/hyperv-tlfs.h \
 		arch/x86/include/asm/hyperv.h \
 		arch/x86/include/asm/mshyperv.h \
-		arch/x86/include/asm/hyperv-tlfs.h \
+		arch/x86/include/asm/trace/hyperv.h \
 		arch/x86/include/uapi/asm/hyperv.h \
 		arch/x86/kernel/cpu/mshyperv.c \
 		arch/x86/kvm/hyperv.c \
