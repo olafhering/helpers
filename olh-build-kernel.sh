@@ -19,7 +19,16 @@ else
 	make_target=all
 fi
 #
-
+if test -d .git
+then
+	pushd . > /dev/null
+elif test -d patches/.git
+then
+	pushd patches > /dev/null
+else
+	echo "${PWD##*/} not a git tree"
+	exit 1
+fi
 git_branch="`git branch | awk '"*" == $1 { print }'`"
 # * (no branch, bisect started on fate317533-SLES11-SP4-r4)
 case "$git_branch" in
@@ -35,6 +44,7 @@ case "$git_branch" in
 		fi
 	;;
 esac
+popd > /dev/null
 #
 bugnumber=${git_branch}
 #
@@ -95,6 +105,16 @@ cond_copy() {
 #
 
 mkdir -vp "${O}"
+if test -d "${O}" && test -f .config
+then
+	if test -f "${O}/.config"
+	then
+		mv -fv .config config.$PPID
+	else
+		sed -i /_DEBUG_INFO/d .config
+		mv -vi .config "${O}/.config"
+	fi
+fi
 make \
 	-j ${make_jobs} \
 	"O=${O}" \
