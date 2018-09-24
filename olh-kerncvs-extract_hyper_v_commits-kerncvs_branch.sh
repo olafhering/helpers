@@ -230,6 +230,23 @@ do
 	if test -e "${ignore_revspec_dir}/${revspec}"
 	then
 		: "${revspec} is on ignore list"
+		id_upstream_patch="`readlink -f \"${ignore_revspec_dir}/${revspec}\"`"
+		id_missing_revspec="`readlink -f \"${missing_revspec_dir}/${revspec}\"`"
+		if test "${id_upstream_patch}" = "${id_missing_revspec}"
+		then
+			rm -fv "${missing_revspec_dir}/${revspec}"
+		fi
+		for i in ${missing_patch_dir}/*
+		do
+			if test -L "${i}"
+			then
+				id_missing_patch="`readlink -f \"${i}\"`"
+				if test "${id_upstream_patch}" = "${id_missing_patch}"
+				then
+					rm -fv "${i}"
+				fi
+			fi
+		done
 		unset revspec_names[${revspec}]
 		continue
 	fi
