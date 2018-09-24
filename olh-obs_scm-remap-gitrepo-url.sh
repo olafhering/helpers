@@ -32,7 +32,7 @@ mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
 ovmf_url()          { echo "git://github.com/tianocore/edk2" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
-qemu_url()         { echo "git://git.qemu.org/qemu.git" ; }
+qemu_url()         { echo "https://git.qemu.org/git/qemu.git/" ; }
 qemu_xen_dir()     { readlink -f ~/git/for_obs/qemu-xen.git ; }
 qemu_xen_url()     { echo "git://xenbits.xen.org/qemu-xen.git" ; }
 qemu_xen_trad_dir(){ readlink -f ~/git/for_obs/qemu-xen-traditional.git ; }
@@ -120,6 +120,8 @@ case "${url}" in
   git@github.com:olafhering/xen.git) xen ;;
   git@gitlab.com:olafhering/xen.git) xen ;;
   http://git.claws-mail.org/readonly/claws.git) claws ;;
+  http://git.qemu.org/git/qemu.git) qemu ;;
+  https://git.qemu.org/git/qemu.git/) qemu ;;
   https://git.savannah.gnu.org/git/gnulib.git) gnulib ;;
   https://git.savannah.gnu.org/git/gnulib.git/) gnulib ;;
   https://git.seabios.org/cgit/seabios.git) seabios ;;
