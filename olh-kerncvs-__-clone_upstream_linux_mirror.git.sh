@@ -1,4 +1,6 @@
 set -e
+update=
+test "$1" = "-u" && update='true'
 with_tags="
 torvalds.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 stable.linux-stable.git|https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
@@ -48,13 +50,17 @@ dk.linux-block.git|git://git.kernel.dk/linux-block.git
 kvm.kvm.git|git://git.kernel.org/pub/scm/virt/kvm/kvm.git
 infradead.nvme.git|git://git.infradead.org/nvme.git
 "
-mkdir /dev/shm/$$
-pushd $_
-git init
+if test -z "${update}"
+then
+	mkdir /dev/shm/$$
+	pushd $_
+	git init
+fi
 for remote in $with_tags
 do
 	name=${remote%%|*}
 	repo=${remote##*|}
+	git remote get-url $name > /dev/null && continue
 	git remote add --tags $name $repo
 done
 
@@ -62,6 +68,7 @@ for remote in $without_tags
 do
 	name=${remote%%|*}
 	repo=${remote##*|}
+	git remote get-url $name > /dev/null && continue
 	git remote add --no-tags $name $repo
 done
 git remote show
