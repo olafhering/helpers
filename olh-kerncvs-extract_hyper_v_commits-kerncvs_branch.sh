@@ -141,7 +141,13 @@ do
 		then
 			echo "${p} has no Git-commit line"
 		else
-			missing_patch_list[${revspec}]="${missing_patch_dir}/${p}"
+			patch_name="`readlink -f \"${p}\"`"
+			if test "${p}" != "${patch_name##*/}"
+			then
+				do_rm=true
+			else
+				missing_patch_list[${revspec}]="${missing_patch_dir}/${p}"
+			fi
 		fi
 	fi
 	test -n "${do_rm}" && rm -fv "${p}"
