@@ -354,10 +354,10 @@ valgrind
 #
 xen
 #
+trap $(type -P date) EXIT
 time wait
 for i in "${td}"/*.log
 do
   test -s "${i}" || rm -f "${i}"
 done
 head -n 12345 "${td}"/*.log 2> /dev/null
-date
