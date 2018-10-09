@@ -2,6 +2,7 @@
 set -e
 unset LANG
 unset ${!LC_*}
+read v1 x < /proc/uptime
 myself="`readlink -f \"$0\"`"
 push=true
 do_fetch_all=
@@ -355,9 +356,24 @@ valgrind
 xen
 #
 trap $(type -P date) EXIT
-time wait
+wait
+read v2 x < /proc/uptime
+
+d=$(( ${v2//./} - ${v1//./} ))
+s=$(( ${d} / 100 ))
+m=${d: -2}
+if test -z "${m}"
+then
+	if test "${#d}" -gt 1
+	then
+		m=${d: -2}
+	else
+		m=${d: -1}
+	fi
+fi
+printf 'Update ran for %u.%02u seconds.\n' "${s}" "${m}"
 for i in "${td}"/*.log
 do
   test -s "${i}" || rm -f "${i}"
 done
-head -n 12345 "${td}"/*.log 2> /dev/null
+head -vn 12345 "${td}"/*.log 2> /dev/null
