@@ -98,6 +98,8 @@ case "${url}" in
   git://git.seabios.org/seabios.git) seabios ;;
   git://git.sv.gnu.org/gnulib.git) gnulib ;;
   git://github.com/coreutils/gnulib.git) gnulib ;;
+  git://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
+  git://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
   git://github.com/olafhering/xen.git) xen ;;
