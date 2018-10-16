@@ -355,7 +355,6 @@ valgrind
 #
 xen
 #
-trap $(type -P date) EXIT
 wait
 read v2 x < /proc/uptime
 
@@ -371,9 +370,10 @@ then
 		m=${d: -1}
 	fi
 fi
-printf 'Update ran for %u.%02u seconds.\n' "${s}" "${m}"
 for i in "${td}"/*.log
 do
   test -s "${i}" || rm -f "${i}"
 done
-head -vn 12345 "${td}"/*.log 2> /dev/null
+head -vn 12345 "${td}"/*.log 2> /dev/null || :
+printf 'Update ran for %u.%02u seconds.\n' "${s}" "${m}"
+date
