@@ -110,10 +110,6 @@ else
 	done
 fi
 #
-eval echo "_azure_branches '`eval echo ${_azure_branches}`'"
-eval echo "_merge_branches '`eval echo ${_merge_branches}`'"
-eval echo "_branches '`eval echo ${_branches}`'"
-#
 for branch in ${_branches}
 do
 	repo=${repo_base}.${branch}
