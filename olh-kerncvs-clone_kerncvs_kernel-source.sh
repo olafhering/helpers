@@ -21,7 +21,7 @@ cmdline_branches=
 until test "$#" -eq 0
 do
 	case "$1" in
-	-m) do_merge=true ;;
+	-m) do_merge=do_merge ;;
 	*) cmdline_branches="${cmdline_branches} $1"
 	esac
 	shift
@@ -71,10 +71,9 @@ fi
 repo_mirror_dot_git="`readlink -f ${repo_mirror}`"
 #
 : cmdline_branches ${cmdline_branches}
-: do_merge ${do_merge}
 if test -n "${cmdline_branches}"
 then
-	if test "${do_merge}" = "true"
+	if test -n "${do_merge}"
 	then
 		# $0 -m branch
 		_azure_branches=${cmdline_branches}
@@ -86,7 +85,7 @@ then
 	fi
 else
 	_azure_branches=${azure_branches}
-	if test "${do_merge}" = "true"
+	if test -n "${do_merge}"
 	then
 		# $0 -m
 		_branches=
@@ -96,7 +95,7 @@ else
 	fi
 fi
 #
-if test "${do_merge}" = "true"
+if test -n "${do_merge}"
 then
 	for branch in ${_azure_branches}
 	do
@@ -132,7 +131,7 @@ do
 	: next
 done
 #
-if test "${do_merge}" = "true"
+if test -n "${do_merge}"
 then
 	for branch in ${_merge_branches}
 	do
