@@ -26,7 +26,6 @@ do
 	esac
 	shift
 done
-test "$1" = "-m" && do_merge=true
 git_srv=kerncvs.suse.de
 git_user=ohering
 git_repo=kernel-source
