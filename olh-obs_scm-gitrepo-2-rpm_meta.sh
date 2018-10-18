@@ -211,7 +211,16 @@ then
       fi
     fi
     echo "pushd '${pkg_patch_basedir}'" >> spec.patch.txt
-    g format-patch -k -o .patches "${fixes_from}".."${fixes_to}"
+    g format-patch \
+      --no-signature \
+      --break-rewrites \
+      --no-renames \
+      --keep-subject \
+      --stat=-1,-1 \
+      --stat-graph-width=-1 \
+      --summary \
+      --output-directory .patches \
+      "${fixes_from}".."${fixes_to}"
     for patch in .patches/*.patch
     do
       test -f "${patch}" || continue
