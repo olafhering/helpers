@@ -375,5 +375,5 @@ do
   test -s "${i}" || rm -f "${i}"
 done
 head -vn 12345 "${td}"/*.log 2> /dev/null || :
-printf 'Update ran for %u.%02u seconds.\n' "${s}" "${m}"
+printf 'Update ran for %u.%02u seconds.\n' "${s}" "${m#0}"
 date
