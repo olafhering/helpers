@@ -213,7 +213,7 @@ then
     echo "pushd '${pkg_patch_basedir}'" >> spec.patch.txt
     g format-patch \
       --no-signature \
-      --break-rewrites \
+      --break-rewrites=100%/100% \
       --no-renames \
       --keep-subject \
       --stat=-1,-1 \
