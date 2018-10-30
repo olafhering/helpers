@@ -12,7 +12,6 @@ user="$(id -u)"
 test -n "${user}" || exit 1
 LOCK_BASEDIR="/dev/shm/.${user}.${0##*/}"
 _lockfile=
-trap 'rm -fv ${_lockfile}' EXIT
 _setlockfd()
 {
 	local i
