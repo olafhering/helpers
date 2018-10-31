@@ -49,6 +49,7 @@ airlied.linux.git|git://people.freedesktop.org/~airlied/linux
 dk.linux-block.git|git://git.kernel.dk/linux-block.git
 kvm.kvm.git|git://git.kernel.org/pub/scm/virt/kvm/kvm.git
 infradead.nvme.git|git://git.infradead.org/nvme.git
+drm.drm-misc.git|git://anongit.freedesktop.org/drm/drm-misc
 "
 if test -z "${update}"
 then
