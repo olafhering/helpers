@@ -158,6 +158,11 @@ then
 						fetch \
 						${git_origin} \
 						"+refs/heads/users/*/${branch}/for-next:refs/remotes/${git_origin}/users/*/${branch}/for-next"
+					git --git-dir=${repo_mirror_dot_git} rev-list -n1 ${branch%-*}-UPDATE && \
+					git \
+						fetch \
+						${git_origin} \
+						"+refs/heads/${branch%-*}-UPDATE:refs/remotes/${git_origin}/${branch%-*}-UPDATE"
 					git --git-dir=${repo_mirror_dot_git} rev-list -n1 ${branch%-*}_EMBARGO && \
 					git \
 						fetch \
