@@ -20,7 +20,7 @@ gnulib_url()       { echo "git://github.com/coreutils/gnulib.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
 grub_url()         { echo "git://git.savannah.gnu.org/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
-ipxe_url()         { echo "git://git.ipxe.org/ipxe.git" ; }
+ipxe_url()         { echo "https://git.ipxe.org/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
@@ -122,7 +122,9 @@ case "${url}" in
   git@github.com:olafhering/xen.git) xen ;;
   git@gitlab.com:olafhering/xen.git) xen ;;
   http://git.claws-mail.org/readonly/claws.git) claws ;;
+  http://git.ipxe.org/ipxe.git) ipxe ;;
   http://git.qemu.org/git/qemu.git) qemu ;;
+  https://git.ipxe.org/ipxe.git) ipxe ;;
   https://git.qemu.org/git/qemu.git/) qemu ;;
   https://git.savannah.gnu.org/git/gnulib.git) gnulib ;;
   https://git.savannah.gnu.org/git/gnulib.git/) gnulib ;;
