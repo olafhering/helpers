@@ -256,6 +256,20 @@ then
 fi
 } &> ${td}/keycodemapdb.log < /dev/null &
 }
+libetpan() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/libetpan.XXX`
+if pushd libetpan.git > /dev/null
+then
+  fetch_and_push
+  push_master
+  finish $t
+fi
+} &> ${td}/libetpan.log < /dev/null &
+}
 libvirt() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -346,6 +360,8 @@ qemu_xen
 qemu_xen_traditional
 #
 keycodemapdb
+#
+libetpan
 #
 libvirt
 #
