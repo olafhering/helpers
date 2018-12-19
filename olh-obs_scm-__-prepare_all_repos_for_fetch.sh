@@ -60,6 +60,25 @@ else
 fi
 popd > /dev/null
 #
+repo_dir=libetpan.git
+if ! pushd "${repo_dir}" > /dev/null
+then
+  mkdir -v "${repo_dir}"
+  pushd "${repo_dir}" > /dev/null
+fi
+if pushd .git > /dev/null
+then
+  popd > /dev/null
+else
+  git init
+  git remote add    --tags upstream            git://github.com/dinhviethoa/libetpan.git
+  git remote add --no-tags github_libetpan     git://github.com/dinhviethoa/libetpan.git
+  git remote add --no-tags github_olafhering   git@github.com:olafhering/libetpan.git
+  git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/libetpan.git
+  git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/libetpan.git
+fi
+popd > /dev/null
+#
 repo_dir=mini-os.git
 if ! pushd "${repo_dir}" > /dev/null
 then
