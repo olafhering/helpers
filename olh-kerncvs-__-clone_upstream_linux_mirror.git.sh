@@ -22,6 +22,7 @@ helgaas.pci.git|https://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git
 herbert.cryptodev-2.6.git|https://git.kernel.org/pub/scm/linux/kernel/git/herbert/cryptodev-2.6.git
 horms.ipvs-next.git|https://git.kernel.org/pub/scm/linux/kernel/git/horms/ipvs-next.git
 horms.ipvs.git|https://git.kernel.org/pub/scm/linux/kernel/git/horms/ipvs.git
+hyperv.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/hyperv/linux.git
 jejb.scsi.git|https://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi.git
 jeyu.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/jeyu/linux.git
 jj.linux-apparmor.git|https://git.kernel.org/pub/scm/linux/kernel/git/jj/linux-apparmor.git
