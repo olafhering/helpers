@@ -188,7 +188,6 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/hid/hid-hyperv.c \
 		drivers/hv \
 		drivers/input/serio/hyperv-keyboard.c \
-		drivers/iommu/hyperv_iommu.c \
 		drivers/iommu/hyperv-iommu.c \
 		drivers/net/hyperv \
 		drivers/pci/controller/pci-hyperv.c \
