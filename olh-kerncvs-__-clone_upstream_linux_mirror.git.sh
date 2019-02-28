@@ -26,6 +26,7 @@ hyperv.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/hyperv/linux.gi
 jejb.scsi.git|https://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi.git
 jeyu.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/jeyu/linux.git
 jj.linux-apparmor.git|https://git.kernel.org/pub/scm/linux/kernel/git/jj/linux-apparmor.git
+joro.iommu.git|https://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git
 klassert.ipsec-next.git|https://git.kernel.org/pub/scm/linux/kernel/git/klassert/ipsec-next.git
 klassert.ipsec.git|https://git.kernel.org/pub/scm/linux/kernel/git/klassert/ipsec.git
 konrad.xen.git|https://git.kernel.org/pub/scm/linux/kernel/git/konrad/xen.git
