@@ -41,7 +41,11 @@ allow_submodule() {
   local url_tag
 
   remap_url="`olh-obs_scm-remap-gitrepo-url ${raw_url} 'url'`"
-  test -n "${remap_url}" || return 1
+  if test -n "${remap_url}"
+  then
+    echo "submodule ${tag} ${raw_url} UNKNOWN"
+    return 1
+  fi
   url_tag="`olh-obs_scm-remap-gitrepo-url ${remap_url} 'tag'`"
   
   case "${tag}@${url_tag}" in
