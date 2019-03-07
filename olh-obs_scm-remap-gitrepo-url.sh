@@ -33,6 +33,8 @@ mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
 mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
 ovmf_url()          { echo "git://github.com/tianocore/edk2" ; }
+openssl_dir()          { echo "none" ; }
+openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
 qemu_url()         { echo "https://git.qemu.org/git/qemu.git/" ; }
 qemu_xen_dir()     { readlink -f ~/git/for_obs/qemu-xen.git ; }
@@ -60,6 +62,7 @@ libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "l
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
 mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
 ovmf() { case "${mode}" in dir) ovmf_dir ;; url) ovmf_url ;; *) echo "ovmf" ;; esac }
+openssl() { case "${mode}" in dir) openssl_dir ;; url) openssl_url ;; *) echo "openssl" ;; esac }
 qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; esac }
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
 qemu_xen_trad() { case "${mode}" in dir) qemu_xen_trad_dir ;; url) qemu_xen_trad_url ;; *) echo "qemu_xen_trad" ;; esac }
@@ -172,6 +175,7 @@ case "${url}" in
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
