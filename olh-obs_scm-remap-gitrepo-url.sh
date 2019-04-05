@@ -32,7 +32,7 @@ minios_url()       { echo "git://xenbits.xen.org/mini-os.git" ; }
 mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
 mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
-ovmf_url()          { echo "git://github.com/tianocore/edk2" ; }
+ovmf_url()          { echo "https://github.com/tianocore/edk2.git" ; }
 openssl_dir()          { echo "none" ; }
 openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
@@ -177,6 +177,7 @@ case "${url}" in
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;
+  https://github.com/tianocore/edk2.git) ovmf ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
