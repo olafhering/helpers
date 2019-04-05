@@ -49,6 +49,7 @@ allow_submodule() {
   url_tag="`olh-obs_scm-remap-gitrepo-url ${remap_url} 'tag'`"
   
   case "${tag}@${url_tag}" in
+    qemu@ovmf) allow=false ;;
     qemu_xen@ipxe) allow=false ;;
     qemu_xen@seabios) allow=false ;;
     qemu_xen@sgabios) allow=false ;;
