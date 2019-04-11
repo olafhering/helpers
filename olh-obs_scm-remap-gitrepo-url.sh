@@ -102,6 +102,7 @@ case "${url}" in
   git://git.savannah.gnu.org/gnulib.git) gnulib ;;
   git://git.savannah.gnu.org/grub.git) grub ;;
   git://git.seabios.org/seabios.git) seabios ;;
+  git://git.sv.gnu.org/gnulib) gnulib ;;
   git://git.sv.gnu.org/gnulib.git) gnulib ;;
   git://github.com/coreutils/gnulib.git) gnulib ;;
   git://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
