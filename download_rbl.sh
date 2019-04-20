@@ -19,7 +19,7 @@ then
 else
 	exit 1
 fi
-osc -A "${apiurl}" results ${project} ${package} | while read repo arch state rest
+osc -A "${apiurl}" results --no-multibuild ${project} ${package} | while read repo arch state rest
 do
 	if test -n "${rest}"
 	then
