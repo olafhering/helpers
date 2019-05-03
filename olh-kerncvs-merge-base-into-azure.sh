@@ -1,3 +1,4 @@
+#!/bin/bash
 set -ex
 td=`mktemp --directory --tmpdir=/dev/shm XXX`
 trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
