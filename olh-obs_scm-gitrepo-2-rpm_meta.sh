@@ -52,6 +52,7 @@ allow_submodule() {
     qemu_xen@ipxe) allow=false ;;
     qemu_xen@seabios) allow=false ;;
     qemu_xen@sgabios) allow=false ;;
+    qemu_xen@ovmf) allow=false ;;
     *) ;;
   esac
   if test "${allow}" = "true"
