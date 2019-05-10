@@ -9,6 +9,7 @@ azure_branches="
 SLE12-SP3
 SLE12-SP4
 SLE15
+SLE15-SP1
 "
 email='ohering@suse.de'
 name='Olaf Hering'
