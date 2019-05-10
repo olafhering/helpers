@@ -8,6 +8,7 @@ case "$1" in
 	SLE12-SP3) branch=$1 ; : mergetool= ;;
 	SLE12-SP4) branch=$1 ;;
 	SLE15) branch=$1 ;;
+	SLE15-SP1) branch=$1 ;;
 	*) ;;
 esac
 test -n "${branch}"
