@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+export TMPDIR=/dev/shm
 td=`mktemp --directory --tmpdir=/dev/shm XXX`
 trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
 branch=
