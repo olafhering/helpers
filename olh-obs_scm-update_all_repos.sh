@@ -187,7 +187,7 @@ pidgin() {
 t=`mktemp --directory $td/pidgin.XXX`
 if pushd pidgin.git > /dev/null
 then
-  simple_fetch_all
+  fetch_and_push
   if ${push}
   then
   git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.github_olafhering &
@@ -197,7 +197,6 @@ then
   git push gitlab_olafhering 'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.gitlab_olh        &
   fi
-  finish $t
   finish $t
 fi
 } &> ${td}/pidgin.log < /dev/null &
