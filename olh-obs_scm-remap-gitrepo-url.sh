@@ -33,6 +33,8 @@ mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
 mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
 ovmf_url()          { echo "https://github.com/tianocore/edk2.git" ; }
+pidgin_dir()          { readlink -f ~/git/for_obs/pidgin.git ; }
+pidgin_url()          { echo "https://github.com/olafhering/pidgin.git" ; }
 openssl_dir()          { echo "none" ; }
 openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
@@ -62,6 +64,7 @@ libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "l
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
 mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
 ovmf() { case "${mode}" in dir) ovmf_dir ;; url) ovmf_url ;; *) echo "ovmf" ;; esac }
+pidgin() { case "${mode}" in dir) pidgin_dir ;; url) pidgin_url ;; *) echo "pidgin" ;; esac }
 openssl() { case "${mode}" in dir) openssl_dir ;; url) openssl_url ;; *) echo "openssl" ;; esac }
 qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; esac }
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
@@ -110,6 +113,7 @@ case "${url}" in
   git://github.com/dinhviethoa/libetpan.git) libetpan ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
+  git://github.com/olafhering/pidgin.git) pidgin ;;
   git://github.com/olafhering/xen.git) xen ;;
   git://github.com/rth7680/qemu-palcode.git) unhandled=1 ;;
   git://github.com/tianocore/edk2) ovmf ;;
@@ -126,6 +130,7 @@ case "${url}" in
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
+  git@github.com:olafhering/pidgin.git) pidgin ;;
   git@github.com:olafhering/qemu.git) qemu ;;
   git@github.com:olafhering/xen.git) xen ;;
   git@gitlab.com:olafhering/xen.git) xen ;;
@@ -176,6 +181,7 @@ case "${url}" in
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/olafhering/pidgin.git) pidgin ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;

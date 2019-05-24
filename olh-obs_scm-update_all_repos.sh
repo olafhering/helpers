@@ -179,6 +179,29 @@ then
 fi
 } &> ${td}/ovmf.log < /dev/null &
 }
+pidgin() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/pidgin.XXX`
+if pushd pidgin.git > /dev/null
+then
+  simple_fetch_all
+  if ${push}
+  then
+  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.gitlab_olh        &
+  fi
+  finish $t
+  finish $t
+fi
+} &> ${td}/pidgin.log < /dev/null &
+}
 qemu() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -352,6 +375,8 @@ mini_os
 mutt
 #
 ovmf
+#
+pidgin
 #
 qemu
 #
