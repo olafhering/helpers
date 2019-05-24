@@ -190,12 +190,12 @@ then
   fetch_and_push
   if ${push}
   then
-  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/qemu.gitlab_olh        &
-  git push github_olafhering 'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/release-2.*:refs/heads/release-2.*' &> $t/qemu.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/pidgin.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/pidgin.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/pidgin.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olh        &
   fi
   finish $t
 fi
