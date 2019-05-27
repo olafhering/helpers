@@ -156,6 +156,7 @@ case "${url}" in
   https://git.qemu.org/git/SLOF.git) unhandled=1 ;;
   https://git.qemu.org/git/capstone.git) unhandled=1 ;;
   https://git.qemu.org/git/dtc.git) unhandled=1 ;;
+  https://git.qemu.org/git/edk2.git) ovmf ;;
   https://git.qemu.org/git/ipxe.git) ipxe ;;
   https://git.qemu.org/git/keycodemapdb.git) keycodemapdb ;;
   https://git.qemu.org/git/openbios.git) unhandled=1 ;;
