@@ -289,6 +289,24 @@ else
 fi
 popd > /dev/null
 #
+repo_dir=talkatu.git
+if ! pushd "${repo_dir}" > /dev/null
+then
+  mkdir -v "${repo_dir}"
+  pushd "${repo_dir}" > /dev/null
+fi
+if pushd .git > /dev/null
+then
+  popd > /dev/null
+else
+  git init
+  git remote add    --tags upstream             hg::https://olafhering@bitbucket.org/pidgin/talkatu
+  git remote add --no-tags github_olafhering    git@github.com:olafhering/talkatu.git
+  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/talkatu.git
+  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/talkatu.git
+fi
+popd > /dev/null
+#
 repo_dir=valgrind.git
 if ! pushd "${repo_dir}" > /dev/null
 then

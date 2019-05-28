@@ -50,6 +50,8 @@ seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
 seabios_xenbits_dir() { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_xenbits_url() { echo "git://xenbits.xen.org/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
+talkatu_dir()          { readlink -f ~/git/for_obs/talkatu.git ; }
+talkatu_url()          { echo "https://github.com/olafhering/talkatu.git" ; }
 sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
 valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
 valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
@@ -75,6 +77,7 @@ qemu_xen_trad() { case "${mode}" in dir) qemu_xen_trad_dir ;; url) qemu_xen_trad
 seabios() { case "${mode}" in dir) seabios_dir ;; url) seabios_url ;; *) echo "seabios" ;; esac }
 seabios_xenbits() { case "${mode}" in dir) seabios_xenbits_dir ;; url) seabios_xenbits_url ;; *) echo "seabios" ;; esac }
 sgabios() { case "${mode}" in dir) sgabios_dir ;; url) sgabios_url ;; *) echo "sgabios" ;; esac }
+talkatu() { case "${mode}" in dir) talkatu_dir ;; url) talkatu_url ;; *) echo "talkatu" ;; esac }
 valgrind() { case "${mode}" in dir) valgrind_dir ;; url) valgrind_url ;; *) echo "valgrind" ;; esac }
 xen() { case "${mode}" in dir) xen_dir ;; url) xen_url ;; *) echo "xen" ;; esac }
 #
@@ -118,6 +121,7 @@ case "${url}" in
   git://github.com/libvirt/libvirt.git) libvirt ;;
   git://github.com/olafhering/libgnt.git) libgnt ;;
   git://github.com/olafhering/pidgin.git) pidgin ;;
+  git://github.com/olafhering/talkatu.git) talkatu ;;
   git://github.com/olafhering/xen.git) xen ;;
   git://github.com/rth7680/qemu-palcode.git) unhandled=1 ;;
   git://github.com/tianocore/edk2) ovmf ;;
@@ -137,6 +141,7 @@ case "${url}" in
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/pidgin.git) pidgin ;;
   git@github.com:olafhering/qemu.git) qemu ;;
+  git@github.com:olafhering/talkatu.git) talkatu ;;
   git@github.com:olafhering/xen.git) xen ;;
   git@gitlab.com:olafhering/xen.git) xen ;;
   http://git.claws-mail.org/readonly/claws.git) claws ;;
@@ -193,6 +198,7 @@ case "${url}" in
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/olafhering/libgnt.git) libgnt ;;
   https://github.com/olafhering/pidgin.git) pidgin ;;
+  https://github.com/olafhering/talkatu.git) talkatu ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;

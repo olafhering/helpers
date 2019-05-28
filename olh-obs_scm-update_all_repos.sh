@@ -216,6 +216,25 @@ then
 fi
 } &> ${td}/pidgin.log < /dev/null &
 }
+talkatu() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/talkatu.XXX`
+if pushd talkatu.git > /dev/null
+then
+  fetch_and_push
+  if ${push}
+  then
+  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/talkatu.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/talkatu.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/talkatu.gitlab_olh        &
+  fi
+  finish $t
+fi
+} &> ${td}/pidgin.log < /dev/null &
+}
 pidgin() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -413,6 +432,8 @@ mutt
 ovmf
 #
 libgnt
+#
+talkatu
 #
 pidgin
 #
