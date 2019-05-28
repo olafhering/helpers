@@ -50,15 +50,18 @@ do
 	then
 		claim_lock "$i"
 		git fetch --all --tags --prune
-		if test -f gc.log
-		then
-			head -n 1234 gc.log
-			rm -fv gc.log
-			git gc --prune
-			head -n 1234 gc.log
-			rm -fv gc.log
-			git prune
-		fi
+		for l in gc.log .git/gc.log
+		do
+			if test -f "${l}"
+			then
+				head --verbose --lines=1234 "${l}"
+				rm -fv "${l}"
+				git gc --prune
+				head --verbose --lines=1234 "${l}"
+				rm -fv "${l}"
+				git prune
+			fi
+		done
 		release_lock "$i"
 		popd
 	fi
