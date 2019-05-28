@@ -79,6 +79,25 @@ else
 fi
 popd > /dev/null
 #
+repo_dir=libgnt.git
+if ! pushd "${repo_dir}" > /dev/null
+then
+  mkdir -v "${repo_dir}"
+  pushd "${repo_dir}" > /dev/null
+fi
+if pushd .git > /dev/null
+then
+  popd > /dev/null
+else
+  git init
+  git remote add    --tags upstream             hg::https://olafhering@bitbucket.org/pidgin/libgnt
+  git remote add --no-tags bitbucket_olafhering hg::https://olafhering@bitbucket.org/olafhering/libgnt
+  git remote add --no-tags github_olafhering    git@github.com:olafhering/libgnt.git
+  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/libgnt.git
+  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/libgnt.git
+fi
+popd > /dev/null
+#
 repo_dir=mini-os.git
 if ! pushd "${repo_dir}" > /dev/null
 then

@@ -25,6 +25,8 @@ keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
 libetpan_dir()      { readlink -f ~/git/for_obs/libetpan.git ; }
 libetpan_url()      { echo "git://github.com/dinhviethoa/libetpan.git" ; }
+libgnt_dir()          { readlink -f ~/git/for_obs/libgnt.git ; }
+libgnt_url()          { echo "https://github.com/olafhering/libgnt.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
 libvirt_url()      { echo "git://github.com/libvirt/libvirt.git" ; }
 minios_dir()       { readlink -f ~/git/for_obs/mini-os.git ; }
@@ -60,6 +62,7 @@ grub() { case "${mode}" in dir) grub_dir ;; url) grub_url ;; *) echo "grub" ;; e
 ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; esac }
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
 libetpan() { case "${mode}" in dir) libetpan_dir ;; url) libetpan_url ;; *) echo "libetpan" ;; esac }
+libgnt() { case "${mode}" in dir) libgnt_dir ;; url) libgnt_url ;; *) echo "libgnt" ;; esac }
 libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "libvirt" ;; esac }
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
 mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
@@ -113,6 +116,7 @@ case "${url}" in
   git://github.com/dinhviethoa/libetpan.git) libetpan ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
+  git://github.com/olafhering/libgnt.git) libgnt ;;
   git://github.com/olafhering/pidgin.git) pidgin ;;
   git://github.com/olafhering/xen.git) xen ;;
   git://github.com/rth7680/qemu-palcode.git) unhandled=1 ;;
@@ -129,6 +133,7 @@ case "${url}" in
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
+  git@github.com:olafhering/libgnt.git) libgnt ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/pidgin.git) pidgin ;;
   git@github.com:olafhering/qemu.git) qemu ;;
@@ -186,6 +191,7 @@ case "${url}" in
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/olafhering/libgnt.git) libgnt ;;
   https://github.com/olafhering/pidgin.git) pidgin ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;

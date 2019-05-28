@@ -197,6 +197,25 @@ then
 fi
 } &> ${td}/ovmf.log < /dev/null &
 }
+libgnt() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/libgnt.XXX`
+if pushd libgnt.git > /dev/null
+then
+  fetch_and_push
+  if ${push}
+  then
+  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/libgnt.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/libgnt.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/libgnt.gitlab_olh        &
+  fi
+  finish $t
+fi
+} &> ${td}/pidgin.log < /dev/null &
+}
 pidgin() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -392,6 +411,8 @@ mini_os
 mutt
 #
 ovmf
+#
+libgnt
 #
 pidgin
 #
