@@ -214,7 +214,7 @@ then
   fi
   finish $t
 fi
-} &> ${td}/pidgin.log < /dev/null &
+} &> ${td}/libgnt.log < /dev/null &
 }
 talkatu() {
  local do_fetch_all=
@@ -233,7 +233,7 @@ then
   fi
   finish $t
 fi
-} &> ${td}/pidgin.log < /dev/null &
+} &> ${td}/talkatu.log < /dev/null &
 }
 pidgin() {
  local do_fetch_all=
