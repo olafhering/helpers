@@ -105,6 +105,8 @@ finish() {
   for f in "$t"/*
   do
   sed "
+  /searching for changes/d
+  /no changes found/d
   /Everything up-to-date/d
   /^Fetching /d
   s@^@${f##*.}: @
