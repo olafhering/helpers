@@ -12,7 +12,7 @@ forked=
 #
 fn_initial_fetch() {
   local name url rest
-  git remove -v | while read name url rest
+  git remote -v | while read name url rest
   do
     case "${name}" in
     upstream)
