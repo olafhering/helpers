@@ -10,7 +10,25 @@ do_fetch_and_push=
 do_push_master=
 forked=
 #
+fn_initial_fetch() {
+  local name url rest
+  git remove -v | while read name url rest
+  do
+    case "${name}" in
+    upstream)
+      case "${url}" in
+      hg::*)
+        git fetch "${name}"
+        git gc --aggressive
+      ;;
+      esac
+    ;;
+    esac
+  done
+}
+#
 fn_fetch_all() {
+  test -e .git/objects/info/packs || fn_initial_fetch &> $t/a.a.initial_fetch
   git fetch --all &> $t/a.fetch_all_repos
 }
 fn_fetch_and_push() {

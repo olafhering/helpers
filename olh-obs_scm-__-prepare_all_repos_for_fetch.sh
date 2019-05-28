@@ -146,10 +146,11 @@ then
   popd > /dev/null
 else
   git init
-  git remote add    --tags upstream            https://github.com/olafhering/pidgin.git
-  git remote add --no-tags github_olafhering   git@github.com:olafhering/pidgin.git
-  git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/pidgin.git
-  git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/pidgin.git
+  git remote add    --tags upstream             hg::https://bitbucket.org/pidgin/main
+  git remote add --no-tags bitbucket_olafhering hg::https://olafhering@bitbucket.org/olafhering/main
+  git remote add --no-tags github_olafhering    git@github.com:olafhering/pidgin.git
+  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/pidgin.git
+  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/pidgin.git
 fi
 popd > /dev/null
 #
