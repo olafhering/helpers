@@ -303,7 +303,9 @@ _EOS_
   echo "Source@SOURCE_COUNTER@: %{name}-%{version}.tar" >> spec.Patch.txt
   echo "#KEEP NOSOURCE DEBUGINFO" >> spec.Patch.txt
   echo "NoSource: @SOURCE_COUNTER@" >> spec.Patch.txt
+  echo "%if %suse_version > 1110" >> spec.Patch.txt
   echo "BuildRequires: pkgconfig(python3)" >> spec.Patch.txt
+  echo "%endif" >> spec.Patch.txt
 else
   {
     echo "%define ${src_path}_version ${git_hash}"
