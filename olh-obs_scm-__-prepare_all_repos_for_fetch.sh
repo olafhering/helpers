@@ -23,6 +23,24 @@ else
 fi
 popd > /dev/null
 #
+repo_dir=gplugin.git
+if ! pushd "${repo_dir}" > /dev/null
+then
+  mkdir -v "${repo_dir}"
+  pushd "${repo_dir}" > /dev/null
+fi
+if pushd .git > /dev/null
+then
+  popd > /dev/null
+else
+  git init
+  git remote add    --tags upstream             hg::https://bitbucket.org/gplugin/gplugin
+  git remote add --no-tags github_olafhering    git@github.com:olafhering/gplugin.git
+  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/gplugin.git
+  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/gplugin.git
+fi
+popd > /dev/null
+#
 repo_dir=grub.git
 if ! pushd "${repo_dir}" > /dev/null
 then

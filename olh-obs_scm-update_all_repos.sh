@@ -199,6 +199,28 @@ then
 fi
 } &> ${td}/ovmf.log < /dev/null &
 }
+gplugin() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/gplugin.XXX`
+if pushd gplugin.git > /dev/null
+then
+  fetch_and_push
+  if ${push}
+  then
+  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/gplugin.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/gplugin.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/gplugin.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/branches/develop:refs/heads/develop' &> $t/gplugin.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/develop:refs/heads/develop' &> $t/gplugin.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/develop:refs/heads/develop' &> $t/gplugin.gitlab_olh        &
+  fi
+  finish $t
+fi
+} &> ${td}/gplugin.log < /dev/null &
+}
 libgnt() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -432,6 +454,8 @@ mini_os
 mutt
 #
 ovmf
+#
+gplugin
 #
 libgnt
 #

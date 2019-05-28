@@ -17,6 +17,8 @@ claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
 gnulib_url()       { echo "git://github.com/coreutils/gnulib.git" ; }
+gplugin_dir()          { readlink -f ~/git/for_obs/gplugin.git ; }
+gplugin_url()          { echo "https://github.com/olafhering/gplugin.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
 grub_url()         { echo "git://git.savannah.gnu.org/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
@@ -60,6 +62,7 @@ xen_url()          { echo "git://github.com/olafhering/xen.git" ; }
 #
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
+gplugin() { case "${mode}" in dir) gplugin_dir ;; url) gplugin_url ;; *) echo "gplugin" ;; esac }
 grub() { case "${mode}" in dir) grub_dir ;; url) grub_url ;; *) echo "grub" ;; esac }
 ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; esac }
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
@@ -119,6 +122,7 @@ case "${url}" in
   git://github.com/dinhviethoa/libetpan.git) libetpan ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
+  git://github.com/olafhering/gplugin.git) gplugin ;;
   git://github.com/olafhering/libgnt.git) libgnt ;;
   git://github.com/olafhering/pidgin.git) pidgin ;;
   git://github.com/olafhering/talkatu.git) talkatu ;;
@@ -137,6 +141,7 @@ case "${url}" in
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
+  git@github.com:olafhering/gplugin.git) gplugin ;;
   git@github.com:olafhering/libgnt.git) libgnt ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/pidgin.git) pidgin ;;
@@ -196,6 +201,7 @@ case "${url}" in
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/olafhering/gplugin.git) gplugin ;;
   https://github.com/olafhering/libgnt.git) libgnt ;;
   https://github.com/olafhering/pidgin.git) pidgin ;;
   https://github.com/olafhering/talkatu.git) talkatu ;;
