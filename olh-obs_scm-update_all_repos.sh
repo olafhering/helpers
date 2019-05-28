@@ -208,9 +208,9 @@ then
   fetch_and_push
   if ${push}
   then
-  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/libgnt.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/libgnt.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/libgnt.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/libgnt.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/libgnt.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/libgnt.gitlab_olh        &
   fi
   finish $t
 fi
@@ -227,9 +227,9 @@ then
   fetch_and_push
   if ${push}
   then
-  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/talkatu.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/talkatu.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/talkatu.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/talkatu.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/talkatu.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/talkatu.gitlab_olh        &
   fi
   finish $t
 fi
@@ -246,12 +246,12 @@ then
   fetch_and_push
   if ${push}
   then
-  git push github_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/pidgin.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/default:refs/heads/default' &> $t/pidgin.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/default:refs/heads/default' &> $t/pidgin.gitlab_olh        &
-  git push github_olafhering 'refs/remotes/upstream/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/pidgin.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/pidgin.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/pidgin.gitlab_olh        &
+  git push github_olafhering 'refs/remotes/upstream/branches/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olh        &
   fi
   finish $t
 fi
