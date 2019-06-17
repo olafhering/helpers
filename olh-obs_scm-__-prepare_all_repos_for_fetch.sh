@@ -190,6 +190,24 @@ else
 fi
 popd > /dev/null
 #
+repo_dir=purple-rocketchat.git
+if ! pushd "${repo_dir}" > /dev/null
+then
+  mkdir -v "${repo_dir}"
+  pushd "${repo_dir}" > /dev/null
+fi
+if pushd .git > /dev/null
+then
+  popd > /dev/null
+else
+  git init
+  git remote add    --tags upstream             hg::https://olafhering@bitbucket.org/EionRobb/purple-rocketchat
+  git remote add --no-tags github_olafhering    git@github.com:olafhering/purple-rocketchat.git
+  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/purple-rocketchat.git
+  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/purple-rocketchat.git
+fi
+popd > /dev/null
+#
 repo_dir=qemu.git
 if ! pushd "${repo_dir}" > /dev/null
 then

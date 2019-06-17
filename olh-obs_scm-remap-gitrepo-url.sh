@@ -39,6 +39,8 @@ ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
 ovmf_url()          { echo "https://github.com/tianocore/edk2.git" ; }
 pidgin_dir()          { readlink -f ~/git/for_obs/pidgin.git ; }
 pidgin_url()          { echo "https://github.com/olafhering/pidgin.git" ; }
+purple_rocketchat_dir()          { readlink -f ~/git/for_obs/purple-rocketchat.git ; }
+purple_rocketchat_url()          { echo "https://github.com/olafhering/purple-rocketchat.git" ; }
 openssl_dir()          { echo "none" ; }
 openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
@@ -73,6 +75,7 @@ minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "mini
 mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
 ovmf() { case "${mode}" in dir) ovmf_dir ;; url) ovmf_url ;; *) echo "ovmf" ;; esac }
 pidgin() { case "${mode}" in dir) pidgin_dir ;; url) pidgin_url ;; *) echo "pidgin" ;; esac }
+purple_rocketchat() { case "${mode}" in dir) purple_rocketchat_dir ;; url) purple_rocketchat_url ;; *) echo "purple_rocketchat" ;; esac }
 openssl() { case "${mode}" in dir) openssl_dir ;; url) openssl_url ;; *) echo "openssl" ;; esac }
 qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; esac }
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
@@ -125,6 +128,7 @@ case "${url}" in
   git://github.com/olafhering/gplugin.git) gplugin ;;
   git://github.com/olafhering/libgnt.git) libgnt ;;
   git://github.com/olafhering/pidgin.git) pidgin ;;
+  git://github.com/olafhering/purple-rocketchat.git) purple_rocketchat ;;
   git://github.com/olafhering/talkatu.git) talkatu ;;
   git://github.com/olafhering/xen.git) xen ;;
   git://github.com/rth7680/qemu-palcode.git) unhandled=1 ;;
@@ -145,6 +149,7 @@ case "${url}" in
   git@github.com:olafhering/libgnt.git) libgnt ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/pidgin.git) pidgin ;;
+  git@github.com:olafhering/purple-rocketchat.git) purple_rocketchat ;;
   git@github.com:olafhering/qemu.git) qemu ;;
   git@github.com:olafhering/talkatu.git) talkatu ;;
   git@github.com:olafhering/xen.git) xen ;;
@@ -204,6 +209,7 @@ case "${url}" in
   https://github.com/olafhering/gplugin.git) gplugin ;;
   https://github.com/olafhering/libgnt.git) libgnt ;;
   https://github.com/olafhering/pidgin.git) pidgin ;;
+  https://github.com/olafhering/purple-rocketchat.git) purple_rocketchat ;;
   https://github.com/olafhering/talkatu.git) talkatu ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;

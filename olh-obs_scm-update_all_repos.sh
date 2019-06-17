@@ -281,6 +281,25 @@ then
 fi
 } &> ${td}/pidgin.log < /dev/null &
 }
+purple_rocketchat() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/purple_rocketchat.XXX`
+if pushd purple-rocketchat.git > /dev/null
+then
+  fetch_and_push
+  if ${push}
+  then
+  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/purple_rocketchat.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/purple_rocketchat.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/purple_rocketchat.gitlab_olh        &
+  fi
+  finish $t
+fi
+} &> ${td}/purple_rocketchat.log < /dev/null &
+}
 qemu() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -462,6 +481,8 @@ libgnt
 talkatu
 #
 pidgin
+#
+purple_rocketchat
 #
 qemu
 #
