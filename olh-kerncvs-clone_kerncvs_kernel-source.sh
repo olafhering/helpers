@@ -2,12 +2,13 @@
 set -e
 trap 'pwd' EXIT
 branches="
-SLE11-SP4
+SLE12-SP5
 SLE15-SP1
 "
 azure_branches="
 SLE12-SP3
 SLE12-SP4
+SLE12-SP5
 SLE15
 SLE15-SP1
 "
