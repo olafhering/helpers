@@ -1,5 +1,15 @@
 #!/bin/bash
 set -ex
+for var in ${!LANG*} ${!LC_*}
+do
+	case "${!var}" in
+		*.UTF-8)
+		export ${var}="en_US.UTF-8"
+		;;
+		*)
+		;;
+	esac
+done
 export TMPDIR=/dev/shm
 td=`mktemp --directory --tmpdir=/dev/shm XXX`
 trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
