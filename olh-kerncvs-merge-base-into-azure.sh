@@ -48,6 +48,7 @@ then
 	then
 		bash
 	fi
+	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
 	git commit
 else
 	if test -n "${mergetool}" && git mergetool
@@ -58,7 +59,7 @@ else
 		bash
 	fi
 fi
-git status --porcelain > "${td}/status.txt"
+git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
 if test -s "${td}/status.txt"
 then
 	git diff HEAD || :
@@ -68,6 +69,7 @@ if spr
 then
 	bash
 fi
+git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
 if test -s "${td}/status.txt"
 then
 	echo "really commit in $PWD?"
