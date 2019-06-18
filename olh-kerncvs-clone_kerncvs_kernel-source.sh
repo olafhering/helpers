@@ -20,6 +20,16 @@ _branches=
 _azure_branches=
 do_merge=
 cmdline_branches=
+for var in ${!LANG*} ${!LC_*}
+do
+	case "${!var}" in
+		*.UTF-8)
+		export ${var}="en_US.UTF-8"
+		;;
+		*)
+		;;
+	esac
+done
 until test "$#" -eq 0
 do
 	case "$1" in
@@ -120,6 +130,7 @@ do
 		git \
 			clone \
 			--single-branch \
+			--no-tags \
 			--origin ${git_origin} \
 			--branch ${branch} \
 			--reference ${repo_mirror} \
@@ -135,9 +146,28 @@ done
 #
 if test -n "${do_merge}"
 then
-	for branch in ${_merge_branches}
+	echo "branch ${branch}"
+	for _branch in ${_merge_branches}
 	do
-		repo=${repo_base}.${branch}.merge
+		candidates=()
+		unmerged=()
+		if pushd ${repo_mirror}
+		then
+			candidates=( `git --no-pager branch | xargs -n1 | grep -E "(^|/)${branch}(|-UPDATE|_EMBARGO|-AZURE)($|/)"` )
+			for candidate in ${candidates[@]}
+			do
+				if git --no-pager merge-base --is-ancestor "${candidate}" "${_branch}"
+				then
+					: "${candidate} already merged into ${_branch}"
+				else
+					unmerged+=("${candidate}")
+				fi
+			done
+			popd
+		fi
+		echo "${#unmerged[@]} out of ${#candidates[@]} branches already merged into ${_branch}"
+		: unmerged "${unmerged[@]}"
+		repo=${repo_base}.${_branch}.merge
 		if test -e "${repo}"
 		then
 			echo keeping existing ${repo}
@@ -146,33 +176,29 @@ then
 				clone \
 				--single-branch \
 				--origin ${git_origin} \
-				--branch ${branch} \
+				--branch ${_branch} \
 				--reference ${repo_mirror} \
 				${git_user}@${git_srv}:/home/git/${git_repo}.git \
 				${repo}
-				pushd "${repo}"
-					git --git-dir=${repo_mirror_dot_git} rev-list -n1 ${branch%-*} && \
-					git \
-						fetch \
-						${git_origin} \
-						"+refs/heads/${branch%-*}:refs/remotes/${git_origin}/${branch%-*}"
-					git \
-						fetch \
-						${git_origin} \
-						"+refs/heads/users/*/${branch}/for-next:refs/remotes/${git_origin}/users/*/${branch}/for-next"
-					git --git-dir=${repo_mirror_dot_git} rev-list -n1 ${branch%-*}-UPDATE && \
-					git \
-						fetch \
-						${git_origin} \
-						"+refs/heads/${branch%-*}-UPDATE:refs/remotes/${git_origin}/${branch%-*}-UPDATE"
-					git --git-dir=${repo_mirror_dot_git} rev-list -n1 ${branch%-*}_EMBARGO && \
-					git \
-						fetch \
-						${git_origin} \
-						"+refs/heads/${branch%-*}_EMBARGO:refs/remotes/${git_origin}/${branch%-*}_EMBARGO"
-					git_config
-					scripts/install-git-hooks
+			if pushd "${repo}"
+			then
+				git_config
+				scripts/install-git-hooks
 				popd
+			fi
+		fi
+		if pushd "${repo}"
+		then
+			for i in ${unmerged[@]}
+			do
+				git --no-pager \
+					config \
+					--add \
+					remote.${git_origin}.fetch \
+					"+refs/heads/${i}:refs/remotes/${git_origin}/${i}"
+			done
+			git fetch --all --prune
+			popd
 		fi
 		: next
 	done
