@@ -51,7 +51,8 @@ then
 	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
 	git commit
 else
-	if test -n "${mergetool}" && git mergetool
+	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
+	if test -n "${mergetool}" && git mergetool --tool=git-sort series.conf
 	then
 		: no conflicts after git mergetool
 	else
