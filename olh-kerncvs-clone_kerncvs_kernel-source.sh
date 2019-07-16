@@ -189,7 +189,7 @@ then
 		fi
 		if pushd "${repo}"
 		then
-			for i in ${unmerged[@]}
+			for i in 'scripts' ${unmerged[@]}
 			do
 				git --no-pager \
 					config \
