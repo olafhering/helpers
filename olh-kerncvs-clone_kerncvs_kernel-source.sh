@@ -146,8 +146,8 @@ do
 						--add \
 						remote.${git_origin}.fetch \
 						"+refs/heads/${i}:refs/remotes/${git_origin}/${i}"
-					git fetch "$i"
 				done
+				git fetch --all
 			popd
 	fi
 	: next
