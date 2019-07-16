@@ -139,6 +139,15 @@ do
 			pushd "${repo}"
 				git_config
 				scripts/install-git-hooks
+				for i in 'scripts'
+				do
+					git --no-pager \
+						config \
+						--add \
+						remote.${git_origin}.fetch \
+						"+refs/heads/${i}:refs/remotes/${git_origin}/${i}"
+					git fetch "$i"
+				done
 			popd
 	fi
 	: next
@@ -189,7 +198,7 @@ then
 		fi
 		if pushd "${repo}"
 		then
-			for i in 'scripts' ${unmerged[@]}
+			for i in ${unmerged[@]}
 			do
 				git --no-pager \
 					config \
