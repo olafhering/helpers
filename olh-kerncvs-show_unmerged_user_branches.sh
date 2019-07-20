@@ -2,6 +2,7 @@ set -e
 remote=kerncvs
 user=ohering
 
+pushd ~/work/src/kernel
 pushd kerncvs.kernel-source.bare.mirror
 while read b; do
     : branch $b
