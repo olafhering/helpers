@@ -30,7 +30,10 @@ olh-kerncvs-update
 rm -rf kerncvs.kernel-source.${branch}-AZURE.merge
 olh-kerncvs-clone_kerncvs_kernel-source -m ${branch}
 pushd kerncvs.kernel-source.${branch}-AZURE.merge
-. ../kerncvs.env.sh
+case "${BASH_SOURCE[0]}" in
+	*/*) . "${BASH_SOURCE[0]}/olh-kerncvs-env.sh" ;;
+	*) . olh-kerncvs-env.sh ;;
+esac
 spr() {
 	if time scripts/sequence-patch.sh --rapid > /dev/null
 	then
