@@ -214,6 +214,7 @@ case "${url}" in
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;
+  https://github.com/ucb-bar/berkeley-softfloat-3.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
