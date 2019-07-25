@@ -31,7 +31,7 @@ rm -rf kerncvs.kernel-source.${branch}-AZURE.merge
 olh-kerncvs-clone_kerncvs_kernel-source -m ${branch}
 pushd kerncvs.kernel-source.${branch}-AZURE.merge
 case "${BASH_SOURCE[0]}" in
-	*/*) . "${BASH_SOURCE[0]%/*}/olh-kerncvs-env.sh" ;;
+	*/*) . "${BASH_SOURCE[0]%/*}/olh-kerncvs-env" ;;
 	*) . olh-kerncvs-env.sh ;;
 esac
 spr() {
