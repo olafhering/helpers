@@ -12,6 +12,7 @@ while read b; do
       SLE12-SP3) pb=SLE12-SP3-LTSS ;;
       SLE12-SP2) pb=SLE12-SP2-LTSS ;;
       SLE12-SP1) pb=SLE12-SP1-LTSS ;;
+      SLE11-SP4) pb=SLE11-SP4-LTSS ;;
     esac
     git --no-pager rev-list --max-count=1 "${pb}" &> /dev/null || continue
 
