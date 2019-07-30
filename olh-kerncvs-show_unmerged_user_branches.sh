@@ -14,14 +14,40 @@ while read b; do
       SLE12-SP1) pb=SLE12-SP1-LTSS ;;
       SLE11-SP4) pb=SLE11-SP4-LTSS ;;
     esac
-    git --no-pager rev-list --max-count=1 "${pb}" &> /dev/null || continue
+    base_branch=
+    if git --no-pager rev-list --max-count=1 "${pb}" &> /dev/null
+    then
+      base_branch="${pb}"
+    fi
+    if test -z "${base_branch}"
+    then
+      if git --no-pager rev-list --max-count=1 "${pb%_EMBARGO}" &> /dev/null
+      then
+        base_branch="${_}"
+      fi
+    fi
+    if test -z "${base_branch}"
+    then
+      if git --no-pager rev-list --max-count=1 "${pb%-AZURE_EMBARGO}" &> /dev/null
+      then
+        base_branch="${_}"
+      fi
+    fi
+    if test -z "${base_branch}"
+    then
+      if git --no-pager rev-list --max-count=1 "${pb%-AZURE_EMBARGO}-LTSS" &> /dev/null
+      then
+        base_branch="${_}"
+      fi
+    fi
+    test -n "${base_branch}" || continue
 
-    if git merge-base --is-ancestor "$b" "${pb}" </dev/null; 
+    if git merge-base --is-ancestor "$b" "${base_branch}" </dev/null; 
     then
         echo -e "\ngit push -d ${remote} ${b}"
     else
-        echo -e "\n${pb}:"
-        git --no-pager log --oneline "${pb}..${b}" </dev/null
+        echo -e "\n${base_branch}:"
+        git --no-pager log --oneline "${base_branch}..${b}" </dev/null
     fi
 done < <( git branch -a --list "users/${user}/*/*" )
 
