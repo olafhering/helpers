@@ -162,7 +162,7 @@ then
 		unmerged=()
 		if pushd ${repo_mirror}
 		then
-			candidates=( `git --no-pager branch | xargs -n1 | grep -E "(^|/)${branch}(|-UPDATE|_EMBARGO|-AZURE)($|/)"` )
+			candidates=( `git --no-pager branch | xargs -n1 | grep -E "(^|/)${branch}(|-UPDATE|_EMBARGO|-AZURE|-AZURE_EMBARGO)($|/)"` )
 			for candidate in ${candidates[@]}
 			do
 				if git --no-pager merge-base --is-ancestor "${candidate}" "${_branch}"
