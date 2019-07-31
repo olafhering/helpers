@@ -111,12 +111,12 @@ if test -n "${do_merge}"
 then
 	for branch in ${_azure_branches}
 	do
-		_merge_branches="${_merge_branches} ${branch}-AZURE"
+		_merge_branches="${_merge_branches} ${branch}-AZURE ${branch}-AZURE_EMBARGO"
 	done
 else
 	for branch in ${_azure_branches}
 	do
-		_branches="${_branches} ${branch} ${branch}-AZURE"
+		_branches="${_branches} ${branch} ${branch}-AZURE ${branch}-AZURE_EMBARGO"
 	done
 fi
 #
