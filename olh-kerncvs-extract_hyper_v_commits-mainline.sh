@@ -185,6 +185,7 @@ git --git-dir="${upstream_git}/.git" \
 		arch/x86/include/uapi/asm/hyperv.h \
 		arch/x86/kernel/cpu/mshyperv.c \
 		arch/x86/kvm/hyperv.c \
+		drivers/clocksource/hyperv_timer.c \
 		drivers/hid/hid-hyperv.c \
 		drivers/hv \
 		drivers/input/serio/hyperv-keyboard.c \
@@ -197,6 +198,7 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/uio/uio_hv_generic.c \
 		drivers/video/fbdev/hyperv_fb.c \
 		drivers/video/hyperv_fb.c \
+		include/asm-generic/mshyperv.h \
 		include/linux/hyperv.h \
 		include/net/af_hvsock.h \
 		include/uapi/linux/hyperv.h \
