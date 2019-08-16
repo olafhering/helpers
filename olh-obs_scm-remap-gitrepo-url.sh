@@ -184,6 +184,7 @@ case "${url}" in
   https://git.qemu.org/git/libslirp.git) unhandled=1 ;;
   https://git.qemu.org/git/openbios.git) unhandled=1 ;;
   https://git.qemu.org/git/openhackware.git) unhandled=1 ;;
+  https://git.qemu.org/git/opensbi.git) unhandled=1 ;;
   https://git.qemu.org/git/qemu-palcode.git) unhandled=1 ;;
   https://git.qemu.org/git/qemu.git) qemu ;;
   https://git.qemu.org/git/qemu.git/) qemu ;;
