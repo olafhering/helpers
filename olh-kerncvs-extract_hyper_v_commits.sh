@@ -68,7 +68,16 @@ then
 		if test -d ${upstream_git} && test -d ${upstream_git}/.git
 		then
 			do_mainline "${Linux_remote}" "${Linux_branch}"
-			for remote in davem.net.git davem.net-next.git gregkh.char-misc.git lpieralisi.pci.git helgaas.pci.git hyperv.linux.git joro.iommu.git
+			remotes="
+			davem.net.git
+			davem.net-next.git
+			gregkh.char-misc.git
+			lpieralisi.pci.git
+			helgaas.pci.git
+			hyperv.linux.git
+			joro.iommu.git
+			"
+			for remote in ${remotes}
 			do
 				branches="`git \"--git-dir=${upstream_git}/.git\" branch -a | sed -n "/${remote}/s@^[[:blank:]]\+remotes/${remote}/@@p"`"
 				for branch in $branches
