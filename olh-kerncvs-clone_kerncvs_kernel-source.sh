@@ -17,6 +17,7 @@ SLE12-SP4
 SLE12-SP5
 SLE15
 SLE15-SP1
+SLE15-SP2
 "
 email='ohering@suse.de'
 name='Olaf Hering'
