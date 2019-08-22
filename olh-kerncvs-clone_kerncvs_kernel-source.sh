@@ -90,6 +90,8 @@ case "${branch}" in
 	SLE12-SP2) clone_branch='SLE12-SP2-LTSS' ;;
 	SLE12-SP1) clone_branch='SLE12-SP1-LTSS' ;;
 	SLE11-SP4) clone_branch='SLE11-SP4-LTSS' ;;
+	packaging) clone_branch='packaging'      ;;
+	scripts)   clone_branch='scripts'        ;;
 	*) echo "branch ${branch} unknown" ; exit 1 ;;
 esac
 : repo_mirror ${repo_mirror}
@@ -122,14 +124,17 @@ else
 		pushd "${repo}"
 			git_config
 			scripts/install-git-hooks
-			for i in 'scripts'
-			do
-				git --no-pager \
-					config \
-					--add \
-					remote.${git_origin}.fetch \
-					"+refs/heads/${i}:refs/remotes/${git_origin}/${i}"
-			done
+			if test "${clone_branch}" != 'scripts'
+			then
+				for i in 'scripts'
+				do
+					git --no-pager \
+						config \
+						--add \
+						remote.${git_origin}.fetch \
+						"+refs/heads/${i}:refs/remotes/${git_origin}/${i}"
+				done
+			fi
 			git fetch --all
 		popd
 fi
