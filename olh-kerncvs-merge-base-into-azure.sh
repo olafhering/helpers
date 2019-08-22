@@ -16,6 +16,7 @@ trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
 branch=
 mergetool='mergetool'
 case "$1" in
+	SLE15-SP2) branch=$1 ;;
 	SLE15-SP1) branch=$1 ;;
 	SLE15) branch=$1 ;;
 	SLE12-SP5) branch=$1 ;;
