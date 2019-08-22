@@ -190,11 +190,17 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/hv \
 		drivers/input/serio/hyperv-keyboard.c \
 		drivers/iommu/hyperv-iommu.c \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.c \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.h \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.c \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.h \
 		drivers/net/hyperv \
+		drivers/pci/controller/pci-hyperv-intf.c \
 		drivers/pci/controller/pci-hyperv.c \
 		drivers/pci/host/hv_pcifront.c \
 		drivers/pci/host/pci-hyperv.c \
 		drivers/scsi/storvsc_drv.c \
+		drivers/staging/hv \
 		drivers/uio/uio_hv_generic.c \
 		drivers/video/fbdev/hyperv_fb.c \
 		drivers/video/hyperv_fb.c \
@@ -204,7 +210,6 @@ git --git-dir="${upstream_git}/.git" \
 		include/uapi/linux/hyperv.h \
 		net/hv_sock \
 		tools/hv \
-		drivers/staging/hv \
 		&> "${tmpdir}/$$"
 #
 pushd "${outdir}" > /dev/null
