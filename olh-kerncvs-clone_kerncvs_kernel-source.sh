@@ -82,17 +82,17 @@ git_config() {
 pushd ~/work/src/kernel
 #
 case "${branch}" in
-	SLE15-SP2) clone_branch='SLE15-SP2'      ;;
-	SLE15-SP1) clone_branch='SLE15-SP1'      ;;
-	SLE15)     clone_branch='SLE15'          ;;
-	SLE12-SP5) clone_branch='SLE12-SP5'      ;;
-	SLE12-SP4) clone_branch='SLE12-SP4'      ;;
-	SLE12-SP3) clone_branch='SLE12-SP3-LTSS' ;;
-	SLE12-SP2) clone_branch='SLE12-SP2-LTSS' ;;
-	SLE12-SP1) clone_branch='SLE12-SP1-LTSS' ;;
-	SLE11-SP4) clone_branch='SLE11-SP4-LTSS' ;;
-	packaging) clone_branch='packaging'      ;;
-	scripts)   clone_branch='scripts'        ;;
+	SLE15-SP2)       clone_branch='SLE15-SP2'      ;;
+	SLE15-SP1)       clone_branch='SLE15-SP1'      ;;
+	SLE15)           clone_branch='SLE15'          ;;
+	SLE12-SP5)       clone_branch='SLE12-SP5'      ;;
+	SLE12-SP4)       clone_branch='SLE12-SP4'      ;;
+	SLE12-SP3)       clone_branch='SLE12-SP3-LTSS' ;;
+	SLE12-SP2)       clone_branch='SLE12-SP2-LTSS' ;;
+	SLE12-SP1)       clone_branch='SLE12-SP1-LTSS' ;;
+	SLE11-SP4)       clone_branch='SLE11-SP4-LTSS' ;;
+	packaging)       clone_branch='packaging'      ;;
+	scripts)         clone_branch='scripts'        ;;
 	*) echo "branch ${branch} unknown" ; exit 1 ;;
 esac
 : repo_mirror ${repo_mirror}
