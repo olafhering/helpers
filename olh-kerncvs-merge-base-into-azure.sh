@@ -14,16 +14,24 @@ export TMPDIR=/dev/shm
 td=`mktemp --directory --tmpdir=/dev/shm XXX`
 trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
 branch=
+stop_before_commit=
+stop_before_push=
 mergetool='mergetool'
-case "$1" in
-	SLE15-SP2) branch=$1 ;;
-	SLE15-SP1) branch=$1 ;;
-	SLE15) branch=$1 ;;
-	SLE12-SP5) branch=$1 ;;
-	SLE12-SP4) branch=$1 ;;
-	SLE12-SP3) branch=$1 ; : mergetool= ;;
-	*) ;;
-esac
+while test "$#" -gt 0
+do
+	case "$1" in
+		-sc) stop_before_commit='stop_before_commit' ;;
+		-sp) stop_before_push='stop_before_push' ;;
+		SLE15-SP2) branch=$1 ;;
+		SLE15-SP1) branch=$1 ;;
+		SLE15) branch=$1 ;;
+		SLE12-SP5) branch=$1 ;;
+		SLE12-SP4) branch=$1 ;;
+		SLE12-SP3) branch=$1 ; : mergetool= ;;
+		*) ;;
+	esac
+	shift
+done
 test -n "${branch}"
 pushd ~/work/src/kernel/
 ls
@@ -53,6 +61,7 @@ then
 		bash
 	fi
 	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
+	test -n "${stop_before_commit}" && bash
 	git commit
 else
 	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
@@ -77,12 +86,14 @@ fi
 git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
 if test -s "${td}/status.txt"
 then
+	test -n "${stop_before_commit}" && bash
 	echo "really commit in $PWD?"
 	read
 	git commit
 fi
 echo "really push to kerncvs from $PWD?"
 read
+test -n "${stop_before_push}" && bash
 git push kerncvs HEAD:users/ohering/${branch}-AZURE/for-next
 popd
 rm -rf kerncvs.kernel-source.${branch}-AZURE.merge
