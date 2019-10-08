@@ -13,6 +13,7 @@ done
 export TMPDIR=/dev/shm
 td=`mktemp --directory --tmpdir=/dev/shm XXX`
 trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
+sf="${td}/status.txt"
 branch=
 stop_before_commit=
 stop_before_push=
@@ -53,6 +54,22 @@ spr() {
 		return 0
 	fi
 }
+#
+git_status() {
+	git --no-pager status --porcelain --untracked-files=no | tee "${sf}"
+}
+#
+git_status_check() {
+	git_status
+	if test -s "${sf}"
+	then
+		: some changes exist
+		return 0
+	fi
+	: no pending changes
+	return 1
+}
+#
 if git merge --no-commit kerncvs/${branch}
 then
 	: no conflicts after git merge
@@ -60,11 +77,11 @@ then
 	then
 		bash
 	fi
-	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
+	git_status
 	test -n "${stop_before_commit}" && bash
-	git commit
+	git_status_check && git commit
 else
-	git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
+	git_status
 	if test -n "${mergetool}" && git mergetool --tool=git-sort series.conf
 	then
 		: no conflicts after git mergetool
@@ -73,8 +90,7 @@ else
 		bash
 	fi
 fi
-git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
-if test -s "${td}/status.txt"
+if git_status_check
 then
 	git diff HEAD || :
 	bash
@@ -83,13 +99,13 @@ if spr
 then
 	bash
 fi
-git --no-pager status --porcelain --untracked-files=no | tee "${td}/status.txt"
-if test -s "${td}/status.txt"
+
+if git_status_check
 then
 	test -n "${stop_before_commit}" && bash
 	echo "really commit in $PWD?"
 	read
-	git commit
+	git_status_check && git commit
 fi
 echo "really push to kerncvs from $PWD?"
 read
