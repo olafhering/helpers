@@ -55,6 +55,7 @@ tj.libata.git|https://git.kernel.org/pub/scm/linux/kernel/git/tj/libata.git
 tomba.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/tomba/linux.git
 tytso.ext4.git|https://git.kernel.org/pub/scm/linux/kernel/git/tytso/ext4.git
 viro.vfs.git|https://git.kernel.org/pub/scm/linux/kernel/git/viro/vfs.git
+vkoul.soundwire.git|https://git.kernel.org/pub/scm/linux/kernel/git/vkoul/soundwire.git
 xen.tip.git|https://git.kernel.org/pub/scm/linux/kernel/git/xen/tip.git
 "
 if test -z "${update}"
