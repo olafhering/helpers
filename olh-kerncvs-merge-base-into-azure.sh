@@ -93,6 +93,7 @@ fi
 if git_status_check
 then
 	git diff HEAD || :
+	grep -w ^UU "${sf}" && : merge failed, manual intervention required
 	bash
 fi
 if spr
