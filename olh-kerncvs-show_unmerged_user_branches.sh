@@ -44,7 +44,7 @@ while read b; do
 
     if git merge-base --is-ancestor "$b" "${base_branch}" </dev/null; 
     then
-        echo -e "\ngit push -d ${remote} ${b}"
+        echo -e "\n git push -d ${remote} ${b}"
     else
         echo -e "\n${base_branch}:"
         git --no-pager log --oneline "${base_branch}..${b}" </dev/null
