@@ -5,7 +5,7 @@ topdir=~/work/src/kernel
 trees="
 kerncvs.kernel-source.bare.mirror
 kerncvs.kernel.bare.mirror
-linux.git
+LINUX_GIT
 "
 #
 user="$(id -u)"
