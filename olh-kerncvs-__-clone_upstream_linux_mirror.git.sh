@@ -60,7 +60,17 @@ xen.tip.git|https://git.kernel.org/pub/scm/linux/kernel/git/xen/tip.git
 "
 if test -z "${update}"
 then
-	mkdir /dev/shm/$$
+	pushd /dev/shm
+	mkdir LINUX_GIT
+	pushd $_
+		git init
+		git remote \
+		add \
+		--no-tags \
+		LINUX_GIT \
+		https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+	popd
+	mkdir $$
 	pushd $_
 	git init
 fi
