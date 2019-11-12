@@ -2,9 +2,11 @@
 unset LANG
 unset ${!LC_*}
 topdir=~/work/src/kernel
-trees="
+trees_tags="
 kerncvs.kernel-source.bare.mirror
 kerncvs.kernel.bare.mirror
+"
+trees_no_tags="
 LINUX_GIT
 "
 #
@@ -46,12 +48,34 @@ release_lock()
 }
 #
 pushd "${topdir}" || exit 1
-for i in ${trees}
+for i in ${trees_tags}
 do
 	if pushd "$i"
 	then
 		claim_lock "$i"
 		git fetch --all --tags --prune
+		for l in gc.log .git/gc.log
+		do
+			if test -f "${l}"
+			then
+				head --verbose --lines=1234 "${l}"
+				rm -fv "${l}"
+				git gc --prune
+				head --verbose --lines=1234 "${l}"
+				rm -fv "${l}"
+				git prune
+			fi
+		done
+		release_lock "$i"
+		popd
+	fi
+done
+for i in ${trees_no_tags}
+do
+	if pushd "$i"
+	then
+		claim_lock "$i"
+		git fetch --all --prune
 		for l in gc.log .git/gc.log
 		do
 			if test -f "${l}"
