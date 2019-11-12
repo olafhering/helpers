@@ -8,6 +8,8 @@ kerncvs.kernel.bare.mirror
 LINUX_GIT
 "
 #
+do_upstream_linux="$1"
+#
 user="$(id -u)"
 test -n "${user}" || exit 1
 LOCK_BASEDIR="/dev/shm/.${user}.${0##*/}"
@@ -66,6 +68,7 @@ do
 		popd
 	fi
 done
+test -n "${do_upstream_linux}" || exit 0
 i='upstream.linux'
 if pushd "$i"
 then
