@@ -8,8 +8,10 @@ do
 		--) break ;;
 	esac
 done
-exec $(type -P env) \
+$(type -P env) \
 	INITRD_IN_POSTTRANS=1 \
 	$(type -P nice ) -n 19 \
 	$(type -P ionice) -c 3 \
 	/usr/bin/zypper ${verbose} --no-refresh "$@"
+
+test -f /boot/initrd || $(type -P mkinitrd) -B
