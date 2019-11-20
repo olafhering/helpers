@@ -35,6 +35,7 @@ jejb.scsi.git|https://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi.git
 jeyu.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/jeyu/linux.git
 jj.linux-apparmor.git|https://git.kernel.org/pub/scm/linux/kernel/git/jj/linux-apparmor.git
 joro.iommu.git|https://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git
+kvalo.wireless-drivers-next.git|https://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git
 kdave.btrfs-devel.git|https://github.com/kdave/btrfs-devel.git
 klassert.ipsec-next.git|https://git.kernel.org/pub/scm/linux/kernel/git/klassert/ipsec-next.git
 klassert.ipsec.git|https://git.kernel.org/pub/scm/linux/kernel/git/klassert/ipsec.git
