@@ -49,6 +49,7 @@ nvdimm.nvdimm.git|https://git.kernel.org/pub/scm/linux/kernel/git/nvdimm/nvdimm.
 pablo.nf-next.git|https://git.kernel.org/pub/scm/linux/kernel/git/pablo/nf-next.git
 pablo.nf.git|https://git.kernel.org/pub/scm/linux/kernel/git/pablo/nf.git
 powerpc.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux.git
+rafael.linux-pm.git|https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git
 rdma.rdma.git|https://git.kernel.org/pub/scm/linux/kernel/git/rdma/rdma.git
 s390.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/s390/linux.git
 shli.md.git|https://git.kernel.org/pub/scm/linux/kernel/git/shli/md.git
