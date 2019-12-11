@@ -109,6 +109,8 @@ finish() {
   /no changes found/d
   /Everything up-to-date/d
   /^Fetching /d
+  /^Please make sure you have the correct access rights/d
+  /^and the repository exists./d
   s@^@${f##*.}: @
   " "$f"
   done
