@@ -9,7 +9,6 @@ SLE12
 
 repositories=(
 Factory
-openSUSE_Leap_15.0
 openSUSE_Leap_15.1
 openSUSE_Leap_15.2
 openSUSE_Tumbleweed
