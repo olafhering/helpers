@@ -31,7 +31,7 @@ do
 		a=( ${REPLY} )
 		case "${a[1]}" in
 			i586) arch='0' ;;
-			aarch64) arch='2' ;;
+			aarch64) arch='4' ;;
 			armv6l) arch='0' ;;
 			armv7l) arch='1' ;;
 			*) arch='1' ;;
