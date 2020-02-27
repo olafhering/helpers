@@ -217,6 +217,7 @@ then
     fi
     echo "pushd '${pkg_patch_basedir}'" >> spec.patch.txt
     g format-patch \
+      --unified=12 \
       --no-signature \
       --break-rewrites=100%/100% \
       --no-renames \

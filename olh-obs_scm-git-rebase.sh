@@ -26,7 +26,9 @@ git push "${remote}" "${base_branch}"
 git checkout "${fix_branch}"
 git rebase -i "${base_branch}"
 rm -rf $$
-git format-patch -ko $$ "${base_branch}".."${fix_branch}"
+git format-patch \
+	--unified=12 \
+	-ko $$ "${base_branch}".."${fix_branch}"
 git reset --hard "${base_branch}"
 for i in $$/*.patch
 do
