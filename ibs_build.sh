@@ -20,7 +20,7 @@ do
 	-d|--debug|--debuginfo) dbg=--debuginfo ;;
 	*.spec) spec=$1 ;;
 	--*) args=( "${args[@]}" $1 ) ;;
-	-t|-j|-x|-k|-p) args=( "${args[@]}" $1 $2 ) ; shift ;;
+	-t|-j|-x|-k|-p|-M) args=( "${args[@]}" $1 $2 ) ; shift ;;
 	-*) args=( "${args[@]}" $1  ) ;;
 	esac
 	shift
