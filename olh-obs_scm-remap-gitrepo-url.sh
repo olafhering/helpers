@@ -32,7 +32,7 @@ libgnt_url()          { echo "https://github.com/olafhering/libgnt.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
 libvirt_url()      { echo "git://github.com/libvirt/libvirt.git" ; }
 minios_dir()       { readlink -f ~/git/for_obs/mini-os.git ; }
-minios_url()       { echo "git://xenbits.xen.org/mini-os.git" ; }
+minios_url()       { echo "https://xenbits.xen.org/git-http/mini-os.git" ; }
 mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
 mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
@@ -46,13 +46,13 @@ openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
 qemu_url()         { echo "https://git.qemu.org/git/qemu.git/" ; }
 qemu_xen_dir()     { readlink -f ~/git/for_obs/qemu-xen.git ; }
-qemu_xen_url()     { echo "git://xenbits.xen.org/qemu-xen.git" ; }
+qemu_xen_url()     { echo "https://xenbits.xen.org/git-http/qemu-xen.git" ; }
 qemu_xen_trad_dir(){ readlink -f ~/git/for_obs/qemu-xen-traditional.git ; }
-qemu_xen_trad_url(){ echo "git://xenbits.xen.org/qemu-xen-traditional.git" ; }
+qemu_xen_trad_url(){ echo "https://xenbits.xen.org/git-http/qemu-xen-traditional.git" ; }
 seabios_dir()      { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
 seabios_xenbits_dir() { readlink -f ~/git/for_obs/seabios.git ; }
-seabios_xenbits_url() { echo "git://xenbits.xen.org/seabios.git" ; }
+seabios_xenbits_url() { echo "https://xenbits.xen.org/git-http/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
 talkatu_dir()          { readlink -f ~/git/for_obs/talkatu.git ; }
 talkatu_url()          { echo "https://github.com/olafhering/talkatu.git" ; }
@@ -218,6 +218,12 @@ case "${url}" in
   https://github.com/ucb-bar/berkeley-softfloat-3.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
+  https://xenbits.xen.org/git-http/mini-os.git) minios ;;
+  https://xenbits.xen.org/git-http/ovmf.git) ovmf ;;
+  https://xenbits.xen.org/git-http/qemu-xen-traditional.git) qemu_xen_trad ;;
+  https://xenbits.xen.org/git-http/qemu-xen.git) qemu_xen ;;
+  https://xenbits.xen.org/git-http/seabios.git) seabios ;;
+  https://xenbits.xen.org/git-http/xen.git) xen ;;
   *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
 esac
 #
