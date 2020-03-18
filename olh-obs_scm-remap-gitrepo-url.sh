@@ -16,7 +16,7 @@ unset unhandled
 claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
-gnulib_url()       { echo "git://github.com/coreutils/gnulib.git" ; }
+gnulib_url()       { echo "https://github.com/coreutils/gnulib.git" ; }
 gplugin_dir()          { readlink -f ~/git/for_obs/gplugin.git ; }
 gplugin_url()          { echo "https://github.com/olafhering/gplugin.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
@@ -26,11 +26,11 @@ ipxe_url()         { echo "https://git.ipxe.org/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
 libetpan_dir()      { readlink -f ~/git/for_obs/libetpan.git ; }
-libetpan_url()      { echo "git://github.com/dinhviethoa/libetpan.git" ; }
+libetpan_url()      { echo "https://github.com/dinhviethoa/libetpan.git" ; }
 libgnt_dir()          { readlink -f ~/git/for_obs/libgnt.git ; }
 libgnt_url()          { echo "https://github.com/olafhering/libgnt.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
-libvirt_url()      { echo "git://github.com/libvirt/libvirt.git" ; }
+libvirt_url()      { echo "https://github.com/libvirt/libvirt.git" ; }
 minios_dir()       { readlink -f ~/git/for_obs/mini-os.git ; }
 minios_url()       { echo "https://xenbits.xen.org/git-http/mini-os.git" ; }
 mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
@@ -60,7 +60,7 @@ sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
 valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
 valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
 xen_dir()          { readlink -f ~/git/for_obs/xen.git ; }
-xen_url()          { echo "git://github.com/olafhering/xen.git" ; }
+xen_url()          { echo "https://github.com/olafhering/xen.git" ; }
 #
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
