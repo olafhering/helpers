@@ -212,6 +212,7 @@ case "${url}" in
   https://github.com/olafhering/pidgin.git) pidgin ;;
   https://github.com/olafhering/purple-rocketchat.git) purple_rocketchat ;;
   https://github.com/olafhering/talkatu.git) talkatu ;;
+  https://github.com/olafhering/xen.git) xen ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/openssl/openssl) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;
