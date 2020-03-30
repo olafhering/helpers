@@ -203,6 +203,7 @@ case "${url}" in
   https://git.seabios.org/seabios.git/) seabios ;;
   https://git.sv.gnu.org/git/gnulib.git) gnulib ;;
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
+  https://github.com/coreutils/gnulib.git) gnulib ;;
   https://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
