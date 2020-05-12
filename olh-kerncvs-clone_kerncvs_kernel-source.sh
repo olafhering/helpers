@@ -94,6 +94,7 @@ case "${branch}" in
 	SLE12-SP2)       clone_branch='SLE12-SP2-LTSS' ;;
 	SLE12-SP1)       clone_branch='SLE12-SP1-LTSS' ;;
 	SLE11-SP4)       clone_branch='SLE11-SP4-LTSS' ;;
+	master)          clone_branch='master'         ;;
 	packaging)       clone_branch='packaging'      ;;
 	scripts)         clone_branch='scripts'        ;;
 	*) echo "branch ${branch} unknown" ; exit 1 ;;
