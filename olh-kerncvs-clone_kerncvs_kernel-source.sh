@@ -113,7 +113,7 @@ else
 		${repo_mirror}
 fi
 #
-repo=${repo_base}.${clone_branch}
+repo=${repo_base}.${clone_branch//\//_}
 if test -e "${repo}"
 then
 	echo keeping existing ${repo}
