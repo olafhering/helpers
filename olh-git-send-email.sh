@@ -2,9 +2,18 @@
 set -ex
 reroll_count="$1"
 rev_range="$2"
-test -z "${reroll_count}" && reroll_count='1'
-test -z "${rev_range}" && rev_range='HEAD^'
-test "$#" -gt 2 && shift 2
+if test -n "${reroll_count}"
+then
+	shift
+else
+	reroll_count='1'
+fi
+if test -n "${rev_range}"
+then
+	shift
+else
+	rev_range='HEAD^'
+fi
 cmd=(
 "$(type -P git)"
 'send-email'
