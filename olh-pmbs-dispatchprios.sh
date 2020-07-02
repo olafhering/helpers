@@ -3,14 +3,15 @@ Essentials
 Multimedia
 Games
 Extra
-Staging
+SLE15
 SLE12
+Staging
 )
 
 repositories=(
 Factory
-openSUSE_Leap_15.1
 openSUSE_Leap_15.2
+openSUSE_Leap_15.1
 openSUSE_Tumbleweed
 openSUSE_Factory_ARM
 SLE_15
