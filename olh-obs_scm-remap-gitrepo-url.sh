@@ -208,6 +208,7 @@ case "${url}" in
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/libvirt/libvirt.git) libvirt ;;
   https://github.com/olafhering/gplugin.git) gplugin ;;
   https://github.com/olafhering/libgnt.git) libgnt ;;
   https://github.com/olafhering/pidgin.git) pidgin ;;
