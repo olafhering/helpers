@@ -27,7 +27,6 @@ do
 		SLE15-SP2) branch=$1 ;;
 		SLE15-SP1) branch=$1 ;;
 		SLE12-SP5) branch=$1 ;;
-		SLE12-SP3) branch=$1 ; : mergetool= ;;
 		*) ;;
 	esac
 	shift
