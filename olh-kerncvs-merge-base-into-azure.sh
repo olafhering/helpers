@@ -23,6 +23,7 @@ do
 	case "$1" in
 		-sc) stop_before_commit='stop_before_commit' ;;
 		-sp) stop_before_push='stop_before_push' ;;
+		SLE15-SP3) branch=$1 ;;
 		SLE15-SP2) branch=$1 ;;
 		SLE15-SP1) branch=$1 ;;
 		SLE15) branch=$1 ;;
