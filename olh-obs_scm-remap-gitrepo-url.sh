@@ -13,6 +13,8 @@ case "${mode}" in
 esac
 unset unhandled
 #
+brotli_dir()          { echo "none" ; }
+brotli_url()          { echo "https://github.com/google/brotli" ; }
 claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
@@ -62,6 +64,7 @@ valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
 xen_dir()          { readlink -f ~/git/for_obs/xen.git ; }
 xen_url()          { echo "https://github.com/olafhering/xen.git" ; }
 #
+brotli() { case "${mode}" in dir) brotli_dir ;; url) brotli_url ;; *) echo "brotli" ;; esac }
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
 gplugin() { case "${mode}" in dir) gplugin_dir ;; url) gplugin_url ;; *) echo "gplugin" ;; esac }
@@ -207,6 +210,7 @@ case "${url}" in
   https://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/dinhviethoa/libetpan) libetpan ;;
+  https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/libvirt/libvirt.git) libvirt ;;
   https://github.com/olafhering/gplugin.git) gplugin ;;
