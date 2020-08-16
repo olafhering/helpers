@@ -216,7 +216,6 @@ case "${url}" in
   https://github.com/olafhering/talkatu.git) talkatu ;;
   https://github.com/olafhering/xen.git) xen ;;
   https://github.com/openssl/openssl) openssl ;;
-  https://github.com/openssl/openssl) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;
   https://github.com/ucb-bar/berkeley-softfloat-3.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
