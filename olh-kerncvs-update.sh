@@ -12,6 +12,7 @@ LINUX_GIT
 #
 do_upstream_linux="$1"
 #
+renice -p "$$" -n 11
 user="$(id -u)"
 test -n "${user}" || exit 1
 LOCK_BASEDIR="/dev/shm/.${user}.${0##*/}"

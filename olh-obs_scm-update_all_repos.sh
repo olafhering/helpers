@@ -2,6 +2,7 @@
 set -e
 unset LANG
 unset ${!LC_*}
+renice -p "$$" -n 11
 read v1 x < /proc/uptime
 myself="`readlink -f \"$0\"`"
 push=true
