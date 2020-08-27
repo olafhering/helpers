@@ -12,7 +12,7 @@ LINUX_GIT
 #
 do_upstream_linux="$1"
 #
-renice -p "$$" -n 11
+renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
 user="$(id -u)"
 test -n "${user}" || exit 1
