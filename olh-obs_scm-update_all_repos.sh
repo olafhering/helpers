@@ -3,6 +3,7 @@ set -e
 unset LANG
 unset ${!LC_*}
 renice -p "$$" -n 11
+ionice --class 3 -p "$$"
 read v1 x < /proc/uptime
 myself="`readlink -f \"$0\"`"
 push=true
