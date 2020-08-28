@@ -2,8 +2,6 @@
 set -e
 unset LANG
 unset ${!LC_*}
-renice -n 11 -p "$$"
-ionice --class 3 -p "$$"
 read v1 x < /proc/uptime
 myself="`readlink -f \"$0\"`"
 push=true
@@ -103,6 +101,8 @@ finish() {
   test -n "${do_fetch_and_push}" && args="${args} -fetch_and_push"
   test -n "${do_push_master}" && args="${args} -push_master"
   test "${push}" = "false" && args="${args} -np"
+  nice -n 11 \
+  ionice --class 3 \
   bash "${myself}" ${args} -tmpdir "${t}" -forked
   for f in "$t"/*
   do
