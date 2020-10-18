@@ -33,6 +33,8 @@ libgnt_dir()          { readlink -f ~/git/for_obs/libgnt.git ; }
 libgnt_url()          { echo "https://github.com/olafhering/libgnt.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
 libvirt_url()      { echo "https://github.com/libvirt/libvirt.git" ; }
+meson_dir()       { echo "none" ; }
+meson_url()       { echo "https://github.com/mesonbuild/meson.git" ; }
 minios_dir()       { readlink -f ~/git/for_obs/mini-os.git ; }
 minios_url()       { echo "https://xenbits.xen.org/git-http/mini-os.git" ; }
 mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
@@ -74,6 +76,7 @@ keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_ur
 libetpan() { case "${mode}" in dir) libetpan_dir ;; url) libetpan_url ;; *) echo "libetpan" ;; esac }
 libgnt() { case "${mode}" in dir) libgnt_dir ;; url) libgnt_url ;; *) echo "libgnt" ;; esac }
 libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "libvirt" ;; esac }
+meson() { case "${mode}" in dir) meson_dir ;; url) meson_url ;; *) echo "meson" ;; esac }
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
 mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
 ovmf() { case "${mode}" in dir) ovmf_dir ;; url) ovmf_url ;; *) echo "ovmf" ;; esac }
@@ -185,6 +188,7 @@ case "${url}" in
   https://git.qemu.org/git/ipxe.git) ipxe ;;
   https://git.qemu.org/git/keycodemapdb.git) keycodemapdb ;;
   https://git.qemu.org/git/libslirp.git) unhandled=1 ;;
+  https://git.qemu.org/git/meson.git) meson ;;
   https://git.qemu.org/git/openbios.git) unhandled=1 ;;
   https://git.qemu.org/git/openhackware.git) unhandled=1 ;;
   https://git.qemu.org/git/opensbi.git) unhandled=1 ;;
@@ -213,6 +217,8 @@ case "${url}" in
   https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/libvirt/libvirt.git) libvirt ;;
+  https://github.com/mesonbuild/meson) meson ;;
+  https://github.com/mesonbuild/meson.git) meson ;;
   https://github.com/olafhering/gplugin.git) gplugin ;;
   https://github.com/olafhering/libgnt.git) libgnt ;;
   https://github.com/olafhering/pidgin.git) pidgin ;;
