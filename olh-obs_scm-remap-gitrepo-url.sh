@@ -192,6 +192,7 @@ case "${url}" in
   https://git.qemu.org/git/openbios.git) unhandled=1 ;;
   https://git.qemu.org/git/openhackware.git) unhandled=1 ;;
   https://git.qemu.org/git/opensbi.git) unhandled=1 ;;
+  https://git.qemu.org/git/qboot.git) unhandled=1 ;;
   https://git.qemu.org/git/qemu-palcode.git) unhandled=1 ;;
   https://git.qemu.org/git/qemu.git) qemu ;;
   https://git.qemu.org/git/qemu.git/) qemu ;;
@@ -201,6 +202,7 @@ case "${url}" in
   https://git.qemu.org/git/skiboot.git) unhandled=1 ;;
   https://git.qemu.org/git/u-boot-sam460ex.git) unhandled=1 ;;
   https://git.qemu.org/git/u-boot.git) unhandled=1 ;;
+  https://git.qemu.org/git/vbootrom.git) unhandled=1 ;;
   https://git.qemu.org/git/vgabios.git/) unhandled=1 ;;
   https://git.savannah.gnu.org/git/gnulib.git) gnulib ;;
   https://git.savannah.gnu.org/git/gnulib.git/) gnulib ;;
