@@ -17,6 +17,8 @@ brotli_dir()          { echo "none" ; }
 brotli_url()          { echo "https://github.com/google/brotli" ; }
 bsoftfloat3_dir()          { echo "none" ; }
 bsoftfloat3_url()          { echo "https://github.com/ucb-bar/berkeley-softfloat-3.git" ; }
+btestfloat3_dir()          { echo "none" ; }
+btestfloat3_url()          { echo "https://github.com/ucb-bar/berkeley-testfloat-3" ; }
 claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
@@ -70,6 +72,7 @@ xen_url()          { echo "https://github.com/olafhering/xen.git" ; }
 #
 brotli() { case "${mode}" in dir) brotli_dir ;; url) brotli_url ;; *) echo "brotli" ;; esac }
 bsoftfloat3() { case "${mode}" in dir) bsoftfloat3_dir ;; url) bsoftfloat3_url ;; *) echo "bsoftfloat3" ;; esac }
+btestfloat3() { case "${mode}" in dir) btestfloat3_dir ;; url) btestfloat3_url ;; *) echo "btestfloat3" ;; esac }
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
 gplugin() { case "${mode}" in dir) gplugin_dir ;; url) gplugin_url ;; *) echo "gplugin" ;; esac }
@@ -185,6 +188,7 @@ case "${url}" in
   https://git.qemu.org/git/SLOF.git) unhandled=1 ;;
   https://git.qemu.org/git/berkeley-softfloat-3.git) bsoftfloat3 ;;
   https://git.qemu.org/git/berkeley-softfloat-3.git) unhandled=1 ;;
+  https://git.qemu.org/git/berkeley-testfloat-3.git) btestfloat3 ;;
   https://git.qemu.org/git/berkeley-testfloat-3.git) unhandled=1 ;;
   https://git.qemu.org/git/capstone.git) unhandled=1 ;;
   https://git.qemu.org/git/dtc.git) unhandled=1 ;;
@@ -236,6 +240,7 @@ case "${url}" in
   https://github.com/tianocore/edk2.git) ovmf ;;
   https://github.com/ucb-bar/berkeley-softfloat-3.git) bsoftfloat3 ;;
   https://github.com/ucb-bar/berkeley-softfloat-3.git) unhandled=1 ;;
+  https://github.com/ucb-bar/berkeley-testfloat-3) btestfloat3 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
   https://xenbits.xen.org/git-http/mini-os.git) minios ;;
