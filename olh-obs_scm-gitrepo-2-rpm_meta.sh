@@ -53,6 +53,7 @@ allow_submodule() {
     qemu_xen@seabios) allow=false ;;
     qemu_xen@sgabios) allow=false ;;
     qemu_xen@ovmf) allow=false ;;
+    ovmf@bsoftfloat3) allow=false ;;
     *) ;;
   esac
   if test "${allow}" = "true"
