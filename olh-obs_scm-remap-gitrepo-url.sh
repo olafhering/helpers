@@ -28,7 +28,7 @@ gplugin_url()          { echo "https://github.com/olafhering/gplugin.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
 grub_url()         { echo "git://git.savannah.gnu.org/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
-ipxe_url()         { echo "https://git.ipxe.org/ipxe.git" ; }
+ipxe_url()         { echo "https://github.com/ipxe/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
 libetpan_dir()      { readlink -f ~/git/for_obs/libetpan.git ; }

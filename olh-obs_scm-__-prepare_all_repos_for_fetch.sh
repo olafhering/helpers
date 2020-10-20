@@ -70,7 +70,7 @@ then
   popd > /dev/null
 else
   git init
-  git remote add    --tags upstream            git://git.ipxe.org/ipxe.git
+  git remote add    --tags upstream            https://github.com/ipxe/ipxe.git
   git remote add --no-tags github_ipxe         git://github.com/ipxe/ipxe.git
   git remote add --no-tags github_olafhering   git@github.com:olafhering/ipxe.git
   git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/ipxe.git
