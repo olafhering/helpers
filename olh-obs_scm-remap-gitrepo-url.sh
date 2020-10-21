@@ -227,6 +227,7 @@ case "${url}" in
   https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/ipxe/ipxe.git) ipxe ;;
   https://github.com/libvirt/libvirt.git) libvirt ;;
   https://github.com/mesonbuild/meson) meson ;;
   https://github.com/mesonbuild/meson.git) meson ;;
