@@ -26,7 +26,7 @@ gnulib_url()       { echo "https://github.com/coreutils/gnulib.git" ; }
 gplugin_dir()          { readlink -f ~/git/for_obs/gplugin.git ; }
 gplugin_url()          { echo "https://github.com/olafhering/gplugin.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
-grub_url()         { echo "git://git.savannah.gnu.org/grub.git" ; }
+grub_url()         { echo "https://git.savannah.gnu.org/git/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
 ipxe_url()         { echo "https://github.com/ipxe/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
@@ -214,6 +214,7 @@ case "${url}" in
   https://git.qemu.org/git/vgabios.git/) unhandled=1 ;;
   https://git.savannah.gnu.org/git/gnulib.git) gnulib ;;
   https://git.savannah.gnu.org/git/gnulib.git/) gnulib ;;
+  https://git.savannah.gnu.org/git/grub.git) grub ;;
   https://git.seabios.org/cgit/seabios.git) seabios ;;
   https://git.seabios.org/cgit/seabios.git/) seabios ;;
   https://git.seabios.org/seabios.git) seabios ;;
