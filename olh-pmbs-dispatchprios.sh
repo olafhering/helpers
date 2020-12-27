@@ -14,7 +14,6 @@ openSUSE_Leap_15.3
 openSUSE_Leap_15.2
 openSUSE_Leap_15.1
 openSUSE_Tumbleweed
-openSUSE_Factory_ARM
 SLE_15
 SLE_12
 )
