@@ -18,7 +18,7 @@ SLE_15
 SLE_12
 )
 
-declare -i i=0 j
+declare -i i=0 j known
 declare -i adjust project repository arch
 
 echo '<dispatchprios>'
@@ -39,15 +39,21 @@ do
 		esac
 		j=0
 		repository=1
+		known=0
 		while test $j -lt ${#repositories[@]}
 		do
 			if test "${a[0]}" = "${repositories[$j]}"
 			then
 				repository=$(( (${#repositories[@]} - $j) + 1 ))
+				known=1
 				break
 			fi
 			: $(( j++ ))
 		done
+		if test "${known}" -eq 0
+		then
+			continue
+		fi
 		project=$(( ( ${#prjs[@]} - $i ) * 2 ))
 		adjust=$(( (${project} * ${repository} * ${arch}) + 1))
 		echo "<prio adjust='${adjust}' project='${prj}' repository='${a[0]}' arch='${a[1]}' />"
