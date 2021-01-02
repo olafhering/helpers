@@ -14,4 +14,12 @@ $(type -P env) \
 	$(type -P ionice) -c 3 \
 	/usr/bin/zypper ${verbose} --no-refresh "$@"
 
-test -f /boot/initrd || $(type -P mkinitrd) -B
+if test -L /boot/initrd
+then
+	if test -f /boot/initrd
+	then
+		: good
+	else
+		$(type -P mkinitrd) -B
+	fi
+fi
