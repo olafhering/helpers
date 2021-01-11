@@ -23,7 +23,7 @@ cmd=(
 '--cc-cmd' './scripts/get_maintainer.pl --norolestats --no-l'
 "$@"
 )
-cmd+=( '--reroll-count' "${reroll_count}" )
+cmd+=( "--reroll-count=${reroll_count}" )
 cmd+=( "${rev_range}" )
 echo "cmd ok?
 ${cmd[@]}"
