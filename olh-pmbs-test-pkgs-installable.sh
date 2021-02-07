@@ -253,9 +253,6 @@ do_sle15() {
     copy_system_repos
   fi
   create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/SLE_15
-  create_repo pm_multimedia  rpm-md http://pmbs-api.links2linux.de:8080/Multimedia/SLE_15
-  create_repo pm_extra       rpm-md http://pmbs-api.links2linux.de:8080/Extra/SLE_15
-  create_repo pm_games       rpm-md http://pmbs-api.links2linux.de:8080/Games/SLE_15
   test_install
 }
 #
@@ -267,9 +264,6 @@ do_sle12() {
     copy_system_repos
   fi
   create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/SLE_12
-  create_repo pm_multimedia  rpm-md http://pmbs-api.links2linux.de:8080/Multimedia/SLE_12
-  create_repo pm_extra       rpm-md http://pmbs-api.links2linux.de:8080/Extra/SLE_12
-  create_repo pm_games       rpm-md http://pmbs-api.links2linux.de:8080/Games/SLE_12
   test_install
 }
 #
