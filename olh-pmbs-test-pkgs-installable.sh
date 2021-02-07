@@ -92,6 +92,23 @@ do_tw() {
   test_install
 }
 #
+do_15_3() {
+  if test -z "${use_system_repos}"
+  then
+    create_repo oss            yast2  http://download.opensuse.org/distribution/leap/15.3/repo/oss
+    create_repo non-oss        yast2  http://download.opensuse.org/distribution/leap/15.3/repo/non-oss
+    create_repo update         rpm-md http://download.opensuse.org/update/leap/15.3/oss
+    create_repo update-non-oss rpm-md http://download.opensuse.org/update/leap/15.3/non-oss
+  else
+    copy_system_repos
+  fi
+  create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/openSUSE_Leap_15.3
+  create_repo pm_multimedia  rpm-md http://pmbs-api.links2linux.de:8080/Multimedia/openSUSE_Leap_15.3
+  create_repo pm_extra       rpm-md http://pmbs-api.links2linux.de:8080/Extra/openSUSE_Leap_15.3
+  create_repo pm_games       rpm-md http://pmbs-api.links2linux.de:8080/Games/openSUSE_Leap_15.3
+  test_install
+}
+#
 do_15_2() {
   if test -z "${use_system_repos}"
   then
@@ -260,6 +277,7 @@ mkdir -vp "${reposd}"
 
 case "${dist}" in
   tw) do_tw ;;
+  15.3)  do_15_3 ;;
   15.2)  do_15_2 ;;
   15.1)  do_15_1 ;;
   15.0)  do_15_0 ;;
