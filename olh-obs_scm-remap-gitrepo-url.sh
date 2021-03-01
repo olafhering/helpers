@@ -245,6 +245,7 @@ case "${url}" in
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/muttmua/mutt.git) mutt ;;
   https://gitlab.com/qemu-project/QemuMacDrivers.git) unhandled=1 ;;
+  https://gitlab.com/qemu-project/SLOF.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git/) unhandled=1 ;;
   https://gitlab.com/qemu-project/berkeley-softfloat-3.git) bsoftfloat3 ;;
   https://gitlab.com/qemu-project/berkeley-testfloat-3.git) btestfloat3 ;;
