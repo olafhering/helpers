@@ -183,6 +183,7 @@ case "${url}" in
   http://git.qemu.org/git/skiboot.git) unhandled=1 ;;
   http://git.qemu.org/git/u-boot-sam460ex.git) unhandled=1 ;;
   http://git.qemu.org/git/vgabios.git/) unhandled=1 ;;
+  https://git.cryptomilk.org/projects/cmocka.git) unhandled=1 ;;
   https://git.ipxe.org/ipxe.git) ipxe ;;
   https://git.qemu.org/git/QemuMacDrivers.git) unhandled=1 ;;
   https://git.qemu.org/git/SLOF.git) unhandled=1 ;;
@@ -229,6 +230,7 @@ case "${url}" in
   https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/ipxe/ipxe.git) ipxe ;;
+  https://github.com/kkos/oniguruma) unhandled=1 ;;
   https://github.com/libvirt/libvirt.git) libvirt ;;
   https://github.com/mesonbuild/meson) meson ;;
   https://github.com/mesonbuild/meson.git) meson ;;
