@@ -203,107 +203,6 @@ then
 fi
 } &> ${td}/ovmf.log < /dev/null &
 }
-gplugin() {
- local do_fetch_all=
- local do_fetch_and_push=
- local do_push_master=
-{
-t=`mktemp --directory $td/gplugin.XXX`
-if pushd gplugin.git > /dev/null
-then
-  fetch_and_push
-  if ${push}
-  then
-  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/gplugin.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/gplugin.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/gplugin.gitlab_olh        &
-  git push github_olafhering 'refs/remotes/upstream/branches/develop:refs/heads/develop' &> $t/gplugin.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/develop:refs/heads/develop' &> $t/gplugin.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/develop:refs/heads/develop' &> $t/gplugin.gitlab_olh        &
-  fi
-  finish $t
-fi
-} &> ${td}/gplugin.log < /dev/null &
-}
-libgnt() {
- local do_fetch_all=
- local do_fetch_and_push=
- local do_push_master=
-{
-t=`mktemp --directory $td/libgnt.XXX`
-if pushd libgnt.git > /dev/null
-then
-  fetch_and_push
-  if ${push}
-  then
-  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/libgnt.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/libgnt.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/libgnt.gitlab_olh        &
-  fi
-  finish $t
-fi
-} &> ${td}/libgnt.log < /dev/null &
-}
-talkatu() {
- local do_fetch_all=
- local do_fetch_and_push=
- local do_push_master=
-{
-t=`mktemp --directory $td/talkatu.XXX`
-if pushd talkatu.git > /dev/null
-then
-  fetch_and_push
-  if ${push}
-  then
-  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/talkatu.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/talkatu.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/talkatu.gitlab_olh        &
-  fi
-  finish $t
-fi
-} &> ${td}/talkatu.log < /dev/null &
-}
-pidgin() {
- local do_fetch_all=
- local do_fetch_and_push=
- local do_push_master=
-{
-t=`mktemp --directory $td/pidgin.XXX`
-if pushd pidgin.git > /dev/null
-then
-  fetch_and_push
-  if ${push}
-  then
-  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/pidgin.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/pidgin.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/pidgin.gitlab_olh        &
-  git push github_olafhering 'refs/remotes/upstream/branches/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/release-2.x.y:refs/heads/release-2.x.y' &> $t/pidgin.gitlab_olh        &
-  fi
-  finish $t
-fi
-} &> ${td}/pidgin.log < /dev/null &
-}
-purple_rocketchat() {
- local do_fetch_all=
- local do_fetch_and_push=
- local do_push_master=
-{
-t=`mktemp --directory $td/purple_rocketchat.XXX`
-if pushd purple-rocketchat.git > /dev/null
-then
-  fetch_and_push
-  if ${push}
-  then
-  git push github_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/purple_rocketchat.github_olafhering &
-  git push gitlab_olafhering 'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/purple_rocketchat.gitlab_olafhering &
-  git push gitlab_olh        'refs/remotes/upstream/branches/default:refs/heads/default' &> $t/purple_rocketchat.gitlab_olh        &
-  fi
-  finish $t
-fi
-} &> ${td}/purple_rocketchat.log < /dev/null &
-}
 qemu() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -486,16 +385,6 @@ mini_os
 mutt
 #
 ovmf
-#
-gplugin
-#
-libgnt
-#
-talkatu
-#
-pidgin
-#
-purple_rocketchat
 #
 qemu
 #
