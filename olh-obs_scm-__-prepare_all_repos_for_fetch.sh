@@ -23,24 +23,6 @@ else
 fi
 popd > /dev/null
 #
-repo_dir=gplugin.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream             hg::https://bitbucket.org/gplugin/gplugin
-  git remote add --no-tags github_olafhering    git@github.com:olafhering/gplugin.git
-  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/gplugin.git
-  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/gplugin.git
-fi
-popd > /dev/null
-#
 repo_dir=grub.git
 if ! pushd "${repo_dir}" > /dev/null
 then
@@ -97,24 +79,6 @@ else
 fi
 popd > /dev/null
 #
-repo_dir=libgnt.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream             hg::https://olafhering@bitbucket.org/pidgin/libgnt
-  git remote add --no-tags github_olafhering    git@github.com:olafhering/libgnt.git
-  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/libgnt.git
-  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/libgnt.git
-fi
-popd > /dev/null
-#
 repo_dir=mini-os.git
 if ! pushd "${repo_dir}" > /dev/null
 then
@@ -168,43 +132,6 @@ else
   git remote add --no-tags github_olafhering   git@github.com:olafhering/edk2.git
   git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/edk2.git
   git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/ovmf.git
-fi
-popd > /dev/null
-#
-repo_dir=pidgin.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream             hg::https://bitbucket.org/pidgin/main
-  git remote add --no-tags bitbucket_olafhering hg::https://olafhering@bitbucket.org/olafhering/main
-  git remote add --no-tags github_olafhering    git@github.com:olafhering/pidgin.git
-  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/pidgin.git
-  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/pidgin.git
-fi
-popd > /dev/null
-#
-repo_dir=purple-rocketchat.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream             hg::https://olafhering@bitbucket.org/EionRobb/purple-rocketchat
-  git remote add --no-tags github_olafhering    git@github.com:olafhering/purple-rocketchat.git
-  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/purple-rocketchat.git
-  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/purple-rocketchat.git
 fi
 popd > /dev/null
 #
@@ -321,24 +248,6 @@ else
   git remote add --no-tags github_olafhering git@github.com:olafhering/seabios.git
   git remote add --no-tags gitlab_olafhering git@gitlab.com:olafhering/seabios.git
   git remote add --no-tags gitlab_olh        gitlab@gitlab.suse.de:olh/seabios.git
-fi
-popd > /dev/null
-#
-repo_dir=talkatu.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream             hg::https://olafhering@bitbucket.org/pidgin/talkatu
-  git remote add --no-tags github_olafhering    git@github.com:olafhering/talkatu.git
-  git remote add --no-tags gitlab_olafhering    git@gitlab.com:olafhering/talkatu.git
-  git remote add --no-tags gitlab_olh           gitlab@gitlab.suse.de:olh/talkatu.git
 fi
 popd > /dev/null
 #
