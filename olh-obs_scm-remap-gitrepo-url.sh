@@ -23,8 +23,6 @@ claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
 gnulib_url()       { echo "https://github.com/coreutils/gnulib.git" ; }
-gplugin_dir()          { readlink -f ~/git/for_obs/gplugin.git ; }
-gplugin_url()          { echo "https://github.com/olafhering/gplugin.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
 grub_url()         { echo "https://git.savannah.gnu.org/git/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
@@ -33,8 +31,6 @@ keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
 libetpan_dir()      { readlink -f ~/git/for_obs/libetpan.git ; }
 libetpan_url()      { echo "https://github.com/dinhviethoa/libetpan.git" ; }
-libgnt_dir()          { readlink -f ~/git/for_obs/libgnt.git ; }
-libgnt_url()          { echo "https://github.com/olafhering/libgnt.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
 libvirt_url()      { echo "https://github.com/libvirt/libvirt.git" ; }
 meson_dir()       { echo "none" ; }
@@ -45,10 +41,6 @@ mutt_dir()          { readlink -f ~/git/for_obs/mutt.git ; }
 mutt_url()          { echo "https://gitlab.com/muttmua/mutt.git" ; }
 ovmf_dir()          { readlink -f ~/git/for_obs/ovmf.git ; }
 ovmf_url()          { echo "https://github.com/tianocore/edk2.git" ; }
-pidgin_dir()          { readlink -f ~/git/for_obs/pidgin.git ; }
-pidgin_url()          { echo "https://github.com/olafhering/pidgin.git" ; }
-purple_rocketchat_dir()          { readlink -f ~/git/for_obs/purple-rocketchat.git ; }
-purple_rocketchat_url()          { echo "https://github.com/olafhering/purple-rocketchat.git" ; }
 openssl_dir()          { echo "none" ; }
 openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
@@ -62,8 +54,6 @@ seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
 seabios_xenbits_dir() { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_xenbits_url() { echo "https://xenbits.xen.org/git-http/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
-talkatu_dir()          { readlink -f ~/git/for_obs/talkatu.git ; }
-talkatu_url()          { echo "https://github.com/olafhering/talkatu.git" ; }
 sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
 valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
 valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
@@ -75,19 +65,15 @@ bsoftfloat3() { case "${mode}" in dir) bsoftfloat3_dir ;; url) bsoftfloat3_url ;
 btestfloat3() { case "${mode}" in dir) btestfloat3_dir ;; url) btestfloat3_url ;; *) echo "btestfloat3" ;; esac }
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
 gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnulib" ;; esac }
-gplugin() { case "${mode}" in dir) gplugin_dir ;; url) gplugin_url ;; *) echo "gplugin" ;; esac }
 grub() { case "${mode}" in dir) grub_dir ;; url) grub_url ;; *) echo "grub" ;; esac }
 ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; esac }
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
 libetpan() { case "${mode}" in dir) libetpan_dir ;; url) libetpan_url ;; *) echo "libetpan" ;; esac }
-libgnt() { case "${mode}" in dir) libgnt_dir ;; url) libgnt_url ;; *) echo "libgnt" ;; esac }
 libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "libvirt" ;; esac }
 meson() { case "${mode}" in dir) meson_dir ;; url) meson_url ;; *) echo "meson" ;; esac }
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
 mutt() { case "${mode}" in dir) mutt_dir ;; url) mutt_url ;; *) echo "mutt" ;; esac }
 ovmf() { case "${mode}" in dir) ovmf_dir ;; url) ovmf_url ;; *) echo "ovmf" ;; esac }
-pidgin() { case "${mode}" in dir) pidgin_dir ;; url) pidgin_url ;; *) echo "pidgin" ;; esac }
-purple_rocketchat() { case "${mode}" in dir) purple_rocketchat_dir ;; url) purple_rocketchat_url ;; *) echo "purple_rocketchat" ;; esac }
 openssl() { case "${mode}" in dir) openssl_dir ;; url) openssl_url ;; *) echo "openssl" ;; esac }
 qemu() { case "${mode}" in dir) qemu_dir ;; url) qemu_url ;; *) echo "qemu" ;; esac }
 qemu_xen() { case "${mode}" in dir) qemu_xen_dir ;; url) qemu_xen_url ;; *) echo "qemu_xen" ;; esac }
@@ -95,7 +81,6 @@ qemu_xen_trad() { case "${mode}" in dir) qemu_xen_trad_dir ;; url) qemu_xen_trad
 seabios() { case "${mode}" in dir) seabios_dir ;; url) seabios_url ;; *) echo "seabios" ;; esac }
 seabios_xenbits() { case "${mode}" in dir) seabios_xenbits_dir ;; url) seabios_xenbits_url ;; *) echo "seabios" ;; esac }
 sgabios() { case "${mode}" in dir) sgabios_dir ;; url) sgabios_url ;; *) echo "sgabios" ;; esac }
-talkatu() { case "${mode}" in dir) talkatu_dir ;; url) talkatu_url ;; *) echo "talkatu" ;; esac }
 valgrind() { case "${mode}" in dir) valgrind_dir ;; url) valgrind_url ;; *) echo "valgrind" ;; esac }
 xen() { case "${mode}" in dir) xen_dir ;; url) xen_url ;; *) echo "xen" ;; esac }
 #
@@ -137,11 +122,6 @@ case "${url}" in
   git://github.com/dinhviethoa/libetpan.git) libetpan ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
-  git://github.com/olafhering/gplugin.git) gplugin ;;
-  git://github.com/olafhering/libgnt.git) libgnt ;;
-  git://github.com/olafhering/pidgin.git) pidgin ;;
-  git://github.com/olafhering/purple-rocketchat.git) purple_rocketchat ;;
-  git://github.com/olafhering/talkatu.git) talkatu ;;
   git://github.com/olafhering/xen.git) xen ;;
   git://github.com/rth7680/qemu-palcode.git) unhandled=1 ;;
   git://github.com/tianocore/edk2) ovmf ;;
@@ -157,13 +137,8 @@ case "${url}" in
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
-  git@github.com:olafhering/gplugin.git) gplugin ;;
-  git@github.com:olafhering/libgnt.git) libgnt ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
-  git@github.com:olafhering/pidgin.git) pidgin ;;
-  git@github.com:olafhering/purple-rocketchat.git) purple_rocketchat ;;
   git@github.com:olafhering/qemu.git) qemu ;;
-  git@github.com:olafhering/talkatu.git) talkatu ;;
   git@github.com:olafhering/xen.git) xen ;;
   git@gitlab.com:olafhering/xen.git) xen ;;
   http://git.claws-mail.org/readonly/claws.git) claws ;;
@@ -235,11 +210,6 @@ case "${url}" in
   https://github.com/libvirt/libvirt.git) libvirt ;;
   https://github.com/mesonbuild/meson) meson ;;
   https://github.com/mesonbuild/meson.git) meson ;;
-  https://github.com/olafhering/gplugin.git) gplugin ;;
-  https://github.com/olafhering/libgnt.git) libgnt ;;
-  https://github.com/olafhering/pidgin.git) pidgin ;;
-  https://github.com/olafhering/purple-rocketchat.git) purple_rocketchat ;;
-  https://github.com/olafhering/talkatu.git) talkatu ;;
   https://github.com/olafhering/xen.git) xen ;;
   https://github.com/openssl/openssl) openssl ;;
   https://github.com/tianocore/edk2.git) ovmf ;;
