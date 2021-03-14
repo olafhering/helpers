@@ -29,8 +29,6 @@ ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
 ipxe_url()         { echo "https://github.com/ipxe/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
-libetpan_dir()      { readlink -f ~/git/for_obs/libetpan.git ; }
-libetpan_url()      { echo "https://github.com/dinhviethoa/libetpan.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
 libvirt_url()      { echo "https://github.com/libvirt/libvirt.git" ; }
 meson_dir()       { echo "none" ; }
@@ -68,7 +66,6 @@ gnulib() { case "${mode}" in dir) gnulib_dir ;; url) gnulib_url ;; *) echo "gnul
 grub() { case "${mode}" in dir) grub_dir ;; url) grub_url ;; *) echo "grub" ;; esac }
 ipxe() { case "${mode}" in dir) ipxe_dir ;; url) ipxe_url ;; *) echo "ipxe" ;; esac }
 keycodemapdb() { case "${mode}" in dir) keycodemapdb_dir ;; url) keycodemapdb_url ;; *) echo "keycodemapdb" ;; esac }
-libetpan() { case "${mode}" in dir) libetpan_dir ;; url) libetpan_url ;; *) echo "libetpan" ;; esac }
 libvirt() { case "${mode}" in dir) libvirt_dir ;; url) libvirt_url ;; *) echo "libvirt" ;; esac }
 meson() { case "${mode}" in dir) meson_dir ;; url) meson_url ;; *) echo "meson" ;; esac }
 minios() { case "${mode}" in dir) minios_dir ;; url) minios_url ;; *) echo "minios" ;; esac }
@@ -119,7 +116,6 @@ case "${url}" in
   git://github.com/coreutils/gnulib.git) gnulib ;;
   git://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
   git://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
-  git://github.com/dinhviethoa/libetpan.git) libetpan ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
   git://github.com/olafhering/xen.git) xen ;;
@@ -202,7 +198,6 @@ case "${url}" in
   https://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
   https://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
-  https://github.com/dinhviethoa/libetpan) libetpan ;;
   https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/ipxe/ipxe.git) ipxe ;;
