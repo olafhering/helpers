@@ -204,6 +204,7 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/uio/uio_hv_generic.c \
 		drivers/video/fbdev/hyperv_fb.c \
 		drivers/video/hyperv_fb.c \
+		include/asm-generic/hyperv-tlfs.h \
 		include/asm-generic/mshyperv.h \
 		include/linux/hyperv.h \
 		include/net/af_hvsock.h \
