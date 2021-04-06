@@ -72,8 +72,6 @@ process_patch_file() {
 	grep -Evi '^(From |(From|Date|Patch-mainline|Subject|Git-commit):|[[:blank:]])' \
 		"${header}" > "${extra_tags}"
 
-#	head "${header}" "${msg_rest}" "${extra_tags}"
-
 	commit_id="`grep -im1 ^Git-commit: \"${header}\" | awk '{ print $2 }'`"
 	if test -z "${commit_id}"
 	then
@@ -116,16 +114,21 @@ process_patch_file() {
 	fi
 	if test -s "${upstream_commit}"
 	then
-#		head "${upstream_commit}" "${extra_tags}"
 		sed -n '/^From: / { p ; Q }' ${upstream_commit} >> ${t}
 		grep -m1 ^Date: ${upstream_commit} >> ${t}
 		if test -n "${tag}"
 		then
 			echo "Patch-mainline: ${tag}" >> ${t}
 		fi
+		if grep -q '^References:' "${extra_tags}"
+		then
+			:
+		else
+			echo 'References: git-fixes' >> "${extra_tags}"
+		fi
 		sed -n '/^Subject:/ { h ; n ; /^[[:blank:]]\+/H ; x ; s@\n[[:blank:]]\+@ @g; p ; Q }' ${upstream_commit} >> ${t}
 		sed -n '/^From / { s@\(From \)\([^[:blank:]]\+\)\(.*\)@Git-commit: \2@p ; Q }' ${upstream_commit} >> ${t}
-		cat ${extra_tags} >> ${t}
+		cat "${extra_tags}" >> ${t}
 		sed -n "/^$/ { p ; : nl ; n ; p ; b nl }" ${upstream_commit} >> ${t}
 		sed -i '/^index[[:blank:]][0-9a-f]\+\.\.[0-9a-f]\+[[:blank:]][0-7]\+$/d' ${t} 
 		sed -i '/^---$/{ x ; s|^.*|Acked-by: Olaf Hering <ohering@suse.de>| ; G ; }' ${t} 
