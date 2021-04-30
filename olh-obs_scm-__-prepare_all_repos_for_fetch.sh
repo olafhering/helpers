@@ -79,24 +79,6 @@ else
 fi
 popd > /dev/null
 #
-repo_dir=mutt.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream            git@gitlab.com:muttmua/mutt.git
-  git remote add --no-tags github_olafhering   git@github.com:olafhering/mutt.git
-  git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/mutt.git
-  git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/mutt.git
-fi
-popd > /dev/null
-#
 repo_dir=ovmf.git
 if ! pushd "${repo_dir}" > /dev/null
 then

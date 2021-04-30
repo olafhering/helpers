@@ -175,20 +175,6 @@ then
 fi
 } &> ${td}/mini_os.log < /dev/null &
 }
-mutt() {
- local do_fetch_all=
- local do_fetch_and_push=
- local do_push_master=
-{
-t=`mktemp --directory $td/mutt.XXX`
-if pushd mutt.git > /dev/null
-then
-  simple_fetch_all
-  push_master
-  finish $t
-fi
-} &> ${td}/mutt.log < /dev/null &
-}
 ovmf() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -367,8 +353,6 @@ grub
 ipxe
 #
 mini_os
-#
-mutt
 #
 ovmf
 #
