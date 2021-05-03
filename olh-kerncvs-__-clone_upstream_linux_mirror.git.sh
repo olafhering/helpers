@@ -14,7 +14,6 @@ airlied.linux.git|git://people.freedesktop.org/~airlied/linux
 anna.linux.git|git://git.linux-nfs.org/projects/anna/linux-nfs.git
 bfields.linux.git|git://git.linux-nfs.org/~bfields/linux.git
 bp.bp.git|https://git.kernel.org/pub/scm/linux/kernel/git/bp/bp.git
-cmpxchg.linux-mmots.git|git://git.cmpxchg.org/linux-mmots.git
 davem.net-next.git|https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git
 davem.net.git|https://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git
 dhowells.linux-fs.git|https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git
