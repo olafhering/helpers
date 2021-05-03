@@ -55,7 +55,6 @@ s390.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/s390/linux.git
 shli.md.git|https://git.kernel.org/pub/scm/linux/kernel/git/shli/md.git
 tip.tip.git|https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git
 tiwai.sound.git|https://git.kernel.org/pub/scm/linux/kernel/git/tiwai/sound.git
-tj.libata.git|https://git.kernel.org/pub/scm/linux/kernel/git/tj/libata.git
 tomba.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/tomba/linux.git
 tytso.ext4.git|https://git.kernel.org/pub/scm/linux/kernel/git/tytso/ext4.git
 viro.vfs.git|https://git.kernel.org/pub/scm/linux/kernel/git/viro/vfs.git
