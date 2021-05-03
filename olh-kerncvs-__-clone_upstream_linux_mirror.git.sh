@@ -4,7 +4,6 @@ test "$1" = "-u" && update='true'
 with_tags="
 torvalds.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 stable.linux-stable.git|https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
-bwh.linux-3.2.y.git|https://git.kernel.org/pub/scm/linux/kernel/git/bwh/linux-3.2.y.git
 jirislaby.linux-stable.git|https://git.kernel.org/pub/scm/linux/kernel/git/jirislaby/linux-stable.git
 "
 
