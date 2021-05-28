@@ -210,6 +210,7 @@ git --git-dir="${upstream_git}/.git" \
 		include/net/af_hvsock.h \
 		include/uapi/linux/hyperv.h \
 		net/hv_sock \
+		net/vmw_vsock/hyperv_transport.c \
 		tools/hv \
 		&> "${tmpdir}/$$"
 #
