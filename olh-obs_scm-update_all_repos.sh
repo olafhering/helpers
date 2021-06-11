@@ -119,6 +119,21 @@ finish() {
   popd > /dev/null
 }
 #
+brotli() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/brotli.XXX`
+if pushd brotli.git > /dev/null
+then
+  fetch_and_push
+  push_master
+  finish $t
+fi
+} &> ${td}/claws.log < /dev/null &
+}
+#
 claws() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -345,6 +360,8 @@ then
 fi
 } &> ${td}/xen.log < /dev/null &
 }
+#
+brotli
 #
 claws
 #
