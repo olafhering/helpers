@@ -238,9 +238,12 @@ then
       orig_patch_number=${orig_patch_name%%-*}
       spec_patch_name="${submodule_tag}.${orig_patch_name#*-}"
       # FIXME handle identical patches
-      mkdir -p "${patches_dir}/${utc_patch_date}"
-      mkdir -p "${patches_dir}/${spec_patch_name}"
-      echo "Patch${utc_patch_date}: ${spec_patch_name}" >> spec.Patch.txt
+      if \
+        mkdir "${patches_dir}/${utc_patch_date}" && \
+        mkdir "${patches_dir}/${spec_patch_name}"
+      then
+        echo "Patch${utc_patch_date}: ${spec_patch_name}" >> spec.Patch.txt
+      fi
       echo "%patch${utc_patch_date} -p1" >> spec.patch.txt
       sed '
       1{/^From /d}
