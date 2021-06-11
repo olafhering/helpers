@@ -13,7 +13,7 @@ case "${mode}" in
 esac
 unset unhandled
 #
-brotli_dir()          { echo "none" ; }
+brotli_dir()          { readlink -f ~/git/for_obs/brotli.git ; }
 brotli_url()          { echo "https://github.com/google/brotli" ; }
 bsoftfloat3_dir()          { echo "none" ; }
 bsoftfloat3_url()          { echo "https://github.com/ucb-bar/berkeley-softfloat-3.git" ; }
@@ -130,6 +130,7 @@ case "${url}" in
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
+  git@github.com:olafhering/brotli.git) brotli ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/qemu.git) qemu ;;
   git@github.com:olafhering/xen.git) xen ;;
