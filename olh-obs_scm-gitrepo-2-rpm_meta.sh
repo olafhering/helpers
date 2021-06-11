@@ -21,7 +21,6 @@ pkg_tag=
 submodule_tag=
 pkg_patch_basedir=
 patches_dir=
-declare -A submodules
 git=$(type -P git)
 t=`mktemp`
 tf=`mktemp`
@@ -59,12 +58,6 @@ allow_submodule() {
   esac
   if test "${allow}" = "true"
   then
-    if test -n "${submodules[${tag}/${url_tag}]}"
-    then
-      echo "submodule ${tag}/${url_tag} already seen ($_)"
-      return 1
-    fi
-    submodules[${tag}/${url_tag}]="${raw_url}"
     echo "submodule ${tag}/${url_tag} allowed"
     return 0
   fi
