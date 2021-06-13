@@ -311,7 +311,7 @@ _EOS_
     echo "#KEEP NOSOURCE DEBUGINFO"
     echo "NoSource: @SOURCE_COUNTER@"
     echo "%if %suse_version > 1110"
-    echo "BuildRequires: python > 3.0"
+    echo "BuildRequires: python(abi) > 3.0"
     echo "%endif"
   } >> spec.Patch.txt
 else
