@@ -131,7 +131,7 @@ then
   push_master
   finish $t
 fi
-} &> ${td}/claws.log < /dev/null &
+} &> ${td}/brotli.log < /dev/null &
 }
 #
 claws() {
