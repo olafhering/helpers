@@ -11,6 +11,8 @@ git_upstream_url=
 git_upstream_remote=
 git_upstream_branch=
 git_upstream_commit=
+seabios_tag=
+ipxe_tag=
 #
 git=$(type -P git)
 declare -i counter=0
@@ -28,6 +30,8 @@ do
     --git-upstream-url) git_upstream_url=$2 ; shift ;;
     --git-upstream-remote) git_upstream_remote=$2 ; shift ;;
     --git-upstream-branch) git_upstream_branch=$2 ; shift ;;
+    --seabios-rev) seabios_tag=$2 ; shift ;;
+    --ipxe-rev) ipxe_tag=$2 ; shift ;;
     *) echo "UNHANDLED: $0 $*" >&2 ; exit 1 ;;
   esac
   shift
@@ -126,7 +130,10 @@ create_submodule \
 	"${qemu_xen_upstream_extract_dir}"
 #
 seabios_git_url=`sed -n '/^SEABIOS_UPSTREAM_URL.*git:\/\//{;s@^.* @@;p;q}' ${xf}`
-seabios_tag=`sed -n '/^SEABIOS_UPSTREAM_REVISION/{/SEABIOS_UPSTREAM_TAG/d;s@^.* @@;p;q};/^SEABIOS_UPSTREAM_TAG/{;s@^.* @@;p;q}' ${xf}`
+if test -z "${seabios_tag}"
+then
+  seabios_tag=`sed -n '/^SEABIOS_UPSTREAM_REVISION/{/SEABIOS_UPSTREAM_TAG/d;s@^.* @@;p;q};/^SEABIOS_UPSTREAM_TAG/{;s@^.* @@;p;q}' ${xf}`
+fi
 seabios_extract_dir=tools/firmware/seabios-dir-remote
 create_submodule \
 	"${seabios_git_url}" \
@@ -160,7 +167,10 @@ esac
 #
 get_xen_file tools/firmware/etherboot/Makefile
 ipxe_git_url=`sed -n '/^IPXE_GIT_URL.*git:\/\//{s@^.* @@;p;q}' ${xf} `
-ipxe_tag=`sed -n '/^IPXE_GIT_TAG/{s@^.* @@;p;q}' ${xf} `
+if test -z "${ipxe_tag}"
+then
+  ipxe_tag=`sed -n '/^IPXE_GIT_TAG/{s@^.* @@;p;q}' ${xf} `
+fi
 ipxe_extract_dir=tools/firmware/etherboot/ipxe
 create_submodule \
 	"${ipxe_git_url}" \
