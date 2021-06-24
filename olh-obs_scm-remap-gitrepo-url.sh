@@ -242,12 +242,12 @@ case "${url}" in
   https://xenbits.xen.org/git-http/qemu-xen.git) qemu_xen ;;
   https://xenbits.xen.org/git-http/seabios.git) seabios ;;
   https://xenbits.xen.org/git-http/xen.git) xen ;;
-  *) echo "UNHANDLED ${url}" >&2 ; unhandled=1 ;;
+  *) echo "UNHANDLED ${url}" >&2 ; echo 'UNHANDLED' ; exit 1 ;;
 esac
 #
 : unhandled "${unhandled}"
 if test -n "${unhandled}"
 then
- exit 1
+ echo 'unhandled'
 fi
 exit 0

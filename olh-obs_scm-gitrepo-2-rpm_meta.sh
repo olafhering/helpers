@@ -41,12 +41,15 @@ allow_submodule() {
   local url_tag
 
   remap_url="`olh-obs_scm-remap-gitrepo-url ${raw_url} 'url'`"
-  if test -z "${remap_url}"
-  then
-    echo "submodule ${tag} ${raw_url} UNKNOWN"
-    return 1
-  fi
+  case "${remap_url}" in
+    UNHANDLED) return 1 ;;
+    unhandled) return 1 ;;
+  esac
   url_tag="`olh-obs_scm-remap-gitrepo-url ${remap_url} 'tag'`"
+  case "${url_tag}" in
+    UNHANDLED) return 1 ;;
+    unhandled) return 1 ;;
+  esac
   
   case "${tag}@${url_tag}" in
     qemu_xen@ipxe) allow=false ;;
@@ -132,6 +135,10 @@ done
 : git_upstream_url "${git_upstream_url}"
 test -n "${git_upstream_url}"
 test -z "${submodule_tag}" && submodule_tag="`olh-obs_scm-remap-gitrepo-url ${git_upstream_url} 'tag'`"
+case "${submodule_tag}" in
+  UNHANDLED) exit 1 ;;
+  unhandled) exit 1 ;;
+esac
 #
 : pkg_tag ${pkg_tag}
 test -n "${pkg_tag}"
@@ -328,7 +335,10 @@ do
 	test -f "${i}" || continue
 	. "${i}"
 	url="`olh-obs_scm-remap-gitrepo-url ${url} 'url' || :`"
-	test -z "${url}" && continue
+        case "${url}" in
+          UNHANDLED) continue ;;
+          unhandled) continue ;;
+        esac
 	submodule_pkg_dir="`olh-obs_scm-create_next_pkgdir \"${work_dir}\"`"
 	submodule_pkg_git_dir="`olh-obs_scm-remap-gitrepo-url ${url} 'dir'`"
 	submodule_pkg_tag="${pkg_tag}_${path//\//_}"
