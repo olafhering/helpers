@@ -191,6 +191,7 @@ case "${url}" in
   https://git.seabios.org/seabios.git/) seabios ;;
   https://git.sv.gnu.org/git/gnulib.git) gnulib ;;
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
+  https://github.com/akheron/jansson) unhandled=1 ;;
   https://github.com/bonzini/qboot) unhandled=1 ;;
   https://github.com/coreutils/gnulib.git) gnulib ;;
   https://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
@@ -198,6 +199,7 @@ case "${url}" in
   https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
   https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
+  https://github.com/hillbig/esaxx) unhandled=1 ;;
   https://github.com/ipxe/ipxe.git) ipxe ;;
   https://github.com/kkos/oniguruma) unhandled=1 ;;
   https://github.com/libvirt/libvirt.git) libvirt ;;
@@ -205,9 +207,11 @@ case "${url}" in
   https://github.com/mesonbuild/meson.git) meson ;;
   https://github.com/olafhering/xen.git) xen ;;
   https://github.com/openssl/openssl) openssl ;;
+  https://github.com/tianocore/edk2-cmocka.git) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;
   https://github.com/ucb-bar/berkeley-softfloat-3.git) bsoftfloat3 ;;
   https://github.com/ucb-bar/berkeley-testfloat-3) btestfloat3 ;;
+  https://github.com/y-256/libdivsufsort.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/qemu-project/QemuMacDrivers.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git) unhandled=1 ;;
