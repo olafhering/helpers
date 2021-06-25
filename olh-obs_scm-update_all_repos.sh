@@ -1,5 +1,11 @@
 #!/bin/bash
 set -e
+unset GIT_CHERRY_PICK_HELP
+unset GIT_DIR
+unset GIT_EXEC_PATH
+unset GIT_PREFIX
+unset GIT_REFLOG_ACTION
+unset GIT_WORK_TREE
 unset LANG
 unset ${!LC_*}
 read v1 x < /proc/uptime
