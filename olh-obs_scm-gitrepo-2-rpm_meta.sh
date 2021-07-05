@@ -230,8 +230,10 @@ then
       --break-rewrites=100%/100% \
       --no-renames \
       --keep-subject \
-      --stat=-1,-1 \
-      --stat-graph-width=-1 \
+      --stat-width=123 \
+      --stat-name-width=66 \
+      --stat-count=-1 \
+      --stat-graph-width=123 \
       --summary \
       --output-directory .patches \
       "${fixes_from}".."${fixes_to}"

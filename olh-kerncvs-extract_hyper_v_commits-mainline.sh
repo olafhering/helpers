@@ -172,8 +172,10 @@ git --git-dir="${upstream_git}/.git" \
 	--output-directory ${outdir} \
 	--break-rewrites \
 	--keep-subject \
-	--stat=-1,-1 \
-	--stat-graph-width=-1 \
+	--stat-width=123 \
+	--stat-name-width=66 \
+	--stat-count=-1 \
+	--stat-graph-width=123 \
 	--summary \
 	--no-merges \
 	${from_to} -- \

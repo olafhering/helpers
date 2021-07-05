@@ -90,8 +90,10 @@ process_patch_file() {
 			--break-rewrites \
 			--no-renames \
 			--keep-subject \
-			--stat=-1,-1 \
-			--stat-graph-width=-1 \
+			--stat-width=123 \
+			--stat-name-width=66 \
+			--stat-count=-1 \
+			--stat-graph-width=123 \
 			--summary \
 			"${commit_id}^..${commit_id}" > "${upstream_commit}"
 		tag=`git tag --sort=taggerdate --contains  ${commit_id} | sed q`
