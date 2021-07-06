@@ -179,6 +179,9 @@ git --git-dir="${upstream_git}/.git" \
 	--summary \
 	--no-merges \
 	${from_to} -- \
+		arch/arm64/hyperv \
+		arch/arm64/include/asm/hyperv-tlfs.h \
+		arch/arm64/include/asm/mshyperv.h \
 		arch/x86/hyperv \
 		arch/x86/include/asm/hyperv-tlfs.h \
 		arch/x86/include/asm/hyperv.h \
