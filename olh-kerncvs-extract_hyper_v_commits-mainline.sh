@@ -196,7 +196,7 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.h \
 		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.c \
 		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.h \
-		drivers/net/ethernet/microsoft/mana \
+		drivers/net/ethernet/microsoft \
 		drivers/net/hyperv \
 		drivers/pci/controller/pci-hyperv-intf.c \
 		drivers/pci/controller/pci-hyperv.c \
