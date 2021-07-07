@@ -50,7 +50,7 @@ seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
 seabios_xenbits_dir() { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_xenbits_url() { echo "https://xenbits.xen.org/git-http/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
-sgabios_url()      { echo "git://git.qemu-project.org/sgabios.git" ; }
+sgabios_url()      { echo "https://gitlab.com/qemu-project/sgabios.git" ; }
 valgrind_dir()     { readlink -f ~/git/for_obs/valgrind.git ; }
 valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
 xen_dir()          { readlink -f ~/git/for_obs/xen.git ; }
