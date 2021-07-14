@@ -236,6 +236,7 @@ case "${url}" in
   https://gitlab.com/qemu-project/u-boot-sam460ex.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/u-boot.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/vbootrom.git) unhandled=1 ;;
+  https://libvirt.org/git/libvirt.git) libvirt ;;
   https://xenbits.xen.org/git-http/mini-os.git) minios ;;
   https://xenbits.xen.org/git-http/ovmf.git) ovmf ;;
   https://xenbits.xen.org/git-http/qemu-xen-traditional.git) qemu_xen_trad ;;
