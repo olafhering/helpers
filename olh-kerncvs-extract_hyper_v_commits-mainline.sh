@@ -212,6 +212,7 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/video/hyperv_fb.c \
 		include/asm-generic/hyperv-tlfs.h \
 		include/asm-generic/mshyperv.h \
+		include/clocksource/hyperv_timer.h \
 		include/linux/hyperv.h \
 		include/net/af_hvsock.h \
 		include/uapi/linux/hyperv.h \
