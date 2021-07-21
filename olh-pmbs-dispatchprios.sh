@@ -4,7 +4,6 @@ Multimedia
 Games
 Extra
 SLE15
-SLE12
 Staging
 )
 
