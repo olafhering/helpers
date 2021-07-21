@@ -13,7 +13,6 @@ openSUSE_Leap_15.3
 openSUSE_Leap_15.2
 openSUSE_Tumbleweed
 SLE_15
-SLE_12
 )
 
 declare -i i=0 j known
