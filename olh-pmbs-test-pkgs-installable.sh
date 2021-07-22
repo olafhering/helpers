@@ -256,17 +256,6 @@ do_sle15() {
   test_install
 }
 #
-do_sle12() {
-  if test -z "${use_system_repos}"
-  then
-    exit 1
-  else
-    copy_system_repos
-  fi
-  create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/SLE_12
-  test_install
-}
-#
 mkdir -vp "${reposd}"
 
 case "${dist}" in
@@ -281,7 +270,6 @@ case "${dist}" in
   13.2)  do_13_2 ;;
   13.1)  do_13_1 ;;
   sle15) use_system_repos=yes ; do_sle15 ;;
-  sle12) use_system_repos=yes ; do_sle12 ;;
   *) ;;
 esac
 # vim: tw=666 ts=2 shiftwidth=2 et
