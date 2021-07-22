@@ -228,23 +228,6 @@ do_13_2() {
   test_install
 }
 #
-do_13_1() {
-  if test -z "${use_system_repos}"
-  then
-    create_repo oss            yast2  http://download.opensuse.org/distribution/13.1/repo/oss
-    create_repo non-oss        yast2  http://download.opensuse.org/distribution/13.1/repo/non-oss
-    create_repo update         rpm-md http://download.opensuse.org/update/13.1
-    create_repo update-non-oss rpm-md http://download.opensuse.org/update/13.1
-  else
-    copy_system_repos
-  fi
-  create_repo pm_essentials  rpm-md http://packman.inode.at/suse/openSUSE_13.1/Essentials
-  create_repo pm_multimedia  rpm-md http://packman.inode.at/suse/openSUSE_13.1/Multimedia
-  create_repo pm_extra       rpm-md http://packman.inode.at/suse/openSUSE_13.1/Extra
-  create_repo pm_games       rpm-md http://packman.inode.at/suse/openSUSE_13.1/Games
-  test_install
-}
-#
 do_sle15() {
   if test -z "${use_system_repos}"
   then
@@ -268,7 +251,6 @@ case "${dist}" in
   42.2)  do_42_2 ;;
   42.1)  do_42_1 ;;
   13.2)  do_13_2 ;;
-  13.1)  do_13_1 ;;
   sle15) use_system_repos=yes ; do_sle15 ;;
   *) ;;
 esac
