@@ -191,6 +191,7 @@ git --git-dir="${upstream_git}/.git" \
 		arch/x86/kernel/cpu/mshyperv.c \
 		arch/x86/kvm/hyperv.c \
 		drivers/clocksource/hyperv_timer.c \
+		drivers/gpu/drm/hyperv/hyperv_drm_modeset.c \
 		drivers/hid/hid-hyperv.c \
 		drivers/hv \
 		drivers/input/serio/hyperv-keyboard.c \
