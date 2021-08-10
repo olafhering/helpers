@@ -280,6 +280,8 @@ then
 		if test -z "${new_patch_names[${p}]}"
 		then
 			echo "${p} is stale"
+			rm -fv "`readlink -f \"${p}\"`" "${p}"
+			continue
 		fi
 		# this entry should probably be removed
 		if ! test -L "${p}"
