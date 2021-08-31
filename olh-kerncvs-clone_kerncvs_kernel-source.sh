@@ -16,6 +16,7 @@ azure_branches="
 SLE12-SP5
 SLE15-SP2
 SLE15-SP3
+SLE15-SP4
 "
 email='ohering@suse.de'
 name='Olaf Hering'
@@ -80,6 +81,8 @@ git_config() {
 pushd ~/work/src/kernel
 #
 case "${branch}" in
+	SLE15-SP4)       clone_branch='SLE15-SP4'      ;;
+	SLE15-SP4-AZURE) clone_branch='SLE15-SP4-AZURE';;
 	SLE15-SP3)       clone_branch='SLE15-SP3'      ;;
 	SLE15-SP3-AZURE) clone_branch='SLE15-SP3-AZURE';;
 	SLE15-SP2)       clone_branch='SLE15-SP2'      ;;
