@@ -140,7 +140,7 @@ then
 	osc_sr_cmd_args+=( -s "${supersede}" )
 fi
 osc_sr_cmd_args+=( -r "${pkg_rev}" )
-osc_sr_cmd_args+=( -m "kernel-azure" )
+osc_sr_cmd_args+=( -m "kernel-azure ${pkg_githash}" )
 osc_sr_cmd_args+=( --no-update )
 osc_sr_cmd_args+=( --no-cleanup )
 osc_sr_cmd_args+=( "${src_prj}" )
