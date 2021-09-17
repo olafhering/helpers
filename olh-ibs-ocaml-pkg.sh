@@ -131,6 +131,9 @@ case "${upstream}" in
 	sqlite3-ocaml) pkg='ocaml-sqlite' ;;
 	unison) pkg='unison' ;;
 	utop) pkg='ocaml-utop' ;;
+	uucd) pkg='ocaml-uucd' ;;
+	uucp) pkg='ocaml-uucp' ;;
+	uuseg) pkg='ocaml-uuseg' ;;
 	*) exit 1 ;;
 esac
 #
