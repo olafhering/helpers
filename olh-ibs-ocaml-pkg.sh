@@ -122,6 +122,7 @@ case "${upstream}" in
 	ppx_typerep_conv) pkg='ocaml-ppx_typerep_conv' ;;
 	ppx_variants_conv) pkg='ocaml-ppx_variants_conv' ;;
 	ppxlib) pkg='ocaml-ppxlib' ;;
+	pyml) pkg='ocaml-pyml' ;;
 	qcheck) pkg='ocaml-qcheck' ;;
 	qtest) pkg='ocaml-qtest' ;;
 	result) pkg='ocaml-result' ;;
