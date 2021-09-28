@@ -201,6 +201,7 @@ read
 vi _service
 if pushd */.git
 then
+	cd ..
 	git --no-pager tag --list | xargs git --no-pager tag --delete
 	git --no-pager reset --hard "${gitrev}"
 	popd
