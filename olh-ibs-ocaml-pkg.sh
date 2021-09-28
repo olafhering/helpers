@@ -202,6 +202,7 @@ vi _service
 if pushd */.git
 then
 	git --no-pager tag --list | xargs git --no-pager tag --delete
+	git --no-pager reset --hard "${gitrev}"
 	popd
 fi
 for f in *.tar.xz
