@@ -63,6 +63,7 @@ case "${upstream}" in
 	base) pkg='ocaml-base' ;;
 	base_quickcheck) pkg='ocaml-base_quickcheck' ;;
 	bisect_ppx) pkg='ocaml-bisect_ppx' ;;
+	bos) pkg='ocaml-bos' ;;
 	camlp5) pkg='ocaml-camlp5' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
 	coq) pkg='ocaml-coq' ;;
