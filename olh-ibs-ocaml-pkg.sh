@@ -128,6 +128,7 @@ case "${upstream}" in
 	qcheck) pkg='ocaml-qcheck' ;;
 	qtest) pkg='ocaml-qtest' ;;
 	result) pkg='ocaml-result' ;;
+	rresult) pkg='ocaml-rresult' ;;
 	sedlex) pkg='ocaml-sedlex' ;;
 	stdcompat) pkg='ocaml-stdcompat' ;;
 	stdlib-shims) pkg='ocaml-stdlib-shims' ;;
