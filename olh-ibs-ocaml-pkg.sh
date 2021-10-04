@@ -74,6 +74,7 @@ case "${upstream}" in
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
 	fpath) pkg='ocaml-fpath' ;;
+	fmt) pkg='ocaml-fmt' ;;
 	gapi-ocaml) pkg='ocaml-gapi' ;;
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
