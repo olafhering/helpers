@@ -80,7 +80,10 @@ src_prj="${kerncvs_prj}"
 test -n "${use_embargo_branch}" && src_prj="${kerncvs_prj_embargo}"
 #
 case "${update_prj}" in
-*:GA) osc_rq_type='submit' ;;
+*:GA)
+	osc_rq_type='submit'
+	ibs rq list "${update_prj}" "${pkg}"
+;;
 *:Update) osc_rq_type='maintenance_incident' ;;
 *) echo "Unhandled suffix for ${update_prj}" ; exit 1 ;;
 esac
