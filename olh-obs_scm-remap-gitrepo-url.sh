@@ -46,7 +46,7 @@ qemu_xen_url()     { echo "https://xenbits.xen.org/git-http/qemu-xen.git" ; }
 qemu_xen_trad_dir(){ readlink -f ~/git/for_obs/qemu-xen-traditional.git ; }
 qemu_xen_trad_url(){ echo "https://xenbits.xen.org/git-http/qemu-xen-traditional.git" ; }
 seabios_dir()      { readlink -f ~/git/for_obs/seabios.git ; }
-seabios_url()      { echo "https://git.seabios.org/seabios.git" ; }
+seabios_url()      { echo "https://github.com/coreboot/seabios.git" ; }
 seabios_xenbits_dir() { readlink -f ~/git/for_obs/seabios.git ; }
 seabios_xenbits_url() { echo "https://xenbits.xen.org/git-http/seabios.git" ; }
 sgabios_dir()      { echo "none" ; }
@@ -193,6 +193,7 @@ case "${url}" in
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
   https://github.com/akheron/jansson) unhandled=1 ;;
   https://github.com/bonzini/qboot) unhandled=1 ;;
+  https://github.com/coreboot/seabios.git) seabios ;;
   https://github.com/coreutils/gnulib.git) gnulib ;;
   https://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
   https://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
