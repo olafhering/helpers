@@ -102,6 +102,7 @@ case "${upstream}" in
 	ocaml-version) pkg='ocaml-version' ;;
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
+	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
 	odoc) pkg='ocaml-odoc' ;;
 	opam) pkg='opam' ;;
 	opam-file-format) pkg='opam-file-format' ;;
