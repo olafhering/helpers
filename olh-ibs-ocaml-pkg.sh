@@ -73,8 +73,8 @@ case "${upstream}" in
 	csexp) pkg='ocaml-csexp' ;;
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
-	fpath) pkg='ocaml-fpath' ;;
 	fmt) pkg='ocaml-fmt' ;;
+	fpath) pkg='ocaml-fpath' ;;
 	gapi-ocaml) pkg='ocaml-gapi' ;;
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
@@ -91,8 +91,8 @@ case "${upstream}" in
 	num) pkg='ocaml-num' ;;
 	ocaml-base64) pkg='ocaml-base64' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
-	ocaml-ctypes) pkg='ocaml-ctypes' ; echo 'issue #588' ; exit 1 ;;
 	ocaml-compiler-libs) pkg='ocaml-ocaml-compiler-libs' ;;
+	ocaml-ctypes) pkg='ocaml-ctypes' ; echo 'issue #588' ; exit 1 ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
@@ -131,9 +131,9 @@ case "${upstream}" in
 	result) pkg='ocaml-result' ;;
 	rresult) pkg='ocaml-rresult' ;;
 	sedlex) pkg='ocaml-sedlex' ;;
+	sqlite3-ocaml) pkg='ocaml-sqlite' ;;
 	stdcompat) pkg='ocaml-stdcompat' ;;
 	stdlib-shims) pkg='ocaml-stdlib-shims' ;;
-	sqlite3-ocaml) pkg='ocaml-sqlite' ;;
 	unison) pkg='unison' ;;
 	utop) pkg='ocaml-utop' ;;
 	uucd) pkg='ocaml-uucd' ;;
