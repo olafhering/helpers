@@ -139,6 +139,7 @@ case "${upstream}" in
 	uucd) pkg='ocaml-uucd' ;;
 	uucp) pkg='ocaml-uucp' ;;
 	uuseg) pkg='ocaml-uuseg' ;;
+	variantslib) pkg='ocaml-variantslib' ;;
 	*) exit 1 ;;
 esac
 #
