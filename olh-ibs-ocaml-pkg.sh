@@ -110,6 +110,7 @@ case "${upstream}" in
 	parmap) pkg='ocaml-parmap' ;;
 	parsexp) pkg='ocaml-parsexp' ;;
 	pcre-ocaml) pkg='ocaml-pcre' ;;
+	ppx_cold) pkg='ocaml-ppx_cold' ;;
 	ppx_custom_printf) pkg='ocaml-ppx_custom_printf' ;;
 	ppx_deriving) pkg='ocaml-ppx_deriving' ;;
 	ppx_deriving_yojson) pkg='ocaml-ppx_deriving_yojson' ;;
