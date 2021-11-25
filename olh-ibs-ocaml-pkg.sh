@@ -54,6 +54,17 @@ else
 	exit 1
 fi
 #
+select_lwt() {
+	while true
+	do
+		read -n 1 -p "[1] ocaml-lwt, [2] ocaml-lwt_ppx, [3] ocaml-lwt_react"
+		case "${REPLY}" in
+		1) pkg='ocaml-lwt' ; break ;;
+		2) pkg='ocaml-lwt_ppx' ; break ;;
+		3) pkg='ocaml-lwt_react' ; break ;;
+		esac
+	done
+}
 test -n "${upstream}"
 test -n "${gitrev}"
 case "${upstream}" in
@@ -82,9 +93,7 @@ case "${upstream}" in
 	jst-config) pkg='ocaml-jst-config' ;;
 	lib-ocamlnet3) pkg='ocaml-ocamlnet' ;;
 	luv) pkg='ocaml-luv' ;;
-	lwt) pkg='ocaml-lwt' ;;
-	lwt) pkg='ocaml-lwt_ppx' ;;
-	lwt) pkg='ocaml-lwt_react' ;;
+	lwt) select_lwt ;;
 	markup.ml) pkg='ocaml-markup.ml' ;;
 	mdx) pkg='ocaml-mdx' ;;
 	menhir) pkg='ocaml-menhir' ;;
