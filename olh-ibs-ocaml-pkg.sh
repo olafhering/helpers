@@ -103,6 +103,7 @@ case "${upstream}" in
 	ocaml-cairo) pkg='ocaml-cairo' ;;
 	ocaml-compiler-libs) pkg='ocaml-ocaml-compiler-libs' ;;
 	ocaml-ctypes) pkg='ocaml-ctypes' ; echo 'issue #588' ; exit 1 ;;
+	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
