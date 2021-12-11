@@ -115,6 +115,7 @@ case "${upstream}" in
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
 	odoc) pkg='ocaml-odoc' ;;
+	odoc-parser) pkg='ocaml-odoc-parser' ;;
 	opam) pkg='opam' ;;
 	opam-file-format) pkg='opam-file-format' ;;
 	ounit) pkg='ocaml-ounit' ;;
