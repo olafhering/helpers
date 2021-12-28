@@ -54,6 +54,16 @@ else
 	exit 1
 fi
 #
+select_lablgtk() {
+	while true
+	do
+		read -n 1 -p "[2] ocaml-lablgtk2, [3] ocaml-lablgtk3"
+		case "${REPLY}" in
+		2) pkg='ocaml-lablgtk2' ; break ;;
+		3) pkg='ocaml-lablgtk3' ; break ;;
+		esac
+	done
+}
 select_lwt() {
 	while true
 	do
@@ -91,6 +101,7 @@ case "${upstream}" in
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
 	jst-config) pkg='ocaml-jst-config' ;;
+	lablgtk) select_lablgtk ;;
 	lib-ocamlnet3) pkg='ocaml-ocamlnet' ;;
 	luv) pkg='ocaml-luv' ;;
 	lwt) select_lwt ;;
