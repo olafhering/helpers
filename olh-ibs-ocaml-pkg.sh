@@ -95,6 +95,7 @@ case "${upstream}" in
 	curses) pkg='ocaml-curses' ;;
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
+	fix) pkg='ocaml-fix' ;;
 	fmt) pkg='ocaml-fmt' ;;
 	fpath) pkg='ocaml-fpath' ;;
 	gapi-ocaml) pkg='ocaml-gapi' ;;
