@@ -18,7 +18,7 @@ brotli_url()          { echo "https://github.com/google/brotli" ; }
 bsoftfloat3_dir()          { echo "none" ; }
 bsoftfloat3_url()          { echo "https://github.com/ucb-bar/berkeley-softfloat-3.git" ; }
 btestfloat3_dir()          { echo "none" ; }
-btestfloat3_url()          { echo "https://git.qemu.org/git/berkeley-testfloat-3.git" ; }
+btestfloat3_url()          { echo "https://github.com/ucb-bar/berkeley-testfloat-3" ; }
 claws_dir()       { readlink -f ~/git/for_obs/claws.git ; }
 claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
