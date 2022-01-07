@@ -40,7 +40,7 @@ ovmf_url()          { echo "https://github.com/tianocore/edk2.git" ; }
 openssl_dir()          { echo "none" ; }
 openssl_url()          { echo "https://github.com/openssl/openssl" ; }
 qemu_dir()         { readlink -f ~/git/for_obs/qemu.git ; }
-qemu_url()         { echo "https://git.qemu.org/git/qemu.git/" ; }
+qemu_url()         { echo "https://github.com/qemu/qemu.git" ; }
 qemu_xen_dir()     { readlink -f ~/git/for_obs/qemu-xen.git ; }
 qemu_xen_url()     { echo "https://xenbits.xen.org/git-http/qemu-xen.git" ; }
 qemu_xen_trad_dir(){ readlink -f ~/git/for_obs/qemu-xen-traditional.git ; }
@@ -208,6 +208,7 @@ case "${url}" in
   https://github.com/mesonbuild/meson.git) meson ;;
   https://github.com/olafhering/xen.git) xen ;;
   https://github.com/openssl/openssl) openssl ;;
+  https://github.com/qemu/qemu.git) qemu ;;
   https://github.com/tianocore/edk2-cmocka.git) unhandled=1 ;;
   https://github.com/tianocore/edk2.git) ovmf ;;
   https://github.com/ucb-bar/berkeley-softfloat-3.git) bsoftfloat3 ;;
