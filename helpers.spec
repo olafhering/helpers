@@ -9,7 +9,7 @@ Source:         %name-%version.tar
 BuildRoot:      %_tmppath/%name-%version-build
 BuildArch:      noarch
 %if %suse_version > 1110
-BuildRequires:  python(abi)
+BuildRequires:  python(abi) > 3.0
 %endif
 
 %description
