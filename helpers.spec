@@ -5,7 +5,7 @@ License:        GPL-2.0
 Summary:        helpers
 Url:            https://github.com/olafhering/helpers
 Group:          System/Base
-Source:         %name-%version.tar.xz
+Source:         %name-%version.tar
 BuildRoot:      %_tmppath/%name-%version-build
 BuildArch:      noarch
 
