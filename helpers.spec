@@ -24,6 +24,23 @@ for bin in *.sh
 do
   cp -aviL ${bin} "${DESTDIR}/${bin%.sh}"
 done
+python="$(type -P false)"
+for py in pyton3 python2 python
+do
+	if test -x "$(type -P ${py})"
+	then
+		python="$_"
+		break
+	fi
+done
+python="$(readlink -f ${python})"
+for py in *.py
+do
+	file="${DESTDIR}/${py%.py}"
+	echo "#!${python}" > "${file}"
+	cat "${py}" >> "${file}"
+	chmod -v 555 "${file}"
+done
 
 %files
 %defattr(-,root,root)
