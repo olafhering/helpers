@@ -28,7 +28,7 @@ do
   cp -aviL ${bin} "${DESTDIR}/${bin%.sh}"
 done
 python="$(type -P false)"
-for py in pyton3 python2 python
+for py in python3 python2 python
 do
 	if test -x "$(type -P ${py})"
 	then
