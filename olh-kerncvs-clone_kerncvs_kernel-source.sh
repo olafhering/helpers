@@ -14,7 +14,6 @@ set -e
 trap 'pwd' EXIT
 azure_branches="
 SLE12-SP5
-SLE15-SP2
 SLE15-SP3
 SLE15-SP4
 "
@@ -85,8 +84,7 @@ case "${branch}" in
 	SLE15-SP4-AZURE) clone_branch='SLE15-SP4-AZURE';;
 	SLE15-SP3)       clone_branch='SLE15-SP3'      ;;
 	SLE15-SP3-AZURE) clone_branch='SLE15-SP3-AZURE';;
-	SLE15-SP2)       clone_branch='SLE15-SP2'      ;;
-	SLE15-SP2-AZURE) clone_branch='SLE15-SP2-AZURE';;
+	SLE15-SP2)       clone_branch='SLE15-SP2-LTSS' ;;
 	SLE15-SP1)       clone_branch='SLE15-SP1-LTSS' ;;
 	SLE15)           clone_branch='SLE15-LTSS'     ;;
 	SLE12-SP5)       clone_branch='SLE12-SP5'      ;;
