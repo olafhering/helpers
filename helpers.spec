@@ -8,6 +8,9 @@ Group:          System/Base
 Source:         %name-%version.tar
 BuildRoot:      %_tmppath/%name-%version-build
 BuildArch:      noarch
+%if %suse_version > 1110
+BuildRequires:  pkconfig(python3)
+%endif
 
 %description
 helpers
