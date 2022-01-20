@@ -216,6 +216,7 @@ case "${url}" in
   https://github.com/ucb-bar/berkeley-testfloat-3) btestfloat3 ;;
   https://github.com/y-256/libdivsufsort.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
+  https://gitlab.com/libvirt/libvirt-ci) unhandled=1 ;;
   https://gitlab.com/qemu-project/QemuMacDrivers.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git/) unhandled=1 ;;
