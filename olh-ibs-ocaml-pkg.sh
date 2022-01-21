@@ -99,6 +99,7 @@ case "${upstream}" in
 	fmt) pkg='ocaml-fmt' ;;
 	fpath) pkg='ocaml-fpath' ;;
 	gapi-ocaml) pkg='ocaml-gapi' ;;
+	gen) pkg='ocaml-gen' ;;
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
 	jst-config) pkg='ocaml-jst-config' ;;
