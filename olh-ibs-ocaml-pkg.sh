@@ -123,7 +123,7 @@ case "${upstream}" in
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
 	ocaml-version) pkg='ocaml-version' ;;
-	ocamlfind) pkg='ocaml-findlib' ;;
+	ocamlfind) pkg='ocaml-findlib' ; echo "download tar.gz" ; exit 1 ;;
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
