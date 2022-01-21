@@ -117,13 +117,13 @@ case "${upstream}" in
 	ocaml-ctypes) pkg='ocaml-ctypes' ; echo 'issue #588' ; exit 1 ;;
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
-	ocaml-findlib) pkg='ocaml-findlib' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
 	ocaml-version) pkg='ocaml-version' ;;
+	ocamlfind) pkg='ocaml-findlib' ;;
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
