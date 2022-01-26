@@ -83,6 +83,7 @@ case "${upstream}" in
 	astring) pkg='ocaml-astring' ;;
 	base) pkg='ocaml-base' ;;
 	base_quickcheck) pkg='ocaml-base_quickcheck' ;;
+	bigarray-compat) pkg='ocaml-bigarray-compat' ;;
 	bisect_ppx) pkg='ocaml-bisect_ppx' ;;
 	bos) pkg='ocaml-bos' ;;
 	camlp5) pkg='ocaml-camlp5' ;;
