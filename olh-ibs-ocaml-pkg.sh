@@ -120,6 +120,7 @@ case "${upstream}" in
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
+	ocaml-lsp-server) pkg='ocaml-lsp-server' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
