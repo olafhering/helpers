@@ -86,6 +86,7 @@ case "${upstream}" in
 	bigarray-compat) pkg='ocaml-bigarray-compat' ;;
 	bisect_ppx) pkg='ocaml-bisect_ppx' ;;
 	bos) pkg='ocaml-bos' ;;
+	camlp-streams) pkg='ocaml-camlp-streams' ;;
 	camlp5) pkg='ocaml-camlp5' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
 	coq) pkg='ocaml-coq' ;;
