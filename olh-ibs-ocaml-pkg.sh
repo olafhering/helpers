@@ -170,6 +170,7 @@ case "${upstream}" in
 	uucd) pkg='ocaml-uucd' ;;
 	uucp) pkg='ocaml-uucp' ;;
 	uuseg) pkg='ocaml-uuseg' ;;
+	uutf) pkg='ocaml-uutf' ;;
 	variantslib) pkg='ocaml-variantslib' ;;
 	*) exit 1 ;;
 esac
