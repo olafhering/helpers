@@ -4,6 +4,7 @@ set -e
 # $0 <branch>: clone branch as is
 # $0 -m <branch>: clone branch as is, add remotes for the following branches:
 #     branch_EMBARGO
+#     branch-GA
 #     branch-UPDATE
 #     branch-LTSS
 #     branch-LTSS_EMBARGO
@@ -159,7 +160,7 @@ then
 	unmerged=()
 	if pushd ${repo_mirror}
 	then
-		candidates=( `git --no-pager branch | xargs -n1 | grep -E "(^|/)${branch}(|-UPDATE|_EMBARGO|-LTSS|-LTSS_EMBARGO|-AZURE|-AZURE_EMBARGO)($|/)"` )
+		candidates=( `git --no-pager branch | xargs -n1 | grep -E "(^|/)${branch}(|-GA|-UPDATE|_EMBARGO|-LTSS|-LTSS_EMBARGO|-AZURE|-AZURE_EMBARGO)($|/)"` )
 		for candidate in ${candidates[@]}
 		do
 			if [[ "${candidate}" =~ ^${branch} ]]
