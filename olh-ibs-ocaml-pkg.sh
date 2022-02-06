@@ -89,6 +89,7 @@ case "${upstream}" in
 	camlp-streams) pkg='ocaml-camlp-streams' ;;
 	camlp5) pkg='ocaml-camlp5' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
+	cmdliner) pkg='ocaml-cmdliner' ;;
 	coq) pkg='ocaml-coq' ;;
 	core) pkg='ocaml-core' ;;
 	core_kernel) pkg='ocaml-core_kernel' ;;
