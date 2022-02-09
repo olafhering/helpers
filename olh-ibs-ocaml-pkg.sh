@@ -170,6 +170,7 @@ case "${upstream}" in
 	utop) pkg='ocaml-utop' ;;
 	uucd) pkg='ocaml-uucd' ;;
 	uucp) pkg='ocaml-uucp' ;;
+	uuidm) pkg='ocaml-uuidm' ;;
 	uuseg) pkg='ocaml-uuseg' ;;
 	uutf) pkg='ocaml-uutf' ;;
 	variantslib) pkg='ocaml-variantslib' ;;
