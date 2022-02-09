@@ -173,6 +173,7 @@ case "${upstream}" in
 	uuseg) pkg='ocaml-uuseg' ;;
 	uutf) pkg='ocaml-uutf' ;;
 	variantslib) pkg='ocaml-variantslib' ;;
+	xmlm) pkg='ocaml-xmlm' ;;
 	*) exit 1 ;;
 esac
 #
