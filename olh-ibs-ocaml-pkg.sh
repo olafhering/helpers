@@ -107,6 +107,7 @@ case "${upstream}" in
 	graphics) pkg='ocaml-graphics' ;;
 	jst-config) pkg='ocaml-jst-config' ;;
 	lablgtk) select_lablgtk ;;
+	lambda-term) pkg='ocaml-lambda-term' ;;
 	lib-ocamlnet3) pkg='ocaml-ocamlnet' ;;
 	luv) pkg='ocaml-luv' ;;
 	lwt) select_lwt ;;
