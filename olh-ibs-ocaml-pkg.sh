@@ -115,6 +115,7 @@ case "${upstream}" in
 	mdx) pkg='ocaml-mdx' ;;
 	menhir) pkg='ocaml-menhir' ;;
 	merlin) pkg='ocaml-merlin' ;;
+	mmap) pkg='ocaml-mmap' ;;
 	num) pkg='ocaml-num' ;;
 	ocaml-base64) pkg='ocaml-base64' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
