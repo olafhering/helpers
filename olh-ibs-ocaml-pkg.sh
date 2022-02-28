@@ -162,6 +162,7 @@ case "${upstream}" in
 	ppx_fields_conv) pkg='ocaml-ppx_fields_conv' ;;
 	ppx_hash) pkg='ocaml-ppx_hash' ;;
 	ppx_here) pkg='ocaml-ppx_here' ;;
+	ppx_ignore_instrumentation) pkg='ocaml-ppx_ignore_instrumentation' ;;
 	ppx_inline_test) pkg='ocaml-ppx_inline_test' ;;
 	ppx_jane) pkg='ocaml-ppx_jane' ;;
 	ppx_js_style) pkg='ocaml-ppx_js_style' ;;
