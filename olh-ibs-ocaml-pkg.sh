@@ -109,6 +109,7 @@ case "${upstream}" in
 	gen) pkg='ocaml-gen' ;;
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
+	int_repr) pkg='ocaml-int_repr' ;;
 	jane-street-headers) pkg='ocaml-jane-street-headers' ;;
 	jst-config) pkg='ocaml-jst-config' ;;
 	lablgtk) select_lablgtk ;;
