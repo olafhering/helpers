@@ -96,6 +96,7 @@ case "${upstream}" in
 	core) pkg='ocaml-core' ;;
 	core_bench) pkg='ocaml-core_bench' ;;
 	core_kernel) pkg='ocaml-core_kernel' ;;
+	core_unix) pkg='ocaml-core_unix' ;;
 	cppo) pkg='ocaml-cppo' ;;
 	csexp) pkg='ocaml-csexp' ;;
 	curses) pkg='ocaml-curses' ;;
