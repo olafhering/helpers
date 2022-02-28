@@ -197,6 +197,7 @@ case "${upstream}" in
 	stdio) pkg='ocaml-stdio' ;;
 	stdlib-shims) pkg='ocaml-stdlib-shims' ;;
 	textutils) pkg='ocaml-textutils' ;;
+	textutils_kernel) pkg='ocaml-textutils_kernel' ;;
 	time_now ) pkg='ocaml-time_now' ;;
 	typerep) pkg='ocaml-typerep' ;;
 	unison) pkg='unison' ;;
