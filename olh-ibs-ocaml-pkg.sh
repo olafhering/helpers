@@ -164,6 +164,7 @@ case "${upstream}" in
 	result) pkg='ocaml-result' ;;
 	rresult) pkg='ocaml-rresult' ;;
 	sedlex) pkg='ocaml-sedlex' ;;
+	sexplib0) pkg='ocaml-sexplib0' ;;
 	spawn) pkg='ocaml-spawn' ;;
 	sqlite3-ocaml) pkg='ocaml-sqlite' ;;
 	stdcompat) pkg='ocaml-stdcompat' ;;
