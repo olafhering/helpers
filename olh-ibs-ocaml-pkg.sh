@@ -166,6 +166,7 @@ case "${upstream}" in
 	ppx_jane) pkg='ocaml-ppx_jane' ;;
 	ppx_js_style) pkg='ocaml-ppx_js_style' ;;
 	ppx_let) pkg='ocaml-ppx_let' ;;
+	ppx_log) pkg='ocaml-ppx_log' ;;
 	ppx_module_timer) pkg='ocaml-ppx_module_timer' ;;
 	ppx_optcomp) pkg='ocaml-ppx_optcomp' ;;
 	ppx_optional) pkg='ocaml-ppx_optional' ;;
