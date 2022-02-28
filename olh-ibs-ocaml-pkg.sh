@@ -199,6 +199,7 @@ case "${upstream}" in
 	textutils) pkg='ocaml-textutils' ;;
 	textutils_kernel) pkg='ocaml-textutils_kernel' ;;
 	time_now ) pkg='ocaml-time_now' ;;
+	timezone ) pkg='ocaml-timezone' ;;
 	typerep) pkg='ocaml-typerep' ;;
 	unison) pkg='unison' ;;
 	utop) pkg='ocaml-utop' ;;
