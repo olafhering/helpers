@@ -190,6 +190,7 @@ case "${upstream}" in
 	result) pkg='ocaml-result' ;;
 	rresult) pkg='ocaml-rresult' ;;
 	sedlex) pkg='ocaml-sedlex' ;;
+	sexp_pretty) pkg='ocaml-sexp_pretty' ;;
 	sexplib) pkg='ocaml-sexplib' ;;
 	sexplib0) pkg='ocaml-sexplib0' ;;
 	spawn) pkg='ocaml-spawn' ;;
