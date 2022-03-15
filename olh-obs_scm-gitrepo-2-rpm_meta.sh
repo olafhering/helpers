@@ -4,6 +4,7 @@ set -e
 unset LANG
 unset ${!LC*}
 #
+multibuild=
 work_dir=
 out_dir=
 direct_submodules=true
@@ -110,6 +111,7 @@ while test $# -gt 0
 do
   : $1
   case "$1" in
+    --multibuild) multibuild='true' ;;
     --outdir) out_dir=$2 ; shift ;;
     --workdir) work_dir=$2 ; shift ;;
     --git-dir) git_dir=$2 ; shift ;;
@@ -316,7 +318,12 @@ then
   </service>
 _EOS_
   {
-    echo "Source@SOURCE_COUNTER@: %name-%version.tar"
+    if test -n "${multibuild}"
+    then
+      echo "Source@SOURCE_COUNTER@: %tag-%version.tar"
+    else
+      echo "Source@SOURCE_COUNTER@: %name-%version.tar"
+    fi
     echo "#KEEP NOSOURCE DEBUGINFO"
     echo "NoSource: @SOURCE_COUNTER@"
     echo "%if %suse_version > 1110"

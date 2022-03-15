@@ -7,6 +7,7 @@ unset ${!LC*}
 _sed() { /z_crypt_lvm_btrfs/sle12/usr/bin/sed "$@" ; }
 work_dir=
 pkg_tag=
+multibuild=
 #
 rpm_spec=
 declare -i counter=0
@@ -21,6 +22,7 @@ do
   case "$1" in
     --workdir) work_dir=$2 ; shift ;;
     --pkg-tag) pkg_tag=$2 ; shift ;;
+    --multibuild) multibuild='true' ;;
     *) echo "UNHANDLED: $0 $*" >&2 ; exit 1 ;;
   esac
   shift
@@ -28,6 +30,12 @@ done
 #
 : pkg_tag "${pkg_tag}"
 test -n "${pkg_tag}"
+if test -n "${multibuild}"
+then
+  rpm_name_tag='%tag-%build_flavor'
+else
+  rpm_name_tag=${pkg_tag}
+fi
 rpm_spec="${pkg_tag}.spec"
 test -f "${rpm_spec}"
 #
@@ -61,7 +69,12 @@ counter=0
 #
 counter=0
 {
-  echo "%setup -q"
+  if test -n "${multibuild}"
+  then
+    echo "%setup -q -n %tag-%version"
+  else
+    echo "%setup -q"
+  fi
   for i in */service.txt
   do
     f=${i%/*}/spec.patch.txt
@@ -90,7 +103,7 @@ _sed "
  /^Source[0-9][0-9][0-9]:/d
  /^Version:/d
  /^Release:/d
- /^Name:.*/s@^.*@Name:           ${pkg_tag}\\
+ /^Name:.*/s@^.*@Name:           ${rpm_name_tag}\\
 Version:        0\\
 Release:        0@
  /^Version:.*/s@^.*@Version:        0@
