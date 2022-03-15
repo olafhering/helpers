@@ -166,7 +166,7 @@ then
     echo "rm -rf '${pkg_patch_basedir}'"
     echo "tar xfa %{SOURCE@SOURCE_COUNTER@}"
     echo "mkdir -vp '${pkg_patch_basedir%/*}'"
-    echo "mv -v '${src_path}-%{${src_path}_version}' '${pkg_patch_basedir}'"
+    echo "mv -v '${src_path}-%${src_path}_version' '${pkg_patch_basedir}'"
   } >> spec.patch.txt
 fi
 git_hash="${git_upstream_commit}"
@@ -316,7 +316,7 @@ then
   </service>
 _EOS_
   {
-    echo "Source@SOURCE_COUNTER@: %{name}-%{version}.tar"
+    echo "Source@SOURCE_COUNTER@: %name-%version.tar"
     echo "#KEEP NOSOURCE DEBUGINFO"
     echo "NoSource: @SOURCE_COUNTER@"
     echo "%if %suse_version > 1110"
@@ -326,7 +326,7 @@ _EOS_
 else
   {
     echo "%define ${src_path}_version ${git_hash}"
-    echo "Source@SOURCE_COUNTER@: ${src_path}-%{${src_path}_version}.tar"
+    echo "Source@SOURCE_COUNTER@: ${src_path}-%${src_path}_version.tar"
     echo "#KEEP NOSOURCE DEBUGINFO"
     echo "NoSource: @SOURCE_COUNTER@"
   } >> spec.Patch.txt
