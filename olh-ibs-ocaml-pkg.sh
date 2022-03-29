@@ -128,6 +128,7 @@ case "${upstream}" in
 	ocaml-base64) pkg='ocaml-base64' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
 	ocaml-compiler-libs) pkg='ocaml-ocaml-compiler-libs' ;;
+	ocaml-cstruct) pkg='ocaml-cstruct' ;;
 	ocaml-ctypes) pkg='ocaml-ctypes' ; echo 'issue #588' ; exit 1 ;;
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
