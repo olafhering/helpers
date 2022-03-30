@@ -132,6 +132,7 @@ case "${upstream}" in
 	ocaml-ctypes) pkg='ocaml-ctypes' ; echo 'issue #588' ; exit 1 ;;
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
+	ocaml-fileutils) pkg='ocaml-fileutils' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
 	ocaml-lsp-server) pkg='ocaml-lsp-server' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
