@@ -69,7 +69,7 @@ then
 else
   git init
   git remote add    --tags upstream            https://github.com/ipxe/ipxe.git
-  git remote add --no-tags github_ipxe         git://github.com/ipxe/ipxe.git
+  git remote add --no-tags github_ipxe         https://github.com/ipxe/ipxe.git
   git remote add --no-tags github_olafhering   git@github.com:olafhering/ipxe.git
   git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/ipxe.git
   git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/ipxe.git
@@ -106,7 +106,7 @@ then
   popd > /dev/null
 else
   git init
-  git remote add    --tags upstream            git://github.com/tianocore/edk2.git
+  git remote add    --tags upstream            https://github.com/tianocore/edk2.git
   git remote add    --tags xenbits_ovmf        git://xenbits.xen.org/ovmf.git
   git remote add --no-tags github_olafhering   git@github.com:olafhering/edk2.git
   git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/edk2.git
@@ -126,7 +126,7 @@ then
 else
   git init
   git remote add    --tags upstream            git://git.qemu.org/qemu.git
-  git remote add --no-tags github_qemu         git://github.com/qemu/qemu.git
+  git remote add --no-tags github_qemu         https://github.com/qemu/qemu.git
   git remote add --no-tags github_olafhering   git@github.com:olafhering/qemu.git
   git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/qemu.git
   git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/qemu.git
@@ -203,7 +203,7 @@ else
   git init
   git remote add    --tags upstream          git://libvirt.org/libvirt.git
   git remote add --no-tags libvirt_libvirt   git://libvirt.org/libvirt.git
-  git remote add --no-tags github_libvirt    git://github.com/libvirt/libvirt.git
+  git remote add --no-tags github_libvirt    https://github.com/libvirt/libvirt.git
   git remote add --no-tags github_olafhering git@github.com:olafhering/libvirt.git
   git remote add --no-tags gitlab_olafhering git@gitlab.com:olafhering/libvirt.git
   git remote add --no-tags gitlab_olh        gitlab@gitlab.suse.de:olh/libvirt.git
@@ -262,7 +262,7 @@ else
   git init
   git remote add    --tags upstream          git://xenbits.xen.org/xen.git
   git remote add --no-tags xenbits_xen       git://xenbits.xen.org/xen.git
-  git remote add --no-tags github_xen        git://github.com/xen-project/xen.git
+  git remote add --no-tags github_xen        https://github.com/xen-project/xen.git
   git remote add --no-tags gitlab_xen        git@gitlab.com:xen-project/xen.git
   git remote add --no-tags github_olafhering git@github.com:olafhering/xen.git
   git remote add --no-tags gitlab_olafhering git@gitlab.com:olafhering/xen.git
