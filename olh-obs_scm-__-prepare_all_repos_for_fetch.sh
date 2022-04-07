@@ -201,7 +201,7 @@ then
   popd > /dev/null
 else
   git init
-  git remote add    --tags upstream          git://libvirt.org/libvirt.git
+  git remote add    --tags upstream          https://gitlab.com/libvirt/libvirt.git
   git remote add --no-tags libvirt_libvirt   git://libvirt.org/libvirt.git
   git remote add --no-tags github_libvirt    https://github.com/libvirt/libvirt.git
   git remote add --no-tags github_olafhering git@github.com:olafhering/libvirt.git
