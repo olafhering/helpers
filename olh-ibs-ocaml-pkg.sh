@@ -165,6 +165,7 @@ case "${upstream}" in
 	ppx_enumerate) pkg='ocaml-ppx_enumerate' ;;
 	ppx_expect) pkg='ocaml-ppx_expect' ;;
 	ppx_fields_conv) pkg='ocaml-ppx_fields_conv' ;;
+	ppx_fixed_literal) pkg='ocaml-ppx_fixed_literal' ;;
 	ppx_hash) pkg='ocaml-ppx_hash' ;;
 	ppx_here) pkg='ocaml-ppx_here' ;;
 	ppx_ignore_instrumentation) pkg='ocaml-ppx_ignore_instrumentation' ;;
