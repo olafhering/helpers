@@ -54,8 +54,6 @@ case "${HOSTNAME}" in
   ;;
 esac
 I="${kernel_module_output}"
-kernel_output_bzimage="${kernel_module_output}"/bzImage
-kernel_output_system_map="${kernel_module_output}"/System.map
 #
 kernel_arch=arm64
 kernel_build_output=${kernel_arch}-O-${git_branch}
