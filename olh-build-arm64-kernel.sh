@@ -148,8 +148,8 @@ fi
 if test "$1" = "modules_install"
 then
 	cond_copy \
-		"${O}/arch/x86_64/boot/bzImage" \
-		"${I}/boot/vmlinuz${suffix}"
+		"${O}/arch/arm64/boot/Image" \
+		"${I}/boot/Image${suffix}"
 	cond_copy \
 		"${O}/System.map" \
 		"${I}/boot/System.map${suffix}"
@@ -171,11 +171,11 @@ unset \${!LC_*}
 
 cd \${0%/*}
 suffix="${sfx}"
-kernel=boot/vmlinuz\${suffix}
+kernel=boot/Image\${suffix}
 sysmap=boot/System.map\${suffix}
 config=boot/config\${suffix}
 kver=\` get_kernel_version \$kernel \`
-vmlinuz=vmlinuz-\$kver
+vmlinuz=Image-\$kver
 initrd=initrd-\$kver
 smap=System.map-\$kver
 conf=config-\$kver
