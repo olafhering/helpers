@@ -49,9 +49,6 @@ bugnumber=${git_branch}
 #
 #
 case "${HOSTNAME}" in
-  satriani)
-  kernel_module_output=/nfs_vmimages/kernel/${bugnumber}
-  ;;
   *)
   kernel_module_output=/dev/shm/olaf/bug/${bugnumber}
   ;;
