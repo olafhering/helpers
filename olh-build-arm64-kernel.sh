@@ -59,7 +59,6 @@ kernel_arch=arm64
 kernel_build_output=${kernel_arch}-O-${git_branch}
 O="$PWD/../O/${kernel_build_output}"
 make_opts=(
-CROSS_COMPILE=aarch64-suse-linux-
 ARCH=${kernel_arch}
 SUBLEVEL=321
 EXTRAVERSION=
@@ -67,6 +66,12 @@ LOCALVERSION="-${bugnumber}"
 quiet_cmd_modules_install=
 INSTALL_MOD_PATH="${I}"
 )
+case "$(uname -m)" in
+	aarch64) ;;
+	*)
+	make_opts+=( CROSS_COMPILE=aarch64-suse-linux- )
+	;;
+esac
 #
 do_copy() {
 	local file_src=$1
