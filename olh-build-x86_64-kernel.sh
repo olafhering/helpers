@@ -166,7 +166,7 @@ set -e
 unset LANG
 unset \${!LC_*}
 
-cd \${0%/*}
+pushd \${0%/*}
 suffix="${sfx}"
 kernel=boot/vmlinuz\${suffix}
 sysmap=boot/System.map\${suffix}
@@ -207,7 +207,7 @@ depmod -a \$kver
 modules=
 for dir in /sys/block/*/device /sys/class/net/*/device
 do
-  if pushd \${dir}
+  if pushd \${dir} > /dev/null
   then
     cd -P \$PWD
     until test "\$PWD" = "/"
@@ -220,9 +220,10 @@ do
       fi
       cd ..
     done
-    popd
+    popd > /dev/null
   fi
 done
+popd > /dev/null
 time mkinitrd -k \$vmlinuz -i \$initrd \$splash -m "xen:vbd xen:vif \${modules}"
 rm -fv /boot/custom.grub-\$kver.cfg
 cat > /boot/custom.grub-\$kver.cfg <<_EOGC_
