@@ -102,6 +102,7 @@ case "${upstream}" in
 	curses) pkg='ocaml-curses' ;;
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
+	easy-format) pkg='ocaml-easy-format' ;;
 	expect_test_helpers_core) pkg='ocaml-expect_test_helpers_core' ;;
 	fieldslib) pkg='ocaml-fieldslib' ;;
 	fix) pkg='ocaml-fix' ;;
