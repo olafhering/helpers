@@ -150,6 +150,7 @@ case "${upstream}" in
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
 	odoc) pkg='ocaml-odoc' ;;
 	odoc-parser) pkg='ocaml-odoc-parser' ;;
+	omd) pkg='ocaml-omd' ;;
 	opam) pkg='opam' ;;
 	opam-file-format) pkg='opam-file-format' ;;
 	ounit) pkg='ocaml-ounit' ;;
