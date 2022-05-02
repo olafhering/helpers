@@ -98,6 +98,7 @@ case "${upstream}" in
 	core_kernel) pkg='ocaml-core_kernel' ;;
 	core_unix) pkg='ocaml-core_unix' ;;
 	cppo) pkg='ocaml-cppo' ;;
+	cryptokit) pkg='ocaml-cryptokit' ;;
 	csexp) pkg='ocaml-csexp' ;;
 	curses) pkg='ocaml-curses' ;;
 	dose3) pkg='ocaml-dose' ;;
