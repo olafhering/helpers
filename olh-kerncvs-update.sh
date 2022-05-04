@@ -89,6 +89,7 @@ do
 		claim_lock "${repo}"
 		test -n "${remotes[openSUSE]}"   && git --no-pager fetch "$_"
 		test -n "${remotes[olafhering]}" && git --no-pager fetch "$_"
+		test -n "${remotes[code-mirror]}" && git --no-pager fetch "$_"
 		test -n "${remotes[kerncvs]}"    && git --no-pager fetch "$_" --prune --tags --prune-tags
 		release_lock "${repo}"
 		unset remotes
