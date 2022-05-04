@@ -10,6 +10,8 @@ pkgs=(
 'make'
 'pkgconfig(libelf)'
 'pkgconfig(openssl)'
+'python3-dbm'
+'python3-pygit2'
 'quilt'
 'rapidquilt'
 'rsync'
