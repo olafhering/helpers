@@ -9,6 +9,10 @@ kerncvs.kernel.bare.mirror
 trees_no_tags="
 LINUX_GIT
 "
+trees_multi_remotes=(
+kerncvs.kernel-source.git
+kerncvs.kernel.git
+)
 #
 do_upstream_linux="$1"
 #
@@ -72,6 +76,26 @@ do
 		popd
 	fi
 done
+#
+for repo in ${trees_multi_remotes[@]}
+do
+	if pushd "${repo}"
+	then
+		declare -A remotes
+		for remote in $(git --no-pager remote show)
+		do
+			remotes[${remote}]="${remote}"
+		done
+		claim_lock "${repo}"
+		test -n "${remotes[openSUSE]}"   && git --no-pager fetch "$_"
+		test -n "${remotes[olafhering]}" && git --no-pager fetch "$_"
+		test -n "${remotes[kerncvs]}"    && git --no-pager fetch "$_" --prune --tags --prune-tags
+		release_lock "${repo}"
+		unset remotes
+		popd
+	fi
+done
+#
 for i in ${trees_no_tags}
 do
 	if pushd "$i"
