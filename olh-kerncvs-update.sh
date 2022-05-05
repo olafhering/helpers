@@ -2,13 +2,13 @@
 unset LANG
 unset ${!LC_*}
 topdir=~/work/src/kernel
-trees_tags="
+trees_tags=(
 kerncvs.kernel-source.bare.mirror
 kerncvs.kernel.bare.mirror
-"
-trees_no_tags="
+)
+trees_no_tags=(
 LINUX_GIT
-"
+)
 trees_multi_remotes=(
 kerncvs.kernel-source.git
 kerncvs.kernel.git
@@ -54,7 +54,7 @@ release_lock()
 }
 #
 pushd "${topdir}" || exit 1
-for i in ${trees_tags}
+for i in ${trees_tags[@]}
 do
 	if pushd "$i"
 	then
@@ -97,7 +97,7 @@ do
 	fi
 done
 #
-for i in ${trees_no_tags}
+for i in ${trees_no_tags[@]}
 do
 	if pushd "$i"
 	then
