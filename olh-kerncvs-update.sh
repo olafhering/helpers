@@ -54,11 +54,11 @@ release_lock()
 }
 #
 pushd "${topdir}" || exit 1
-for i in ${trees_tags[@]}
+for repo in ${trees_tags[@]}
 do
-	if pushd "$i"
+	if pushd "${repo}"
 	then
-		claim_lock "$i"
+		claim_lock "${repo}"
 		git fetch --all --tags --prune
 		for l in gc.log .git/gc.log
 		do
@@ -72,7 +72,7 @@ do
 				git prune
 			fi
 		done
-		release_lock "$i"
+		release_lock "${repo}"
 		popd
 	fi
 done
@@ -97,11 +97,11 @@ do
 	fi
 done
 #
-for i in ${trees_no_tags[@]}
+for repo in ${trees_no_tags[@]}
 do
-	if pushd "$i"
+	if pushd "${repo}"
 	then
-		claim_lock "$i"
+		claim_lock "${repo}"
 		git fetch --all --prune
 		for l in gc.log .git/gc.log
 		do
@@ -115,21 +115,21 @@ do
 				git prune
 			fi
 		done
-		release_lock "$i"
+		release_lock "${repo}"
 		popd
 	fi
 done
 test -n "${do_upstream_linux}" || exit 0
-i='upstream.linux'
-if pushd "$i"
+repo='upstream.linux'
+if pushd "${repo}"
 then
-	claim_lock "$i"
+	claim_lock "${repo}"
 	git fetch --all
 	echo
 	echo pushing
 	echo
 	git push  --tags github.olafhering.linux.git torvalds.linux.git/master:master
-	release_lock "$i"
+	release_lock "${repo}"
 	popd
 fi
 date
