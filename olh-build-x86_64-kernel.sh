@@ -106,6 +106,7 @@ then
 		mv -fv .config config.$PPID
 	else
 		sed -i /_DEBUG_INFO/d .config
+		sed -i /MODULE_SIG_KEY/d .config
 		mv -vi .config "${O}/.config"
 	fi
 fi
