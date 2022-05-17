@@ -137,6 +137,7 @@ case "${upstream}" in
 	ocaml-fileutils) pkg='ocaml-fileutils' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
 	ocaml-lsp-server) pkg='ocaml-lsp-server' ;;
+	ocaml-mccs) pkg='ocaml-mccs' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
