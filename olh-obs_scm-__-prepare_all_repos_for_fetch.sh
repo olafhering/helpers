@@ -32,7 +32,7 @@ then
   popd > /dev/null
 else
   git init
-  git remote add    --tags upstream            git://git.claws-mail.org/claws.git
+  git remote add    --tags upstream            https://git.claws-mail.org/readonly/claws
   git remote add --no-tags github_olafhering   git@github.com:olafhering/claws.git
   git remote add --no-tags gitlab_olafhering   git@gitlab.com:olafhering/claws.git
   git remote add --no-tags gitlab_olh          gitlab@gitlab.suse.de:olh/claws.git
