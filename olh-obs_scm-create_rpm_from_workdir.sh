@@ -109,7 +109,7 @@ Release:        0@
  /^Version:.*/s@^.*@Version:        0@
 " "${rpm_spec}" |
 _sed -n "
-/^Url:/{
+/^U[rR][lL]:/{
  p
  r ${work_dir}/spec.Commit.txt
  r ${work_dir}/spec.Patch.txt
