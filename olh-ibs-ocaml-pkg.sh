@@ -143,7 +143,6 @@ case "${upstream}" in
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
 	ocaml-version) pkg='ocaml-version' ;;
-	ocaml-yojson) pkg='ocaml-yojson' ;;
 	ocaml_intrinsics) pkg='ocaml-ocaml_intrinsics' ;;
 	ocamlbuild) pkg='ocaml-ocamlbuild' ;;
 	ocamlfind) pkg='ocaml-findlib' ; echo "download tar.gz" ; exit 1 ;;
@@ -222,6 +221,7 @@ case "${upstream}" in
 	uutf) pkg='ocaml-uutf' ;;
 	variantslib) pkg='ocaml-variantslib' ;;
 	xmlm) pkg='ocaml-xmlm' ;;
+	yojson) pkg='ocaml-yojson' ;;
 	*) exit 1 ;;
 esac
 #
