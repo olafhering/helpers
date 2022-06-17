@@ -86,6 +86,7 @@ case "${upstream}" in
 	base_quickcheck) pkg='ocaml-base_quickcheck' ;;
 	bigarray-compat) pkg='ocaml-bigarray-compat' ;;
 	bin_prot) pkg='ocaml-bin_prot' ;;
+	biniou) pkg='ocaml-biniou' ;;
 	bisect_ppx) pkg='ocaml-bisect_ppx' ;;
 	bos) pkg='ocaml-bos' ;;
 	camlp-streams) pkg='ocaml-camlp-streams' ;;
