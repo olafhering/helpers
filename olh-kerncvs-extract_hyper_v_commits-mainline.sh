@@ -247,7 +247,7 @@ then
 			: "${revspec} ${pn##*/} is upstream"
 			if test -e "${hv_dir}/${upstream_revspec_dir}/${revspec}"
 			then
-				pn="`readlink -f ${hv_dir}/${upstream_revspec_dir}/${revspec}`"
+				read pn < <(readlink -f ${hv_dir}/${upstream_revspec_dir}/${revspec})
 				rm -fv "${pn}" "${hv_dir}/${upstream_revspec_dir}/${revspec}"
 			fi
 			unset new_patch_names[${revspec}]
