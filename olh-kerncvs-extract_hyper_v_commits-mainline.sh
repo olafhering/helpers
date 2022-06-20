@@ -294,7 +294,7 @@ then
 
 		if test -f "${p}"
 		then
-			revspec=`grep -m1 Git-commit: ${p} | awk '{ print $2}'`
+			read revspec < <(awk '{ if (/^Git-commit:/ ) { print $2 ; fflush() ; exit 0 ; } }' "${p}")
 			if test -z "${revspec}"
 			then
 				# oddly formated patch, it has to be redone
