@@ -223,6 +223,7 @@ case "${upstream}" in
 	variantslib) pkg='ocaml-variantslib' ;;
 	xmlm) pkg='ocaml-xmlm' ;;
 	yojson) pkg='ocaml-yojson' ;;
+	zed) pkg='ocaml-zed' ;;
 	*) exit 1 ;;
 esac
 #
