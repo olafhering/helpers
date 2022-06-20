@@ -248,12 +248,13 @@ then
 			if test -e "${hv_dir}/${upstream_revspec_dir}/${revspec}"
 			then
 				read pn < <(readlink -f ${hv_dir}/${upstream_revspec_dir}/${revspec})
-				rm -fv "${pn}" "${hv_dir}/${upstream_revspec_dir}/${revspec}"
+				rm -fv "${pn}" "${hv_dir}/${upstream_revspec_dir}/${revspec}" &
 			fi
 			unset new_patch_names[${revspec}]
 			unset new_patch_copy[${revspec}]
 		fi
 	done
+	wait
 	echo "${count} already upstream"
 fi
 #
