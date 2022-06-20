@@ -320,7 +320,7 @@ then
 		: ${p} is valid
 		revspec=$p
 
-		pn="`readlink -f ${p}`"
+		read pn < <(readlink -f ${p})
 		old_patch_names[${revspec}]="${pn##*/}"
 		if test -n "${new_patch_names[${revspec}]}"
 		then
