@@ -273,7 +273,7 @@ then
 
 		case "${p}" in
 			# drop backup files
-			*~) rm -f "${p}" ; continue ;;
+			*~) rm -f "${p}" & continue ;;
 		esac
 
 		count=$(( count + 1 ))
