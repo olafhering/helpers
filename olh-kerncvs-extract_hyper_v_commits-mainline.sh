@@ -229,9 +229,10 @@ pushd "${outdir}" > /dev/null
 		revspec=$(awk '{ if (/^From / ) { print $2 ; fflush() ; exit 0 ; } }' "$p")
 		new_patch_names[${revspec}]="msft-hv-${p##*/}"
 		new_patch_copy[${revspec}]=${new_patch_names[${revspec}]}
-		mv "${p}" "${new_patch_names[${revspec}]}"
+		mv "${p}" "${new_patch_names[${revspec}]}" &
 		count=$(( count + 1 ))
 	done
+	wait
 	echo "${count} patches exported"
 popd > /dev/null
 #
