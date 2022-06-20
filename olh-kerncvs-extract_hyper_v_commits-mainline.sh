@@ -226,7 +226,7 @@ pushd "${outdir}" > /dev/null
 	# collect info about current list of patches
 	for p in *.patch
 	do
-		revspec=$(awk '{ if (/^From / ) { print $2 ; fflush() ; exit 0 ; } }' "$p")
+		read revspec < <(awk '{ if (/^From / ) { print $2 ; fflush() ; exit 0 ; } }' "$p")
 		new_patch_names[${revspec}]="msft-hv-${p##*/}"
 		new_patch_copy[${revspec}]=${new_patch_names[${revspec}]}
 		mv "${p}" "${new_patch_names[${revspec}]}" &
