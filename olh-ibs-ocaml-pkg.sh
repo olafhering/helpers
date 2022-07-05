@@ -120,6 +120,7 @@ case "${upstream}" in
 	lablgtk) select_lablgtk ;;
 	lambda-term) pkg='ocaml-lambda-term' ;;
 	lib-ocamlnet3) pkg='ocaml-ocamlnet' ;;
+	logs) pkg='ocaml-logs' ;;
 	luv) pkg='ocaml-luv' ;;
 	lwt) select_lwt ;;
 	markup.ml) pkg='ocaml-markup.ml' ;;
