@@ -65,7 +65,7 @@ then
 				
 		fi
 	else
-		if test -d ${upstream_git} && test -d ${upstream_git}/.git
+		if test -d ${upstream_git}/.git
 		then
 			do_mainline "${Linux_remote}" "${Linux_branch}"
 			remotes="
