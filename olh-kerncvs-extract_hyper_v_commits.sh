@@ -67,6 +67,11 @@ then
 	else
 		if test -d ${upstream_git}/.git
 		then
+			if pushd "${upstream_git}" > /dev/null
+			then
+				time git --no-pager git-commit-graph write --reachable
+				popd > /dev/null
+			fi
 			do_mainline "${Linux_remote}" "${Linux_branch}"
 			remotes="
 			davem.net.git
