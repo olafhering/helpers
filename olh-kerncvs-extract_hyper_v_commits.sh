@@ -69,7 +69,7 @@ then
 		then
 			if pushd "${upstream_git}" > /dev/null
 			then
-				time git --no-pager git-commit-graph write --reachable
+				time git --no-pager git commit-graph write --reachable
 				popd > /dev/null
 			fi
 			do_mainline "${Linux_remote}" "${Linux_branch}"
