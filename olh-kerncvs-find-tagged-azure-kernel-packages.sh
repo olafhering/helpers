@@ -28,6 +28,7 @@ do
 done
 #
 echo "Searching in ${#rpm_dirs[@]} directories ..."
+test ${#rpm_dirs[@]} -gt 0
 find "${rpm_dirs[@]}" -xdev -name 'kernel-azure-?.*64.rpm' -exec /usr/bin/readlink -f '{}' + > "${list_kernel_binaries}"
 wc -l "${list_kernel_binaries}"
 popd > /dev/null
