@@ -5,6 +5,109 @@ unset ${!LC_*}
 read td < <(mktemp --directory --tmpdir=/dev/shm .XXX)
 trap "rm -rf '${td}'" EXIT
 export TMPDIR="${td}"
+list_of_verified_commits=(
+009ad22ebdaea2d14f8ecd95672dbc2517d28126
+05cfb85431568c859a08c58dcb952c7222934283
+05d5af7a6c0cb2ae4c0f335296e3ae1d8c28f6d0
+0669e11edfca78e8e0c7c6d1238fa00503433f1b
+0aa51320894f8c0a0f8974a115eb0aa043d22249
+0cd221a24d9035f1254d76db40b3426cb6ee7d6d
+0f290e026b5da1628c1c8330afcc729422b4c48a
+0fc0d89662492b1a03c9ab647c6b3530b781721a
+167a7e6a373a2be149720f3c62ebec966f92a075
+21b286ddb645d311996db968478abadbc285b10e
+229b28a333fc00ed9fc0e01845a176d44c676886
+239c678f535ade6b0ffdbce66480e981961992db
+25014fdcfbf95eb8b7bbfbd4175b7991c8af7a13
+27ef00b3dfce4a3ce869e486d7ad21e08d722045
+29026399e3ed328aa076de3805c731104c6879db
+2a402dfd7eba330d6c63ca488f87e3606e5e013a
+2cc0f4326165995caf15eb4612311ba5f329f40b
+2ef640cc9efa91c4575974f4fbad70945459ee30
+2ff37453528c69868e0daff714a1b314b0b86572
+33f1501fcd54175b908dff9ccd477573b80461e3
+3537befd232498b14e9caef9b403be7730453454
+354ad99bc468a8115dba83f3064f376347d9cfb3
+3a507b26dc45e93c5d5b90e1979067b4f51d8e39
+3b337ac5599456eac3eb3cfc4070cb76f29fd49e
+3b8ce704bb1b0b486ea2ae6e758346938060b731
+3f5628587659dc0e1457876aac451e019853265d
+42410b3106954b309b30192171d183270a6400e6
+43a4c0ffa299b1071f9d26e743524d9d8a841973
+43afe7ad6651cb5e2beff94ad943710bd17ab6d0
+445f0dbc125c5ef2f3784d29a6f764f251ceb57d
+45dce7b6599733a5c00bbcae0d729848fd3ee131
+47becc8140306eb1e75bbfe88b48c7ed5cb483e3
+48423a6a3600589c30c5653df9a533d158aa1006
+51e18b8b16b81a6cf0845fbb6bfe7b566588fc72
+55f9e30663704306698c66437e7dbb2386b5d9e4
+5621bfb492b339984ebae2db70aa93cb7c27628a
+56e8327bac3f5af08a687f39b633ee0843601683
+57b4f6f9220efe8710f88ae5f667bcd73ce47b1d
+586602b6319f37754ed75adb608c42c95171b0b6
+59f8b791d882dcf931cee4ae6b30a2275be8f5e5
+669f38b23578f530954a66c79ca149dd01f2a1ea
+6e96a7de2900c315457b0836691c6673dccdd171
+712844db2ba361b161bafb02d92e974d764c9b5e
+7572520bad3671c819b7f95b82635554dd929aa2
+78ce6d46d607d591735d6e64ad3561d93e6374f1
+794b18b1adbcd143a82702892bd2816f163eeb2e
+7b0f6c81da9a5bf788a350e12955c20c93a9db44
+7e8de6e0c259613e111deb6c57d34448569e3c5b
+81484a797f72d687802058b43636fda3503d839c
+83c0c6b51d512e935b9a7a2d3142b856d48b2e82
+85e7716e0aa3d0cc65f1a050a87dc8c80a55ec09
+8638283570e3409279f443994b03e923dffe0dc7
+8a5b04f3f5b1d8d68bf8b5dbb232ccfce5ec3842
+8fa306690f3a2397a832d25fcbdfefa7d1f3b4a0
+91405b382c4e8d434fc807658d7ef9c0374875ba
+97a1c36179922941a3d6e6ade7d2e11a0705518d
+97f5298e096e16cbfecc2f572238f4f8fef3a330
+9877b47b4a7ba002a3476265ed481c0b7cf1b3e9
+9987210eb51275a2b6b2999a1842bbc96fdc758e
+9b7b5dae6cc6f01fe62fb31b94e9be3963bb04e7
+9d2baa3db68c394241e9dfabdfb59b22f3341a94
+a12d3b0a62595ce8248ef1bd294c9d39872a3685
+aab2ec8bfa47426e6e7fef243d66f841d6b9f2f6
+acbcd1421d9960aa7d01f84a9ebd658d0f0d473d
+af543c566d675002399dbdcf4b3976e0e9c975ba
+b1baa10b7107b365ca0869f4fbedb356967d2a42
+ba310f40eda6a244194ba368e9c52020721fbb53
+bb7931078a2e6f1c2e353e287c303be9f11d7f52
+bc0282d9aa356bc81c2b252b4467ac067c9bd335
+bc461638753d74105a5e7ee71e91e74957f2d398
+be9646a98f6872fbb501a14ddd161dad7d7735df
+bec00bad9ae1e7ec3cfbc9c69a335ed3cc9ca6e8
+bfe7b8a9cb0c739683fabed8820fbfdb2af64191
+c10ad793c83fd41fe56a384dc95927280f5c4846
+c1ad4698610f10b6be46a5ce4e73daffcc01ae13
+c24b756f413d72f12dadc7035f0ac298a62ae4cd
+c6756d62c295698b961534419377cda21633b5f9
+ca5e532d4b30d016cbb8c37e46af719d171ba455
+cbefee994c9296e01b58158c28e1fbf8fcfba2d5
+cea9fda0711acba1a80cb41ba308ad8e02367c38
+cf3087512c483533aeea4bc2d99dbbd801ccbf19
+cf6f2e886125df53d775ef7641fdaac62e46a31c
+d1df83c4ec783b8836eb12cc3460b7435de4c3d9
+d3ae0faaf53291c1898553fc6758d1411a509a46
+d3c568d028e5a2fb5523fad3152c5f80a4c32926
+d4184eae67e57c8f26069c94b18e69afc47b8882
+d89bf70101caec5b39b757bbd95d005a7fd60a4c
+d8a72f0491de73e32cb6dcfedb1980f466f34955
+dacd37346f370b885318db6fa6b00b7d629ffdc8
+e29eea4ce38ccb4baedea00e0564fef3c7c6ca7a
+ed8f9b8456d8ae32f273800456f8fa8b8fcf8187
+ef9d4ad90d8b97301f60ae51312e44e64f409646
+f261726a184ff30cbcd8b25bb30400aace2c8255
+f30b8bc5dbe63827598d96fea82cdbb8c635f9a5
+f41e597c805dd5e38b05d1d8f8d024a008a6a221
+f518dc2030edfebe496f591a92436b2b34b8243b
+f8319f5923b6b1fd35fe3ae565b60cbbfb2eff77
+fadb057a04698d9f3ec176385a09b83ad9208970
+fc1ced001356e4a237e74fb95c2629be92f47776
+ff47b5d77f6a8c1c2ec1fb4f31915b62dea4d3dc
+)
+declare -A already_verified_commits
 declare -a tags
 declare -a top_dirs
 declare -a rpm_dirs
@@ -17,8 +120,28 @@ SUSE/Updates/SLE-SERVER
 )
 updates_suse_com_dir=$1
 kernel_source_git_dir=$2
+verified_commits_output=$3
 list_kernel_binaries="${td}/list_kernel_binaries"
 list_git_revision_kernel_binary="${td}/list_git_revision_kernel_binary"
+list_verified_commits="${td}/list_verified_commits"
+if test -e "${verified_commits_output}"
+then
+	echo "output file exists: ${verified_commits_output}"
+	exit 1
+fi
+if test -z "${verified_commits_output}"
+then
+	echo "output file for verified commits missing"
+	exit 1
+fi
+>> "${list_verified_commits}"
+>> "${verified_commits_output}"
+#
+for rev in ${list_of_verified_commits[@]}
+do
+	already_verified_commits[${rev}]="${rev}"
+done
+#
 pushd "${kernel_source_git_dir}" > /dev/null
 popd > /dev/null
 pushd "${updates_suse_com_dir}" > /dev/null
@@ -44,10 +167,41 @@ pushd "${kernel_source_git_dir}" > /dev/null
 #
 while read rev filename
 do
+	test -n "${already_verified_commits[${rev}]}" && continue
+	rev_has_tag=
+	rev_merged_into_azure=
 	tags=( $(git --no-pager tag --points-at "${rev}") )
-	if test ${#tags[@]} -eq 0
+	if test ${#tags[@]} -gt 0
 	then
-		echo "${rev} ${filename}"
-		echo "${REPLY}"
+		rev_has_tag='rev_has_tag'
+	else
+		echo "NO_TAGS: ${rev} ${filename}"
+	fi
+	in_embargo=
+	in_azure=
+	branches=( $(git --no-pager branch --all --contains "${rev}" | sed 's@^[^/]\+/[^/]\+/@@' | sort -u ) )
+	for branch in ${branches[@]}
+	do
+		case "${branch}" in
+		users/*) ;;
+		*-AZURE_EMBARGO) in_embargo='in_embargo' ;;
+		*-AZURE) in_azure='in_azure' ;;
+		*) echo "UNKNOWN_BRANCH: ${branch} ${rev} ${filename}" ;;
+		esac
+	done
+	if test -n "${in_azure}"
+	then
+		: good
+		rev_merged_into_azure='rev_merged_into_azure'
+	elif test -n "${in_embargo}"
+	then
+		echo "ONLY_EMBARGO: ${rev} ${branches[@]} ${filename}"
+	fi
+	if test -n "${rev_has_tag}"
+	then
+		echo "${rev}" >> "${list_verified_commits}"
 	fi
 done < "${list_git_revision_kernel_binary}"
+#
+sort "${list_verified_commits}" > "${verified_commits_output}"
+wc -l "${verified_commits_output}"
