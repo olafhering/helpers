@@ -7,6 +7,7 @@ trap "rm -rf '${td}'" EXIT
 export TMPDIR="${td}"
 list_of_verified_commits=(
 009ad22ebdaea2d14f8ecd95672dbc2517d28126
+00ddf7311089ec0e51e393f30a76d0f42c4eced7
 05cfb85431568c859a08c58dcb952c7222934283
 05d5af7a6c0cb2ae4c0f335296e3ae1d8c28f6d0
 0669e11edfca78e8e0c7c6d1238fa00503433f1b
