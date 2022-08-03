@@ -29,7 +29,7 @@ else
 	echo "${PWD##*/} not a git tree"
 	exit 1
 fi
-git_branch="`git branch | awk '"*" == $1 { print }'`"
+git_branch="`git branch | awk '"*" == $1 { gsub("/", "_") ; print }'`"
 # * (no branch, bisect started on fate317533-SLES11-SP4-r4)
 case "$git_branch" in
 	*\ bisect\ started\ on\ *)
