@@ -37,7 +37,7 @@ case "$git_branch" in
 		git_branch="${git_branch%)}"
 	;;
 	*)
-		git_branch="`git branch | awk '"*" == $1 { print $2 }'`"
+		git_branch="`git branch | awk '"*" == $1 { gsub("/", "_") ; print $2 }'`"
 		if test -z "${git_branch}"
 		then
 			git_branch="no_branch"
