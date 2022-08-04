@@ -4,6 +4,7 @@ set -e
 unset LANG
 unset ${!LC_*}
 renice -n 19 -p $$
+export TZ=UTC
 export TMPDIR="`mktemp --directory --tmpdir=/dev/shm XXX`"
 trap "rm -rf '${TMPDIR}'" EXIT
 jobs=`grep -Ec 'cpu[0-9]' /proc/stat || echo 1`
