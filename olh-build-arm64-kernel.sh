@@ -30,15 +30,20 @@ else
 	echo "${PWD##*/} not a git tree"
 	exit 1
 fi
-git_branch="`git branch | awk '"*" == $1 { gsub("/", "_") ; print }'`"
-# * (no branch, bisect started on fate317533-SLES11-SP4-r4)
+read git_branch < <(git branch | awk '"*" == $1 { branch=substr($0, 3); gsub("/", "_", branch); print branch; }')
+# (no branch, bisect started on fate317533-SLES11-SP4-r4)
+# (no branch, rebasing users_ohering_SLE12-SP3-TD_bug1190464-ptf4)
+: ${git_branch}
 case "$git_branch" in
 	*\ bisect\ started\ on\ *)
 		git_branch="${git_branch##* bisect started on }"
 		git_branch="${git_branch%)}"
 	;;
+	*\ rebasing\ *)
+		git_branch="${git_branch##* rebasing }"
+		git_branch="${git_branch%)}"
+	;;
 	*)
-		git_branch="`git branch | awk '"*" == $1 { gsub("/", "_") ; print $2 }'`"
 		if test -z "${git_branch}"
 		then
 			git_branch="no_branch"
