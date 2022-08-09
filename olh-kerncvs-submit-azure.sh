@@ -15,9 +15,6 @@ declare -a osc_sr_cmd
 declare -a osc_sr_cmd_args
 osc_sr_cmd_args_str=
 #
-td="`mktemp --directory --tmpdir=/dev/shm .XXX`"
-trap "rm -rf '${td}'" EXIT
-#
 while test $# -gt 0
 do
 	case "$1" in
