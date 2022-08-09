@@ -1,5 +1,8 @@
 #!/bin/bash
 # vim: ts=2 shiftwidth=2 noexpandtab nowrap
+# Usage: $0 [-s N] [-e] DIST
+# -s N will supersede an existing request, in case N is in state new|review
+# -e will submit from the *_EMBARGO branch
 set -e
 unset LANG
 unset ${!LC_*}
