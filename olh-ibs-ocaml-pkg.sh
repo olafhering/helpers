@@ -89,6 +89,7 @@ case "${upstream}" in
 	biniou) pkg='ocaml-biniou' ;;
 	bisect_ppx) pkg='ocaml-bisect_ppx' ;;
 	bos) pkg='ocaml-bos' ;;
+	calendar) pkg='ocaml-calendar' ;;
 	camlp-streams) pkg='ocaml-camlp-streams' ;;
 	camlp5) pkg='ocaml-camlp5' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
