@@ -3,11 +3,11 @@
 import locale
 import re
 import sys
-kconfig = {}
 locale.setlocale(locale.LC_ALL, "POSIX")
 argv = sys.argv
 argv.pop(0)
 for filename in argv:
+	kconfig = {}
 	print("{}".format(filename))
 	with open(filename) as file:
 		for line in file:
