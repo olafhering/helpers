@@ -173,9 +173,9 @@ git --git-dir="${upstream_git}/.git" \
 	--break-rewrites \
 	--keep-subject \
 	--stat-width=88 \
-	--stat-name-width=66 \
+	--stat-name-width=77 \
 	--stat-count=1234 \
-	--stat-graph-width=22 \
+	--stat-graph-width=9 \
 	--summary \
 	--no-merges \
 	${from_to} -- \

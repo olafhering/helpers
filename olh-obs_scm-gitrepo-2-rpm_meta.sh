@@ -233,9 +233,9 @@ then
       --no-renames \
       --keep-subject \
       --stat-width=88 \
-      --stat-name-width=66 \
+      --stat-name-width=77 \
       --stat-count=1234 \
-      --stat-graph-width=22 \
+      --stat-graph-width=9 \
       --summary \
       --output-directory .patches \
       "${fixes_from}".."${fixes_to}"
