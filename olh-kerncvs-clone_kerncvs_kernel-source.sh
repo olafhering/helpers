@@ -113,7 +113,7 @@ else
 		clone \
 		--mirror \
 		--origin ${git_origin} \
-		git://${git_srv}/${git_repo}.git \
+		${git_user}@${git_srv}:/home/git/${git_repo}.git \
 		${repo_mirror}
 fi
 #
