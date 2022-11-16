@@ -50,7 +50,7 @@ done
 : branch ${branch}
 test -n "${branch}" || exit 1
 #
-git_srv=kerncvs.suse.de
+git_srv=kerncvs.nue.suse.com
 git_user=ohering
 git_repo=kernel-source
 git_origin=kerncvs
