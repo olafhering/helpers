@@ -71,7 +71,7 @@ then
 	exit 0
 fi
 #
-if ! test -d "${repo_mirror}/.git"
+if ! test -d "${repo_mirror}"
 then
 	echo "${repo_mirror} does not exist yet."
 	exit 1
