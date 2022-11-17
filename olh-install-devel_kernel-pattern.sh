@@ -11,6 +11,7 @@ pkgs=(
 'patchutils'
 'pkgconfig(libelf)'
 'pkgconfig(openssl)'
+'procmail'
 'python3-dbm'
 'python3-pygit2'
 'quilt'
