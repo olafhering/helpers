@@ -90,11 +90,12 @@ as_user() {
 		popd
 	fi
 
-	/usr/share/helpers/bin/olh-kerncvs-__-clone_upstream_linux_mirror.git
-	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel-source_bare -c
-	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel_bare -c
-	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel-source -c
-	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel -c
+	olh-kerncvs-__-clone_upstream_linux_mirror.git
+	olh-kerncvs-clone_kerncvs_kernel-source_bare -c
+	olh-kerncvs-clone_kerncvs_kernel_bare -c
+	olh-kerncvs-clone_kerncvs_kernel-source -c
+	olh-kerncvs-clone_kerncvs_kernel -c
+
 	for branch in ${kerncvs_active_branches_base[@]} ${kerncvs_active_branches_azure[@]}
 	do
 		olh-kerncvs-clone_kerncvs_kernel-source_bare "${branch}"
@@ -106,6 +107,7 @@ as_user() {
 			git --no-pager checkout -b "${branch}" "kerncvs/${branch}"
 		done
 	fi
+	olh-kerncvs-update all
 }
 
 read id < <(id -u)
