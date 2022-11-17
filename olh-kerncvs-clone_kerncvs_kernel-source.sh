@@ -12,6 +12,7 @@ set -e
 #     branch-AZURE_EMBARGO
 #     unmerged user branches 
 #
+. /usr/share/helpers/bin/olh-kerncvs-env
 trap 'pwd' EXIT
 azure_branches="
 SLE15-SP5
@@ -22,6 +23,16 @@ SLE15-SP4
 email='ohering@suse.de'
 name='Olaf Hering'
 smtp='relay.suse.de'
+#
+git_srv=kerncvs.nue.suse.com
+git_user=ohering
+git_repo=kernel-source
+git_origin=kerncvs
+repo_prefix=${git_origin}
+repo_base=${repo_prefix}.${git_repo}
+repo_mirror=${repo_base}.bare.mirror
+#
+do_clone=
 do_merge=
 branch=
 for var in ${!LANG*} ${!LC_*}
@@ -39,6 +50,7 @@ until test "$#" -eq 0
 do
 	case "$1" in
 	-m) do_merge=do_merge ;;
+	-c) do_clone=do_clone ;;
 	*)
 	test -z "${branch}" && branch="$1"
 	test -n "${do_merge}" && break
@@ -47,16 +59,32 @@ do
 	shift
 done
 #
-: branch ${branch}
-test -n "${branch}" || exit 1
+pushd "${WORK_KERNEL}"
+if test -n "${do_clone}"
+then
+	: just initialize repo_mirror
+	time \
+	exec \
+		git \
+		clone \
+		--mirror \
+		--origin ${git_origin} \
+		${git_user}@${git_srv}:/home/git/${git_repo}.git \
+		${repo_mirror}
+fi
 #
-git_srv=kerncvs.nue.suse.com
-git_user=ohering
-git_repo=kernel-source
-git_origin=kerncvs
-repo_prefix=${git_origin}
-repo_base=${repo_prefix}.${git_repo}
-repo_mirror=${repo_base}.bare.mirror
+if ! test -d "${repo_mirror}/.git"
+then
+	echo "${repo_mirror} does not exist yet."
+	exit 1
+fi
+#
+: branch ${branch}
+if test -z "${branch}"
+then
+	echo "A branch name is required"
+	exit 1
+fi
 #
 git_config() {
 	git config user.email "${email}"
@@ -79,8 +107,6 @@ git_config() {
 	git config mergetool.git-sort.trustExitCode 'true'
 }
 #
-pushd ~/work/src/kernel
-#
 case "${branch}" in
 	SLE15-SP5)       clone_branch='SLE15-SP5'      ;;
 	SLE15-SP5-AZURE) clone_branch='SLE15-SP5-AZURE';;
@@ -102,20 +128,8 @@ case "${branch}" in
 	master)          clone_branch='master'         ;;
 	packaging)       clone_branch='packaging'      ;;
 	scripts)         clone_branch='scripts'        ;;
-	*) echo "branch ${branch} unknown" ; exit 1 ;;
+	*) echo "branch '${branch}' unknown" ; exit 1 ;;
 esac
-: repo_mirror ${repo_mirror}
-if test -d ${repo_mirror}
-then
-	: reusing existing ${repo_mirror}
-else
-	time git \
-		clone \
-		--mirror \
-		--origin ${git_origin} \
-		${git_user}@${git_srv}:/home/git/${git_repo}.git \
-		${repo_mirror}
-fi
 #
 repo=${repo_base}.${clone_branch//\//_}
 if test -e "${repo}"
