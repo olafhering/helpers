@@ -8,6 +8,7 @@ pkgs=(
 'git-core'
 'helpers'
 'make'
+'patchutils'
 'pkgconfig(libelf)'
 'pkgconfig(openssl)'
 'python3-dbm'
