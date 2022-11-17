@@ -64,13 +64,19 @@ if test -n "${do_clone}"
 then
 	: just initialize repo_mirror
 	time \
-	exec \
 		git \
+		--no-pager \
 		clone \
 		--mirror \
-		--origin ${git_origin} \
 		${git_user}@${git_srv}:/home/git/${git_repo}.git \
 		${repo_mirror}
+	# fatal: options '--bare' and '--origin something' cannot be used together
+	exec \
+	git \
+		--no-pager \
+		remote \
+		rename \
+		'origin' "${git_origin}"
 fi
 #
 if ! test -d "${repo_mirror}/.git"
