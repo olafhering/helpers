@@ -61,6 +61,11 @@ _EOC_
 as_user() {
 	pushd ~
 
+	git --no-pager config --global user.name 'Olaf Hering'
+	git --no-pager config --global user.email olaf@aepfle.de
+	git --no-pager config --global color.ui false
+	git --no-pager config --global format.signature ''
+
 	if ! test -d '.git'
 	then
 		git --no-pager init --initial-branch=master
