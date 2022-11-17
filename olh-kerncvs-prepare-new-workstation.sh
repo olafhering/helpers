@@ -18,7 +18,7 @@ as_root() {
 	id "${local_username}"
 	echo "${local_username}:${local_username}" | chpasswd
 	pushd "${local_homedir}"
-	mkdir -vpm 0600 '.ssh'
+	mkdir -vpm 0700 '.ssh'
 	tee -a '.ssh/authorized_keys' <<'_EOAK_'
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJx/y+w/YjMOJyqhiW9q3eOxvTy7aQFXFq6UvX1NLPdd6KojPFMXgBWTDAXaHwRcn8Lv3tiHzO3v5rZK/e73w7NG8wZS6wRnoSST1Vmp7Rr2MGwe04pzYjCKjuxaP58j/ZFE6TTMtNGVfQenrS1yXYiLBv/6Aq5yMXJeX5k9qDyiNgmgKFnOFj0/3l6NUaZ24/3dSQ98/u8Msy8ZdfLiA6od/VTlc9e5tPtxLRsVeCpxVk9go4nQ+LlMRbjdoZSMFM+xrUslXeW2KWk5rsJSYoAazV9JVE/H+iTpzKHA8c+QZjU1M7/wtOPSEXzsbYrMRL/MGib4TrEE57ezLs5Qth ohering@suse.de
 _EOAK_
