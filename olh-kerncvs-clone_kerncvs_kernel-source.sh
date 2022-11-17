@@ -62,21 +62,25 @@ done
 pushd "${WORK_KERNEL}"
 if test -n "${do_clone}"
 then
-	: just initialize repo_mirror
-	time \
-		git \
-		--no-pager \
-		clone \
-		--mirror \
-		${git_user}@${git_srv}:/home/git/${git_repo}.git \
-		${repo_mirror}
+	remotes=()
+	case "$(hostname -f)" in
+	*.devlab.pgu1.suse.com)
+		remotes+=( "git://code-mirror/${git_repo}.git" )
+	;;
+	esac
+	remotes+=( "https://github.com/SUSE/${git_repo}.git" )
+	remotes+=( "${git_user}@${git_srv}:/home/git/${git_repo}.git" )
+
+	time git --no-pager clone --mirror "${remotes[0]}" "${repo_mirror}"
+	pushd "$_"
+	for remote in "${remotes[@]}"
+	do
+		git --no-pager remote set-url 'origin' "${remote}"
+		git --no-pager fetch --tags --all
+	done
 	# fatal: options '--bare' and '--origin something' cannot be used together
-	exec \
-	git \
-		--no-pager \
-		remote \
-		rename \
-		'origin' "${git_origin}"
+	git --no-pager remote rename 'origin' "${git_origin}"
+	exit 0
 fi
 #
 if ! test -d "${repo_mirror}/.git"
