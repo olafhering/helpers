@@ -62,6 +62,11 @@ done
 pushd "${WORK_KERNEL}"
 if test -n "${do_clone}"
 then
+	if test -d "${repo_mirror}"
+	then
+		echo "${_} exists already"
+		exit 0
+	fi
 	remotes=()
 	case "$(hostname -f)" in
 	*.devlab.pgu1.suse.com)
