@@ -123,22 +123,30 @@ git_config() {
 }
 #
 case "${branch}" in
-	SLE15-SP5)       clone_branch='SLE15-SP5'      ;;
 	SLE15-SP5-AZURE) clone_branch='SLE15-SP5-AZURE';;
-	SLE15-SP4)       clone_branch='SLE15-SP4'      ;;
+	SLE15-SP5)       clone_branch='SLE15-SP5'      ;;
 	SLE15-SP4-AZURE) clone_branch='SLE15-SP4-AZURE';;
-	SLE15-SP3)       clone_branch='SLE15-SP3'      ;;
+	SLE15-SP4)       clone_branch='SLE15-SP4'      ;;
 	SLE15-SP3-AZURE) clone_branch='SLE15-SP3-AZURE';;
+	SLE15-SP3)       clone_branch='SLE15-SP3'      ;;
+	SLE15-SP2-LTSS)  clone_branch='SLE15-SP2-LTSS' ;;
 	SLE15-SP2)       clone_branch='SLE15-SP2-LTSS' ;;
+	SLE15-SP1-LTSS)  clone_branch='SLE15-SP1-LTSS' ;;
 	SLE15-SP1)       clone_branch='SLE15-SP1-LTSS' ;;
+	SLE15-LTSS)      clone_branch='SLE15-LTSS'     ;;
 	SLE15)           clone_branch='SLE15-LTSS'     ;;
-	SLE12-SP5)       clone_branch='SLE12-SP5'      ;;
 	SLE12-SP5-AZURE) clone_branch='SLE12-SP5-AZURE';;
+	SLE12-SP5)       clone_branch='SLE12-SP5'      ;;
+	SLE12-SP4-LTSS)  clone_branch='SLE12-SP4-LTSS' ;;
 	SLE12-SP4)       clone_branch='SLE12-SP4-LTSS' ;;
-	SLE12-SP3)       clone_branch='SLE12-SP3-LTSS' ;;
 	SLE12-SP3-TD)    clone_branch='SLE12-SP3-TD'   ;;
+	SLE12-SP3-LTSS)  clone_branch='SLE12-SP3-LTSS' ;;
+	SLE12-SP3)       clone_branch='SLE12-SP3-LTSS' ;;
+	SLE12-SP2-LTSS)  clone_branch='SLE12-SP2-LTSS' ;;
 	SLE12-SP2)       clone_branch='SLE12-SP2-LTSS' ;;
+	SLE12-SP1-LTSS)  clone_branch='SLE12-SP1-LTSS' ;;
 	SLE12-SP1)       clone_branch='SLE12-SP1-LTSS' ;;
+	SLE11-SP4-LTSS)  clone_branch='SLE11-SP4-LTSS' ;;
 	SLE11-SP4)       clone_branch='SLE11-SP4-LTSS' ;;
 	linux-4.12)      clone_branch='fixes/linux-4.12' ;;
 	master)          clone_branch='master'         ;;
