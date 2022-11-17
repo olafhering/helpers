@@ -93,6 +93,8 @@ as_user() {
 	/usr/share/helpers/bin/olh-kerncvs-__-clone_upstream_linux_mirror.git
 	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel-source_bare -c
 	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel_bare -c
+	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel-source -c
+	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel -c
 }
 
 read id < <(id -u)
