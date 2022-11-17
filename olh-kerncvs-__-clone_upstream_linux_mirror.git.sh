@@ -1,4 +1,9 @@
-set -e
+#!/bin/bash
+# vim: ts=2 shiftwidth=2 noexpandtab nowrap
+set -ex
+unset LANG
+unset ${!LC_*}
+
 update=
 test "$1" = "-u" && update='true'
 with_tags="
@@ -60,35 +65,31 @@ vkoul.soundwire.git|https://git.kernel.org/pub/scm/linux/kernel/git/vkoul/soundw
 will.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git
 xen.tip.git|https://git.kernel.org/pub/scm/linux/kernel/git/xen/tip.git
 "
+. /usr/share/helpers/bin/olh-kerncvs-env
+test -d "${LINUX_GIT}" || mkdir -v "${LINUX_GIT}"
+pushd "$_"
 if test -z "${update}"
 then
-	pushd /dev/shm
-	mkdir LINUX_GIT
-	pushd $_
-		git init
-		git remote \
-		add \
-		--no-tags \
-		LINUX_GIT \
-		https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
-	popd
-	mkdir $$
-	pushd $_
-	git init
+	git --no-pager init
+	git --no-pager remote \
+	add \
+	--no-tags \
+	LINUX_GIT \
+	https://github.com/torvalds/linux.git
 fi
 for remote in $with_tags
 do
 	name=${remote%%|*}
 	repo=${remote##*|}
-	git remote get-url $name > /dev/null && continue
-	git remote add --tags $name $repo
+	git --no-pager remote get-url $name > /dev/null && continue
+	git --no-pager remote add --tags $name $repo
 done
 
 for remote in $without_tags
 do
 	name=${remote%%|*}
 	repo=${remote##*|}
-	git remote get-url $name > /dev/null && continue
-	git remote add --no-tags $name $repo
+	git --no-pager remote get-url $name > /dev/null && continue
+	git --no-pager remote add --no-tags $name $repo
 done
-git remote show
+git --no-pager remote show
