@@ -1,13 +1,13 @@
 #!/bin/bash
 unset LANG
 unset ${!LC_*}
-topdir=~/work/src/kernel
+. /usr/share/helpers/bin/olh-kerncvs-env
 trees_tags=(
 kerncvs.kernel-source.bare.mirror
 kerncvs.kernel.bare.mirror
 )
 trees_no_tags=(
-LINUX_GIT
+${LINUX_GIT}
 )
 trees_multi_remotes=(
 kerncvs.kernel-source.git
@@ -53,12 +53,12 @@ release_lock()
     rm "$_lockfile"
 }
 #
-pushd "${topdir}" || exit 1
+pushd "${WORK_KERNEL}" || exit 1
 for repo in ${trees_tags[@]}
 do
 	if pushd "${repo}"
 	then
-		claim_lock "${repo}"
+		claim_lock "${PWD##*/}"
 		git fetch --all --tags --prune
 		for l in gc.log .git/gc.log
 		do
@@ -72,7 +72,7 @@ do
 				git prune
 			fi
 		done
-		release_lock "${repo}"
+		release_lock "${PWD##*/}"
 		popd
 	fi
 done
@@ -86,12 +86,12 @@ do
 		do
 			remotes[${remote}]="${remote}"
 		done
-		claim_lock "${repo}"
+		claim_lock "${PWD##*/}"
 		test -n "${remotes[openSUSE]}"   && git --no-pager fetch "$_"
 		test -n "${remotes[olafhering]}" && git --no-pager fetch "$_"
 		test -n "${remotes[code-mirror]}" && git --no-pager fetch "$_"
 		test -n "${remotes[kerncvs]}"    && git --no-pager fetch "$_" --prune --tags --prune-tags
-		release_lock "${repo}"
+		release_lock "${PWD##*/}"
 		unset remotes
 		popd
 	fi
@@ -101,7 +101,7 @@ for repo in ${trees_no_tags[@]}
 do
 	if pushd "${repo}"
 	then
-		claim_lock "${repo}"
+		claim_lock "${PWD##*/}"
 		git fetch --all --prune
 		for l in gc.log .git/gc.log
 		do
@@ -115,21 +115,20 @@ do
 				git prune
 			fi
 		done
-		release_lock "${repo}"
+		release_lock "${PWD##*/}"
 		popd
 	fi
 done
 test -n "${do_upstream_linux}" || exit 0
-repo='upstream.linux'
-if pushd "${repo}"
+if pushd "${UPSTREAM_REPOS}"
 then
-	claim_lock "${repo}"
+	claim_lock "${PWD##*/}"
 	git fetch --all
 	echo
 	echo pushing
 	echo
 	git push  --tags github.olafhering.linux.git torvalds.linux.git/master:master
-	release_lock "${repo}"
+	release_lock "${PWD##*/}"
 	popd
 fi
 date

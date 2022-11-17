@@ -3,6 +3,7 @@
 set -ex
 unset LANG
 unset ${!LC_*}
+. /usr/share/helpers/bin/olh-kerncvs-env
 
 update=
 test "$1" = "-u" && update='true'
@@ -65,8 +66,7 @@ vkoul.soundwire.git|https://git.kernel.org/pub/scm/linux/kernel/git/vkoul/soundw
 will.linux.git|https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git
 xen.tip.git|https://git.kernel.org/pub/scm/linux/kernel/git/xen/tip.git
 "
-. /usr/share/helpers/bin/olh-kerncvs-env
-test -d "${LINUX_GIT}" || mkdir -v "${LINUX_GIT}"
+test -d "${UPSTREAM_REPOS}" || mkdir -v "${UPSTREAM_REPOS}"
 pushd "$_"
 if test -z "${update}"
 then
