@@ -29,27 +29,6 @@ done
 #
 pushd "${WORK_KERNEL}"
 #
-git_config() {
-	git config user.email "${email}"
-	git config user.name "${name}"
-	git config sendemail.from "${name} <${email}>"
-	git config sendemail.envelopesender "${email}"
-	git config sendemail.chainreplyto 'false'
-	git config sendemail.ccover 'yes'
-	git config sendemail.smtpencryption 'tls'
-	git config sendemail.smtpdomain 'sender'
-	git config sendemail.smtppass ''
-	git config sendemail.smtpAuth ''
-	git config sendemail.smtpserver "${smtp}"
-	git config sendemail.smtpuser ''
-	git config sendemail.confirm 'always'
-	git config sendemail.assume8bitEncoding 'yes'
-	git config sendemail.transferEncoding '8bit'
-	git config merge.tool 'git-sort'
-	git config mergetool.git-sort.cmd 'scripts/git_sort/merge_tool.py $LOCAL $BASE $REMOTE $MERGED'
-	git config mergetool.git-sort.trustExitCode 'true'
-}
-#
 if test -d "${repo_mirror}"
 then
 	echo "${_} exists already"
@@ -71,6 +50,4 @@ do
 	git --no-pager remote set-url "${git_origin}" "${remote}"
 	git --no-pager fetch --tags --all
 done
-git_config
-scripts/install-git-hooks
 #
