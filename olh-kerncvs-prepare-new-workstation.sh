@@ -95,6 +95,17 @@ as_user() {
 	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel_bare -c
 	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel-source -c
 	/usr/share/helpers/bin/olh-kerncvs-clone_kerncvs_kernel -c
+	for branch in ${kerncvs_active_branches_base[@]} ${kerncvs_active_branches_azure[@]}
+	do
+		olh-kerncvs-clone_kerncvs_kernel-source_bare "${branch}"
+	done
+	if pushd kerncvs.kernel-source.git
+	then
+		for branch in ${kerncvs_active_branches_base[@]} ${kerncvs_active_branches_azure[@]}
+		do
+			git --no-pager checkout -b "${branch}" "kerncvs/${branch}"
+		done
+	fi
 }
 
 read id < <(id -u)
