@@ -70,12 +70,17 @@ test -d "${LINUX_GIT}" || mkdir -v "${LINUX_GIT}"
 pushd "$_"
 if test -z "${update}"
 then
-	git --no-pager init
-	git --no-pager remote \
-	add \
-	--no-tags \
-	LINUX_GIT \
-	https://github.com/torvalds/linux.git
+	if test -d ".git"
+	then
+		: already initialized
+	else
+		git --no-pager init
+		git --no-pager remote \
+			add \
+			--no-tags \
+			LINUX_GIT \
+			https://github.com/torvalds/linux.git
+	fi
 fi
 for remote in $with_tags
 do
