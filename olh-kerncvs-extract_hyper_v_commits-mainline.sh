@@ -218,6 +218,7 @@ git --git-dir="${upstream_git}/.git" \
 		include/linux/hyperv.h \
 		include/net/af_hvsock.h \
 		include/uapi/linux/hyperv.h \
+		include/uapi/rdma/mana-abi.h \
 		net/hv_sock \
 		net/vmw_vsock/hyperv_transport.c \
 		tools/hv \
