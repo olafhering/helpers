@@ -194,6 +194,7 @@ git --git-dir="${upstream_git}/.git" \
 		drivers/gpu/drm/hyperv \
 		drivers/hid/hid-hyperv.c \
 		drivers/hv \
+		drivers/infiniband/hw/mana \
 		drivers/input/serio/hyperv-keyboard.c \
 		drivers/iommu/hyperv-iommu.c \
 		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.c \
