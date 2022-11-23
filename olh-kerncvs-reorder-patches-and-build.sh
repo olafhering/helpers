@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+renice -n 11 -p "$$"
+ionice --class 3 -p "$$"
 export TZ=UTC
 unset LANG
 unset ${!LC_*}

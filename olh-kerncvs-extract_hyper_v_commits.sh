@@ -2,6 +2,8 @@
 #set -e
 #set -x
 #
+renice -n 11 -p "$$"
+ionice --class 3 -p "$$"
 unset LANG
 unset ${!LC_*}
 tmpdir=`mktemp --directory --tmpdir=/dev/shm/ XXX`
