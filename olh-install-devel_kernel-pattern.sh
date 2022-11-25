@@ -16,6 +16,7 @@ pkgs=(
 'python3-pygit2'
 'quilt'
 'rapidquilt'
+'rcs'
 'rsync'
 'time'
 'wdiff'
