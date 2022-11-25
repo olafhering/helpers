@@ -2,6 +2,7 @@
 set -e
 renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
+. /usr/share/helpers/bin/olh-kerncvs-env
 export TZ=UTC
 unset LANG
 unset ${!LC_*}
@@ -33,6 +34,22 @@ After reordering, before applying them with 'git am', the list can be tweaked fu
 _EOF_
 	exit "${rc}"
 }
+#
+git_status() {
+	git --no-pager status --porcelain --untracked-files=no | tee "${sf}"
+}
+#
+git_status_check() {
+	git_status
+	if test -s "${sf}"
+	then
+		: some changes exist
+		return 0
+	fi
+	: no pending changes
+	return 1
+}
+#
 #
 while test "$#" -gt 0
 do
@@ -72,6 +89,7 @@ read td < <(mktemp --directory --tmpdir=/dev/shm .XXX)
 trap "rm -rf '${td}'" EXIT
 commits_order_old="${td}/commits_old"
 commits_order_new="${td}/commits_new"
+sf="${td}/status.txt"
 #
 mkdir "${commits_order_old}" "${commits_order_new}"
 
@@ -136,6 +154,13 @@ fi
 #
 git --no-pager checkout -b "${git_test}" "${git_base}"
 #
+scripts/git_sort/series_sort.py 'series.conf'
+if git_status_check
+then
+	echo "some changes exist, can not continue"
+	exit 1
+fi
+#
 for commit_new in "${commits_order_new}"/*.patch
 do
 	if git --no-pager am < "${commit_new}"
@@ -144,6 +169,8 @@ do
 	else
 		bash
 	fi
+	scripts/git_sort/series_sort.py 'series.conf'
+	git add 'series.conf'
 	env \
 	GIT_AUTHOR_DATE="@${ts_author}" \
 	GIT_COMMITTER_DATE="@${ts_commit}" \
