@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+. /usr/share/helpers/bin/olh-kerncvs-env
 for var in ${!LANG*} ${!LC_*}
 do
 	case "${!var}" in
@@ -32,11 +33,11 @@ do
 	shift
 done
 test -n "${branch}"
-pushd ~/work/src/kernel/
+pushd "${WORK_KERNEL}"
 ls
 olh-kerncvs-update
 rm -rf kerncvs.kernel-source.${branch}-AZURE.merge
-olh-kerncvs-clone_kerncvs_kernel-source -m ${branch}
+olh-kerncvs-clone_kerncvs_kernel-source_bare -m ${branch}
 pushd kerncvs.kernel-source.${branch}-AZURE.merge
 case "${BASH_SOURCE[0]}" in
 	*/*) . "${BASH_SOURCE[0]%/*}/olh-kerncvs-env" ;;
