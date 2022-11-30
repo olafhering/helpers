@@ -53,6 +53,19 @@ release_lock()
     rm "$_lockfile"
 }
 #
+git_gc()
+{
+	for l in gc.log .git/gc.log
+	do
+		if test -f "${l}"
+		then
+			head --verbose --lines=-0 "${l}"
+			rm -fv "${l}"
+			git gc --prune
+		fi
+	done
+}
+#
 pushd "${WORK_KERNEL}" || exit 1
 for repo in ${trees_tags[@]}
 do
@@ -60,18 +73,7 @@ do
 	then
 		claim_lock "${PWD##*/}"
 		git fetch --all --tags --prune
-		for l in gc.log .git/gc.log
-		do
-			if test -f "${l}"
-			then
-				head --verbose --lines=1234 "${l}"
-				rm -fv "${l}"
-				git gc --prune
-				head --verbose --lines=1234 "${l}"
-				rm -fv "${l}"
-				git prune
-			fi
-		done
+		git_gc
 		release_lock "${PWD##*/}"
 		popd
 	fi
@@ -91,6 +93,7 @@ do
 		test -n "${remotes[olafhering]}" && git --no-pager fetch "$_"
 		test -n "${remotes[code-mirror]}" && git --no-pager fetch "$_"
 		test -n "${remotes[kerncvs]}"    && git --no-pager fetch "$_" --prune --tags --prune-tags
+		git_gc
 		release_lock "${PWD##*/}"
 		unset remotes
 		popd
@@ -103,18 +106,7 @@ do
 	then
 		claim_lock "${PWD##*/}"
 		git fetch --all --prune
-		for l in gc.log .git/gc.log
-		do
-			if test -f "${l}"
-			then
-				head --verbose --lines=1234 "${l}"
-				rm -fv "${l}"
-				git gc --prune
-				head --verbose --lines=1234 "${l}"
-				rm -fv "${l}"
-				git prune
-			fi
-		done
+		git_gc
 		release_lock "${PWD##*/}"
 		popd
 	fi
