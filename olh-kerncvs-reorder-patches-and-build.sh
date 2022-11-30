@@ -2,6 +2,7 @@
 set -e
 renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
+. /usr/share/helpers/bin/olh-kerncvs-env
 export TZ=UTC
 unset LANG
 unset ${!LC_*}
@@ -177,5 +178,10 @@ do
 	git --no-pager diff
 	git --no-pager status
 	test -n "${failed}" && echo "FAILED to ${failed}"
-	bash
+	if ! bash
+	then
+		echo
+		read -N 1 -p "shell exit code '$?'. Really abort this script? Use CTRL+C to Abort ... "
+		echo
+	fi
 done
