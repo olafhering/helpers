@@ -116,6 +116,7 @@ if pushd "${UPSTREAM_REPOS}"
 then
 	claim_lock "${PWD##*/}"
 	git fetch --all
+	git_gc
 	echo
 	echo pushing
 	echo
