@@ -3,6 +3,7 @@ pkgs=(
 'bc'
 'bison'
 'ctags'
+'dwarves'
 'flex'
 'gcc'
 'git-core'
