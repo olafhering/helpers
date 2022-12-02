@@ -145,14 +145,15 @@ do
 	mv -v "${commit_old}" "${commits_order_new}/${patch_name}"
 	new_patch_number=$(( $new_patch_number + 10 ))
 done
+#
+git --no-pager checkout -b "${git_test}" "${git_base}"
+#
 if test -n "${stop_after_export}"
 then
 	pushd "${commits_order_new}"
 	bash
 	popd
 fi
-#
-git --no-pager checkout -b "${git_test}" "${git_base}"
 #
 scripts/git_sort/series_sort.py 'series.conf'
 if git_status_check
