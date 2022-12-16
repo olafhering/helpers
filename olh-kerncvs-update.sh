@@ -60,8 +60,15 @@ git_gc()
 		if test -f "${l}"
 		then
 			head --verbose --lines=-0 "${l}"
+			read md5sum rest < <(md5sum "${l}")
 			rm -fv "${l}"
-			git gc --prune
+			case "${md5sum}" in
+			# warning: There are too many unreachable loose objects; run 'git prune' to remove them.
+			3d061fd8fc1a275b73eea0efbc0f89d9)
+				time git prune
+				;;
+			*) echo "Unhandled ${md5sum} ${l}"
+			esac
 		fi
 	done
 }
