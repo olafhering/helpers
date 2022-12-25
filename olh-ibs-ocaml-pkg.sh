@@ -154,6 +154,7 @@ case "${upstream}" in
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
 	ocamlfuse) pkg='ocaml-fuse' ;;
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
+	ocp-indent) pkg='ocaml-ocp-indent' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
 	odoc) pkg='ocaml-odoc' ;;
 	odoc-parser) pkg='ocaml-odoc-parser' ;;
