@@ -152,6 +152,7 @@ case "${upstream}" in
 	ocamlbuild) pkg='ocaml-ocamlbuild' ;;
 	ocamlfind) pkg='ocaml-findlib' ; echo "download tar.gz" ; exit 1 ;;
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
+	ocamlfuse) pkg='ocaml-fuse' ;;
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
 	odoc) pkg='ocaml-odoc' ;;
