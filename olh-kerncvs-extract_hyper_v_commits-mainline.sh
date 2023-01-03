@@ -217,6 +217,7 @@ git --git-dir="${upstream_git}/.git" \
 		include/clocksource/hyperv_timer.h \
 		include/linux/hyperv.h \
 		include/net/af_hvsock.h \
+		include/net/mana \
 		include/net/mana/mana_auxiliary.h \
 		include/uapi/linux/hyperv.h \
 		include/uapi/rdma/mana-abi.h \
