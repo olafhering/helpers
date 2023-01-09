@@ -17,14 +17,13 @@ SLE12-SP5
 SLE15-LTSS
 SLE15-SP1-LTSS
 SLE15-SP2-LTSS
-SLE15-SP3
+SLE15-SP3-LTSS
 SLE15-SP4
 SLE15-SP5
 )
 # list of branches for kernel-azure, which still receive updates
 kerncvs_active_branches_azure=(
 SLE12-SP5-AZURE
-SLE15-SP3-AZURE
 SLE15-SP4-AZURE
 SLE15-SP5-AZURE
 )

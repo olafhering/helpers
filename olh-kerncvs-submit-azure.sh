@@ -44,14 +44,6 @@ sle12sp5() {
 	update_prj='SUSE:SLE-12-SP5:Update'
 }
 #
-sle15sp3() {
-	branch='SLE15-SP3-AZURE'
-	embargo='SLE15-SP3-AZURE_EMBARGO'
-	kerncvs_prj='Devel:Kernel:SLE15-SP3-AZURE'
-	kerncvs_prj_embargo='Devel:Kernel:SLE15-SP3-AZURE_EMBARGO'
-	update_prj='SUSE:SLE-15-SP3:Update'
-}
-#
 sle15sp4() {
 	branch='SLE15-SP4-AZURE'
 	embargo='SLE15-SP4-AZURE_EMBARGO'
@@ -69,7 +61,6 @@ sle15sp5() {
 #
 case "${dist}" in
 sle12sp5|SLE12SP5|SLE12-SP5) sle12sp5 ;;
-sle15sp3|SLE15SP3|SLE15-SP3) sle15sp3 ;;
 sle15sp4|SLE15SP4|SLE15-SP4) sle15sp4 ;;
 sle15sp5|SLE15SP5|SLE15-SP5) sle15sp5 ;;
 *) echo "Unknown dist '${dist}'" ; exit 1 ;;
