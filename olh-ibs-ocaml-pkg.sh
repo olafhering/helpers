@@ -279,15 +279,44 @@ then
 	echo "$_ exists. Continue?"
 	while true
 	do
-		read -n 1 -p "[d]iff [c]ontinue [e]xit ..."
+		read -n 1 -p "[d]iff [c]ontinue [e]xit [l]og [p]atch ..."
 		case "${REPLY}" in
 		d) diff -u "${obs_path}/${service}" "${service}" 2>&1 | less -S ;;
 		c) break ;;
 		e) exit 1 ;;
+		l)
+		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
+		new_gitrev="${gitrev}"
+		git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}"
+		;;
+		p)
+		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
+		new_gitrev="${gitrev}"
+		git diff -p -b -B -w "${current_gitrev}..${new_gitrev}"
+		;;
+		esac
+	done
+else
+	cp -avit . "${obs_path}/${service}"
+	while true
+	do
+		read -n 1 -p "[c]ontinue [e]xit [l]og [p]atch ..."
+		case "${REPLY}" in
+		c) break ;;
+		e) exit 1 ;;
+		l)
+		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
+		new_gitrev="${gitrev}"
+		git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}"
+		;;
+		p)
+		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
+		new_gitrev="${gitrev}"
+		git diff -p -b -B -w "${current_gitrev}..${new_gitrev}"
+		;;
 		esac
 	done
 fi
-cp -avit . "${obs_path}/${service}"
 osc add "${service}"
 sed -i~ "s@<param name=\"revision\">[^<]\\+</param>@<param name=\"revision\">${gitrev}</param>@" "${service}"
 if diff -u "${obs_path}/${service}" "${service}"
