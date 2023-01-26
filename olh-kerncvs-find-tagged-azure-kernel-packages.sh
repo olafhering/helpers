@@ -139,15 +139,22 @@ verified_commits_output=$3
 list_kernel_binaries="${td}/list_kernel_binaries"
 list_git_revision_kernel_binary="${td}/list_git_revision_kernel_binary"
 list_verified_commits="${td}/list_verified_commits"
+err_exit() {
+	echo "$@"
+	cat <<_EOH_
+Usage: $0 <updates.suse.com-dir> <kernel-source.git-dir> <output-file>
+
+${0##*/} /RMTData/repo ~/work/src/kernel/kerncvs.kernel-source.bare.mirror /dev/shm/$$
+_EOH_
+	exit 1
+}
 if test -e "${verified_commits_output}"
 then
-	echo "output file exists: ${verified_commits_output}"
-	exit 1
+	err_exit "output file exists: ${verified_commits_output}"
 fi
 if test -z "${verified_commits_output}"
 then
-	echo "output file for verified commits missing"
-	exit 1
+	err_exit "output file for verified commits missing"
 fi
 >> "${list_verified_commits}"
 >> "${verified_commits_output}"
