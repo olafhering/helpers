@@ -14,6 +14,8 @@ missing_revspec_dir=missing_revspec
 declare -A missing_revspec_list
 ignore_revspec_dir=ignore_revspec
 #
+declare -A ignore_revspecs
+ignore_revspec=
 maj_tag=
 min_tag=
 tmpdir=
@@ -38,6 +40,10 @@ do_symlink() {
 while test $# -gt 0
 do
 	case "$1" in
+		--ignore_revspec)
+		ignore_revspec=$2
+		shift
+		;;
 		--tmpdir)
 		tmpdir=$2
 		shift
@@ -118,6 +124,17 @@ then
 fi
 ignore_revspec_dir=$PWD
 popd > /dev/null
+#
+if test -f "${ignore_revspec}"
+then
+	while read
+	do
+		for i in ${REPLY}
+		do
+			ignore_revspecs[$i]="i"
+		done
+	done < "${ignore_revspec}"
+fi
 #
 mkdir -vp "${hv_dir}/${missing_patch_dir}/${kerncvs_branch}/${upstream_remote}/${upstream_branch}"
 if ! pushd "${hv_dir}/${missing_patch_dir}/${kerncvs_branch}/${upstream_remote}/${upstream_branch}" > /dev/null
@@ -233,7 +250,7 @@ fi
 for revspec in ${!revspec_names[@]}
 do
 	: revspec ${revspec}
-	if test -e "${ignore_revspec_dir}/${revspec}"
+	if test -n "${ignore_revspecs[${revspec}]}" || test -e "${ignore_revspec_dir}/${revspec}"
 	then
 		: "${revspec} is on ignore list"
 		id_upstream_patch="`readlink -f \"${ignore_revspec_dir}/${revspec}\"`"
