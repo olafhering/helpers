@@ -254,11 +254,7 @@ do
 	then
 		: "${revspec} is on ignore list"
 		id_upstream_patch="`readlink -f \"${ignore_revspec_dir}/${revspec}\"`"
-		id_missing_revspec="`readlink -f \"${missing_revspec_dir}/${revspec}\"`"
-		if test "${id_upstream_patch}" = "${id_missing_revspec}"
-		then
-			rm -fv "${missing_revspec_dir}/${revspec}"
-		fi
+		rm -fv "${missing_revspec_dir}/${revspec}"
 		for i in ${missing_patch_dir}/*
 		do
 			if test -L "${i}"
