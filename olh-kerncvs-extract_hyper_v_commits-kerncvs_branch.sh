@@ -14,6 +14,7 @@ missing_revspec_dir=missing_revspec
 declare -A missing_revspec_list
 ignore_revspec_dir=ignore_revspec
 #
+declare -A existing_revspecs
 declare -A ignore_revspecs
 ignore_revspec=
 maj_tag=
@@ -247,6 +248,13 @@ if ! pushd "${kerncvs_dir}" > /dev/null
 then
 	exit 1
 fi
+#
+while read patchfile revspec rest
+do
+	existing_revspecs[${revspec}]="${patchfile}"
+do
+done < <(git grep --extended-regexp '^Git-commit:[[:blank:]]+' | awk -F : '{if ($2 ~ "^patches"){print $2,$4}}')
+#
 for revspec in ${!revspec_names[@]}
 do
 	: revspec ${revspec}
@@ -269,8 +277,7 @@ do
 		unset revspec_names[${revspec}]
 		continue
 	fi
-	patches="`git grep --threads ${numcpus} --extended-regexp --files-with-matches \"Git-commit:[[:blank:]]${revspec}\" || :`"
-	if test -n "${patches}"
+	if test -n "${existing_revspecs[${revspec}]}"
 	then
 		: "${revspec} merged: ${patches} "
 		if test -e "${missing_revspec_dir}/${revspec}"
