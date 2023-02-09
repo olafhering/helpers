@@ -260,10 +260,10 @@ for revspec in ${!ignore_revspecs[@]}
 do
 	test -n "${existing_revspecs[${revspec}]}" && unneeded_ignore_revspecs[${revspecs}]="$_"
 done
-if test ${#unneeded_ignore_revspecs[@]}
+if test ${#unneeded_ignore_revspecs[@]} -gt 0
 then
 	echo "The following ${#unneeded_ignore_revspecs[@]} revisions can be removed from ignore_revspecs list because they are merged into ${kerncvs_branch}:"
-	echo "${!ignore_revspecs[@]}"
+	echo "${!unneeded_ignore_revspecs[@]}"
 fi
 #
 for revspec in ${!revspec_names[@]}
