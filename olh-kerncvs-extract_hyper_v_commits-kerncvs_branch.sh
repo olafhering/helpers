@@ -258,7 +258,7 @@ done < <(git grep --extended-regexp '^Git-commit:[[:blank:]]+' | awk -F : '{if (
 #
 for revspec in ${!ignore_revspecs[@]}
 do
-	test -n "${existing_revspecs[${revspec}]}" && unneeded_ignore_revspecs[${revspecs}]="$_"
+	test -n "${existing_revspecs[${revspec}]}" && unneeded_ignore_revspecs[${revspec}]="$_"
 done
 if test ${#unneeded_ignore_revspecs[@]} -gt 0
 then
