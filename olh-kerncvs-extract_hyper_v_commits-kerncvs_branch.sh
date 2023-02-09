@@ -251,6 +251,7 @@ fi
 #
 while read patchfile revspec rest
 do
+	: revspec ${revspec}
 	existing_revspecs[${revspec}]="${patchfile}"
 done < <(git grep --extended-regexp '^Git-commit:[[:blank:]]+' | awk -F : '{if ($1 ~ "^patches"){print $1,$3}}')
 #
