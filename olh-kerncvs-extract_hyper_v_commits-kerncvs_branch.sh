@@ -16,6 +16,7 @@ ignore_revspec_dir=ignore_revspec
 #
 declare -A existing_revspecs
 declare -A ignore_revspecs
+declare -A unneeded_ignore_revspecs
 ignore_revspec=
 maj_tag=
 min_tag=
@@ -255,12 +256,28 @@ do
 	existing_revspecs[${revspec}]="${patchfile}"
 done < <(git grep --extended-regexp '^Git-commit:[[:blank:]]+' | awk -F : '{if ($1 ~ "^patches"){print $1,$3}}')
 #
+for revspec in ${!ignore_revspecs[@]}
+do
+	test -n "${existing_revspecs[${revspec}]}" && unneeded_ignore_revspecs[${revspecs}]="$_"
+done
+if test ${#unneeded_ignore_revspecs[@]}
+then
+	echo "The following ${#unneeded_ignore_revspecs[@]} revisions can be removed from ignore_revspecs list because they are merged into ${kerncvs_branch}:"
+	echo "${!ignore_revspecs[@]}"
+fi
+#
 for revspec in ${!revspec_names[@]}
 do
 	: revspec ${revspec}
+	in_ignore_revspec_dir=
+	test -e "${ignore_revspec_dir}/${revspec}" && in_ignore_revspec_dir="$_"
 	if test -n "${ignore_revspecs[${revspec}]}" || test -e "${ignore_revspec_dir}/${revspec}"
 	then
 		: "${revspec} is on ignore list"
+		if test -n "${in_ignore_revspec_dir}" && test -n "${existing_revspecs[${revspec}]}"
+		then
+			echo "${in_ignore_revspec_dir} can be removed because it is merged into ${kerncvs_branch}"
+		fi
 		id_upstream_patch="`readlink -f \"${ignore_revspec_dir}/${revspec}\"`"
 		rm -fv "${missing_revspec_dir}/${revspec}"
 		for i in ${missing_patch_dir}/*
