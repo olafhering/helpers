@@ -10,6 +10,7 @@ obs_path=
 ibs_path=
 spec=
 service=
+start_pwd=$PWD
 #
 if test "$#" -eq 1
 then
@@ -288,12 +289,22 @@ then
 		l)
 		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
 		new_gitrev="${gitrev}"
-		git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}"
+		if pushd "${start_pwd}/.git" > /dev/null
+		then
+			cd ..
+			git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}" || : git-log $?
+			popd > /dev/null
+		fi
 		;;
 		p)
 		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
 		new_gitrev="${gitrev}"
-		git diff -p -b -B -w "${current_gitrev}..${new_gitrev}"
+		if pushd "${start_pwd}/.git" > /dev/null
+		then
+			cd ..
+			git diff -p -b -B -w "${current_gitrev}..${new_gitrev}" || : git-diff $?
+			popd > /dev/null
+		fi
 		;;
 		esac
 	done
