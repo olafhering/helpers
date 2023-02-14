@@ -10,6 +10,7 @@ while read b; do
     pb="${b%/*}"
     pb="${pb#users/$user/}"
     case "$pb" in
+      SLE15-SP3) pb=SLE15-SP3-LTSS ;;
       SLE15-SP2) pb=SLE15-SP2-LTSS ;;
       SLE15-SP1) pb=SLE15-SP1-LTSS ;;
       SLE12-SP4) pb=SLE12-SP4-LTSS ;;
