@@ -323,6 +323,7 @@ else
 		then
 			cd ..
 			git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}" || : git-log $?
+			popd > /dev/null
 		fi
 		;;
 		p)
@@ -332,6 +333,7 @@ else
 		then
 			cd ..
 			git diff -p -b -B -w "${current_gitrev}..${new_gitrev}" || : git-diff $?
+			popd > /dev/null
 		fi
 		;;
 		esac
