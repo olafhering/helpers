@@ -319,12 +319,20 @@ else
 		l)
 		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
 		new_gitrev="${gitrev}"
-		git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}"
+		if pushd "${start_pwd}/.git" > /dev/null
+		then
+			cd ..
+			git log -p -M --stat --pretty=fuller -b -B -w "${current_gitrev}..${new_gitrev}" || : git-log $?
+		fi
 		;;
 		p)
 		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
 		new_gitrev="${gitrev}"
-		git diff -p -b -B -w "${current_gitrev}..${new_gitrev}"
+		if pushd "${start_pwd}/.git" > /dev/null
+		then
+			cd ..
+			git diff -p -b -B -w "${current_gitrev}..${new_gitrev}" || : git-diff $?
+		fi
 		;;
 		esac
 	done
