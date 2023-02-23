@@ -12,7 +12,6 @@ export WORK_KERNEL=~/work/src/kernel
 kerncvs_active_branches_base=(
 SLE12-SP3-TD
 SLE12-SP3-LTSS
-SLE12-SP4-LTSS
 SLE12-SP5
 SLE15-SP1-LTSS
 SLE15-SP2-LTSS
