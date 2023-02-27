@@ -27,6 +27,11 @@ read patch_file < <(echo ${td}/*.patch)
 read mainline < <(${g} 'describe' '--contains' "${rev}" || echo)
 mainline="${mainline%%~*}"
 : mainline ${mainline}
+if test -z "${mainline}"
+then
+	echo "Commit ${rev} is not tagged in ${LINUX_GIT}"
+	exit 1
+fi
 patch_name="${patch_file##*/}"
 patch_name="${patch_name#*-}"
 patch="${td}/${patch_name}"
