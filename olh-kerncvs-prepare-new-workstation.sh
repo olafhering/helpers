@@ -9,12 +9,19 @@ local_homedir="${local_home_basedir}/${local_username}"
 
 
 as_root() {
+	local group_primary
+	local group_users='users'
+
 	if id "${local_username}"
 	then
 		return 0
 	fi
 	pushd "${local_home_basedir}"
-	useradd --create-home --uid 72 --home-dir "${local_homedir}" "${local_username}"
+	if getent group "${group_users}"
+	then
+		group_primary="-g ${group_users}"
+	fi
+	useradd --create-home --uid 72 ${group_primary} --home-dir "${local_homedir}" "${local_username}"
 	id "${local_username}"
 	echo "${local_username}:${local_username}" | chpasswd
 	pushd "${local_homedir}"
