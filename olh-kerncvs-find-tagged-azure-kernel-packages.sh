@@ -147,7 +147,7 @@ err_exit() {
 	cat <<_EOH_
 Usage: $0 <updates.suse.com-dir> <kernel-source.git-dir> <output-file>
 
-${0##*/} /RMTData/repo ~/work/src/kernel/kerncvs.kernel-source.bare.mirror /dev/shm/$$
+${0##*/} /RMTData/repo ~/work/src/kernel/kerncvs.kernel-source.bare.mirror /dev/shm/\$\$
 _EOH_
 	exit 1
 }
