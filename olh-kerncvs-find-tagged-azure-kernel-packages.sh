@@ -228,5 +228,5 @@ do
 	fi
 done < "${list_git_revision_kernel_binary}"
 #
-sort "${list_verified_commits}" > "${verified_commits_output}"
+sort -u "${list_verified_commits}" > "${verified_commits_output}"
 wc -l "${verified_commits_output}"
