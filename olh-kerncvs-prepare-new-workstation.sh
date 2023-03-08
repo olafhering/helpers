@@ -25,6 +25,10 @@ adjust_user() {
 	then
 		group_primary="-g ${group_users}"
 	fi
+	if getent group "${local_username}"
+	then
+		group_primary+=" -a -G ${local_username}"
+	fi
 	usermod -u "${uid}" ${group_primary} "${local_username}"
 	homedir=$( getent passwd "${local_username}" | cut -d: -f6 )
 	chown -R -h "${local_username}" "${homedir}"
