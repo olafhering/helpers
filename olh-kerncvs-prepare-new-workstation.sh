@@ -6,14 +6,36 @@ unset ${!LC_*}
 local_username='olaf'
 local_home_basedir='/vm_images'
 local_homedir="${local_home_basedir}/${local_username}"
+declare -i uid='72'
+group_users='users'
 
+adjust_user() {
+	local homedir
+	local group_primary
+	local -i existing_uid
+
+	read existing_uid < <(id -u "${local_username}")
+	if test "${existing_uid}" = "${uid}"
+	then
+		echo "Local user ${local_username} with uid ${uid} exists already"
+		return
+	fi
+	echo "Local user ${local_username} has unexpected uid ${existing_uid}, changing to ${uid}"
+	if getent group "${group_users}"
+	then
+		group_primary="-g ${group_users}"
+	fi
+	usermod -u "${uid}" ${group_primary} "${local_username}"
+	homedir=$( getent passwd "${local_username}" | cut -d: -f6 )
+	chown -R -h "${local_username}" "${homedir}"
+}
 
 as_root() {
 	local group_primary
-	local group_users='users'
 
 	if id "${local_username}"
 	then
+		adjust_user
 		return 0
 	fi
 	pushd "${local_home_basedir}"
@@ -21,7 +43,7 @@ as_root() {
 	then
 		group_primary="-g ${group_users}"
 	fi
-	useradd --create-home --uid 72 ${group_primary} --home-dir "${local_homedir}" "${local_username}"
+	useradd --create-home --uid "${uid}" ${group_primary} --home-dir "${local_homedir}" "${local_username}"
 	id "${local_username}"
 	echo "${local_username}:${local_username}" | chpasswd
 	pushd "${local_homedir}"
