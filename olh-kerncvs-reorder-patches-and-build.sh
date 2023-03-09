@@ -156,7 +156,10 @@ do
 				scripts/git_sort/series_insert.py "${patch}"
 			else
 				has_non_upstream_patch+=( "${patch}" )
-				echo "${patch}" >> series.conf
+				{
+					echo '# move the following patch up, to a better place'
+					echo "${patch}"
+				} >> series.conf
 			fi
 			git --no-pager add "${patch}"
 		done
