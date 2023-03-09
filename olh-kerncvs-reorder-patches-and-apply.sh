@@ -23,7 +23,7 @@ help() {
 	local rc=$1
 	trap - EXIT
 	cat <<_EOF_
-Usage: ${0##*/} -b <base_commit> -h <head_commit> -t <new_local_branch> [-d <data_string>] [-s|--stop_after_export]
+Usage: ${0##*/} -b <base_commit> -h <head_commit> -t <new_local_branch> [-d <date_string>] [-s|--stop_after_export]
 Usage: ${0##*/} [--help|--error]
 
 This script rebases all new patch files between base..head to a new branch.
