@@ -127,7 +127,7 @@ fi
 
 echo "revspec ${pkg_githash}, rev ${pkg_rev} @ ${pkg_date}"
 echo "revspec ${pkg_githash:0:12}"
-osc_sr_cmd=(ibs sr)
+osc_sr_cmd=(ibs ${osc_rq_type})
 if test "${supersede}" -ne 0
 then
 	osc_sr_cmd_args+=( -s "${supersede}" )
