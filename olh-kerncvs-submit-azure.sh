@@ -147,14 +147,19 @@ do
 	esac
 done
 #
-echo "Run the following command (Yes/No)?"
-echo "${osc_sr_cmd[@]}${osc_sr_cmd_args_str}"
 while true
 do
+	echo
+	echo "Run the following command (Yes/No/Diff)?"
+	echo "${osc_sr_cmd[@]}${osc_sr_cmd_args_str}"
 	read -n 1
 	case "${REPLY}" in
 	y|Y) echo ; break ;;
 	n|N) echo ; exit 1 ;;
+	d|D)
+		echo
+		ibs rdiff "${update_prj}" "${pkg}" "${src_prj}" "${pkg}"
+		;;
 	esac
 done
 osc_sr_cmd+=( "${osc_sr_cmd_args[@]}" )
