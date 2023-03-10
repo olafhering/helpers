@@ -74,7 +74,7 @@ case "${update_prj}" in
 	osc_rq_type='submit'
 	ibs rq list "${update_prj}" "${pkg}"
 ;;
-*:Update) osc_rq_type='maintenance_incident' ;;
+*:Update) osc_rq_type='maintenancerequest' ;;
 *) echo "Unhandled suffix for ${update_prj}" ; exit 1 ;;
 esac
 #
