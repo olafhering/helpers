@@ -9,8 +9,8 @@ Staging
 
 repositories=(
 Factory
+openSUSE_Leap_15.5
 openSUSE_Leap_15.4
-openSUSE_Leap_15.3
 openSUSE_Tumbleweed
 SLE_15
 )
