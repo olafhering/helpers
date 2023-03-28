@@ -10,5 +10,6 @@ then
 	*//pmbs-api.links2linux.org) exec pbs "$@" ;;
 	esac
 fi
-export OSC_CONFIG=$HOME/.osc/oscrc
-exec /usr/bin/osc --config=$OSC_CONFIG "$@"
+APIHOST='none'
+APIUSER='generic'
+exec olh-osc-wrapper "${APIUSER}" "${APIHOST}" "$@"
