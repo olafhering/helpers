@@ -255,4 +255,3 @@ case "${dist}" in
   *) ;;
 esac
 # vim: tw=666 ts=2 shiftwidth=2 et
-
