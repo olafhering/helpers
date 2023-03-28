@@ -95,17 +95,19 @@ do_tw() {
 do_15_3() {
   if test -z "${use_system_repos}"
   then
-    create_repo oss            yast2  http://download.opensuse.org/distribution/leap/15.3/repo/oss
-    create_repo non-oss        yast2  http://download.opensuse.org/distribution/leap/15.3/repo/non-oss
-    create_repo update         rpm-md http://download.opensuse.org/update/leap/15.3/oss
-    create_repo update-non-oss rpm-md http://download.opensuse.org/update/leap/15.3/non-oss
+    create_repo oss rpm-md http://download.opensuse.org/distribution/leap/15.3/repo/oss
+    create_repo nss rpm-md http://download.opensuse.org/distribution/leap/15.3/repo/non-oss
+    create_repo Oss rpm-md http://download.opensuse.org/update/leap/15.3/oss
+    create_repo Nss rpm-md http://download.opensuse.org/update/leap/15.3/non-oss
+    create_repo Hub rpm-md http://download.opensuse.org/update/leap/15.3/backports
+    create_repo Sle rpm-md http://download.opensuse.org/update/leap/15.3/sle
   else
     copy_system_repos
   fi
-  create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/openSUSE_Leap_15.3
-  create_repo pm_multimedia  rpm-md http://pmbs-api.links2linux.de:8080/Multimedia/openSUSE_Leap_15.3
-  create_repo pm_extra       rpm-md http://pmbs-api.links2linux.de:8080/Extra/openSUSE_Leap_15.3
-  create_repo pm_games       rpm-md http://pmbs-api.links2linux.de:8080/Games/openSUSE_Leap_15.3
+  create_repo pm_essentials  rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.3/Essentials
+  create_repo pm_multimedia  rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.3/Multimedia
+  create_repo pm_extra       rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.3/Extra
+  create_repo pm_games       rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.3/Games
   test_install
 }
 #
