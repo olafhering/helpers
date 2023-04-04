@@ -30,7 +30,7 @@ ipxe_url()         { echo "https://github.com/ipxe/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
 keycodemapdb_url() { echo "https://gitlab.com/keycodemap/keycodemapdb.git" ; }
 libvirt_dir()      { readlink -f ~/git/for_obs/libvirt.git ; }
-libvirt_url()      { echo "https://github.com/libvirt/libvirt.git" ; }
+libvirt_url()      { echo "https://gitlab.com/libvirt/libvirt.git" ; }
 meson_dir()       { echo "none" ; }
 meson_url()       { echo "https://github.com/mesonbuild/meson.git" ; }
 minios_dir()       { readlink -f ~/git/for_obs/mini-os.git ; }
@@ -217,6 +217,7 @@ case "${url}" in
   https://github.com/y-256/libdivsufsort.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/libvirt/libvirt-ci) unhandled=1 ;;
+  https://gitlab.com/libvirt/libvirt.git) libvirt ;;
   https://gitlab.com/qemu-project/QemuMacDrivers.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git/) unhandled=1 ;;
