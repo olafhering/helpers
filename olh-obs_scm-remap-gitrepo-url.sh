@@ -152,6 +152,7 @@ case "${url}" in
   http://git.qemu.org/git/skiboot.git) unhandled=1 ;;
   http://git.qemu.org/git/u-boot-sam460ex.git) unhandled=1 ;;
   http://git.qemu.org/git/vgabios.git/) unhandled=1 ;;
+  http://xenbits.xen.org/git-http/mini-os.git) minios ;;
   http://xenbits.xen.org/git-http/qemu-xen-traditional.git) qemu_xen_trad ;;
   http://xenbits.xen.org/git-http/qemu-xen.git) qemu_xen ;;
   http://xenbits.xen.org/git-http/seabios.git) seabios ;;
