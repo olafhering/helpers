@@ -153,6 +153,7 @@ case "${url}" in
   http://git.qemu.org/git/u-boot-sam460ex.git) unhandled=1 ;;
   http://git.qemu.org/git/vgabios.git/) unhandled=1 ;;
   http://xenbits.xen.org/git-http/qemu-xen-traditional.git) qemu_xen_trad ;;
+  http://xenbits.xen.org/git-http/qemu-xen.git) qemu_xen ;;
   https://git.cryptomilk.org/projects/cmocka.git) unhandled=1 ;;
   https://git.ipxe.org/ipxe.git) ipxe ;;
   https://git.qemu.org/git/QemuMacDrivers.git) unhandled=1 ;;
