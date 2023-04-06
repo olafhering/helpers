@@ -111,8 +111,8 @@ case "${url}" in
   git://git.sv.gnu.org/gnulib) gnulib ;;
   git://git.sv.gnu.org/gnulib.git) gnulib ;;
   git://github.com/coreutils/gnulib.git) gnulib ;;
-  git://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
-  git://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
+  git://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
+  git://github.com/cota/berkeley-testfloat-3) btestfloat3 ;;
   git://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   git://github.com/libvirt/libvirt.git) libvirt ;;
   git://github.com/olafhering/xen.git) xen ;;
@@ -162,9 +162,7 @@ case "${url}" in
   https://git.qemu.org/git/QemuMacDrivers.git) unhandled=1 ;;
   https://git.qemu.org/git/SLOF.git) unhandled=1 ;;
   https://git.qemu.org/git/berkeley-softfloat-3.git) bsoftfloat3 ;;
-  https://git.qemu.org/git/berkeley-softfloat-3.git) unhandled=1 ;;
   https://git.qemu.org/git/berkeley-testfloat-3.git) btestfloat3 ;;
-  https://git.qemu.org/git/berkeley-testfloat-3.git) unhandled=1 ;;
   https://git.qemu.org/git/capstone.git) unhandled=1 ;;
   https://git.qemu.org/git/dtc.git) unhandled=1 ;;
   https://git.qemu.org/git/edk2.git) ovmf ;;
@@ -201,8 +199,7 @@ case "${url}" in
   https://github.com/coreboot/seabios.git) seabios ;;
   https://github.com/coreutils/gnulib.git) gnulib ;;
   https://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
-  https://github.com/cota/berkeley-softfloat-3) unhandled=1 ;;
-  https://github.com/cota/berkeley-testfloat-3) unhandled=1 ;;
+  https://github.com/cota/berkeley-testfloat-3) btestfloat3 ;;
   https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/hillbig/esaxx) unhandled=1 ;;
