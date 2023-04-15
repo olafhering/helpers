@@ -13,8 +13,6 @@ case "${mode}" in
 esac
 unset unhandled
 #
-brotli_dir()          { readlink -f ~/git/for_obs/brotli.git ; }
-brotli_url()          { echo "https://github.com/google/brotli" ; }
 bsoftfloat3_dir()          { echo "none" ; }
 bsoftfloat3_url()          { echo "https://github.com/ucb-bar/berkeley-softfloat-3.git" ; }
 btestfloat3_dir()          { echo "none" ; }
@@ -56,7 +54,6 @@ valgrind_url()     { echo "git://sourceware.org/git/valgrind.git" ; }
 xen_dir()          { readlink -f ~/git/for_obs/xen.git ; }
 xen_url()          { echo "https://github.com/olafhering/xen.git" ; }
 #
-brotli() { case "${mode}" in dir) brotli_dir ;; url) brotli_url ;; *) echo "brotli" ;; esac }
 bsoftfloat3() { case "${mode}" in dir) bsoftfloat3_dir ;; url) bsoftfloat3_url ;; *) echo "bsoftfloat3" ;; esac }
 btestfloat3() { case "${mode}" in dir) btestfloat3_dir ;; url) btestfloat3_url ;; *) echo "btestfloat3" ;; esac }
 claws() { case "${mode}" in dir) claws_dir ;; url) claws_url ;; *) echo "claws" ;; esac }
@@ -130,7 +127,6 @@ case "${url}" in
   git://xenbits.xen.org/qemu-xen.git) qemu_xen ;;
   git://xenbits.xen.org/seabios.git) seabios_xenbits ;;
   git://xenbits.xen.org/xen.git) xen ;;
-  git@github.com:olafhering/brotli.git) brotli ;;
   git@github.com:olafhering/libvirt.git) libvirt ;;
   git@github.com:olafhering/qemu.git) qemu ;;
   git@github.com:olafhering/xen.git) xen ;;
@@ -200,7 +196,6 @@ case "${url}" in
   https://github.com/coreutils/gnulib.git) gnulib ;;
   https://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
   https://github.com/cota/berkeley-testfloat-3) btestfloat3 ;;
-  https://github.com/google/brotli) brotli ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/hillbig/esaxx) unhandled=1 ;;
   https://github.com/ipxe/ipxe.git) ipxe ;;

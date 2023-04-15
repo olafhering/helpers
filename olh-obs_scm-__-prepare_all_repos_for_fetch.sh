@@ -5,22 +5,6 @@ unset LANG
 unset ${!LC_*}
 pushd ~/git/for_obs
 #
-repo_dir=brotli.git
-if ! pushd "${repo_dir}" > /dev/null
-then
-  mkdir -v "${repo_dir}"
-  pushd "${repo_dir}" > /dev/null
-fi
-if pushd .git > /dev/null
-then
-  popd > /dev/null
-else
-  git init
-  git remote add    --tags upstream            https://github.com/google/brotli.git
-  git remote add --no-tags github_olafhering   git@github.com:olafhering/brotli.git
-fi
-popd > /dev/null
-#
 repo_dir=claws.git
 if ! pushd "${repo_dir}" > /dev/null
 then
