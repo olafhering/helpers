@@ -4,9 +4,18 @@ set -e
 pushd "${WORK_KERNEL}" > /dev/null
 for branch in "${kerncvs_active_branches_base[@]}" "${kerncvs_active_branches_azure[@]}"
 do
-	pushd "kerncvs.kernel-source.${branch}" > /dev/null || continue
-	git --no-pager status || continue
-	git --no-pager checkout "${branch}" || continue
-	git --no-pager pull || continue
-	popd > /dev/null || continue
+	if pushd "kerncvs.kernel-source.${branch}" > /dev/null
+	then
+		if git --no-pager status
+		then
+			if git --no-pager checkout "${branch}"
+			then
+				if git --no-pager pull
+				then
+					: all good
+				fi
+			fi
+		fi
+		popd > /dev/null
+	fi
 done
