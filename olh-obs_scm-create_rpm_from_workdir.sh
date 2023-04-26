@@ -4,7 +4,6 @@ set -e
 unset LANG
 unset ${!LC*}
 
-_sed() { /z_crypt_lvm_btrfs/sle12/usr/bin/sed "$@" ; }
 work_dir=
 pkg_tag=
 multibuild=
@@ -61,7 +60,7 @@ counter=0
     f=${i%/*}/spec.Patch.txt
     if test -e "${f}"
     then
-      _sed "s/@SOURCE_COUNTER@/${counter}/" "${f}"
+      sed "s/@SOURCE_COUNTER@/${counter}/" "${f}"
     fi
   counter=$(( $counter + 1 ))
   done
@@ -80,7 +79,7 @@ counter=0
     f=${i%/*}/spec.patch.txt
     if test -e "${f}"
     then
-      _sed "s/@SOURCE_COUNTER@/${counter}/" "${f}"
+      sed "s/@SOURCE_COUNTER@/${counter}/" "${f}"
     fi
   counter=$(( $counter + 1 ))
   done
@@ -91,7 +90,7 @@ counter=0
 #ead -n 1234 _service *.txt
 
 popd > /dev/null
-_sed "
+sed "
  /^Patch:/d
  /^Patch[0-9]:/d
  /^Patch[0-9][0-9]:/d
@@ -108,7 +107,7 @@ Version:        0\\
 Release:        0@
  /^Version:.*/s@^.*@Version:        0@
 " "${rpm_spec}" |
-_sed -n "
+sed -n "
 /^U[rR][lL]:/{
  p
  r ${work_dir}/spec.Commit.txt
