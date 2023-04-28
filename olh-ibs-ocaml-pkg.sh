@@ -198,6 +198,7 @@ case "${upstream}" in
 	ppx_sexp_message) pkg='ocaml-ppx_sexp_message' ;;
 	ppx_sexp_value) pkg='ocaml-ppx_sexp_value' ;;
 	ppx_stable) pkg='ocaml-ppx_stable' ;;
+	ppx_stable_witness) pkg='ocaml-ppx_stable_witness' ;;
 	ppx_string) pkg='ocaml-ppx_string' ;;
 	ppx_tools) pkg='ocaml-ppx_tools' ;;
 	ppx_typerep_conv) pkg='ocaml-ppx_typerep_conv' ;;
