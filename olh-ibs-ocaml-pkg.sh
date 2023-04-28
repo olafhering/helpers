@@ -119,6 +119,7 @@ case "${upstream}" in
 	graphics) pkg='ocaml-graphics' ;;
 	int_repr) pkg='ocaml-int_repr' ;;
 	jane-street-headers) pkg='ocaml-jane-street-headers' ;;
+	jane_rope) pkg='ocaml-jane_rope' ;;
 	jsonm) pkg='ocaml-jsonm' ;;
 	jst-config) pkg='ocaml-jst-config' ;;
 	lablgtk) select_lablgtk ;;
