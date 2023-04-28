@@ -207,6 +207,7 @@ case "${upstream}" in
 	pyml) pkg='ocaml-pyml' ;;
 	qcheck) pkg='ocaml-qcheck' ;;
 	qtest) pkg='ocaml-qtest' ;;
+	re2) pkg='ocaml-re2' ;;
 	react) pkg='ocaml-react' ;;
 	result) pkg='ocaml-result' ;;
 	rresult) pkg='ocaml-rresult' ;;
