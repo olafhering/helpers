@@ -212,6 +212,7 @@ case "${upstream}" in
 	qtest) pkg='ocaml-qtest' ;;
 	re2) pkg='ocaml-re2' ;;
 	react) pkg='ocaml-react' ;;
+	regex_parser_intf) pkg='ocaml-regex_parser_intf' ;;
 	result) pkg='ocaml-result' ;;
 	rresult) pkg='ocaml-rresult' ;;
 	sedlex) pkg='ocaml-sedlex' ;;
