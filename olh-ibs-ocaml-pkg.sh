@@ -269,7 +269,7 @@ then
 		case "${REPLY}" in
 		d) diff -u "${obs_path}/${spec}" "${spec}" 2>&1 | less -S ;;
 		c) break ;;
-		e) exit 1 ;;
+		e) exit 0 ;;
 		esac
 	done
 else
@@ -288,7 +288,7 @@ then
 		case "${REPLY}" in
 		d) diff -u "${obs_path}/${service}" "${service}" 2>&1 | less -S ;;
 		c) break ;;
-		e) exit 1 ;;
+		e) exit 0 ;;
 		l)
 		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
 		new_gitrev="${gitrev}"
@@ -318,7 +318,7 @@ else
 		read -n 1 -p "[c]ontinue [e]xit [l]og [p]atch ..."
 		case "${REPLY}" in
 		c) break ;;
-		e) exit 1 ;;
+		e) exit 0 ;;
 		l)
 		read current_gitrev < <(sed -n 's@^\(.*<param name=.revision.>\)\([^<]\+\)\(.*\)@\2@p' "${service}")
 		new_gitrev="${gitrev}"
