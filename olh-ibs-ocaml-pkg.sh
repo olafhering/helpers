@@ -177,6 +177,7 @@ case "${upstream}" in
 	ppx_custom_printf) pkg='ocaml-ppx_custom_printf' ;;
 	ppx_deriving) pkg='ocaml-ppx_deriving' ;;
 	ppx_deriving_yojson) pkg='ocaml-ppx_deriving_yojson' ;;
+	ppx_disable_unused_warnings) pkg='ocaml-ppx_disable_unused_warnings' ;;
 	ppx_enumerate) pkg='ocaml-ppx_enumerate' ;;
 	ppx_expect) pkg='ocaml-ppx_expect' ;;
 	ppx_fields_conv) pkg='ocaml-ppx_fields_conv' ;;
