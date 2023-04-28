@@ -202,6 +202,7 @@ case "${upstream}" in
 	ppx_tools) pkg='ocaml-ppx_tools' ;;
 	ppx_typerep_conv) pkg='ocaml-ppx_typerep_conv' ;;
 	ppx_variants_conv) pkg='ocaml-ppx_variants_conv' ;;
+	ppx_yojson_conv_lib) pkg='ocaml-ppx_yojson_conv_lib' ;;
 	ppxlib) pkg='ocaml-ppxlib' ;;
 	pyml) pkg='ocaml-pyml' ;;
 	qcheck) pkg='ocaml-qcheck' ;;
