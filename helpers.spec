@@ -48,5 +48,5 @@ done
 %files
 %defattr(-,root,root)
 %doc LICENSE
-%_datadir/%name
+%config %_datadir/%name
 
