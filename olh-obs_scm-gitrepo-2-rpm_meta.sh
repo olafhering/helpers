@@ -79,6 +79,7 @@ process_submodules() {
   local var equal val rest
   local umask commit submod_revision submod_path
   local submodule counter=0
+  local submodules_tag
   while read var equal val rest
   do
     : var ${var}
@@ -100,10 +101,11 @@ process_submodules() {
       if test "${umask}" =  "160000" && allow_submodule "${tag}" "${got_url}"
       then
         submodule="git.submodule.$(( counter++ )).txt"
-        if test -n "${submodule_revisions[${tag}]}"
+        read submodules_tag < <(olh-obs_scm-remap-gitrepo-url ${got_url} 'tag')
+        if test -n "${submodule_revisions[${submodules_tag}]}"
         then
-          echo "Changing revision of ${tag} from ${submod_revision} to ${submodule_revisions[${tag}]}"
-          submod_revision=${submodule_revisions[${tag}]}
+          echo "Changing revision of ${tag} from ${submod_revision} to ${submodule_revisions[${submodules_tag}]}"
+          submod_revision=${submodule_revisions[${submodules_tag}]}
         fi
         {
           echo "path='${got_path}'"
