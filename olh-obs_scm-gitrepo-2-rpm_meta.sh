@@ -104,7 +104,7 @@ process_submodules() {
         read submodules_tag < <(olh-obs_scm-remap-gitrepo-url ${got_url} 'tag')
         if test -n "${submodule_revisions[${submodules_tag}]}"
         then
-          echo "Changing revision of ${tag} from ${submod_revision} to ${submodule_revisions[${submodules_tag}]}"
+          echo "Changing revision of ${submodules_tag} from ${submod_revision} to ${submodule_revisions[${submodules_tag}]}"
           submod_revision=${submodule_revisions[${submodules_tag}]}
         fi
         {
