@@ -137,7 +137,7 @@ do
     --submodule-tag) submodule_tag=$2 ; shift ;;
     --pkg-patch-basedir) pkg_patch_basedir=$2 ; shift ;;
     --patches-dir) patches_dir=$2 ; shift ;;
-    --submodule-revision) tag=${2%%:*} ; submod_revision=${2##*:} ; submodule_revisions[${tag}]=${submod_revision} ;; 
+    --submodule-revision) tag=${2%%:*} ; submod_revision=${2##*:} ; submodule_revisions[${tag}]=${submod_revision} ; shift ;; 
     *) echo "UNHANDLED: $0 $*" >&2 ; exit 1 ;;
   esac
   shift
