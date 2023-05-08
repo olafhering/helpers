@@ -27,6 +27,8 @@ t=`mktemp`
 tf=`mktemp`
 tt=`mktemp`
 #
+declare -A submodule_revisions
+#
 g() {
   ${git} \
   "--git-dir=${git_dir}" \
@@ -98,6 +100,11 @@ process_submodules() {
       if test "${umask}" =  "160000" && allow_submodule "${tag}" "${got_url}"
       then
         submodule="git.submodule.$(( counter++ )).txt"
+        if test -n "${submodule_revisions[${tag}]}"
+        then
+          echo "Changing revision of ${tag} from ${submod_revision} to ${submodule_revisions[${tag}]}"
+          submod_revision=${submodule_revisions[${tag}]}
+        fi
         {
           echo "path='${got_path}'"
           echo "url='${got_url}'"
@@ -130,6 +137,7 @@ do
     --submodule-tag) submodule_tag=$2 ; shift ;;
     --pkg-patch-basedir) pkg_patch_basedir=$2 ; shift ;;
     --patches-dir) patches_dir=$2 ; shift ;;
+    --submodule-revision) tag=${2%%:*} ; submod_revision=${2##*:} ; submodule_revisions[${tag}]=${submod_revision} ;; 
     *) echo "UNHANDLED: $0 $*" >&2 ; exit 1 ;;
   esac
   shift
