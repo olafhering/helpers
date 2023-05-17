@@ -21,6 +21,7 @@ cmd=(
 '--annotate'
 '--to-cmd' './scripts/get_maintainer.pl --norolestats --no-s --no-m --no-r'
 '--cc-cmd' './scripts/get_maintainer.pl --norolestats --no-l'
+'--suppress-cc=self'
 "$@"
 )
 cmd+=( "--reroll-count=${reroll_count}" )
