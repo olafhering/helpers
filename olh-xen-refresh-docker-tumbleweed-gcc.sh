@@ -17,6 +17,7 @@ make -C automation/build suse/opensuse-tumbleweed
 env \
 	CONTAINER_NO_PULL=1 \
 	CONTAINER=tumbleweed \
-	automation/scripts/containerize bash -exc "./configure && make ${make_args[*]} || : make failed with \$?"
+	CONTAINER_ARGS='-e CC=gcc -e CXX=g++ -e debug=n' \
+	automation/scripts/containerize automation/scripts/build < /dev/null
 make -C automation/build suse/opensuse-tumbleweed ${push}
 echo $?
