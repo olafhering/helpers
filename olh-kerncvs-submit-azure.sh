@@ -56,7 +56,7 @@ sle15sp5() {
 	embargo='SLE15-SP5-AZURE_EMBARGO'
 	kerncvs_prj='Devel:Kernel:SLE15-SP5-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SLE15-SP5-AZURE_EMBARGO'
-	update_prj='SUSE:SLE-15-SP5:GA'
+	update_prj='SUSE:SLE-15-SP5:Update'
 }
 #
 case "${dist}" in
