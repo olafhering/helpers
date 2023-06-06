@@ -148,6 +148,7 @@ case "${upstream}" in
 	ocaml-lsp) pkg='ocaml-lsp-server' ;;
 	ocaml-mccs) pkg='ocaml-mccs' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
+	ocaml-minisat) pkg='ocaml-minisat' ;;
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
