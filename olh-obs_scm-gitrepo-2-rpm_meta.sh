@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: ts=2 shiftwidth=2 expandtab nowrap
 #et -x
 set -e
 unset LANG
@@ -28,6 +29,7 @@ tf=`mktemp`
 tt=`mktemp`
 #
 declare -A submodule_revisions
+declare -i counter=0
 #
 g() {
   ${git} \
@@ -78,7 +80,7 @@ process_git_submodules() {
   local got_path got_url
   local var equal val rest
   local umask commit submod_revision submod_path
-  local submodule counter=0
+  local submodule
   local submodules_tag
   while read var equal val rest
   do
@@ -114,6 +116,83 @@ process_git_submodules() {
         } > "${submodule}"
       fi
     fi
+  done < "${submodules}"
+}
+#
+process_meson_subprojects() {
+  local rev=$1
+  local submodules=$2
+  local tag=$3
+  local got_url
+  local mode type hash path
+  local submod_revision
+  local submodule
+  local submodules_tag
+  local in_wrap_git
+
+  while read mode type hash path
+  do
+    case "${mode}" in
+    100644)
+    if g show "${rev}:${path}" > "${t}" 2>/dev/null
+    then
+      if test -s "${t}"
+      then
+        in_wrap_git=
+        while read
+        do
+          : REPLY ${REPLY}
+          case "${REPLY}" in
+          "[wrap-git]")
+          if test -n "${in_wrap_git}"
+          then
+            echo >&2 "Already in '[wrap-git]' in '${path}'"
+            cat "${t}"
+          fi
+          in_wrap_git='in_wrap_git'
+          unset got_url submod_revision
+          ;;
+          url*)
+          if test -n "${in_wrap_git}"
+          then
+            got_url="${REPLY#*=}"
+            got_url="${got_url#* }"
+            got_url="${got_url%% *}"
+          fi
+          ;;
+          revision*)
+          if test -n "${in_wrap_git}"
+          then
+            submod_revision="${REPLY#*=}"
+            submod_revision="${submod_revision#* }"
+            submod_revision="${submod_revision%% *}"
+          fi
+          ;;
+          \[*) unset got_url submod_revision ;; # ]
+          esac
+        done < "${t}"
+
+        if test -n "${got_url}" && test -n "${submod_revision}" && allow_submodule "${tag}" "${got_url}"
+        then
+          submodule="git.submodule.$(( counter++ )).txt"
+          read submodules_tag < <(olh-obs_scm-remap-gitrepo-url ${got_url} 'tag')
+          if test -n "${submodule_revisions[${submodules_tag}]}"
+          then
+            echo "Changing revision of ${submodules_tag} from ${submod_revision} to ${submodule_revisions[${submodules_tag}]}"
+            submod_revision=${submodule_revisions[${submodules_tag}]}
+          fi
+          {
+            echo "path='${path%.wrap}'"
+            echo "url='${got_url}'"
+            echo "rev='${submod_revision}'"
+          } > "${submodule}"
+        fi
+
+      fi
+    fi
+    ;;
+    *) echo >&2 "Unhandled mode ${mode} in commit ${git_hash} in '${rev}'" ;;
+    esac
   done < "${submodules}"
 }
 #
@@ -284,6 +363,18 @@ then
     if test -s git.submodules.txt
     then
       process_git_submodules "${git_hash}" git.submodules.txt "${submodule_tag}"
+    fi
+    if g show "${git_hash}":meson.build > git.submodules.txt 2>/dev/null
+    then
+      if test -s git.submodules.txt
+      then
+        g ls-tree -r "${git_hash}" subprojects > git.submodules.txt || : $?
+        sed -i -n '/\.wrap$/p' git.submodules.txt
+        if test -s git.submodules.txt
+        then
+          process_meson_subprojects "${git_hash}" git.submodules.txt "${submodule_tag}"
+        fi
+      fi
     fi
   fi # direct_submodules
 fi # git_dir
