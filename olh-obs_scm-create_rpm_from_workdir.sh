@@ -80,7 +80,6 @@ rm -rf %_builddir/%name-%version
 mv %_sourcedir/${pkg_src_variable}-%version %_builddir/%name-%version
 %setup -c -T -D
 _EOF_
-  fi
   for i in */service.txt
   do
     f=${i%/*}/spec.patch.txt
