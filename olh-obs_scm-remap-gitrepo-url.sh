@@ -196,6 +196,8 @@ case "${url}" in
   https://github.com/coreutils/gnulib.git) gnulib ;;
   https://github.com/cota/berkeley-softfloat-3) bsoftfloat3 ;;
   https://github.com/cota/berkeley-testfloat-3) btestfloat3 ;;
+  https://github.com/google/brotli) unhandled=1 ;;
+  https://github.com/google/googletest.git) unhandled=1 ;;
   https://github.com/hdeller/seabios-hppa.git) unhandled=1 ;;
   https://github.com/hillbig/esaxx) unhandled=1 ;;
   https://github.com/ipxe/ipxe.git) ipxe ;;
@@ -214,11 +216,14 @@ case "${url}" in
   https://github.com/y-256/libdivsufsort.git) unhandled=1 ;;
   https://gitlab.com/keycodemap/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/libvirt/libvirt-ci) unhandled=1 ;;
+  https://gitlab.com/libvirt/libvirt-ci.git) unhandled=1 ;;
   https://gitlab.com/libvirt/libvirt.git) libvirt ;;
   https://gitlab.com/qemu-project/QemuMacDrivers.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/SLOF.git/) unhandled=1 ;;
+  https://gitlab.com/qemu-project/berkeley-softfloat-3) bsoftfloat3 ;;
   https://gitlab.com/qemu-project/berkeley-softfloat-3.git) bsoftfloat3 ;;
+  https://gitlab.com/qemu-project/berkeley-testfloat-3) btestfloat3 ;;
   https://gitlab.com/qemu-project/berkeley-testfloat-3.git) btestfloat3 ;;
   https://gitlab.com/qemu-project/capstone.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/dtc.git) unhandled=1 ;;
@@ -226,6 +231,7 @@ case "${url}" in
   https://gitlab.com/qemu-project/ipxe.git) ipxe ;;
   https://gitlab.com/qemu-project/keycodemapdb.git) keycodemapdb ;;
   https://gitlab.com/qemu-project/libslirp.git) unhandled=1 ;;
+  https://gitlab.com/qemu-project/libvfio-user.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/meson.git) meson ;;
   https://gitlab.com/qemu-project/openbios.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/opensbi.git) unhandled=1 ;;
