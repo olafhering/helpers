@@ -84,7 +84,8 @@ counter=0
     fi
   counter=$(( $counter + 1 ))
   done
-  cat <<_EOF_
+  cat <<'_EOF_'
+
 if pushd subprojects/packagefiles 2>/dev/null
 then
   for prj in *
@@ -102,6 +103,7 @@ then
   done
   popd > /dev/null
 fi
+
 _EOF_
 } > spec.patch.txt
 #
