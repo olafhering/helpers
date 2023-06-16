@@ -71,15 +71,13 @@ counter=0
 {
   if test -n "${multibuild}"
   then
-    cat <<'_EOF_'
-rm -rf %_builddir/%pkg-%version
-mv %_sourcedir/%pkg-%version %_builddir/%pkg-%version
-%setup -c -T -D
-_EOF_
+    pkg_src_variable='%pkg'
   else
-    cat <<'_EOF_'
+    pkg_src_variable='%name'
+  fi
+    cat <<_EOF_
 rm -rf %_builddir/%name-%version
-mv %_sourcedir/%name-%version %_builddir/%name-%version
+mv %_sourcedir/${pkg_src_variable}-%version %_builddir/%name-%version
 %setup -c -T -D
 _EOF_
   fi
