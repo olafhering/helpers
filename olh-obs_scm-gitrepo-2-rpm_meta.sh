@@ -71,7 +71,7 @@ allow_submodule() {
   echo "submodule ${tag}/${url_tag} denied"
   return 1
 }
-process_submodules() {
+process_git_submodules() {
   local rev=$1
   local submodules=$2
   local tag=$3
@@ -283,7 +283,7 @@ then
     fi
     if test -s git.submodules.txt
     then
-      process_submodules "${git_hash}" git.submodules.txt "${submodule_tag}"
+      process_git_submodules "${git_hash}" git.submodules.txt "${submodule_tag}"
     fi
   fi # direct_submodules
 fi # git_dir
