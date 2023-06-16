@@ -32,7 +32,7 @@ done
 test -n "${pkg_tag}"
 if test -n "${multibuild}"
 then
-  rpm_name_tag='%tag-%build_flavor'
+  rpm_name_tag='%pkg-%build_flavor'
 else
   rpm_name_tag=${pkg_tag}
 fi
@@ -72,8 +72,8 @@ counter=0
   if test -n "${multibuild}"
   then
     cat <<'_EOF_'
-rm -rf %_builddir/%tag-%version
-mv %_sourcedir/%tag-%version %_builddir/%tag-%version
+rm -rf %_builddir/%pkg-%version
+mv %_sourcedir/%pkg-%version %_builddir/%pkg-%version
 %setup -c -T -D
 _EOF_
   else
