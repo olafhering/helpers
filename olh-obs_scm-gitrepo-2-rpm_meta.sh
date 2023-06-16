@@ -256,9 +256,8 @@ then
   {
     echo ""
     echo "rm -rf '${pkg_patch_basedir}'"
-    echo "tar xfa %{SOURCE@SOURCE_COUNTER@}"
     echo "mkdir -vp '${pkg_patch_basedir%/*}'"
-    echo "mv -v '${src_path}-%${src_path}_version' '${pkg_patch_basedir}'"
+    echo "mv -v '%_sourcedir/${src_path}-%${src_path}_version' '${pkg_patch_basedir}'"
   } >> spec.patch.txt
 fi
 git_hash="${git_upstream_commit}"
@@ -407,9 +406,6 @@ cat >> service.txt <<_EOS_
     <param name="url">${git_upstream_url}</param>
     ${service_version_format}
   </service>
-  <service mode="buildtime" name="tar">
-    <param name="obsinfo">${src_path}.obsinfo</param>
-  </service>
 _EOS_
 #
 if test "${pkg_patch_basedir}" = "."
@@ -420,14 +416,6 @@ then
   </service>
 _EOS_
   {
-    if test -n "${multibuild}"
-    then
-      echo "Source@SOURCE_COUNTER@: %tag-%version.tar"
-    else
-      echo "Source@SOURCE_COUNTER@: %name-%version.tar"
-    fi
-    echo "#KEEP NOSOURCE DEBUGINFO"
-    echo "NoSource: @SOURCE_COUNTER@"
     echo "%if %suse_version > 1110"
     echo "BuildRequires: python(abi) > 3.0"
     echo "%endif"
@@ -435,9 +423,6 @@ _EOS_
 else
   {
     echo "%define ${src_path}_version ${git_hash}"
-    echo "Source@SOURCE_COUNTER@: ${src_path}-%${src_path}_version.tar"
-    echo "#KEEP NOSOURCE DEBUGINFO"
-    echo "NoSource: @SOURCE_COUNTER@"
   } >> spec.Patch.txt
 fi
 #

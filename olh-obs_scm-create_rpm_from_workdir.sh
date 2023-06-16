@@ -71,9 +71,17 @@ counter=0
 {
   if test -n "${multibuild}"
   then
-    echo "%setup -q -n %tag-%version"
+    cat <<'_EOF_'
+rm -rf %_builddir/%tag-%version
+mv %_sourcedir/%tag-%version %_builddir/%tag-%version
+%setup -c -T -D
+_EOF_
   else
-    echo "%setup -q"
+    cat <<'_EOF_'
+rm -rf %_builddir/%name-%version
+mv %_sourcedir/%name-%version %_builddir/%name-%version
+%setup -c -T -D
+_EOF_
   fi
   for i in */service.txt
   do
