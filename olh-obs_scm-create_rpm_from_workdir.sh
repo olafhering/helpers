@@ -32,7 +32,7 @@ done
 test -n "${pkg_tag}"
 if test -n "${multibuild}"
 then
-  rpm_name_tag='%pkg-%build_flavor'
+  rpm_name_tag='%pkg%nsuffix'
 else
   rpm_name_tag=${pkg_tag}
 fi
