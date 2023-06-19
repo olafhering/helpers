@@ -236,6 +236,9 @@ do
 		echo "${rev}" >> "${list_verified_commits}"
 	fi
 done < "${list_git_revision_kernel_binary}"
+while read
+do
+	test -n "${REPLY}" && git --no-pager log --oneline "${REPLY}^!"
+done < <(sort -u "${list_verified_commits}" | tee "${verified_commits_output}")
 #
-sort -u "${list_verified_commits}" > "${verified_commits_output}"
 wc -l "${verified_commits_output}"
