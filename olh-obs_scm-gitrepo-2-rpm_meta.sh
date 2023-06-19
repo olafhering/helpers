@@ -448,7 +448,7 @@ do
 	--git-fixes-remote "${git_fixes_remote}" \
 	--git-fixes-base   "${git_fixes_base}" \
 	--git-fixes-branch "${git_fixes_branch}" \
-	--git-fixes-tag "${git_fixes_tag}:-${pkg_tag}" \
+	--git-fixes-tag "${pkg_tag}" \
 	--git-fixes-upstream-branch "${git_fixes_upstream_branch}" \
 	--pkg-tag "${pkg_tag}" \
 	--pkg-patch-basedir "${pkg_patch_basedir}/${path}" \
