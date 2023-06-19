@@ -12,9 +12,9 @@ direct_submodules=true
 git_dir=
 git_fixes_base=
 git_fixes_branch=
-git_fixes_tag=
 git_fixes_upstream_branch=
 git_fixes_remote=
+git_submodule_fixes_tag=
 git_upstream_branch=
 git_upstream_commit=
 git_upstream_remote=
@@ -212,8 +212,8 @@ do
     --git-fixes-remote) git_fixes_remote=$2 ; shift ;;
     --git-fixes-base) git_fixes_base=$2 ; shift ;;
     --git-fixes-branch) git_fixes_branch=$2 ; shift ;;
-    --git-fixes-tag) git_fixes_tag="-$2" ; shift ;;
     --git-fixes-upstream-branch) git_fixes_upstream_branch="$2" ; shift ;;
+    --git-submodule-fixes-tag) git_submodule_fixes_tag="-$2" ; shift ;;
     --pkg-tag) pkg_tag=$2 ; shift ;;
     --submodule-tag) submodule_tag=$2 ; shift ;;
     --pkg-patch-basedir) pkg_patch_basedir=$2 ; shift ;;
@@ -294,8 +294,8 @@ then
   #
   upstream_branch=${git_upstream_branch}
   test -n "${git_fixes_upstream_branch}" && upstream_branch=${git_fixes_upstream_branch}
-  fixes_from="${git_fixes_remote}/${git_fixes_base}${git_fixes_tag+${git_fixes_tag}}-${upstream_branch}"
-  fixes_to="${git_fixes_remote}/${git_fixes_branch}${git_fixes_tag+${git_fixes_tag}}-${upstream_branch}"
+  fixes_from="${git_fixes_remote}/${git_fixes_base}${git_submodule_fixes_tag+${git_submodule_fixes_tag}}-${upstream_branch}"
+  fixes_to="${git_fixes_remote}/${git_fixes_branch}${git_submodule_fixes_tag+${git_submodule_fixes_tag}}-${upstream_branch}"
   echo "${git_upstream_url##*/} ${fixes_from}..${fixes_to}"
   if g log --max-count=1 '--pretty=format:%H%n' "${fixes_from}" > "${tf}" 2>/dev/null && test -s "${tf}"
   then
@@ -311,7 +311,7 @@ then
     then
       if test "${git_hash}" != "${fixes_from}"
       then
-        echo "MISMATCH in ${submodule_tag}, ${git_fixes_base}${git_fixes_tag+${git_fixes_tag}}-${git_upstream_branch} should be ${git_hash}, but is ${fixes_from}"
+        echo "MISMATCH in ${submodule_tag}, ${git_fixes_base}${git_submodule_fixes_tag+${git_submodule_fixes_tag}}-${git_upstream_branch} should be ${git_hash}, but is ${fixes_from}"
       fi
     fi
     echo "pushd '${pkg_patch_basedir}'" >> spec.patch.txt
@@ -448,8 +448,8 @@ do
 	--git-fixes-remote "${git_fixes_remote}" \
 	--git-fixes-base   "${git_fixes_base}" \
 	--git-fixes-branch "${git_fixes_branch}" \
-	--git-fixes-tag "${pkg_tag}" \
 	--git-fixes-upstream-branch "${git_fixes_upstream_branch}" \
+	--git-submodule-fixes-tag "${pkg_tag}" \
 	--pkg-tag "${pkg_tag}" \
 	--pkg-patch-basedir "${pkg_patch_basedir}/${path}" \
 	--patches-dir "${patches_dir}" \
