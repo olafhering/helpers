@@ -99,21 +99,24 @@ process_git_submodules() {
     if test -n "${got_path}" && test -n "${got_url}"
     then
       g ls-tree "${rev}" "${got_path}" > ${t}
-      read umask commit submod_revision submod_path rest < ${t}
-      if test "${umask}" =  "160000" && allow_submodule "${tag}" "${got_url}"
+      if test -s "${t}"
       then
-        submodule="git.submodule.$(( counter++ )).txt"
-        read submodules_tag < <(olh-obs_scm-remap-gitrepo-url ${got_url} 'tag')
-        if test -n "${submodule_revisions[${submodules_tag}]}"
+        read umask commit submod_revision submod_path rest < ${t}
+        if test "${umask}" =  "160000" && allow_submodule "${tag}" "${got_url}"
         then
-          echo "Changing revision of ${submodules_tag} from ${submod_revision} to ${submodule_revisions[${submodules_tag}]}"
-          submod_revision=${submodule_revisions[${submodules_tag}]}
+          submodule="git.submodule.$(( counter++ )).txt"
+          read submodules_tag < <(olh-obs_scm-remap-gitrepo-url ${got_url} 'tag')
+          if test -n "${submodule_revisions[${submodules_tag}]}"
+          then
+            echo "Changing revision of ${submodules_tag} from ${submod_revision} to ${submodule_revisions[${submodules_tag}]}"
+            submod_revision=${submodule_revisions[${submodules_tag}]}
+          fi
+          {
+            echo "path='${got_path}'"
+            echo "url='${got_url}'"
+            echo "rev='${submod_revision}'"
+          } > "${submodule}"
         fi
-        {
-          echo "path='${got_path}'"
-          echo "url='${got_url}'"
-          echo "rev='${submod_revision}'"
-        } > "${submodule}"
       fi
     fi
   done < "${submodules}"
