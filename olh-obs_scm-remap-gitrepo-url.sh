@@ -190,6 +190,7 @@ case "${url}" in
   https://git.seabios.org/seabios.git/) seabios ;;
   https://git.sv.gnu.org/git/gnulib.git) gnulib ;;
   https://git.sv.gnu.org/git/gnulib.git/) gnulib ;;
+  https://github.com/Zeex/subhook.git) unhandled=1 ;;
   https://github.com/akheron/jansson) unhandled=1 ;;
   https://github.com/bonzini/qboot) unhandled=1 ;;
   https://github.com/coreboot/seabios.git) seabios ;;
