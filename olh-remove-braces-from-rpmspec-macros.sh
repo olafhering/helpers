@@ -2,6 +2,7 @@
 exec \
 sed -i~ '
 	s@%{_bindir}@%_bindir@g
+	s@%{_builddir}@%_builddir@g
 	s@%{_datadir}@%_datadir@g
 	s@%{_defaultdocdir}@%_defaultdocdir@g
 	s@%{_docdir}@%_docdir@g
