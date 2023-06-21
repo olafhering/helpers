@@ -23,6 +23,7 @@ sed -i~ '
 	s@%{_sourcedir}@%_sourcedir@g
 	s@%{_sysconfdir}@%_sysconfdir@g
 	s@%{_sysctldir}@%_sysctldir@g
+	s@%{_sysusersdir}@%_sysusersdir@g
 	s@%{_tmpfilesdir}@%_tmpfilesdir@g
 	s@%{_tmppath}@%_tmppath@g
 	s@%{_udevrulesdir}@%_udevrulesdir@g
