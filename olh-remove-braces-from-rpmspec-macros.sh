@@ -19,6 +19,7 @@ sed -i~ '
 	s@%{_rundir}@%_rundir@g
 	s@%{_sbindir}@%_sbindir@g
 	s@%{_sharedstatedir}@%_sharedstatedir@g
+	s@%{_sourcedir}@%_sourcedir@g
 	s@%{_sysconfdir}@%_sysconfdir@g
 	s@%{_sysctldir}@%_sysctldir@g
 	s@%{_tmppath}@%_tmppath@g
