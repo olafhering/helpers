@@ -23,6 +23,7 @@ sed -i~ '
 	s@%{_sourcedir}@%_sourcedir@g
 	s@%{_sysconfdir}@%_sysconfdir@g
 	s@%{_sysctldir}@%_sysctldir@g
+	s@%{_tmpfilesdir}@%_tmpfilesdir@g
 	s@%{_tmppath}@%_tmppath@g
 	s@%{_unitdir}@%_unitdir@g
 	s@%{build_flavor}@%build_flavor@g
