@@ -25,6 +25,7 @@ sed -i~ '
 	s@%{_sysctldir}@%_sysctldir@g
 	s@%{_tmpfilesdir}@%_tmpfilesdir@g
 	s@%{_tmppath}@%_tmppath@g
+	s@%{_udevrulesdir}@%_udevrulesdir@g
 	s@%{_unitdir}@%_unitdir@g
 	s@%{build_flavor}@%build_flavor@g
 	s@%{buildroot}@%buildroot@g
