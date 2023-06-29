@@ -106,6 +106,7 @@ as_user() {
 		git --no-pager fetch --all
 		git --no-pager reset --hard 'github_olafhering/master'
 	fi
+	. ~/.shellrc
 
 	. /usr/share/helpers/bin/olh-kerncvs-env
 
