@@ -35,11 +35,16 @@ new_nam=
 nam=
 pd=
 ignore_Linux_patches=
+declare -i start_number=1
 declare -i count=0
 declare -A new_patch_names
 declare -A old_patch_names
 declare -A new_patch_redo
 declare -A new_patch_copy
+#
+g() {
+	git '--no-pager' --git-dir="${upstream_git}/.git" "$@"
+}
 #
 do_symlink() {
 	local link_dest=$1
@@ -57,6 +62,163 @@ do_redo() {
 			--topdir "${topdir}" \
 			--upstream_git "${upstream_git}" \
 			--tmpdir "${tmpdir}"
+}
+do_format_patch() {
+	local range=$1
+	local target_dir=$2
+	local _start_number=$3
+
+	g \
+	format-patch \
+	--no-base \
+	--no-signature \
+	--output-directory "${target_dir}" \
+	--break-rewrites \
+	--keep-subject \
+	--stat-width=88 \
+	--stat-name-width=77 \
+	--stat-count=1234 \
+	--stat-graph-width=9 \
+	--summary \
+	--no-merges \
+	--start-number "${_start_number}" \
+	${range} -- \
+		arch/arm64/hyperv \
+		arch/arm64/include/asm/hyperv-tlfs.h \
+		arch/arm64/include/asm/mshyperv.h \
+		arch/x86/hyperv \
+		arch/x86/include/asm/hyperv-tlfs.h \
+		arch/x86/include/asm/hyperv.h \
+		arch/x86/include/asm/mshyperv.h \
+		arch/x86/include/asm/trace/hyperv.h \
+		arch/x86/include/uapi/asm/hyperv.h \
+		arch/x86/kernel/cpu/mshyperv.c \
+		arch/x86/kvm/hyperv.c \
+		drivers/clocksource/hyperv_timer.c \
+		drivers/gpu/drm/hyperv \
+		drivers/hid/hid-hyperv.c \
+		drivers/hv \
+		drivers/infiniband/hw/mana \
+		drivers/input/serio/hyperv-keyboard.c \
+		drivers/iommu/hyperv-iommu.c \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.c \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.h \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.c \
+		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.h \
+		drivers/net/ethernet/microsoft \
+		drivers/net/hyperv \
+		drivers/pci/controller/pci-hyperv-intf.c \
+		drivers/pci/controller/pci-hyperv.c \
+		drivers/pci/host/hv_pcifront.c \
+		drivers/pci/host/pci-hyperv.c \
+		drivers/scsi/storvsc_drv.c \
+		drivers/staging/hv \
+		drivers/uio/uio_hv_generic.c \
+		drivers/video/fbdev/hyperv_fb.c \
+		drivers/video/hyperv_fb.c \
+		include/asm-generic/hyperv-tlfs.h \
+		include/asm-generic/mshyperv.h \
+		include/clocksource/hyperv_timer.h \
+		include/linux/hyperv.h \
+		include/net/af_hvsock.h \
+		include/net/mana \
+		include/net/mana/mana_auxiliary.h \
+		include/uapi/linux/hyperv.h \
+		include/uapi/rdma/mana-abi.h \
+		net/hv_sock \
+		net/vmw_vsock/hyperv_transport.c \
+		tools/hv \
+		&> "${tmpdir}/$$"
+}
+#
+candidate_tag_to_temp_tag() {
+	case "$1" in
+	v5.12-rc1) temp_tag='v5.12-rc1-dontuse' ;;
+	*) temp_tag=$1 ;;
+	esac
+}
+#
+find_next_curr_tag() {
+	local -i major minor rc
+	local rc_str tmp
+	local oIFS
+
+	: curr_tag ${curr_tag}
+	tmp=${curr_tag#v*}
+	oIFS=$IFS
+	IFS=.-
+	set -- ${tmp}
+	IFS=$oIFS
+	case "${curr_tag}" in
+	*-rc*)
+		major=$1
+		minor=$2
+		rc_str=$3
+		case "${rc_str}" in
+			rc[0-9]*) rc="${rc_str#rc*}" ;;
+			*) return ;;
+		esac
+		candidate_tag_to_temp_tag "v${major}.${minor}-rc$((${rc} + 1))"
+		if g 'rev-list' -n1 "${temp_tag}"
+		then
+			curr_tag="${temp_tag}"
+			return
+		fi
+		candidate_tag_to_temp_tag "v${major}.$((${minor}))"
+		if g 'rev-list' -n1 "${temp_tag}"
+		then
+			curr_tag="${temp_tag}"
+			return
+		fi
+		candidate_tag_to_temp_tag "v${major}.$((${minor} + 1))"
+		if g 'rev-list' -n1 "${temp_tag}"
+		then
+			curr_tag="${temp_tag}"
+			return
+		fi
+		candidate_tag_to_temp_tag "v$((${major} + 1)).0-rc1"
+		if g 'rev-list' -n1 "${temp_tag}"
+		then
+			curr_tag="${temp_tag}"
+			return
+		fi
+	;;
+	*)
+		major=$1
+		minor=$2
+		candidate_tag_to_temp_tag "v${major}.$((${minor} + 1))-rc1"
+		if g 'rev-list' -n1 "${temp_tag}"
+		then
+			curr_tag="${temp_tag}"
+			return
+		fi
+		candidate_tag_to_temp_tag "v$((${major}+1)).0-rc1"
+		if g 'rev-list' -n1 "${temp_tag}"
+		then
+			curr_tag="${temp_tag}"
+			return
+		fi
+	;;
+	esac
+}
+#
+cycle_through_linux_tags() {
+	local start_tag="$1"
+	local prev_tag=
+	local curr_tag="${start_tag}"
+	local temp_tag=
+	local -i patch_count
+
+	while true
+	do
+		prev_tag="${curr_tag}"
+		find_next_curr_tag
+		test "${prev_tag}" = "${curr_tag}" && break
+		do_format_patch "${prev_tag}..${curr_tag}" "${numbered_dir}" "${start_number}"
+		read patch_count < <(ls -1d "${numbered_dir}"/*.patch | wc -l)
+		test "${patch_count}" -gt 0 && mv -t "${outdir}" "${numbered_dir}"/*.patch
+		start_number+="${patch_count}"
+	done
 }
 #
 while test $# -gt 0
@@ -107,6 +269,7 @@ then
 	tmpdir=`mktemp --directory --tmpdir=/dev/shm/ XXX`
 	trap 'rm -rf "${tmpdir}"' EXIT
 fi
+numbered_dir="${tmpdir}/.numbered"
 outdir="${tmpdir}/${upstream_git}/${upstream_remote}/${upstream_branch}"
 upstream_patch_dir="${patch_dir}/${upstream_remote}/${upstream_branch}"
 upstream_revspec_dir="${revspec_dir}/${upstream_remote}/${upstream_branch}"
@@ -158,73 +321,16 @@ mkdir -p "${outdir}"
 _tag_from="v3.0"
 if test -n "${ignore_Linux_patches}"
 then
-	_tag_to=`git --git-dir="${upstream_git}/.git" rev-list --max-count=1 ${upstream_remote}/${upstream_branch}`
+	_tag_to=`g rev-list --max-count=1 ${upstream_remote}/${upstream_branch}`
 	from_to="${_tag_from}..${_tag_to}"
+	echo "${upstream_remote}/${upstream_branch} up to: '${from_to}'"
+	do_format_patch "${from_to}" "${outdir}" "${start_number}"
 else
-	_tag_to=`git --git-dir="${upstream_git}/.git" describe --abbrev=0 --tags ${upstream_remote}/${upstream_branch}`
+	_tag_to=`g describe --abbrev=0 --tags ${upstream_remote}/${upstream_branch}`
 	from_to="${_tag_from}..${_tag_to}"
+	echo "XXX ${upstream_remote}/${upstream_branch} up to: '${from_to}'"
+	cycle_through_linux_tags "${_tag_from}"
 fi
-echo "${upstream_remote}/${upstream_branch} up to: '${_tag_from}..${_tag_to}'"
-$(type -P time) \
-git --git-dir="${upstream_git}/.git" \
-	format-patch \
-	--no-signature \
-	--output-directory ${outdir} \
-	--break-rewrites \
-	--keep-subject \
-	--stat-width=88 \
-	--stat-name-width=77 \
-	--stat-count=1234 \
-	--stat-graph-width=9 \
-	--summary \
-	--no-merges \
-	${from_to} -- \
-		arch/arm64/hyperv \
-		arch/arm64/include/asm/hyperv-tlfs.h \
-		arch/arm64/include/asm/mshyperv.h \
-		arch/x86/hyperv \
-		arch/x86/include/asm/hyperv-tlfs.h \
-		arch/x86/include/asm/hyperv.h \
-		arch/x86/include/asm/mshyperv.h \
-		arch/x86/include/asm/trace/hyperv.h \
-		arch/x86/include/uapi/asm/hyperv.h \
-		arch/x86/kernel/cpu/mshyperv.c \
-		arch/x86/kvm/hyperv.c \
-		drivers/clocksource/hyperv_timer.c \
-		drivers/gpu/drm/hyperv \
-		drivers/hid/hid-hyperv.c \
-		drivers/hv \
-		drivers/infiniband/hw/mana \
-		drivers/input/serio/hyperv-keyboard.c \
-		drivers/iommu/hyperv-iommu.c \
-		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.c \
-		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.h \
-		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.c \
-		drivers/net/ethernet/mellanox/mlx5/core/lib/hv_vhca.h \
-		drivers/net/ethernet/microsoft \
-		drivers/net/hyperv \
-		drivers/pci/controller/pci-hyperv-intf.c \
-		drivers/pci/controller/pci-hyperv.c \
-		drivers/pci/host/hv_pcifront.c \
-		drivers/pci/host/pci-hyperv.c \
-		drivers/scsi/storvsc_drv.c \
-		drivers/staging/hv \
-		drivers/uio/uio_hv_generic.c \
-		drivers/video/fbdev/hyperv_fb.c \
-		drivers/video/hyperv_fb.c \
-		include/asm-generic/hyperv-tlfs.h \
-		include/asm-generic/mshyperv.h \
-		include/clocksource/hyperv_timer.h \
-		include/linux/hyperv.h \
-		include/net/af_hvsock.h \
-		include/net/mana \
-		include/net/mana/mana_auxiliary.h \
-		include/uapi/linux/hyperv.h \
-		include/uapi/rdma/mana-abi.h \
-		net/hv_sock \
-		net/vmw_vsock/hyperv_transport.c \
-		tools/hv \
-		&> "${tmpdir}/$$"
 #
 pushd "${outdir}" > /dev/null
 	# collect info about current list of patches
