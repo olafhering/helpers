@@ -159,25 +159,25 @@ find_next_curr_tag() {
 			*) return ;;
 		esac
 		candidate_tag_to_temp_tag "v${major}.${minor}-rc$((${rc} + 1))"
-		if g 'rev-list' -n1 "${temp_tag}"
+		if g 'rev-list' -n1 "${temp_tag}" &> /dev/null
 		then
 			curr_tag="${temp_tag}"
 			return
 		fi
 		candidate_tag_to_temp_tag "v${major}.$((${minor}))"
-		if g 'rev-list' -n1 "${temp_tag}"
+		if g 'rev-list' -n1 "${temp_tag}" &> /dev/null
 		then
 			curr_tag="${temp_tag}"
 			return
 		fi
 		candidate_tag_to_temp_tag "v${major}.$((${minor} + 1))"
-		if g 'rev-list' -n1 "${temp_tag}"
+		if g 'rev-list' -n1 "${temp_tag}" &> /dev/null
 		then
 			curr_tag="${temp_tag}"
 			return
 		fi
 		candidate_tag_to_temp_tag "v$((${major} + 1)).0-rc1"
-		if g 'rev-list' -n1 "${temp_tag}"
+		if g 'rev-list' -n1 "${temp_tag}" &> /dev/null
 		then
 			curr_tag="${temp_tag}"
 			return
@@ -187,13 +187,13 @@ find_next_curr_tag() {
 		major=$1
 		minor=$2
 		candidate_tag_to_temp_tag "v${major}.$((${minor} + 1))-rc1"
-		if g 'rev-list' -n1 "${temp_tag}"
+		if g 'rev-list' -n1 "${temp_tag}" &> /dev/null
 		then
 			curr_tag="${temp_tag}"
 			return
 		fi
 		candidate_tag_to_temp_tag "v$((${major}+1)).0-rc1"
-		if g 'rev-list' -n1 "${temp_tag}"
+		if g 'rev-list' -n1 "${temp_tag}" &> /dev/null
 		then
 			curr_tag="${temp_tag}"
 			return
@@ -215,7 +215,7 @@ cycle_through_linux_tags() {
 		find_next_curr_tag
 		test "${prev_tag}" = "${curr_tag}" && break
 		do_format_patch "${prev_tag}..${curr_tag}" "${numbered_dir}" "${start_number}"
-		read patch_count < <(ls -1d "${numbered_dir}"/*.patch | wc -l)
+		read patch_count < <(ls -1d "${numbered_dir}"/*.patch 2>/dev/null | wc -l)
 		test "${patch_count}" -gt 0 && mv -t "${outdir}" "${numbered_dir}"/*.patch
 		start_number+="${patch_count}"
 	done
