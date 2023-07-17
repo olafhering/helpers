@@ -216,7 +216,11 @@ cycle_through_linux_tags() {
 		test "${prev_tag}" = "${curr_tag}" && break
 		do_format_patch "${prev_tag}..${curr_tag}" "${numbered_dir}" "${start_number}"
 		read patch_count < <(ls -1d "${numbered_dir}"/*.patch 2>/dev/null | wc -l)
-		test "${patch_count}" -gt 0 && mv -t "${outdir}" "${numbered_dir}"/*.patch
+		if test "${patch_count}" -gt 0
+		then
+			echo -n .
+			mv -t "${outdir}" "${numbered_dir}"/*.patch
+		fi
 		start_number+="${patch_count}"
 	done
 }
