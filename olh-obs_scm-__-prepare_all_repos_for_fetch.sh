@@ -214,6 +214,24 @@ else
 fi
 popd > /dev/null
 #
+repo_dir=berkeley-testfloat-3.git
+if ! pushd "${repo_dir}" > /dev/null
+then
+  mkdir -v "${repo_dir}"
+  pushd "${repo_dir}" > /dev/null
+fi
+if pushd .git > /dev/null
+then
+  popd > /dev/null
+else
+  git init
+  git remote add    --tags upstream          https://github.com/ucb-bar/berkeley-testfloat-3
+  git remote add --no-tags github_olafhering git@github.com:olafhering/berkeley-testfloat-3.git
+  git remote add --no-tags gitlab_olafhering git@gitlab.com:olafhering/berkeley-testfloat-3.git
+  git remote add --no-tags gitlab_olh        gitlab@gitlab.suse.de:olh/berkeley-testfloat-3.git
+fi
+popd > /dev/null
+#
 repo_dir=valgrind.git
 if ! pushd "${repo_dir}" > /dev/null
 then
