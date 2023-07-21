@@ -327,6 +327,20 @@ then
 fi
 } &> ${td}/seabios.log < /dev/null &
 }
+testfloat3() {
+ local do_fetch_all=
+ local do_fetch_and_push=
+ local do_push_master=
+{
+t=`mktemp --directory $td/testfloat3.XXX`
+if pushd berkeley-testfloat-3.git > /dev/null
+then
+  fetch_and_push
+  push_master
+  finish $t
+fi
+} &> ${td}/testfloat3.log < /dev/null &
+}
 valgrind() {
  local do_fetch_all=
  local do_fetch_and_push=
@@ -382,6 +396,8 @@ keycodemapdb
 libvirt
 #
 seabios
+#
+testfloat3
 #
 valgrind
 #

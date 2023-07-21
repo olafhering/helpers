@@ -225,7 +225,7 @@ then
   popd > /dev/null
 else
   git init
-  git remote add    --tags upstream          https://github.com/ucb-bar/berkeley-testfloat-3
+  git remote add    --tags upstream          https://gitlab.com/qemu-project/berkeley-testfloat-3.git
   git remote add --no-tags github_olafhering git@github.com:olafhering/berkeley-testfloat-3.git
   git remote add --no-tags gitlab_olafhering git@gitlab.com:olafhering/berkeley-testfloat-3.git
   git remote add --no-tags gitlab_olh        gitlab@gitlab.suse.de:olh/berkeley-testfloat-3.git
