@@ -73,8 +73,8 @@ _EOC_
 	*) URL_repository='openSUSE_Tumbleweed' ;;
 	esac
 	URL="http://download.opensuse.org/repositories/home:/olh/${URL_repository}"
-	zypper ar -cf "${URL}" 'olh'
-	zypper mr -p 123 'olh'
+	zypper ar -cf "${URL}" 'olh' || : FAIL $?
+	zypper mr -p 123 'olh' || : FAIL $?
 
 	case "${VERSION}" in
 	15-SP3) URL_repository='SLE_15_SP3' ;;
@@ -83,11 +83,11 @@ _EOC_
 	*) URL_repository='openSUSE_Factory' ;;
 	esac
 	URL="https://download.opensuse.org/repositories/Kernel:/tools/${URL_repository}"
-	zypper ar -cf "${URL}" 'Kernel_tools'
-	zypper mr -p 123 'Kernel_tools'
+	zypper ar -cf "${URL}" 'Kernel_tools' || : FAIL $?
+	zypper mr -p 123 'Kernel_tools' || : FAIL $?
 
 	zypper ref -s
-	zypper in -y helpers
+	zypper in -y helpers || : FAIL $?
 	/usr/share/helpers/bin/olh-install-devel_kernel-pattern
 }
 
