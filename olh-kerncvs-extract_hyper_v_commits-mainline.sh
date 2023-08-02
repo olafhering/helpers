@@ -332,7 +332,7 @@ then
 else
 	_tag_to=`g describe --abbrev=0 --tags ${upstream_remote}/${upstream_branch}`
 	from_to="${_tag_from}..${_tag_to}"
-	echo "XXX ${upstream_remote}/${upstream_branch} up to: '${from_to}'"
+	echo "${upstream_remote}/${upstream_branch} up to: '${from_to}'"
 	cycle_through_linux_tags "${_tag_from}"
 fi
 #
