@@ -80,6 +80,7 @@ _EOC_
 	15-SP3) URL_repository='SLE_15_SP3' ;;
 	15-SP4) URL_repository='SLE_15_SP4' ;;
 	15-SP5) URL_repository='SLE_15_SP5' ;;
+	15-SP6) URL_repository='SLE_15_SP6' ;;
 	*) URL_repository='openSUSE_Factory' ;;
 	esac
 	URL="https://download.opensuse.org/repositories/Kernel:/tools/${URL_repository}"
