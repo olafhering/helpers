@@ -35,11 +35,11 @@ fn_initial_fetch() {
 #
 fn_fetch_all() {
   test -e .git/objects/info/packs || fn_initial_fetch &> $t/a.a.initial_fetch
-  git fetch --all &> $t/a.fetch_all_repos
+  git fetch --all &> $t/a.fetch_all_repos || : FAIL $?
 }
 fn_fetch_and_push() {
   fn_fetch_all
-  git fetch --tags upstream &> $t/a.fetch_all_tags_upstream
+  git fetch --tags upstream &> $t/a.fetch_all_tags_upstream || : FAIL $?
   if ${push}
   then
   git push --tags github_olafhering &> $t/fetch_and_push.github_olafhering &
