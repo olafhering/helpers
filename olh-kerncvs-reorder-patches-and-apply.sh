@@ -164,7 +164,7 @@ fi
 #
 for commit_new in "${commits_order_new}"/*.patch
 do
-	if git --no-pager am < "${commit_new}"
+	if git --no-pager am --ignore-space-change --ignore-whitespace --whitespace=nowarn < "${commit_new}"
 	then
 		: good
 	else
