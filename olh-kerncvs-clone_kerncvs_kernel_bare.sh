@@ -124,17 +124,6 @@ else
 		${git_user}@${git_srv}:/home/git/${git_repo}.git \
 		${repo}
 		pushd "${repo}"
-			if test "${clone_branch}" != 'scripts'
-			then
-				for i in 'scripts'
-				do
-					git --no-pager \
-						config \
-						--add \
-						remote.${git_origin}.fetch \
-						"+refs/heads/${i}:refs/remotes/${git_origin}/${i}"
-				done
-			fi
 			git fetch --all
 		popd
 fi
