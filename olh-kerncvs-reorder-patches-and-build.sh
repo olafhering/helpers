@@ -133,14 +133,16 @@ for commit_new in "${commits_order_new}"/*.patch
 do
 	test -f "${commit_new}" || continue
 	skip_this_patch=
+	use_but_no_compile_test=
 	while :
 	do
-		read -N 1 -p "next patch to apply [Skip/Bash/Use it]: ${commit_new##*/} "
+		read -N 1 -p "next patch to apply [Skip/Bash/Use it/use, but No compile]: ${commit_new##*/} "
 		echo
 		case "${REPLY}" in
 		s|S) skip_this_patch='skip_this_patch' ; break ;;
 		b|B) bash ;;
 		u|U) break ;;
+		n|N) use_but_no_compile_test='use_but_no_compile_test' ; break ;;
 		esac
 	done
 	test -n "${skip_this_patch}" && continue
@@ -172,22 +174,27 @@ do
 	failed=
 	if scripts/sequence-patch.sh --rapid
 	then
-		pushd $SCRATCH_AREA/current > /dev/null
-		echo "Running 'olh-build-x86_64-kernel -k', output in ${td}/build.log"
-		time {
-			if olh-build-x86_64-kernel -k vmlinux
-			then
-				if olh-build-x86_64-kernel -k
+		if test -n "${use_but_no_compile_test}"
+		then
+			echo "Skipped compilation."
+		else
+			pushd $SCRATCH_AREA/current > /dev/null
+			echo "Running 'olh-build-x86_64-kernel -k', output in ${td}/build.log"
+			time {
+				if olh-build-x86_64-kernel -k vmlinux
 				then
-					: good
+					if olh-build-x86_64-kernel -k
+					then
+						: good
+					else
+						failed='build'
+					fi
 				else
 					failed='build'
 				fi
-			else
-				failed='build'
-			fi
-		} &> "${td}/build.log"
-		popd > /dev/null
+			} &> "${td}/build.log"
+			popd > /dev/null
+		fi
 	else
 		failed='apply'
 	fi
