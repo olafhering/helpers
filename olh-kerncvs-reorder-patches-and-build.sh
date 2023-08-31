@@ -174,7 +174,19 @@ do
 	then
 		pushd $SCRATCH_AREA/current > /dev/null
 		echo "Running 'olh-build-x86_64-kernel -k', output in ${td}/build.log"
-		time olh-build-x86_64-kernel -k &> "${td}/build.log" || failed='build'
+		time {
+			if olh-build-x86_64-kernel -k vmlinux
+			then
+				if olh-build-x86_64-kernel -k
+				then
+					: good
+				else
+					failed='build'
+				fi
+			else
+				failed='build'
+			fi
+		} &> "${td}/build.log"
 		popd > /dev/null
 	else
 		failed='apply'
