@@ -173,7 +173,8 @@ do
 	if scripts/sequence-patch.sh --rapid
 	then
 		pushd $SCRATCH_AREA/current > /dev/null
-		time olh-build-x86_64-kernel -k || failed='build'
+		echo "Running 'olh-build-x86_64-kernel -k', output in ${td}/build.log"
+		time olh-build-x86_64-kernel -k &> "${td}/build.log" || failed='build'
 		popd > /dev/null
 	else
 		failed='apply'
