@@ -154,7 +154,7 @@ case "${branch}" in
 	master)          clone_branch='master'         ;;
 	packaging)       clone_branch='packaging'      ;;
 	scripts)         clone_branch='scripts'        ;;
-	*) echo "branch '${branch}' unknown" ; exit 1 ;;
+	*) echo "branch '${branch}' unknown by ${0##*/}" ; exit 1 ;;
 esac
 #
 repo=${repo_base}.${clone_branch//\//_}
