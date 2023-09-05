@@ -69,7 +69,7 @@ pushd "$_"
 for remote in "${remotes[@]}"
 do
 	git --no-pager remote set-url "${git_origin}" "${remote}"
-	git --no-pager fetch --tags --all
+	git --no-pager fetch --tags --all || : FAIL $?
 done
 git_config
 scripts/install-git-hooks
