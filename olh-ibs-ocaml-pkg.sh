@@ -172,6 +172,7 @@ case "${upstream}" in
 	parmap) pkg='ocaml-parmap' ;;
 	parsexp) pkg='ocaml-parsexp' ;;
 	pcre-ocaml) pkg='ocaml-pcre' ;;
+	pp) pkg='ocaml-pp' ;;
 	ppx_assert) pkg='ocaml-ppx_assert' ;;
 	ppx_base) pkg='ocaml-ppx_base' ;;
 	ppx_bench) pkg='ocaml-ppx_bench' ;;
