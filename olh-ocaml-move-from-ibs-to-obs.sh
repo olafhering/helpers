@@ -120,7 +120,7 @@ s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macr
 				then
 					cd ..
 					git --no-pager log --reverse --oneline "${old_revision}..${new_revision}" >> "${pkg}.changes" || :
-					read changes_file < <(git --no-pager ls-tree --name-only "${new_revision}" | grep -E '^(CHANGELOG.md|CHANGES|CHANGES.md|CHANGES.txt|ChangeLog|Changelog)$' || echo)
+					read changes_file < <(git --no-pager ls-tree --name-only "${new_revision}" | grep -E '^(CHANGELOG.md|Changes|CHANGES|CHANGES.md|CHANGES.txt|ChangeLog|Changelog)$' || echo)
 					popd > /dev/null
 				fi
 			fi
@@ -130,7 +130,7 @@ ${timestamp} - ohering@suse.de
 
 - Update to version ${version}
 _EOF_
-			test -n "${changes_file}" && echo "  see included ${changes_file} for details" >> "${pkg}.changes"
+			test -n "${changes_file}" && echo "  see included ${changes_file} file for details" >> "${pkg}.changes"
 			echo >> "${pkg}.changes"
 			cat "${clean}/${pkg}/${pkg}.changes" >> "${pkg}.changes"
 			vi "${pkg}.changes"
