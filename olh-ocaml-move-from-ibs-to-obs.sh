@@ -110,6 +110,7 @@ s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macr
 		if osc cat -u "`cat .osc/_project`" "`cat .osc/_package`" '_link' | grep -q 'link project=.*openSUSE:Factory'
 		then
 			> "${pkg}.changes"
+			changes_file=
 			if test -f '.osc/_service' && test -f '_service'
 			then
 				read old_revision < <(sed -n '/name=.revision/{s@^[^>]\+>@@;s@<.*$@@;p}' .osc/_service)
@@ -118,17 +119,19 @@ s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macr
 				if pushd */.git > /dev/null
 				then
 					cd ..
-					git --no-pager log --reverse --oneline "${old_revision}..${new_revision}" || :
+					git --no-pager log --reverse --oneline "${old_revision}..${new_revision}" >> "${pkg}.changes" || :
+					read changes_file < <(git --no-pager ls-tree --name-only "${new_revision}" | grep -E '^(CHANGELOG.md|CHANGES|CHANGES.md|CHANGES.txt|ChangeLog|Changelog)$' || echo)
 					popd > /dev/null
-				fi >> "${pkg}.changes"
+				fi
 			fi
 			cat >> "${pkg}.changes" <<_EOF_
 -------------------------------------------------------------------
 ${timestamp} - ohering@suse.de
 
 - Update to version ${version}
-
 _EOF_
+			test -n "${changes_file}" && echo "  see included ${changes_file} for details" >> "${pkg}.changes"
+			echo >> "${pkg}.changes"
 			cat "${clean}/${pkg}/${pkg}.changes" >> "${pkg}.changes"
 			vi "${pkg}.changes"
 		else
