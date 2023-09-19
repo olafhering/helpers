@@ -168,6 +168,8 @@ do
 	then
 		: good
 	else
+		echo "FAILED to apply '${commit_new}'"
+		echo "'git am --abort' suggested, followed by manual 'git am'."
 		bash
 	fi
 	scripts/git_sort/series_sort.py 'series.conf'
