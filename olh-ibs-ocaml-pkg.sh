@@ -236,6 +236,7 @@ case "${upstream}" in
 	timezone ) pkg='ocaml-timezone' ;;
 	tiny_httpd) pkg='ocaml-tiny_httpd' ;;
 	typerep) pkg='ocaml-typerep' ;;
+	tyxml) pkg='ocaml-tyxml' ;;
 	unison) pkg='unison' ;;
 	utop) pkg='ocaml-utop' ;;
 	uucd) pkg='ocaml-uucd' ;;
