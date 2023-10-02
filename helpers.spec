@@ -27,6 +27,11 @@ for bin in *.sh
 do
   cp -aviL ${bin} "${DESTDIR}/${bin%.sh}"
 done
+for txt in *.txt
+do
+  mv -v "${txt}" "${DESTDIR}/${txt}"
+  chmod -c 444 "$_"
+done
 python="$(type -P false)"
 for py in python3 python2 python
 do
