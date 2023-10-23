@@ -62,7 +62,7 @@ case "$(hostname -f)" in
 ;;
 esac
 remotes+=( "https://github.com/SUSE/${git_repo}.git" )
-remotes+=( "${git_user}@${git_srv}:/home/git/${git_repo}.git" )
+remotes+=( "${git_user}@${git_srv}:/srv/git/${git_repo}.git" )
 
 time git --no-pager clone --origin "${git_origin}" "${remotes[0]}" "${repo_mirror}"
 pushd "$_"

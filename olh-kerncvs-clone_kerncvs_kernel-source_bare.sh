@@ -169,7 +169,7 @@ else
 		--origin ${git_origin} \
 		--branch ${clone_branch} \
 		--reference ${repo_mirror} \
-		${git_user}@${git_srv}:/home/git/${git_repo}.git \
+		${git_user}@${git_srv}:/srv/git/${git_repo}.git \
 		${repo}
 		pushd "${repo}"
 			git_config
