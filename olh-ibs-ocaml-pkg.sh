@@ -159,6 +159,7 @@ case "${upstream}" in
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
+	ocaml-uring) pkg='ocaml-uring' ;;
 	ocaml-version) pkg='ocaml-version' ;;
 	ocaml-wayland) pkg='ocaml-wayland' ;;
 	ocaml_intrinsics) pkg='ocaml-ocaml_intrinsics' ;;
