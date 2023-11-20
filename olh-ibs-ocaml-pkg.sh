@@ -87,6 +87,7 @@ case "${upstream}" in
 	base_bigstring) pkg='ocaml-base_bigstring' ;;
 	base_quickcheck) pkg='ocaml-base_quickcheck' ;;
 	bigarray-compat) pkg='ocaml-bigarray-compat' ;;
+	bigstringaf) pkg='ocaml-bigstringaf' ;;
 	bin_prot) pkg='ocaml-bin_prot' ;;
 	biniou) pkg='ocaml-biniou' ;;
 	bisect_ppx) pkg='ocaml-bisect_ppx' ;;
@@ -110,6 +111,7 @@ case "${upstream}" in
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
 	easy-format) pkg='ocaml-easy-format' ;;
+	eio) pkg='ocaml-eio' ;;
 	expect_test_helpers_core) pkg='ocaml-expect_test_helpers_core' ;;
 	fieldslib) pkg='ocaml-fieldslib' ;;
 	fix) pkg='ocaml-fix' ;;
