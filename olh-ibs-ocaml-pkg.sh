@@ -108,6 +108,7 @@ case "${upstream}" in
 	cryptokit) pkg='ocaml-cryptokit' ;;
 	csexp) pkg='ocaml-csexp' ;;
 	curses) pkg='ocaml-curses' ;;
+	domain-local-await) pkg='ocaml-domain-local-await' ;;
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
 	easy-format) pkg='ocaml-easy-format' ;;
@@ -235,6 +236,7 @@ case "${upstream}" in
 	stdlib-shims) pkg='ocaml-stdlib-shims' ;;
 	textutils) pkg='ocaml-textutils' ;;
 	textutils_kernel) pkg='ocaml-textutils_kernel' ;;
+	thread-table) pkg='ocaml-thread-table' ;;
 	time_now ) pkg='ocaml-time_now' ;;
 	timezone ) pkg='ocaml-timezone' ;;
 	tiny_httpd) pkg='ocaml-tiny_httpd' ;;
