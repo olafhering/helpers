@@ -122,6 +122,7 @@ case "${upstream}" in
 	gen) pkg='ocaml-gen' ;;
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
+	hmap) pkg='ocaml-hmap' ;;
 	int_repr) pkg='ocaml-int_repr' ;;
 	jane-street-headers) pkg='ocaml-jane-street-headers' ;;
 	jane_rope) pkg='ocaml-jane_rope' ;;
@@ -140,6 +141,7 @@ case "${upstream}" in
 	menhir) pkg='ocaml-menhir' ;;
 	merlin) pkg='ocaml-merlin' ;;
 	mmap) pkg='ocaml-mmap' ;;
+	mtime) pkg='ocaml-mtime' ;;
 	num) pkg='ocaml-num' ;;
 	ocaml-base64) pkg='ocaml-base64' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
@@ -172,6 +174,7 @@ case "${upstream}" in
 	omd) pkg='ocaml-omd' ;;
 	opam) pkg='opam' ;;
 	opam-file-format) pkg='opam-file-format' ;;
+	optint) pkg='ocaml-optint' ;;
 	ounit) pkg='ocaml-ounit' ;;
 	parmap) pkg='ocaml-parmap' ;;
 	parsexp) pkg='ocaml-parsexp' ;;
@@ -216,6 +219,7 @@ case "${upstream}" in
 	ppx_variants_conv) pkg='ocaml-ppx_variants_conv' ;;
 	ppx_yojson_conv_lib) pkg='ocaml-ppx_yojson_conv_lib' ;;
 	ppxlib) pkg='ocaml-ppxlib' ;;
+	psq) pkg='ocaml-psq' ;;
 	pyml) pkg='ocaml-pyml' ;;
 	qcheck) pkg='ocaml-qcheck' ;;
 	qtest) pkg='ocaml-qtest' ;;
