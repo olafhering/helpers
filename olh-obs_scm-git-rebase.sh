@@ -28,6 +28,7 @@ git rebase -i "${base_branch}"
 rm -rf $$
 git format-patch \
 	--unified=12 \
+	--base="${base_branch}" \
 	-ko $$ "${base_branch}".."${fix_branch}"
 git reset --hard "${base_branch}"
 for i in $$/*.patch
