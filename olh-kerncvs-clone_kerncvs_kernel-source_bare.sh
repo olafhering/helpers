@@ -71,7 +71,7 @@ then
 	;;
 	esac
 	remotes+=( "https://github.com/SUSE/${git_repo}.git" )
-	remotes+=( "${kerncvs_git_user}@${kerncvs_git_srv}:/home/git/${git_repo}.git" )
+	remotes+=( "${kerncvs_git_user}@${kerncvs_git_srv}:/srv/git/${git_repo}.git" )
 
 	time git --no-pager clone --mirror "${remotes[0]}" "${repo_mirror}"
 	pushd "$_"
@@ -230,7 +230,7 @@ then
 			--origin ${git_origin} \
 			--branch ${merge_clone_branch} \
 			--reference ${repo_mirror} \
-			${kerncvs_git_user}@${kerncvs_git_srv}:/home/git/${git_repo}.git \
+			${kerncvs_git_user}@${kerncvs_git_srv}:/srv/git/${git_repo}.git \
 			${repo}
 		if pushd "${repo}"
 		then
