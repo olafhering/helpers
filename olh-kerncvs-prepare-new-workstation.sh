@@ -53,7 +53,7 @@ as_root() {
 	pushd "${local_homedir}"
 	mkdir -vpm 0700 '.ssh'
 	tee -a '.ssh/authorized_keys' <<'_EOAK_'
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJx/y+w/YjMOJyqhiW9q3eOxvTy7aQFXFq6UvX1NLPdd6KojPFMXgBWTDAXaHwRcn8Lv3tiHzO3v5rZK/e73w7NG8wZS6wRnoSST1Vmp7Rr2MGwe04pzYjCKjuxaP58j/ZFE6TTMtNGVfQenrS1yXYiLBv/6Aq5yMXJeX5k9qDyiNgmgKFnOFj0/3l6NUaZ24/3dSQ98/u8Msy8ZdfLiA6od/VTlc9e5tPtxLRsVeCpxVk9go4nQ+LlMRbjdoZSMFM+xrUslXeW2KWk5rsJSYoAazV9JVE/H+iTpzKHA8c+QZjU1M7/wtOPSEXzsbYrMRL/MGib4TrEE57ezLs5Qth ohering@suse.de
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCM4tyGIdcArqS4Kthhui+Y+5XKESRR7vE/EBsmLn0PXVKrp4fvzFngeBHAfyovX45yUZSIqOy9/rSw+44rBAQsfvJxaP9LcszDMyNcoJHHh3/TI3J+cocX7jud1wfARHgwLWmycVq0nr1OrkTnywZBGZTsQg2mz+HuXKnZtjoPvjDzma5DhMb4eiANVVRti/TqmNXSWHSFQuZZNmiTT8xVN1eFB+z51fnlvK3E46vxTUllt1Ihe5TI+k2TJHyzLr2jMh4OvRPE7oYRHTvsLtLoL8R7FgZauPEm5vFuqEyp2MNHpGKl9sOEq6XMjbBAlLSHHaPI/LFJhQbznsUKgQNzb1+Kz/rEWm5FBDsZ0Y0NlQ800bybsj5HmdCJLrekewUFne6/Af6VqBitlEqrpU8fRkLjipKdHMMaEjcT7tNDkXF1x3hfhXTzswHpQF2M+bSSR0EEj4UFi7yXoyCsfZZaddh+t0qMypYpzMi6bjQT8nX+ZkA24u5oUCdJ66T9K8= olaf@aepfle.de
 _EOAK_
 	tee -a '.ssh/config' <<'_EOC_'
 host *
