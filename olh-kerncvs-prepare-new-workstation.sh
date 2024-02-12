@@ -57,9 +57,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCM4tyGIdcArqS4Kthhui+Y+5XKESRR7vE/EBsmLn0
 _EOAK_
 	tee -a '.ssh/config' <<'_EOC_'
 host *
+	AddressFamily inet
 	ForwardAgent yes
-	AddressFamily = inet
-	user = root
+	User root
 _EOC_
 	chown --recursive --changes --reference=. .ssh
 	popd > /dev/null
