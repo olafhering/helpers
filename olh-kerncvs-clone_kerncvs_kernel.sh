@@ -8,8 +8,6 @@ email='ohering@suse.de'
 name='Olaf Hering'
 smtp='relay.suse.de'
 #
-git_srv=kerncvs.nue.suse.com
-git_user=ohering
 git_repo=kernel
 git_origin=kerncvs
 repo_prefix=${git_origin}
@@ -41,7 +39,7 @@ case "$(hostname -f)" in
 ;;
 esac
 remotes+=( "https://github.com/SUSE/${git_repo}.git" )
-remotes+=( "${git_user}@${git_srv}:/srv/git/${git_repo}.git" )
+remotes+=( "${kerncvs_git_user}@${kerncvs_git_srv}:/srv/git/${git_repo}.git" )
 
 time git --no-pager clone --origin "${git_origin}" "${remotes[0]}" "${repo_mirror}"
 pushd "$_"

@@ -111,6 +111,8 @@ as_user() {
 	. ~/.shellrc
 
 	. /usr/share/helpers/bin/olh-kerncvs-env
+	# update known_hosts early
+	ssh -T "${kerncvs_git_user}@${kerncvs_git_srv}" uname -a
 
 	if ! test -d "${LINUX_GIT}"
 	then

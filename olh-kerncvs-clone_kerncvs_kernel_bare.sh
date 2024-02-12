@@ -10,8 +10,6 @@ email='ohering@suse.de'
 name='Olaf Hering'
 smtp='relay.suse.de'
 #
-git_srv=kerncvs.nue.suse.com
-git_user=ohering
 git_repo=kernel
 git_origin=kerncvs
 repo_prefix=${git_origin}
@@ -57,7 +55,7 @@ then
 	;;
 	esac
 	remotes+=( "https://github.com/SUSE/${git_repo}.git" )
-	remotes+=( "${git_user}@${git_srv}:/srv/git/${git_repo}.git" )
+	remotes+=( "${kerncvs_git_user}@${kerncvs_git_srv}:/srv/git/${git_repo}.git" )
 
 	time git --no-pager clone --mirror "${remotes[0]}" "${repo_mirror}"
 	pushd "$_"
@@ -120,7 +118,7 @@ else
 		--origin ${git_origin} \
 		--branch ${clone_branch} \
 		--reference ${repo_mirror} \
-		${git_user}@${git_srv}:/srv/git/${git_repo}.git \
+		${kerncvs_git_user}@${kerncvs_git_srv}:/srv/git/${git_repo}.git \
 		${repo}
 		pushd "${repo}"
 			git fetch --all
