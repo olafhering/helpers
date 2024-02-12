@@ -73,8 +73,8 @@ _EOC_
 	*) URL_repository='openSUSE_Tumbleweed' ;;
 	esac
 	URL="http://download.opensuse.org/repositories/home:/olh/${URL_repository}"
-	zypper ar -cf "${URL}" 'olh' || : FAIL $?
-	zypper mr -p 123 'olh' || : FAIL $?
+	zypper ar -cf "${URL}" 'obs-olh' || : FAIL $?
+	zypper mr -p 123 'obs-olh' || : FAIL $?
 
 	case "${VERSION}" in
 	15-SP3) URL_repository='SLE_15_SP3' ;;
