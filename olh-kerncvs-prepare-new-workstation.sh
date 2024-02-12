@@ -73,6 +73,7 @@ _EOC_
 	*) URL_repository='openSUSE_Tumbleweed' ;;
 	esac
 	URL="http://download.opensuse.org/repositories/home:/olh/${URL_repository}"
+	SUSEConnect -p PackageHub/${VERSION_ID}/$(uname -m) || : FAIL :?
 	zypper ar -cf "${URL}" 'obs-olh' || : FAIL $?
 	zypper mr -p 123 'obs-olh' || : FAIL $?
 
