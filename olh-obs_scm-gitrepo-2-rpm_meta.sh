@@ -347,7 +347,7 @@ then
       then
         echo "Patch${utc_patch_date}: ${spec_patch_name}" >> spec.Patch.txt
       fi
-      echo "%patch${utc_patch_date} -p1" >> spec.patch.txt
+      echo "%patch -P ${utc_patch_date} -p1" >> spec.patch.txt
       sed '
       1{/^From /d}
       /^index [0-9a-f]/d
