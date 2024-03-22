@@ -29,6 +29,7 @@ esac
 #
 case "${host}" in
 pmbs.links2linux.de) cmd='pbs' ;;
+pmbs.links2linux.org) cmd='pbs' ;;
 build.opensuse.org) cmd='obs' ;;
 build.suse.de) cmd='ibs' ;;
 *) echo "Unknown API host ${host}" ; exit 1 ;;
