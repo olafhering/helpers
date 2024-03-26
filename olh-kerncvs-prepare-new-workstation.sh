@@ -36,6 +36,7 @@ adjust_user() {
 
 as_root() {
 	local group_primary
+	local package_hub
 
 	if id "${local_username}"
 	then
@@ -68,12 +69,15 @@ _EOC_
 	. /etc/os-release
 
 	case "${VERSION}" in
-	12*) URL_repository='SLE_12' ;;
-	15*) URL_repository='SLE_15' ;;
-	*) URL_repository='openSUSE_Tumbleweed' ;;
+	12*) package_hub=y ; URL_repository='SLE_12' ;;
+	15*) package_hub=y ; URL_repository='SLE_15' ;;
+	*)   package_hub=n ; URL_repository='openSUSE_Tumbleweed' ;;
 	esac
 	URL="http://download.opensuse.org/repositories/home:/olh/${URL_repository}"
-	SUSEConnect -p PackageHub/${VERSION_ID}/$(uname -m) || : FAIL :?
+	if test "${package_hub}" = 'y'
+	then
+		SUSEConnect -p PackageHub/${VERSION_ID}/$(uname -m) || : FAIL :?
+	fi
 	zypper ar -cf "${URL}" 'obs-olh' || : FAIL $?
 	zypper mr -p 123 'obs-olh' || : FAIL $?
 
