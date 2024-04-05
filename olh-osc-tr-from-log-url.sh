@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 unset LANG
 unset ${!LC_*}
 oIFS=$IFS
