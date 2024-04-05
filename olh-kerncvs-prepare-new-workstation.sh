@@ -94,6 +94,12 @@ _EOC_
 
 	zypper ref -s
 	zypper in -y helpers || : FAIL $?
+	zypper in osc \
+		obs-service-download_files \
+		obs-service-recompress \
+		obs-service-set_version \
+		obs-service-tar_scm \
+		|| : FAIL $?
 	/usr/share/helpers/bin/olh-install-devel_kernel-pattern
 }
 
