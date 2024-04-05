@@ -18,6 +18,7 @@ pkgs=(
 'quilt'
 'rapidquilt'
 'rcs'
+'rpm-build'
 'rsync'
 'time'
 'wdiff'
