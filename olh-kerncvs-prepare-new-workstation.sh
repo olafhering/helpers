@@ -104,7 +104,7 @@ _EOC_
 		obs-service-set_version \
 		obs-service-tar_scm \
 		|| : FAIL $?
-	/usr/share/helpers/bin/olh-install-devel_kernel-pattern
+	exec /usr/share/helpers/bin/olh-install-devel_kernel-pattern
 }
 
 as_user() {
@@ -166,7 +166,7 @@ as_user() {
 			git --no-pager checkout -b "${branch}" "kerncvs/${branch}"
 		done
 	fi
-	olh-kerncvs-update all
+	exec olh-kerncvs-update all
 }
 
 read id < <(id -u)
