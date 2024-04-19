@@ -114,8 +114,10 @@ as_user() {
 	if ! test -d '.git'
 	then
 		git --no-pager init --initial-branch=master
+		git --no-pager remote add 'dummy' 'git@github.com:olafhering/dotfiles.git'
 		git --no-pager remote add 'github_olafhering' 'https://github.com/olafhering/dotfiles.git'
 		git --no-pager fetch --all
+		git --no-pager remote remove 'dummy'
 		git --no-pager reset --hard 'github_olafhering/master'
 	fi
 	. ~/.shellrc
