@@ -82,9 +82,13 @@ _EOC_
 	zypper mr -p 123 'obs-olh' || : FAIL $?
 
 	case "${VERSION}" in
+	15.3)   URL_repository='SLE_15_SP3' ;;
 	15-SP3) URL_repository='SLE_15_SP3' ;;
+	15.4)   URL_repository='SLE_15_SP4' ;;
 	15-SP4) URL_repository='SLE_15_SP4' ;;
+	15.5)   URL_repository='SLE_15_SP5' ;;
 	15-SP5) URL_repository='SLE_15_SP5' ;;
+	15.6)   URL_repository='SLE_15_SP6' ;;
 	15-SP6) URL_repository='SLE_15_SP6' ;;
 	*) URL_repository='openSUSE_Factory' ;;
 	esac
