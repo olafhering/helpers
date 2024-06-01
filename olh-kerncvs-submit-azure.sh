@@ -57,11 +57,11 @@ sle15sp5() {
 	update_prj='SUSE:SLE-15-SP5:Update'
 }
 sle15sp6() {
-	branch='SLE15-SP6-AZURE-GA'
+	branch='SLE15-SP6-AZURE'
 	embargo='SLE15-SP6-AZURE_EMBARGO'
-	kerncvs_prj='Devel:Kernel:SLE15-SP6-AZURE-GA'
+	kerncvs_prj='Devel:Kernel:SLE15-SP6-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SLE15-SP6-AZURE_EMBARGO'
-	update_prj='SUSE:SLE-15-SP6:GA'
+	update_prj='SUSE:SLE-15-SP6:Update'
 }
 #
 case "${dist}" in
