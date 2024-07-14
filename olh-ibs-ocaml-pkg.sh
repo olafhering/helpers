@@ -386,7 +386,7 @@ for f in *.tar.xz
 do
 	test -f "${f}" && osc rm -f "${f}"
 done
-osc service dr
+osc service manualrun
 osc add *.tar.xz
 osc diff | cat
 vi _service *.spec */*opam

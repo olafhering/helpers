@@ -157,7 +157,7 @@ _EOF_
 				popd > /dev/null
 			fi
 			osc rm -f *.tar.xz || :
-			osc service dr
+			osc service manualrun
 		fi
 		osc ar
 		osc st
