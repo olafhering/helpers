@@ -367,7 +367,10 @@ else
 	done
 fi
 osc add "${service}"
-sed -i~ "s@<param name=\"revision\">[^<]\\+</param>@<param name=\"revision\">${gitrev}</param>@" "${service}"
+sed -i~ "
+s@<param name=\"revision\">[^<]\\+</param>@<param name=\"revision\">${gitrev}</param>@
+s@mode=['\"]disabled['\"]@mode=\"manual\"@
+" "${service}"
 if diff -u "${obs_path}/${service}" "${service}"
 then
 	echo "No difference in $_?. Continue?"
