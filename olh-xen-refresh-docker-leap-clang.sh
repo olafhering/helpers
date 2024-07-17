@@ -13,11 +13,11 @@ done
 pushd ~/git/xen.git
 git --no-pager status
 docker login registry.gitlab.com/xen-project/xen
-make -C automation/build suse/opensuse-leap
+make -C automation/build opensuse/leap-15.6-x86_64
 env \
 	CONTAINER_NO_PULL=1 \
 	CONTAINER=leap \
 	CONTAINER_ARGS='-e CC=clang -e CXX=clang++ -e debug=n -e clang=y' \
 	automation/scripts/containerize automation/scripts/build < /dev/null
-make -C automation/build suse/opensuse-leap ${push}
+make -C automation/build opensuse/leap-15.6-x86_64 ${push}
 echo $?

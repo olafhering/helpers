@@ -13,11 +13,11 @@ done
 pushd ~/git/xen.git
 git --no-pager status
 docker login registry.gitlab.com/xen-project/xen
-make -C automation/build suse/opensuse-tumbleweed
+make -C automation/build opensuse/tumbleweed-x86_64
 env \
 	CONTAINER_NO_PULL=1 \
 	CONTAINER=tumbleweed \
 	CONTAINER_ARGS='-e CC=clang -e CXX=clang++ -e debug=y -e clang=y' \
 	automation/scripts/containerize automation/scripts/build < /dev/null
-make -C automation/build suse/opensuse-tumbleweed ${push}
+make -C automation/build opensuse/tumbleweed-x86_64 ${push}
 echo $?
