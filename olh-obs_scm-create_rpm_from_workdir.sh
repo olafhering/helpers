@@ -170,11 +170,15 @@ else
  cp -avib "${work_dir}/_service" "_service"
 fi
 
+read osclib_version < .osc/_osclib_version
 for patch in "${work_dir}"/*/*.patch
 do
   test -f "${patch}" || continue
   update_patch=true
-  old_patch=".osc/${patch##*/}"
+  case "${osclib_version}" in
+  1.0) old_patch=".osc/${patch##*/}" ;;
+  2.0) old_patch=".osc/sources/${patch##*/}" ;;
+  esac
   wc_patch="${patch##*/}"
   new_patch="${patch}"
   if test -e "${old_patch}"
