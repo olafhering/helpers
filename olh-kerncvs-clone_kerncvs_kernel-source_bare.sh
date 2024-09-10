@@ -15,6 +15,7 @@ set -e
 . /usr/share/helpers/bin/olh-kerncvs-env
 trap 'pwd' EXIT
 azure_branches="
+SLE15-SP7
 SLE15-SP6
 SLE15-SP5
 SLE12-SP5
@@ -120,6 +121,8 @@ git_config() {
 }
 #
 case "${branch}" in
+	SLE15-SP7-AZURE) clone_branch='SLE15-SP7-AZURE';;
+	SLE15-SP7)       clone_branch='SLE15-SP7'      ;;
 	SLE15-SP6-AZURE) clone_branch='SLE15-SP6-AZURE';;
 	SLE15-SP6)       clone_branch='SLE15-SP6'      ;;
 	SLE15-SP5-AZURE) clone_branch='SLE15-SP5-AZURE';;
