@@ -223,6 +223,7 @@ case "${upstream}" in
 	ppx_yojson_conv_lib) pkg='ocaml-ppx_yojson_conv_lib' ;;
 	ppxlib) pkg='ocaml-ppxlib' ;;
 	psq) pkg='ocaml-psq' ;;
+	ptime) pkg='ocaml-ptime' ;;
 	pyml) pkg='ocaml-pyml' ;;
 	qcheck) pkg='ocaml-qcheck' ;;
 	qtest) pkg='ocaml-qtest' ;;
