@@ -24,4 +24,4 @@ pkgs=(
 'wdiff'
 )
 set -x
-exec zypper --no-refresh install --no-confirm "${pkgs[@]}"
+exec zypper --no-refresh install "${pkgs[@]}"
