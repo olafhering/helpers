@@ -258,7 +258,7 @@ then
   do
     add_drivers+=('--add-drivers' "\${module}")
   done
-  time dracut --force \${add_drivers[@]} \$initrd \$kver
+  time dracut --force \${add_drivers[@]} /boot/\$initrd \$kver
   time grub2-mkconfig -o /boot/grub2/grub.cfg 
 fi
 rm -fv /boot/custom.grub-\$kver.cfg
