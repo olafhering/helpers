@@ -73,6 +73,12 @@ LOCALVERSION="-${bugnumber}"
 quiet_cmd_modules_install=
 INSTALL_MOD_PATH="${I}"
 )
+if strings /sbin/depmod |grep lib/module.*modules.devname$
+then
+make_opts+=(
+MODLIB='$(INSTALL_MOD_PATH)/usr/lib/modules/$(KERNELRELEASE)'
+)
+fi
 #
 do_copy() {
 	local file_src=$1
@@ -152,9 +158,9 @@ then
 	popd
 fi
 #
-if ls -ld ${I}/lib/modules/*${bugnumber}* &> /dev/null
+if ls -ld ${I}{,/usr}/lib/modules/*${bugnumber}* &> /dev/null
 then
-  find ${I}/lib/modules/*${bugnumber}* -name "*.ko" -print0 | xargs --no-run-if-empty -0 -n 1 -P ${jobs} strip --strip-debug
+  find ${I}{,/usr}/lib/modules/*${bugnumber}* -name "*.ko" -print0 | xargs --no-run-if-empty -0 -n 1 -P ${jobs} strip --strip-debug
 fi
 #
 if test "$1" = "modules_install"
@@ -198,25 +204,28 @@ mods=true
 rm -fv /etc/modprobe.d/unsupported-modules
 if test -f \$mods_file
 then
-	if grep -w ^allow_unsupported_modules \$mods_file
-	then
-		mods=false
-	fi
+  if grep -w ^allow_unsupported_modules \$mods_file
+  then
+    mods=false
+  fi
 fi
 if \$mods
 then
-	echo "allow_unsupported_modules 1" >> \$mods_file
+  echo "allow_unsupported_modules 1" >> \$mods_file
 fi
 cp -avL --remove-destination \$kernel /boot/\$vmlinuz
 cp -avL --remove-destination \$sysmap /boot/\$smap
 cp -avL --remove-destination \$config /boot/\$conf
 if test -d lib/modules/\$kver
 then
-	rsync -a --delete \$_ /lib/modules/
+  rsync -a --delete \$_ /lib/modules/
+elif test -d usr/lib/modules/\$kver
+then
+  rsync -a --delete \$_ /usr/lib/modules/
 fi
 if test -f /lib/mkinitrd/scripts/setup-splash.sh
 then
-	splash="-s 1x1"
+  splash="-s 1x1"
 fi
 depmod -a \$kver
 modules=
@@ -239,7 +248,19 @@ do
   fi
 done
 popd > /dev/null
-time mkinitrd -k \$vmlinuz -i \$initrd \$splash -m "xen:vbd xen:vif \${modules}"
+if command -V mkinitrd
+then
+  time mkinitrd -k \$vmlinuz -i \$initrd \$splash -m "xen:vbd xen:vif \${modules}"
+elif command -V dracut
+then
+  add_drivers=()
+  for module in xen:vbd xen:vif \${modules}
+  do
+    add_drivers+=('--add-drivers' "\${module}")
+  done
+  time dracut --force \${add_drivers[@]} \$vmlinuz \$kver
+  time grub2-mkconfig -o /boot/grub2/grub.cfg 
+fi
 rm -fv /boot/custom.grub-\$kver.cfg
 cat > /boot/custom.grub-\$kver.cfg <<_EOGC_
 menuentry '\$kver' {
