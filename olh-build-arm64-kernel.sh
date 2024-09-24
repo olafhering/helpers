@@ -125,14 +125,13 @@ then
 		mv -fv .config config.$PPID
 	else
 		sed -i /_DEBUG_INFO/d .config
-		sed -i /CONFIG_MODULE_SIG_KEY/d .config
+		sed -i /CONFIG_MODULE_SIG_KEY=/d .config
 		echo '# CONFIG_DEBUG_INFO is not set' >> .config
 		echo '# CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT is not set' >> .config
 		echo '# CONFIG_DEBUG_INFO_DWARF4 is not set' >> .config
 		echo '# CONFIG_DEBUG_INFO_DWARF5 is not set' >> .config
 		echo 'CONFIG_DEBUG_INFO_NONE=y' >> .config
 		echo 'CONFIG_MODULE_SIG_KEY="certs/signing_key.pem"' >> .config
-		echo 'CONFIG_MODULE_SIG_KEY_TYPE_RSA=y' >> .config
 		mv -vi .config "${O}/.config"
 	fi
 fi
