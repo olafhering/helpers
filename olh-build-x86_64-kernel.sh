@@ -73,7 +73,7 @@ LOCALVERSION="-${bugnumber}"
 quiet_cmd_modules_install=
 INSTALL_MOD_PATH="${I}"
 )
-if strings /sbin/depmod |grep lib/module.*modules.devname$
+if strings /sbin/depmod |grep /usr/lib/modules/%s/modules.devname$
 then
 make_opts+=(
 MODLIB='$(INSTALL_MOD_PATH)/usr/lib/modules/$(KERNELRELEASE)'
