@@ -2,6 +2,8 @@
 # used by olh-kerncvs-prepare-new-workstation.sh
 kerncvs_git_srv=kerncvs.nue.suse.com
 kerncvs_git_user=ohering
+# prevent dirtying the work tree with __pycache__ directories
+export PYTHONDONTWRITEBYTECODE=1
 # used by sequence-patch.sh
 export SCRATCH_AREA=/dev/shm/SCRATCH_AREA
 # used by sequence-patch.sh and tar-up.sh, but extracting from git appears to be faster
