@@ -102,6 +102,7 @@ do
         for f in *
         do
           test -f "${f}" || continue
+          test -d "../../${prj}/" || continue
           ln -vt "../../${prj}/" *
           break
         done
