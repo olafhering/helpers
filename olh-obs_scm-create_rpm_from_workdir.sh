@@ -91,23 +91,26 @@ _EOF_
   done
   cat <<'_EOF_'
 
-if pushd subprojects/packagefiles 2>/dev/null
-then
-  for prj in *
-  do
-    if pushd "${prj}" > /dev/null
-    then
-      for f in *
-      do
-        test -f "${f}" || continue
-        ln -vt "../../${prj}/" *
-        break
-      done
-      popd > /dev/null
-    fi
-  done
-  popd > /dev/null
-fi
+find . -path '*/subprojects/packagefiles' | while read
+do
+  if pushd "${REPLY}" 2>/dev/null
+  then
+    for prj in *
+    do
+      if pushd "${prj}" > /dev/null
+      then
+        for f in *
+        do
+          test -f "${f}" || continue
+          ln -vt "../../${prj}/" *
+          break
+        done
+        popd > /dev/null
+      fi
+    done
+    popd > /dev/null
+  fi
+done
 
 _EOF_
 } > spec.patch.txt
