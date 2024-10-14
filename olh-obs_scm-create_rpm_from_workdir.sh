@@ -103,7 +103,7 @@ do
         do
           test -f "${f}" || continue
           test -d "../../${prj}/" || continue
-          ln -vt "../../${prj}/" *
+          ln -vft "../../${prj}/" *
           break
         done
         popd > /dev/null
