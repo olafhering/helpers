@@ -1,9 +1,9 @@
 prjs=(
+KMP
 Essentials
 Multimedia
 Games
 Extra
-SLE15
 Staging
 )
 
