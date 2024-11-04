@@ -92,6 +92,25 @@ do_tw() {
   test_install
 }
 #
+do_15_6() {
+  if test -z "${use_system_repos}"
+  then
+    create_repo oss rpm-md http://download.opensuse.org/distribution/leap/15.6/repo/oss
+    create_repo nss rpm-md http://download.opensuse.org/distribution/leap/15.6/repo/non-oss
+    create_repo Oss rpm-md http://download.opensuse.org/update/leap/15.6/oss
+    create_repo Nss rpm-md http://download.opensuse.org/update/leap/15.6/non-oss
+    create_repo Hub rpm-md http://download.opensuse.org/update/leap/15.6/backports
+    create_repo Sle rpm-md http://download.opensuse.org/update/leap/15.6/sle
+  else
+    copy_system_repos
+  fi
+  create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/openSUSE_Leap_15.6
+  create_repo pm_multimedia  rpm-md http://pmbs-api.links2linux.de:8080/Multimedia/openSUSE_Leap_15.6
+  create_repo pm_extra       rpm-md http://pmbs-api.links2linux.de:8080/Extra/openSUSE_Leap_15.6
+  create_repo pm_games       rpm-md http://pmbs-api.links2linux.de:8080/Games/openSUSE_Leap_15.6
+  test_install
+}
+#
 do_15_5() {
   if test -z "${use_system_repos}"
   then
@@ -283,6 +302,7 @@ mkdir -vp "${reposd}"
 
 case "${dist}" in
   tw) do_tw ;;
+  15.6)  do_15_6 ;;
   15.5)  do_15_5 ;;
   15.4)  do_15_4 ;;
   15.3)  do_15_3 ;;
