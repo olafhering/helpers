@@ -41,14 +41,6 @@ do
 	shift
 done
 #
-sle12sp5() {
-	branch='SLE12-SP5-AZURE'
-	embargo='SLE12-SP5-AZURE_EMBARGO'
-	kerncvs_prj='Devel:Kernel:SLE12-SP5-AZURE'
-	kerncvs_prj_embargo='Devel:Kernel:SLE12-SP5-AZURE_EMBARGO'
-	update_prj='SUSE:SLE-12-SP5:Update'
-}
-#
 sle15sp5() {
 	branch='SLE15-SP5-AZURE'
 	embargo='SLE15-SP5-AZURE_EMBARGO'
@@ -72,7 +64,6 @@ sle15sp7() {
 }
 #
 case "${dist}" in
-sle12sp5|SLE12SP5|SLE12-SP5) sle12sp5 ;;
 sle15sp5|SLE15SP5|SLE15-SP5) sle15sp5 ;;
 sle15sp6|SLE15SP6|SLE15-SP6) sle15sp6 ;;
 sle15sp7|SLE15SP7|SLE15-SP7) sle15sp7 ;;

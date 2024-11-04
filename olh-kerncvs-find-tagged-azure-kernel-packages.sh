@@ -230,7 +230,7 @@ popd > /dev/null
 pushd "${updates_suse_com_dir}" > /dev/null
 for i in ${top_dirs[@]}
 do
-	rpm_dirs+=( $(ls -1d "${i}"/{12-SP5,15*}/*/product/{aarch64,x86_64} "${i}"/{12-SP5,15*}/*/update/{aarch64,x86_64} 2>/dev/null || :) )
+	rpm_dirs+=( $(ls -1d "${i}"/15-SP*/*/product/{aarch64,x86_64} "${i}"/15-SP*/*/update/{aarch64,x86_64} 2>/dev/null || :) )
 done
 #
 echo "Searching in ${#rpm_dirs[@]} directories ..."

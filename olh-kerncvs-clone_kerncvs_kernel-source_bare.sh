@@ -18,7 +18,6 @@ azure_branches="
 SLE15-SP7
 SLE15-SP6
 SLE15-SP5
-SLE12-SP5
 "
 email='ohering@suse.de'
 name='Olaf Hering'
@@ -137,8 +136,8 @@ case "${branch}" in
 	SLE15-SP1)       clone_branch='SLE15-SP1-LTSS' ;;
 	SLE15-LTSS)      clone_branch='SLE15-LTSS'     ;;
 	SLE15)           clone_branch='SLE15-LTSS'     ;;
-	SLE12-SP5-AZURE) clone_branch='SLE12-SP5-AZURE';;
-	SLE12-SP5)       clone_branch='SLE12-SP5'      ;;
+	SLE12-SP5-LTSS)  clone_branch='SLE12-SP5-LTSS' ;;
+	SLE12-SP5)       clone_branch='SLE12-SP5-LTSS' ;;
 	SLE12-SP4-LTSS)  clone_branch='SLE12-SP4-LTSS' ;;
 	SLE12-SP4)       clone_branch='SLE12-SP4-LTSS' ;;
 	SLE12-SP3-TD)    clone_branch='SLE12-SP3-TD'   ;;
