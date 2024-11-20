@@ -191,6 +191,12 @@ if pushd ovmf.git > /dev/null
 then
   simple_fetch_all
   push_master
+  if ${push}
+  then
+  git push github_olafhering 'refs/remotes/upstream/stable/202408:refs/heads/stable/202408' &> $t/ovmf.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/stable/202408:refs/heads/stable/202408' &> $t/ovmf.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/stable/202408:refs/heads/stable/202408' &> $t/ovmf.gitlab_olh        &
+  fi
   finish $t
 fi
 } &> ${td}/ovmf.log < /dev/null &
