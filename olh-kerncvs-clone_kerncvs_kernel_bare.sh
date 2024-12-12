@@ -83,6 +83,7 @@ then
 fi
 #
 case "${branch}" in
+	SUSE-2025)       clone_branch='SUSE-2025'      ;;
 	SLE15-SP7)       clone_branch='SLE15-SP7'      ;;
 	SLE15-SP7-AZURE) clone_branch='SLE15-SP7-AZURE';;
 	SLE15-SP6)       clone_branch='SLE15-SP6'      ;;
