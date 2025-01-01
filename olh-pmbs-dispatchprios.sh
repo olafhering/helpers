@@ -12,7 +12,6 @@ Factory
 openSUSE_Tumbleweed
 openSUSE_Slowroll
 openSUSE_Leap_15.6
-openSUSE_Leap_15.5
 SLE_15
 )
 
