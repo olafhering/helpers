@@ -123,10 +123,10 @@ do_15_5() {
   else
     copy_system_repos
   fi
-  create_repo pm_essentials  rpm-md http://pmbs-api.links2linux.de:8080/Essentials/openSUSE_Leap_15.5
-  create_repo pm_multimedia  rpm-md http://pmbs-api.links2linux.de:8080/Multimedia/openSUSE_Leap_15.5
-  create_repo pm_extra       rpm-md http://pmbs-api.links2linux.de:8080/Extra/openSUSE_Leap_15.5
-  create_repo pm_games       rpm-md http://pmbs-api.links2linux.de:8080/Games/openSUSE_Leap_15.5
+  create_repo pm_essentials  rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.5/Essentials
+  create_repo pm_multimedia  rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.5/Multimedia
+  create_repo pm_extra       rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.5/Extra
+  create_repo pm_games       rpm-md http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.5/Games
   test_install
 }
 #
