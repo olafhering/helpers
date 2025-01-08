@@ -149,7 +149,7 @@ case "${upstream}" in
 	ocaml-compiler-libs) pkg='ocaml-ocaml-compiler-libs' ;;
 	ocaml-cstruct) pkg='ocaml-cstruct' ;;
 	ocaml-ctypes) pkg='ocaml-ctypes' ;;
-	ocaml-curl) pkg='ocaml-curl' ;;
+	ocaml-ocurl) pkg='ocaml-ocurl' ;;
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
 	ocaml-fileutils) pkg='ocaml-fileutils' ;;
