@@ -10,6 +10,6 @@ then
 	*//pmbs-api.links2linux.org) exec pbs "$@" ;;
 	esac
 fi
-APIHOST='none'
+APIHOST='localhost'
 APIUSER='generic'
 exec olh-osc-wrapper "${APIUSER}" "${APIHOST}" "$@"
