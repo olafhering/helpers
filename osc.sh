@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 apiurl=
 if test -f .osc/_apiurl
 then
