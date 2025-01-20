@@ -16,7 +16,6 @@ export UPSTREAM_REPOS=~/work/src/kernel/upstream.linux
 export WORK_KERNEL=~/work/src/kernel
 # list of branches which still receive updates
 kerncvs_active_branches_base=(
-SLE12-SP3-TD
 SLE12-SP5
 SLE15-SP2-LTSS
 SLE15-SP3-LTSS
