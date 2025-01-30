@@ -145,11 +145,11 @@ case "${upstream}" in
 	mtime) pkg='ocaml-mtime' ;;
 	num) pkg='ocaml-num' ;;
 	ocaml-base64) pkg='ocaml-base64' ;;
+	ocaml-benchmark) pkg='ocaml-benchmark' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
 	ocaml-compiler-libs) pkg='ocaml-ocaml-compiler-libs' ;;
 	ocaml-cstruct) pkg='ocaml-cstruct' ;;
 	ocaml-ctypes) pkg='ocaml-ctypes' ;;
-	ocaml-ocurl) pkg='ocaml-ocurl' ;;
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
 	ocaml-fileutils) pkg='ocaml-fileutils' ;;
@@ -159,6 +159,7 @@ case "${upstream}" in
 	ocaml-mccs) pkg='ocaml-mccs' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
 	ocaml-minisat) pkg='ocaml-minisat' ;;
+	ocaml-ocurl) pkg='ocaml-ocurl' ;;
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
