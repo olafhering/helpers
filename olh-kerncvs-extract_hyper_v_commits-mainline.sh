@@ -94,6 +94,11 @@ do_format_patch() {
 		arch/x86/include/uapi/asm/hyperv.h \
 		arch/x86/kernel/cpu/mshyperv.c \
 		arch/x86/kvm/hyperv.c \
+		arch/x86/kvm/hyperv.h \
+		arch/x86/kvm/svm/hyperv.c \
+		arch/x86/kvm/svm/hyperv.h \
+		arch/x86/kvm/vmx/hyperv.c \
+		arch/x86/kvm/vmx/hyperv.h \
 		drivers/clocksource/hyperv_timer.c \
 		drivers/gpu/drm/hyperv \
 		drivers/hid/hid-hyperv.c \
@@ -119,6 +124,7 @@ do_format_patch() {
 		include/asm-generic/hyperv-tlfs.h \
 		include/asm-generic/mshyperv.h \
 		include/clocksource/hyperv_timer.h \
+		include/hyperv \
 		include/linux/hyperv.h \
 		include/net/af_hvsock.h \
 		include/net/mana \
