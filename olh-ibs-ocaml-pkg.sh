@@ -148,6 +148,7 @@ case "${upstream}" in
 	ocaml-benchmark) pkg='ocaml-benchmark' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
 	ocaml-compiler-libs) pkg='ocaml-ocaml-compiler-libs' ;;
+	ocaml-crunch) pkg='ocaml-crunch' ;;
 	ocaml-cstruct) pkg='ocaml-cstruct' ;;
 	ocaml-ctypes) pkg='ocaml-ctypes' ;;
 	ocaml-either) pkg='ocaml-either' ;;
