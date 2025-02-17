@@ -153,6 +153,7 @@ case "${upstream}" in
 	ocaml-either) pkg='ocaml-either' ;;
 	ocaml-extlib) pkg='ocaml-extlib' ;;
 	ocaml-fileutils) pkg='ocaml-fileutils' ;;
+	ocaml-gettext) pkg='ocaml-gettext' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
 	ocaml-lsp) pkg='ocaml-lsp-server' ;;
 	ocaml-lwt-dllist) pkg='ocaml-lwt-dllist' ;;
