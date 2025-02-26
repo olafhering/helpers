@@ -8,6 +8,9 @@ declare -i unix_timestamp=0
 declare -i ocaml_rpm_macros=
 declare -i ibs_ocaml_rpm_macros=
 declare -i obs_ocaml_rpm_macros=
+declare -A pkg_to_ignore
+declare -a pkg_ignore_list
+pkg_ignore_file=
 timestamp=
 copyright_year=
 while test $# -gt 0
@@ -15,6 +18,7 @@ do
 	case "$1" in
 	-ts) unix_timestamp=$2 ; shift ;;
 	-orm) ocaml_rpm_macros=$2 ; shift ;;
+	-i) pkg_ignore_file=$2 ; shift ;;
 	*) echo "unhandled arg $0 $*" ; exit 1 ;;
 	esac
 	shift
@@ -46,6 +50,21 @@ then
 	fi
 fi
 test "${unix_timestamp}" -gt 0
+#
+if test -n "${pkg_ignore_file}"
+then
+	if test -f "${pkg_ignore_file}"
+	then
+		read -a pkg_ignore_list < <(xargs < "${pkg_ignore_file}")
+	else
+		echo "${pkg_ignore_file} is not a file"
+		exit 1
+	fi
+	for i in "${pkg_ignore_list[@]}"
+	do
+		pkg_to_ignore["$i"]=$i
+	done
+fi
 #
 maybe_update() {
 	local new_pkg
@@ -230,7 +249,12 @@ then
 		then
 			read pkg < _package
 			cd ..
-			process_single_pkg "${pkg}"
+			if test -n "${pkg_to_ignore[${pkg}]}"
+			then
+				echo "pkg ${pkg} skipped, it is in ${pkg_ignore_file}"
+			else
+				process_single_pkg "${pkg}"
+			fi
 			popd > /dev/null
 		fi
 	done
