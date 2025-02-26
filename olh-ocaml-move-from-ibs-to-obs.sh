@@ -176,54 +176,61 @@ _EOF_
 	fi
 }
 #
+process_single_pkg() {
+	local pkg=$1
+	local -a files
+	local file
+
+	for file in *
+	do
+		test -f "${file}" || continue
+		case "${file}" in
+		*~) continue ;;
+		_link) continue ;;
+		*.tar.xz) continue ;;
+		esac
+		if test -f "${obs}/${pkg}/${file}"
+		then
+			cmp -s "$_" "${file}" || files+=("${file}")
+		else
+			files+=("${file}")
+		fi
+	done
+	if test "${#files[@]}" -gt 0
+	then
+		for file in "${files[@]}"
+		do
+			if test -f "${obs}/${pkg}/${file}"
+			then
+				diff -ubBw "${obs}/${pkg}/${file}" "${file}" || : differences
+			else
+				echo "New file ${file}"
+			fi
+		done
+		test -f "${obs}/${pkg}/_link" && head -n1 "$_"
+		while true
+		do
+			read -n 1 -p "${pkg} [u]pdate, [s]kip ...: "
+			case "${REPLY}" in
+			u) echo ; maybe_update "${pkg}" "${files[@]}" ; break ;;
+			s) echo ; break ;;
+			\n) ;;
+			*) echo ;;
+			esac
+		done
+		echo
+	fi
+}
+#
 if pushd "${ibs}" > /dev/null
 then
 	for pkgd in */.osc
 	do
 		if pushd "${pkgd}" > /dev/null
 		then
-			files=()
 			read pkg < _package
 			cd ..
-			for file in *
-			do
-				test -f "${file}" || continue
-				case "${file}" in
-				*~) continue ;;
-				_link) continue ;;
-				*.tar.xz) continue ;;
-				esac
-				if test -f "${obs}/${pkg}/${file}"
-				then
-					cmp -s "$_" "${file}" || files+=("${file}")
-				else
-					files+=("${file}")
-				fi
-			done
-			if test "${#files[@]}" -gt 0
-			then
-				for file in "${files[@]}"
-				do
-					if test -f "${obs}/${pkg}/${file}"
-					then
-						diff -ubBw "${obs}/${pkg}/${file}" "${file}" || : differences
-					else
-						echo "New file ${file}"
-					fi
-				done
-				test -f "${obs}/${pkg}/_link" && head -n1 "$_"
-				while true
-				do
-					read -n 1 -p "${pkg} [u]pdate, [s]kip ...: "
-					case "${REPLY}" in
-					u) echo ; maybe_update "${pkg}" "${files[@]}" ; break ;;
-					s) echo ; break ;;
-					\n) ;;
-					*) echo ;;
-					esac
-				done
-				echo
-			fi
+			process_single_pkg "${pkg}"
 			popd > /dev/null
 		fi
 	done
