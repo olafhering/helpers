@@ -262,6 +262,7 @@ case "${upstream}" in
 	uuseg) pkg='ocaml-uuseg' ;;
 	uutf) pkg='ocaml-uutf' ;;
 	variantslib) pkg='ocaml-variantslib' ;;
+	virt-top) pkg='virt-top' ;;
 	xml-light) pkg='ocaml-xml-light' ;;
 	xmlm) pkg='ocaml-xmlm' ;;
 	yojson) pkg='ocaml-yojson' ;;
