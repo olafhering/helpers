@@ -130,9 +130,15 @@ s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macr
 		then
 			> "${pkg}.changes"
 			changes_file=
-			if test -f '.osc/_service' && test -f '_service'
+			read osclib_version < .osc/_osclib_version
+			old_service=
+			case "${osclib_version}" in
+			1.0) old_service=".osc/_service" ;;
+			2.0) old_service=".osc/sources/_service" ;;
+			esac
+			if test -f "${old_service}" && test -f '_service'
 			then
-				read old_revision < <(sed -n '/name=.revision/{s@^[^>]\+>@@;s@<.*$@@;p}' .osc/_service)
+				read old_revision < <(sed -n '/name=.revision/{s@^[^>]\+>@@;s@<.*$@@;p}' "${old_service}")
 				read new_revision < <(sed -n '/name=.revision/{s@^[^>]\+>@@;s@<.*$@@;p}' _service)
 				echo "revision ${old_revision}..${new_revision}"
 				if pushd */.git > /dev/null
