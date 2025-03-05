@@ -2,6 +2,7 @@
 set -ex
 unset LANG
 unset ${!LC_*}
+declare -a args
 root=/dev/shm
 api=pmbs
 dbg=--disable-debuginfo
@@ -20,9 +21,9 @@ do
 	case "$1" in
 	-d|--debug|--debuginfo) dbg=--debuginfo ;;
 	*.spec) spec=$1 ;;
-	--*) args=( "${args[@]}" "$1" ) ;;
-	-t|-j|-x|-k|-p|-M) args=( "${args[@]}" "$1" "$2" ) ; shift ;;
-	-*) args=( "${args[@]}" "$1" ) ;;
+	--*) args+=( "$1" ) ;;
+	-t|-j|-x|-k|-p|-M) args+=( "$1" "$2" ) ; shift ;;
+	-*) args+=( "$1" ) ;;
 	esac
 	shift
 done
