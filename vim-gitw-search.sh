@@ -1,4 +1,5 @@
 #!/bin/bash
+declare -a files
 declare -i num=0
 grep_search_string=
 vim_search_string=
@@ -20,4 +21,8 @@ do
 done
 grep_search_string+=')'
 #
-exec view -bn -c "silent! /${vim_search_string}" $(git --no-pager grep -Ewl "${grep_search_string}")
+while read
+do
+	files+=("${REPLY}")
+done < <(git --no-pager grep -Elw "${grep_search_string}")
+exec view -bn -c "silent! /${vim_search_string}" -- "${files[@]}"
