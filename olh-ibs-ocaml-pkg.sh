@@ -108,6 +108,7 @@ case "${upstream}" in
 	cppo) pkg='ocaml-cppo' ;;
 	cryptokit) pkg='ocaml-cryptokit' ;;
 	csexp) pkg='ocaml-csexp' ;;
+	cudf) pkg='ocaml-cudf' ;;
 	curses) pkg='ocaml-curses' ;;
 	domain-local-await) pkg='ocaml-domain-local-await' ;;
 	dose3) pkg='ocaml-dose' ;;
