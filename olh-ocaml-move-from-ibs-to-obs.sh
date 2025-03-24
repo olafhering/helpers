@@ -144,8 +144,11 @@ s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macr
 				if pushd */.git > /dev/null
 				then
 					cd ..
-					git --no-pager log --reverse --oneline "${old_revision}..${new_revision}" >> "${pkg}.changes" || :
 					read changes_file < <(git --no-pager ls-tree --name-only "${new_revision}" | grep -E '^(CHANGELOG.md|Changes|Changes.md|CHANGES|CHANGES.md|CHANGES.txt|ChangeLog|Changelog)$' || echo)
+					if test -n "${changes_file}"
+					then
+						git --no-pager log --reverse --oneline "${old_revision}..${new_revision}" >> "../${pkg}.changes" || :
+					fi
 					popd > /dev/null
 				fi
 			fi
