@@ -1,5 +1,7 @@
 #!/bin/bash
 for rq in "$@"
 do
-	obs rq show -d "${rq}" |& less -Sn
-done
+	num=${rq#rq}
+	num=${num%.}
+	obs rq show -d "${num}"
+done |& less -Sn

@@ -1,5 +1,7 @@
 #!/bin/bash
 for rq in "$@"
 do
-	pbs rq show -d "${rq}" |& less -Sn
-done
+	num=${rq#rq}
+	num=${num%.}
+	pbs rq show -d "${num}"
+done |& less -Sn

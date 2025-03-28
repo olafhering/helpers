@@ -1,5 +1,7 @@
 #!/bin/bash
 for rq in "$@"
 do
-	ibs rq show -d "${rq}" |& less -Sn
-done
+	num=${rq#rq}
+	num=${num%.}
+	ibs rq show -d "${num}"
+done |& less -Sn
