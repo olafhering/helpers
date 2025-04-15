@@ -23,7 +23,7 @@ SLE15-SP4-LTSS
 SLE15-SP5-LTSS
 SLE15-SP6
 SLE15-SP7
-SUSE-2025
+SL-16.0
 )
 # list of branches for kernel-azure, which still receive updates
 kerncvs_active_branches_azure=(

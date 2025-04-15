@@ -119,7 +119,7 @@ git_config() {
 }
 #
 case "${branch}" in
-	SUSE-2025)       clone_branch='SUSE-2025'      ;;
+	SL-16.0)         clone_branch='SL-16.0'        ;;
 	SLE15-SP7-AZURE) clone_branch='SLE15-SP7-AZURE';;
 	SLE15-SP7)       clone_branch='SLE15-SP7'      ;;
 	SLE15-SP6-AZURE) clone_branch='SLE15-SP6-AZURE';;
