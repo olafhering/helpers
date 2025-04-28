@@ -137,6 +137,7 @@ case "${upstream}" in
 	logs) pkg='ocaml-logs' ;;
 	luv) pkg='ocaml-luv' ;;
 	lwt) select_lwt ;;
+	lwt-dllist) pkg='ocaml-lwt-dllist' ;;
 	lwt_log) pkg='ocaml-lwt_log' ;;
 	markup.ml) pkg='ocaml-markup.ml' ;;
 	mdx) pkg='ocaml-mdx' ;;
