@@ -163,7 +163,6 @@ case "${upstream}" in
 	ocaml-mccs) pkg='ocaml-mccs' ;;
 	ocaml-migrate-parsetree) pkg='ocaml-migrate-parsetree' ;;
 	ocaml-minisat) pkg='ocaml-minisat' ;;
-	ocaml-ocurl) pkg='ocaml-ocurl' ;;
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
@@ -178,6 +177,7 @@ case "${upstream}" in
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
 	ocp-indent) pkg='ocaml-ocp-indent' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
+	ocurl) pkg='ocaml-ocurl' ;;
 	odoc) pkg='ocaml-odoc' ;;
 	odoc-parser) pkg='ocaml-odoc-parser' ;;
 	omd) pkg='ocaml-omd' ;;
