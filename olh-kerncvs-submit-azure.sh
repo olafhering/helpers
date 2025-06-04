@@ -41,6 +41,13 @@ do
 	shift
 done
 #
+sle16sp0() {
+	branch='SL-16.0-AZURE'
+	embargo='SL-16.0-AZURE_EMBARGO'
+	kerncvs_prj='Devel:Kernel:SL-16.0-AZURE'
+	kerncvs_prj_embargo='Devel:Kernel:SL-16.0-AZURE_EMBARGO'
+	update_prj='SUSE:SLFO:Main'
+}
 sle15sp6() {
 	branch='SLE15-SP6-AZURE'
 	embargo='SLE15-SP6-AZURE_EMBARGO'
@@ -57,6 +64,7 @@ sle15sp7() {
 }
 #
 case "${dist}" in
+sle16sp0|SLE16SP0|SLE16-SP0) sle16sp0 ;;
 sle15sp6|SLE15SP6|SLE15-SP6) sle15sp6 ;;
 sle15sp7|SLE15SP7|SLE15-SP7) sle15sp7 ;;
 *) echo "Unknown dist '${dist}'" ; exit 1 ;;
