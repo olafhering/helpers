@@ -116,10 +116,13 @@ get_xen_file Config.mk
 qemu_xen_traditional_git_url=` sed -n '/^QEMU_\(TRADITIONAL_URL\|REMOTE\).*\(http\|https\|git\):\/\//{s@^[^=]\+=[[:blank:]]*@@;p;q}' ${xf} `
 qemu_xen_traditional_tag=` sed -n '/^QEMU_TRADITIONAL_REVISION/{/QEMU_TAG/d;s@^.* @@;p;q};/^QEMU_TAG/{s@^.* @@;p;q}' ${xf} `
 qemu_xen_traditional_extract_dir=tools/qemu-xen-traditional-dir-remote
-create_submodule \
-	"${qemu_xen_traditional_git_url}" \
-	"${qemu_xen_traditional_tag}" \
-	"${qemu_xen_traditional_extract_dir}"
+if test -n "${qemu_xen_traditional_git_url}" && test -n "${qemu_xen_traditional_tag}"
+then
+	create_submodule \
+		"${qemu_xen_traditional_git_url}" \
+		"${qemu_xen_traditional_tag}" \
+		"${qemu_xen_traditional_extract_dir}"
+fi
 #
 qemu_xen_upstream_git_url=`sed -n '/^QEMU_UPSTREAM_URL.*\(http\|https\|git\):\/\//{s@^.* @@;p;q}' ${xf}`
 qemu_xen_upstream_tag=`sed -n '/^QEMU_UPSTREAM_REVISION/{s@^.* @@;p;q}' ${xf}`
