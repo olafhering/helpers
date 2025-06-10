@@ -130,6 +130,7 @@ do_format_patch() {
 		include/net/mana \
 		include/net/mana/mana_auxiliary.h \
 		include/uapi/linux/hyperv.h \
+		include/uapi/linux/mshv.h \
 		include/uapi/rdma/mana-abi.h \
 		net/hv_sock \
 		net/vmw_vsock/hyperv_transport.c \
