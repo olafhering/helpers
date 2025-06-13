@@ -74,6 +74,10 @@ src_prj="${kerncvs_prj}"
 test -n "${use_embargo_branch}" && src_prj="${kerncvs_prj_embargo}"
 #
 case "${update_prj}" in
+SUSE:SLFO:Main)
+	osc_rq_type='submitrequest'
+	ibs rq list "${update_prj}" "${pkg}"
+;;
 *:GA)
 	osc_rq_type='submitrequest'
 	ibs rq list "${update_prj}" "${pkg}"
