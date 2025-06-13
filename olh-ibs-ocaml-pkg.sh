@@ -39,7 +39,12 @@ then
 	upstream="${upstream%/-}"
 	upstream="${upstream##*/}"
 	;;
-	*) exit 1 ;;
+	*)
+		test -d .git || exit 1
+		read gitrev < <(git --no-pager rev-list -n1 "$1")
+		git --no-pager log --oneline -n1 ${gitrev}
+		upstream=${PWD##*/}
+	;;
 	esac
 elif test "$#" -eq 2
 then
