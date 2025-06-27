@@ -155,7 +155,7 @@ then
 	popd
 fi
 #
-scripts/git_sort/series_sort.py 'series.conf'
+scripts/git_sort/series_sort 'series.conf'
 if git_status_check
 then
 	echo "some changes exist, can not continue"
@@ -172,7 +172,7 @@ do
 		echo "'git am --abort' suggested, followed by manual 'git am'."
 		bash
 	fi
-	scripts/git_sort/series_sort.py 'series.conf'
+	scripts/git_sort/series_sort 'series.conf'
 	git add 'series.conf'
 	env \
 	GIT_AUTHOR_DATE="@${ts_author}" \

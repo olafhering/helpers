@@ -155,7 +155,7 @@ do
 		do
 			if grep -q ^Git-commit: "${patch}"
 			then
-				scripts/git_sort/series_insert.py "${patch}"
+				scripts/git_sort/series_insert "${patch}"
 			else
 				has_non_upstream_patch+=( "${patch}" )
 				{
@@ -172,7 +172,7 @@ do
 	fi
 	rm -rf $SCRATCH_AREA
 	failed=
-	if scripts/sequence-patch.sh --rapid
+	if scripts/sequence-patch --rapid
 	then
 		if test -n "${use_but_no_compile_test}"
 		then
