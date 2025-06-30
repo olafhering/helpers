@@ -86,11 +86,14 @@ then
 			"
 			for remote in ${remotes}
 			do
-				branches="`git \"--git-dir=${upstream_git}/.git\" branch --all --no-merged "${Linux_remote}/${Linux_branch}"| sed -n "/${remote}/s@^[[:blank:]]\+remotes/${remote}/@@p"`"
-				for branch in $branches
+				while read
 				do
-					do_mainline "${remote}" "$branch" "${Linux_remote}" "${Linux_branch}"
-				done
+					case "${REPLY}" in
+					${remote}/*)
+						do_mainline "${remote}" "${REPLY#*/}" "${Linux_remote}" "${Linux_branch}"
+					;;
+					esac
+				done < <(git --git-dir=${upstream_git}/.git for-each-ref --format='%(refname:short)' --exclude='**/HEAD')
 			done
 		fi
 	fi
