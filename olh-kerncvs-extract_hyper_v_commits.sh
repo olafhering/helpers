@@ -89,10 +89,15 @@ then
 				while read
 				do
 					case "${REPLY}" in
-					${remote}/*)
-						do_mainline "${remote}" "${REPLY#*/}" "${Linux_remote}" "${Linux_branch}"
-					;;
+					${remote}/*) ;;
+					*) continue
 					esac
+					if git --git-dir=${upstream_git}/.git merge-base --is-ancestor "${REPLY}" "${Linux_remote}/${Linux_branch}"
+					then
+						echo "${REPLY} merged into ${Linux_remote}/${Linux_branch}"
+					else
+						do_mainline "${remote}" "${REPLY#*/}" "${Linux_remote}" "${Linux_branch}"
+					fi
 				done < <(git --git-dir=${upstream_git}/.git for-each-ref --format='%(refname:short)' --exclude='**/HEAD')
 			done
 		fi
