@@ -86,7 +86,7 @@ then
 			"
 			for remote in ${remotes}
 			do
-				branches="`git \"--git-dir=${upstream_git}/.git\" branch -a | sed -n "/${remote}/s@^[[:blank:]]\+remotes/${remote}/@@p"`"
+				branches="`git \"--git-dir=${upstream_git}/.git\" branch --all --no-merged "${Linux_remote}/${Linux_branch}"| sed -n "/${remote}/s@^[[:blank:]]\+remotes/${remote}/@@p"`"
 				for branch in $branches
 				do
 					do_mainline "${remote}" "$branch" "${Linux_remote}" "${Linux_branch}"
