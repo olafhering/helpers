@@ -248,6 +248,7 @@ case "${upstream}" in
 	sexplib) pkg='ocaml-sexplib' ;;
 	sexplib0) pkg='ocaml-sexplib0' ;;
 	spawn) pkg='ocaml-spawn' ;;
+	spdx_licenses) pkg='ocaml-spdx_licenses' ;;
 	splittable_random) pkg='ocaml-splittable_random' ;;
 	sqlite3-ocaml) pkg='ocaml-sqlite' ;;
 	stdcompat) pkg='ocaml-stdcompat' ;;
