@@ -25,7 +25,7 @@ while test $# -gt 0
 do
 	case "$1" in
 	-s) supersede=$2 ; shift ;;
-	-e) use_embargo_branch='yes' ;;
+	-e) use_embargo_branch='use_embargo_branch' ;;
 	-l) pkg_show_log='pkg_show_log' ;;
 	-r) pkg_rev_requested=$2 ; shift ;;
 	*)
@@ -111,7 +111,7 @@ while read
 do
 	case "${REPLY}" in
 	---------*)
-		got_line='yes'
+		got_line='got_line'
 		pkg_rev=
 		pkg_date=
 	;;
@@ -121,7 +121,7 @@ do
 			echo "Missing separator line in ${src_prj} ${pkg}"
 			exit 1
 		fi
-		got_pkg_rev='yes'
+		got_pkg_rev='got_pkg_rev'
 		values=( ${REPLY} )
 		pkg_rev="${values[0]}"
 		pkg_rev="${pkg_rev:1}"
