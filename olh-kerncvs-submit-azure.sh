@@ -150,8 +150,6 @@ do
 			pkg_githash="${values[1]}"
 			break
 		fi
-		unset got_line
-		unset got_pkg_rev
 	;;
 	*)
 		unset got_line
