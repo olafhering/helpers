@@ -121,7 +121,7 @@ maybe_update() {
 	then
 		olh-remove-braces-from-rpmspec-macros *.spec
 		sed -i~ "
-s@^# Copyright .*SUSE.*@# Copyright (c) ${copyright_year} SUSE LLC@
+s@^# Copyright .*SUSE.*@# Copyright (c) ${copyright_year} SUSE LLC and contributors@
 s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macros >= ${ocaml_rpm_macros}@
 		" *.spec
 		read version < <( awk '/^Version:/{print $2}' "${pkg}.spec" )
