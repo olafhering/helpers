@@ -9,6 +9,7 @@ set -e
 unset LANG
 unset ${!LC_*}
 #
+build_service_user='olh'
 pkg='kernel-source-azure'
 dist=
 pkg_rev=
@@ -28,6 +29,7 @@ do
 	-e) use_embargo_branch='use_embargo_branch' ;;
 	-l) pkg_show_log='pkg_show_log' ;;
 	-r) pkg_rev_requested=$2 ; shift ;;
+	-u) build_service_user=$2 ; shift ;;
 	*)
 		if test "$#" -gt 1 
 		then
@@ -220,6 +222,28 @@ buildservice)
 	osc_sr_cmd+=( "${osc_sr_cmd_args[@]}" )
 	echo
 	"${osc_sr_cmd[@]}"
+;;
+git)
+	read td < <(mktemp --directory --tmpdir=/dev/shm)
+	pushd "${td}"
+		ibs co -u -r "${pkg_rev}" "${kerncvs_prj}" "${pkg}"
+		pushd "${kerncvs_prj}/${pkg}"
+			ibs up -e -r "${pkg_rev}" 
+			ibs st
+		popd
+		ibs fork "${update_prj}" "${pkg}"
+		pushd "home:${build_service_user}:branches:${update_prj}:${pkg}"
+			git --no-pager status
+			git --no-pager remote show
+			git --no-pager branch --show-current
+			git --no-pager rm --force --quiet -- *
+			mv --target-directory=. "${td}/${kerncvs_prj}/${pkg}"/*
+			git --no-pager add -- *
+			git --no-pager status
+			env TZ=UTC git commit -avsm "kernel-azure ${pkg_githash}"
+			bash
+		popd
+	popd
 ;;
 esac
 echo "Done with rc $?"
