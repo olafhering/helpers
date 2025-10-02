@@ -53,7 +53,7 @@ sle16sp0() {
 	embargo='SL-16.0-AZURE_EMBARGO'
 	kerncvs_prj='Devel:Kernel:SL-16.0-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SL-16.0-AZURE_EMBARGO'
-	update_prj='SUSE:SLFO:Main'
+	update_prj='SUSE:SLFO:1.2'
 }
 sle15sp6() {
 	branch='SLE15-SP6-AZURE'
