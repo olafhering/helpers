@@ -47,6 +47,7 @@ sle16sp1() {
 	kerncvs_prj='Devel:Kernel:SL-16.1-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SL-16.1-AZURE_EMBARGO'
 	update_prj='SUSE:SLFO:Main'
+	data_backend='buildservice'
 }
 sle16sp0() {
 	branch='SL-16.0-AZURE'
@@ -54,6 +55,7 @@ sle16sp0() {
 	kerncvs_prj='Devel:Kernel:SL-16.0-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SL-16.0-AZURE_EMBARGO'
 	update_prj='SUSE:SLFO:1.2'
+	data_backend='git'
 }
 sle15sp6() {
 	branch='SLE15-SP6-AZURE'
@@ -61,6 +63,7 @@ sle15sp6() {
 	kerncvs_prj='Devel:Kernel:SLE15-SP6-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SLE15-SP6-AZURE_EMBARGO'
 	update_prj='SUSE:SLE-15-SP6:Update'
+	data_backend='buildservice'
 }
 sle15sp7() {
 	branch='SLE15-SP7-AZURE'
@@ -68,6 +71,7 @@ sle15sp7() {
 	kerncvs_prj='Devel:Kernel:SLE15-SP7-AZURE'
 	kerncvs_prj_embargo='Devel:Kernel:SLE15-SP7-AZURE_EMBARGO'
 	update_prj='SUSE:SLE-15-SP7:Update'
+	data_backend='buildservice'
 }
 #
 case "${dist}" in
@@ -175,42 +179,47 @@ fi
 
 echo "revspec ${pkg_githash}, rev ${pkg_rev} @ ${pkg_date}"
 echo "revspec ${pkg_githash:0:12}"
-osc_sr_cmd=(ibs ${osc_rq_type})
-if test "${supersede}" -ne 0
-then
-	osc_sr_cmd_args+=( -s "${supersede}" )
-fi
-osc_sr_cmd_args+=( -r "${pkg_rev}" )
-osc_sr_cmd_args+=( -m "kernel-azure ${pkg_githash}" )
-osc_sr_cmd_args+=( --no-update )
-osc_sr_cmd_args+=( --no-cleanup )
-osc_sr_cmd_args+=( "${src_prj}" )
-osc_sr_cmd_args+=( "${pkg}" )
-osc_sr_cmd_args+=( "${update_prj}" )
-for i in "${osc_sr_cmd_args[@]}"
-do
-	case "${i}" in
-	-*) osc_sr_cmd_args_str+=" ${i}"   ;;
-	*)  osc_sr_cmd_args_str+=" '${i}'" ;;
-	esac
-done
-#
-while true
-do
-	echo
-	echo "Run the following command (Yes/No/Diff)?"
-	echo "${osc_sr_cmd[@]}${osc_sr_cmd_args_str}"
-	read -n 1
-	case "${REPLY}" in
-	y|Y) echo ; break ;;
-	n|N) echo ; exit 1 ;;
-	d|D)
+
+case "${data_backend}" in
+buildservice)
+	osc_sr_cmd=(ibs ${osc_rq_type})
+	if test "${supersede}" -ne 0
+	then
+		osc_sr_cmd_args+=( -s "${supersede}" )
+	fi
+	osc_sr_cmd_args+=( -r "${pkg_rev}" )
+	osc_sr_cmd_args+=( -m "kernel-azure ${pkg_githash}" )
+	osc_sr_cmd_args+=( --no-update )
+	osc_sr_cmd_args+=( --no-cleanup )
+	osc_sr_cmd_args+=( "${src_prj}" )
+	osc_sr_cmd_args+=( "${pkg}" )
+	osc_sr_cmd_args+=( "${update_prj}" )
+	for i in "${osc_sr_cmd_args[@]}"
+	do
+		case "${i}" in
+		-*) osc_sr_cmd_args_str+=" ${i}"   ;;
+		*)  osc_sr_cmd_args_str+=" '${i}'" ;;
+		esac
+	done
+	#
+	while true
+	do
 		echo
-		ibs rdiff "${update_prj}" "${pkg}" "${src_prj}" "${pkg}"
-		;;
-	esac
-done
-osc_sr_cmd+=( "${osc_sr_cmd_args[@]}" )
-echo
-"${osc_sr_cmd[@]}"
+		echo "Run the following command (Yes/No/Diff)?"
+		echo "${osc_sr_cmd[@]}${osc_sr_cmd_args_str}"
+		read -n 1
+		case "${REPLY}" in
+		y|Y) echo ; break ;;
+		n|N) echo ; exit 1 ;;
+		d|D)
+			echo
+			ibs rdiff "${update_prj}" "${pkg}" "${src_prj}" "${pkg}"
+			;;
+		esac
+	done
+	osc_sr_cmd+=( "${osc_sr_cmd_args[@]}" )
+	echo
+	"${osc_sr_cmd[@]}"
+;;
+esac
 echo "Done with rc $?"
