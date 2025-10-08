@@ -213,6 +213,9 @@ then
   push_master
   if ${push}
   then
+  git push github_olafhering 'refs/remotes/upstream/stable-10.*:refs/heads/stable-10.*' &> $t/qemu.github_olafhering &
+  git push gitlab_olafhering 'refs/remotes/upstream/stable-10.*:refs/heads/stable-10.*' &> $t/qemu.gitlab_olafhering &
+  git push gitlab_olh        'refs/remotes/upstream/stable-10.*:refs/heads/stable-10.*' &> $t/qemu.gitlab_olh        &
   git push github_olafhering 'refs/remotes/upstream/stable-9.*:refs/heads/stable-9.*' &> $t/qemu.github_olafhering &
   git push gitlab_olafhering 'refs/remotes/upstream/stable-9.*:refs/heads/stable-9.*' &> $t/qemu.gitlab_olafhering &
   git push gitlab_olh        'refs/remotes/upstream/stable-9.*:refs/heads/stable-9.*' &> $t/qemu.gitlab_olh        &
