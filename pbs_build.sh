@@ -32,7 +32,7 @@ then
 	read apiurl  < .osc/_apiurl
 	read prj < .osc/_project
 	read pkg < .osc/_package
-elif test -f ../.osc/_apiurl && test -f ../.osc/_project && test -d .git
+elif test -f ../.osc/_apiurl && test -f ../.osc/_project && test -f .git
 then
 	read apiurl  < ../.osc/_apiurl
 	read prj < ../.osc/_project
