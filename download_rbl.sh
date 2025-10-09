@@ -7,15 +7,18 @@ arch=
 force=$1
 last=
 : $PWD
-if pushd .osc > /dev/null
+if test -f .osc/_apiurl && test -f .osc/_project && test -f .osc/_package
 then
-	read apiurl < _apiurl
-	read project < _project
-	read package < _package
+	read apiurl  < .osc/_apiurl
+	read project < .osc/_project
+	read package < .osc/_package
 	test -n "${apiurl}" || exit 1
 	test -n "${project}" || exit 1
 	test -n "${package}" || exit 1
-	popd > /dev/null
+elif test -f ../.osc/_apiurl && test -f ../.osc/_project && test -d .git
+	read apiurl  < ../.osc/_apiurl
+	read project < ../.osc/_project
+	package=${PWD##*/}
 else
 	exit 1
 fi

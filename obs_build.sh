@@ -27,13 +27,15 @@ do
 	esac
 	shift
 done
-if test -e .osc/_project
+if test -f .osc/_apiurl && test -f .osc/_project && test -f .osc/_package
 then
+	read apiurl  < .osc/_apiurl
 	read prj < .osc/_project
-fi
-if test -e .osc/_package
-then
 	read pkg < .osc/_package
+elif test -f ../.osc/_apiurl && test -f ../.osc/_project && test -d .git
+	read apiurl  < ../.osc/_apiurl
+	read prj < ../.osc/_project
+	pkg=${PWD##*/}
 fi
 if test -n "${prj}" && test -n "${pkg}"
 then
