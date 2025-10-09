@@ -16,6 +16,7 @@ then
 	test -n "${project}" || exit 1
 	test -n "${package}" || exit 1
 elif test -f ../.osc/_apiurl && test -f ../.osc/_project && test -d .git
+then
 	read apiurl  < ../.osc/_apiurl
 	read project < ../.osc/_project
 	package=${PWD##*/}
