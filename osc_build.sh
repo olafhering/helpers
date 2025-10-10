@@ -4,7 +4,8 @@ unset LANG
 unset ${!LC_*}
 declare -a args
 root=/dev/shm
-api=obs
+apiurl=
+api=
 dbg=--disable-debuginfo
 prj=
 pkg=
@@ -27,14 +28,23 @@ do
 	esac
 	shift
 done
-if test -f .osc/_apiurl && test -f .osc/_project && test -f .osc/_package
+#
+test -z "${apiurl}" && test -f '.osc/_apiurl' && read apiurl < "$_"
+test -z "${apiurl}" && test -f '../.osc/_apiurl' && read apiurl < "$_"
+case "${apiurl}" in
+*//api.opensuse.org) api=obs ;;
+*//api.suse.com)     api=sbs ;;
+*//api.suse.de)      api=ibs ;;
+*//pmbs-api.links2linux.org) api=pbs ;;
+*) echo >&2 "Unknown _apiurl '${apiurl}'" ; exit 1 ;;
+esac
+#
+if test -f .osc/_project && test -f .osc/_package
 then
-	read apiurl  < .osc/_apiurl
 	read prj < .osc/_project
 	read pkg < .osc/_package
-elif test -f ../.osc/_apiurl && test -f ../.osc/_project && test -f .git
+elif && test -f ../.osc/_project && test -f .git
 then
-	read apiurl  < ../.osc/_apiurl
 	read prj < ../.osc/_project
 	pkg=${PWD##*/}
 fi
@@ -49,7 +59,7 @@ then
 	if test -n "${repo}" && test -n "${arch}"
 	then
 		time \
-		obs build \
+		osc build \
 		${dbg} \
 		--no-service \
 		--no-verify \
