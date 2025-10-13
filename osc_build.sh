@@ -43,7 +43,7 @@ if test -f .osc/_project && test -f .osc/_package
 then
 	read prj < .osc/_project
 	read pkg < .osc/_package
-elif && test -f ../.osc/_project && test -f .git
+elif test -f ../.osc/_project && test -f .git
 then
 	read prj < ../.osc/_project
 	pkg=${PWD##*/}
