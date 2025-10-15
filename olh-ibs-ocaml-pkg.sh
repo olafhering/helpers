@@ -192,6 +192,7 @@ case "${upstream}" in
 	ounit) pkg='ocaml-ounit' ;;
 	parmap) pkg='ocaml-parmap' ;;
 	parsexp) pkg='ocaml-parsexp' ;;
+	patch) pkg='ocaml-patch' ;;
 	pcre-ocaml) pkg='ocaml-pcre' ;;
 	pp) pkg='ocaml-pp' ;;
 	ppx_assert) pkg='ocaml-ppx_assert' ;;
