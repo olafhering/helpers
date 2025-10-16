@@ -5,6 +5,7 @@ Multimedia
 Games
 Extra
 Staging
+SLE15
 )
 
 repositories=(
