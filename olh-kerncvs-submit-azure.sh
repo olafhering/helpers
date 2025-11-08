@@ -234,7 +234,7 @@ git)
 			ibs st
 		popd
 		ibs fork "${update_prj}" "${pkg}"
-		pushd "home:${build_service_user}:branches:${update_prj}:${pkg}"
+		pushd "home:${build_service_user}:branches:${update_prj}/${pkg}"
 			git --no-pager status
 			git --no-pager remote show
 			git --no-pager branch --show-current
