@@ -229,9 +229,8 @@ buildservice)
 git)
 	read td < <(mktemp --directory --tmpdir=/dev/shm)
 	pushd "${td}"
-		ibs co -u -r "${pkg_rev}" "${kerncvs_prj}" "${pkg}"
+		ibs co -e -r "${pkg_rev}" "${kerncvs_prj}" "${pkg}"
 		pushd "${kerncvs_prj}/${pkg}"
-			ibs up -e -r "${pkg_rev}" 
 			ibs st
 		popd
 		ibs fork "${update_prj}" "${pkg}"
