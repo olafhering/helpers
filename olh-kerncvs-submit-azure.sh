@@ -97,6 +97,9 @@ SUSE:SLFO:Main)
 	ibs rq list "${update_prj}" "${pkg}"
 ;;
 *:Update) osc_rq_type='submitrequest' ;; # maintenancerequest does not work because it lacks options understood by submit
+SUSE:SLFO:1.2)
+	ibs log "${update_prj}" "${pkg}"
+;;
 *) echo "Unhandled suffix for ${update_prj}" ; exit 1 ;;
 esac
 if test -n "${pkg_show_log}"
