@@ -194,6 +194,7 @@ case "${upstream}" in
 	parsexp) pkg='ocaml-parsexp' ;;
 	patch) pkg='ocaml-patch' ;;
 	pcre-ocaml) pkg='ocaml-pcre' ;;
+	pcre2-ocaml) pkg='ocaml-pcre2' ;;
 	pp) pkg='ocaml-pp' ;;
 	ppx_assert) pkg='ocaml-ppx_assert' ;;
 	ppx_base) pkg='ocaml-ppx_base' ;;
@@ -261,6 +262,7 @@ case "${upstream}" in
 	time_now ) pkg='ocaml-time_now' ;;
 	timezone ) pkg='ocaml-timezone' ;;
 	tiny_httpd) pkg='ocaml-tiny_httpd' ;;
+	tsdl) pkg='ocaml-tsdl' ;;
 	typerep) pkg='ocaml-typerep' ;;
 	tyxml) pkg='ocaml-tyxml' ;;
 	unison) pkg='unison' ;;
