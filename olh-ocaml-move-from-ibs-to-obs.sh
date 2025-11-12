@@ -126,7 +126,7 @@ s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macr
 		" *.spec
 		read version < <( awk '/^Version:/{print $2}' "${pkg}.spec" )
 		echo "Checking ${obs}/${pkg}/_link"
-		if osc meta pkg openSUSE:Factory "`cat .osc/_package`" 2>/dev/null | grep -Eq "devel project=\"`cat .osc/_project`\""
+		if osc meta pkg openSUSE:Factory "${pkg}" 2>/dev/null | grep -Eq "devel project=\"`cat .osc/_project`\""
 		then
 			> "${pkg}.changes"
 			changes_file=
