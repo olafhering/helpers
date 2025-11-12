@@ -179,6 +179,10 @@ _EOF_
 			if pushd */.git > /dev/null
 			then
 				cd ..
+				if test "${pkg}" = 'ocaml-menhir'
+				then
+					git --no-pager show "${revision}^:CHANGES.md" > "../${pkg}.txt"
+				fi
 				git --no-pager reset --hard "${revision}"
 				git --no-pager status
 				git --no-pager log --oneline -n1 "${revision}^!"
