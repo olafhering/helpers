@@ -7,6 +7,12 @@ t=`mktemp --directory --tmpdir=/dev/shm XXX`
 trap "rm -rf ${t}" EXIT
 #
 remote=github_olafhering
+interactive_flag='-i'
+if test "$1" = '-ni'
+then
+	interactive_flag=
+	shift
+fi
 #
 base_branch=$1
 fix_branch=$2
@@ -21,10 +27,10 @@ git remote show
 git --no-pager log --oneline -n1 "${new_base}"
 git checkout "${fix_branch}"
 git checkout "${base_branch}"
-git rebase -i "${new_base}"
+git rebase ${interactive_flag} "${new_base}"
 git push "${remote}" "${base_branch}"
 git checkout "${fix_branch}"
-git rebase -i "${base_branch}"
+git rebase ${interactive_flag} "${base_branch}"
 rm -rf $$
 git format-patch \
 	--unified=12 \
