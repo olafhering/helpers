@@ -105,6 +105,7 @@ case "${upstream}" in
 	charinfo_width) pkg='ocaml-charinfo_width' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
 	cmdliner) pkg='ocaml-cmdliner' ;;
+	coccinelle) pkg='coccinelle' ;;
 	coq) pkg='ocaml-coq' ;;
 	core) pkg='ocaml-core' ;;
 	core_bench) pkg='ocaml-core_bench' ;;
