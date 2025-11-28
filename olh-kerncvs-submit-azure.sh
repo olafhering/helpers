@@ -12,6 +12,7 @@ unset ${!LC_*}
 build_service_user='olh'
 pkg='kernel-source-azure'
 dist=
+gitea_githash=
 pkg_rev=
 pkg_date=
 pkg_githash=
@@ -43,6 +44,10 @@ do
 	shift
 done
 #
+git --no-pager version
+ibs version
+git-obs login list
+#
 sle16sp1() {
 	branch='SL-16.1-AZURE'
 	embargo='SL-16.1-AZURE_EMBARGO'
@@ -50,6 +55,7 @@ sle16sp1() {
 	kerncvs_prj_embargo='Devel:Kernel:SL-16.1-AZURE_EMBARGO'
 	update_prj='SUSE:SLFO:Main'
 	data_backend='buildservice'
+	git_branch='slfo-main'
 }
 sle16sp0() {
 	branch='SL-16.0-AZURE'
@@ -58,6 +64,7 @@ sle16sp0() {
 	kerncvs_prj_embargo='Devel:Kernel:SL-16.0-AZURE_EMBARGO'
 	update_prj='SUSE:SLFO:1.2'
 	data_backend='git'
+	git_branch='slfo-1.2'
 }
 sle15sp6() {
 	branch='SLE15-SP6-AZURE'
@@ -98,12 +105,14 @@ SUSE:SLFO:Main)
 ;;
 *:Update) osc_rq_type='submitrequest' ;; # maintenancerequest does not work because it lacks options understood by submit
 SUSE:SLFO:1.2)
+	echo "ibs log '${update_prj}' '${pkg}'"
 	ibs log "${update_prj}" "${pkg}"
 ;;
 *) echo "Unhandled suffix for ${update_prj}" ; exit 1 ;;
 esac
 if test -n "${pkg_show_log}"
 then
+	echo "ibs log '${src_prj}' '${pkg}'"
 	ibs log "${src_prj}" "${pkg}"
 	exit 0
 fi
@@ -227,26 +236,62 @@ buildservice)
 	"${osc_sr_cmd[@]}"
 ;;
 git)
-	read td < <(mktemp --directory --tmpdir=/dev/shm)
-	pushd "${td}"
-		ibs co -e -r "${pkg_rev}" "${kerncvs_prj}" "${pkg}"
-		pushd "${kerncvs_prj}/${pkg}"
-			ibs st
+	git-obs --gitea-login ibs \
+		pr list \
+		--target-branch "${git_branch}" \
+		--state open \
+		"pool/${pkg}"
+	if env -u LANG LC_ALL=C git-obs --gitea-login ibs \
+		pr list \
+		--export \
+		--target-branch "${git_branch}" \
+		--state open \
+		"pool/${pkg}" 2>/dev/null| grep -E '^\[\]$'
+	then
+		echo "No open PR for 'pool/${pkg}'"
+		read td < <(mktemp --directory --tmpdir=/dev/shm)
+		trap "rm -rf '${td}'" EXIT
+		pushd "${td}"
+			ibs co -e -r "${pkg_rev}" "${kerncvs_prj}" "${pkg}"
+			pushd "${kerncvs_prj}/${pkg}"
+				ibs st
+			popd
+			git --no-pager clone --origin='ibs-pool' "gitea@src.suse.de:pool/${pkg}.git" "${pkg}.git"
+			pushd "${pkg}.git"
+				git --no-pager config set user.name 'Olaf Hering'
+				git --no-pager config set user.email 'ohering@suse.de'
+				git --no-pager remote add "ibs-${build_service_user}" "gitea@src.suse.de:olh/${pkg}.git"
+				git --no-pager fetch --all --prune
+				read current_branch < <(git --no-pager branch --show-current)
+				if test "${current_branch}" != "${git_branch}"
+				then
+					git --no-pager branch --move "${git_branch}"
+				fi
+				git --no-pager reset --hard "ibs-${build_service_user}/${git_branch}"
+				git --no-pager branch --set-upstream-to="ibs-pool/${git_branch}"
+				git --no-pager log --oneline --max-count=1
+				git --no-pager status
+				git --no-pager rm --force --quiet -- *
+				mv --target-directory=. "${td}/${kerncvs_prj}/${pkg}"/*
+				git --no-pager add -- *
+				git --no-pager status
+				env TZ=UTC git commit -avsm "kernel-azure ${pkg_githash}"
+				read gitea_githash < <(git --no-pager rev-list --max-count=1 HEAD)
+				git log -p -M --stat --pretty=fuller -b -B -w
+				git --no-pager push "ibs-${build_service_user}" 'HEAD'
+				git-obs --gitea-login 'ibs' \
+					pr create \
+					--source-owner "${build_service_user}" \
+					--source-repo "${pkg}" \
+					--source-branch "${git_branch}" \
+					--target-branch "${git_branch}" \
+					--description "kernel-azure ${pkg_githash}" \
+					--title "${pkg} ${git_branch} ${gitea_githash}"
+			popd
 		popd
-		ibs fork "${update_prj}" "${pkg}"
-		ibs co -e "home:${build_service_user}:branches:${update_prj}/${pkg}"
-		pushd "home:${build_service_user}:branches:${update_prj}/${pkg}"
-			git --no-pager status
-			git --no-pager remote show
-			git --no-pager branch --show-current
-			git --no-pager rm --force --quiet -- *
-			mv --target-directory=. "${td}/${kerncvs_prj}/${pkg}"/*
-			git --no-pager add -- *
-			git --no-pager status
-			env TZ=UTC git commit -avsm "kernel-azure ${pkg_githash}"
-			bash
-		popd
-	popd
+	else
+		echo "Pending PR for 'pool/${pkg}' found, aborting."
+	fi
 ;;
 esac
 echo "Done with rc $?"
