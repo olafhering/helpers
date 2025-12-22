@@ -122,6 +122,7 @@ case "${branch}" in
 	SLE15-SP7-AZURE) clone_branch='SLE15-SP7-AZURE';;
 	SLE15-SP7)       clone_branch='SLE15-SP7'      ;;
 	SLE15-SP6-LTSS)  clone_branch='SLE15-SP6-LTSS' ;;
+	SLE15-SP6)       clone_branch='SLE15-SP6-LTSS' ;;
 	SLE15-SP5-LTSS)  clone_branch='SLE15-SP5-LTSS' ;;
 	SLE15-SP5)       clone_branch='SLE15-SP5-LTSS' ;;
 	SLE15-SP4-LTSS)  clone_branch='SLE15-SP4-LTSS' ;;
