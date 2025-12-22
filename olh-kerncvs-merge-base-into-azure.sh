@@ -25,7 +25,6 @@ do
 		-sc) stop_before_commit='stop_before_commit' ;;
 		-sp) stop_before_push='stop_before_push' ;;
 		SLE15-SP7) branch=$1 ;;
-		SLE15-SP6) branch=$1 ;;
 		*) ;;
 	esac
 	shift
