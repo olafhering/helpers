@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+declare -a args
 unset LANG
 unset ${!LC_*}
 oIFS=$IFS
@@ -26,4 +27,7 @@ esac
 #
 RQ=${RQ_comment%%#*}
 comment=${RQ_comment##*-}
-exec "${cmd}" comment 'create' -p "${comment}" 'request' "${RQ}"
+args+=('comment' 'create')
+test "${RQ}" != "${comment}" && args+=('-p' "${comment}")
+args+=('request' "${RQ}")
+exec "${cmd}" "${args[@]}"
