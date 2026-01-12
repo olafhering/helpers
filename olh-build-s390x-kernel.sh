@@ -80,9 +80,9 @@ MODLIB='$(INSTALL_MOD_PATH)/usr/lib/modules/$(KERNELRELEASE)'
 )
 fi
 case "$(uname -m)" in
-	aarch64) ;;
+	s390x) ;;
 	*)
-	make_opts+=( CROSS_COMPILE=aarch64-suse-linux- )
+	make_opts+=( CROSS_COMPILE=s390x-suse-linux- )
 	;;
 esac
 #
