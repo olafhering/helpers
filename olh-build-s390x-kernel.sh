@@ -62,7 +62,7 @@ case "${HOSTNAME}" in
 esac
 I="${kernel_module_output}"
 #
-kernel_arch=s390x
+kernel_arch=s390
 kernel_build_output=${kernel_arch}-O-${git_branch}
 O="$PWD/../O/${kernel_build_output}"
 make_opts=(
