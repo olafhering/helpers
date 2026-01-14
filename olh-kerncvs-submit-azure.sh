@@ -116,6 +116,13 @@ then
 	esac
 fi
 #
+# since  2025-12-04:
+#----------------------------------------------------------------------------$
+#rN | user | YYYY-MM-DD HH:MM:SS | src_hash | a.b.c | $
+#$
+#[info=gitea_hash]
+#----------------------------------------------------------------------------$
+# up to 2025-12-03
 #----------------------------------------------------------------------------$
 #rN | user | YYYY-MM-DD HH:MM:SS | src_hash | a.b.c | $
 #$
@@ -158,6 +165,14 @@ do
 		then
 			echo "Missing blank line in ${src_prj} ${pkg}"
 			exit 1
+		fi
+	;;
+	\[info=*)
+		if test -n "${got_line}" && test -n "${got_pkg_rev}" && test -n "${requested_pkg_rev_found}"
+		then
+			read pkg_githash < <(ibs cat -e -r "${pkg_rev}" "${src_prj}" "${pkg}" 'source-timestamp' | awk '/^GIT Revision: /{print $3}')
+			: ${pkg_githash}
+			break
 		fi
 	;;
 	commit*)
