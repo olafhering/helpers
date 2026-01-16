@@ -1,6 +1,6 @@
 # used by olh-kerncvs-clone_kerncvs_kernel*.sh
 # used by olh-kerncvs-prepare-new-workstation.sh
-kerncvs_git_srv=kerncvs.nue.suse.com
+kerncvs_git_srv=kerncvs.suse.de
 kerncvs_git_user=ohering
 # prevent dirtying the work tree with __pycache__ directories
 export PYTHONDONTWRITEBYTECODE=1
