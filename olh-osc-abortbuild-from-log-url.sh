@@ -2,9 +2,11 @@
 set -e
 unset LANG
 unset ${!LC_*}
+for URL in "$@"
+do
 oIFS=$IFS
 IFS=/
-set -- $@
+set -- ${URL}
 IFS=$oIFS
 : $*
 case "$4/$5" in
@@ -47,4 +49,5 @@ case "${pkg}" in
 *) multibuild= ;;
 esac
 #
-exec "${cmd}" abortbuild ${multibuild} "${prj}" "${pkg}" "${repository}" "${arch}"
+"${cmd}" abortbuild ${multibuild} "${prj}" "${pkg}" "${repository}" "${arch}"
+done
