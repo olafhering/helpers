@@ -130,6 +130,7 @@ then
 		echo '# CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT is not set' >> .config
 		echo '# CONFIG_DEBUG_INFO_DWARF4 is not set' >> .config
 		echo '# CONFIG_DEBUG_INFO_DWARF5 is not set' >> .config
+		echo '# CONFIG_DRM_MSM_VALIDATE_XML is not set' >> .config
 		echo 'CONFIG_DEBUG_INFO_NONE=y' >> .config
 		echo 'CONFIG_MODULE_SIG_KEY="certs/signing_key.pem"' >> .config
 		mv -vi .config "${O}/.config"
