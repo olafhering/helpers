@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: ts=2 shiftwidth=2 noexpandtab nowrap
 set -e
 renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
@@ -168,9 +169,18 @@ do
 	then
 		: good
 	else
-		echo "FAILED to apply '${commit_new}'"
-		echo "'git am --abort' suggested, followed by manual 'git am'."
-		bash
+		echo "INFO: failed to apply '${commit_new##*/}', retrying  without series.conf"
+		git --no-pager am --abort
+		if git --no-pager am --ignore-space-change --ignore-whitespace --whitespace=nowarn < <(filterdiff -p1 -x series.conf< "${commit_new}")
+		then
+			filterdiff -p1 -i series.conf< "${commit_new}" |
+			awk '/^+[[:blank:]]/{print $2}' |
+			xargs --verbose scripts/git_sort/series_insert
+		else
+			echo "FAILED to apply '${commit_new}'"
+			echo "'git am --abort' suggested, followed by manual 'git am' and 'git commit'."
+			bash
+		fi
 	fi
 	scripts/git_sort/series_sort 'series.conf'
 	git add 'series.conf'
