@@ -3,7 +3,7 @@ set -e
 unset LANG
 unset ${!LC_*}
 pushd ~/work/obs/devel:languages:ocaml > /dev/null
-read td < <(mktemp --directory --tmpdir=/dev/shm .XXX)
+read td < <(mktemp --directory --tmpdir=/Tmpfs .XXX)
 trap "rm -rf '${td}'" EXIT
 t="${td}/.t"
 export TMPDIR="${td}"

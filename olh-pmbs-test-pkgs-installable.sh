@@ -3,8 +3,8 @@ unset LANG
 unset ${!LC_*}
 set -x
 #
-export TMPDIR=/dev/shm
-td=`mktemp --directory --tmpdir=/dev/shm`
+export TMPDIR=/Tmpfs
+td=`mktemp --directory --tmpdir=/Tmpfs`
 test -z "${td}" && exit 1
 _x() {
   rm -rf "${td}"

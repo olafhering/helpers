@@ -5,7 +5,7 @@ unset LANG
 unset ${!LC_*}
 renice -n 19 -p $$
 export TZ=UTC
-export TMPDIR="`mktemp --directory --tmpdir=/dev/shm XXX`"
+export TMPDIR="`mktemp --directory --tmpdir=/Tmpfs XXX`"
 trap "rm -rf '${TMPDIR}'" EXIT
 jobs=`grep -Ec 'cpu[0-9]' /proc/stat || echo 1`
 make_jobs=${jobs}
@@ -57,7 +57,7 @@ bugnumber=${git_branch}
 #
 case "${HOSTNAME}" in
   *)
-  kernel_module_output=/dev/shm/olaf/bug/${bugnumber}
+  kernel_module_output=/Tmpfs/olaf/bug/${bugnumber}
   ;;
 esac
 I="${kernel_module_output}"
@@ -317,7 +317,7 @@ create_copy_script "${I}/copy_to_vm.sh" "${suffix}"
 if test "$1" = "modules_install"
 then
 	pushd "${I}" > /dev/null
-	odir="/dev/shm/kernel.$PPID/${suffix}"
+	odir="/Tmpfs/kernel.$PPID/${suffix}"
 	test -d "${odir}" || mkdir -vp "${odir}"
 	for f in `find * -type f`
 	do

@@ -3,7 +3,7 @@ set -ex
 unset LANG
 unset ${!LC_*}
 declare -a args
-root=/dev/shm
+root=/Tmpfs
 apiurl=
 api=
 dbg=--disable-debuginfo

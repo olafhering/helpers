@@ -81,7 +81,7 @@ then
 fi
 #
 pushd ~/git/for_obs
-td=`mktemp --directory --tmpdir=/dev/shm XXX`
+td=`mktemp --directory --tmpdir=/Tmpfs XXX`
 export TMPDIR=$td
 trap "rm -rf $td" EXIT
 #

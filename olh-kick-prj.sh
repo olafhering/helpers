@@ -6,7 +6,7 @@ unset ${!LC_*}
 forever=
 test "$1" = "-c" && forever='forever'
 test "$1" = "-C" && forever='Forever'
-td=`mktemp --directory --tmpdir=/dev/shm .XXX`
+td=`mktemp --directory --tmpdir=/Tmpfs .XXX`
 trap "rm -rf '$td'" EXIT
 t="${td}/t"
 tr="${td}/tr"

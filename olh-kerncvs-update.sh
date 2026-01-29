@@ -20,7 +20,7 @@ renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
 user="$(id -u)"
 test -n "${user}" || exit 1
-LOCK_BASEDIR="/dev/shm/.${user}.${0##*/}"
+LOCK_BASEDIR="/Tmpfs/.${user}.${0##*/}"
 _lockfile=
 _setlockfd()
 {

@@ -255,7 +255,7 @@ git)
 		"pool/${pkg}" 2>/dev/null| grep -E '^\[\]$'
 	then
 		echo "No open PR for 'pool/${pkg}'"
-		read td < <(mktemp --directory --tmpdir=/dev/shm)
+		read td < <(mktemp --directory --tmpdir=/Tmpfs)
 		trap "rm -rf '${td}'" EXIT
 		pushd "${td}"
 			ibs co -e -r "${pkg_rev}" "${kerncvs_prj}" "${pkg}"

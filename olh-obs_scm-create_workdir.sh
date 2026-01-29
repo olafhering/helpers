@@ -2,4 +2,4 @@
 set -e
 unset LANG
 unset ${!LC*}
-exec mktemp --directory --tmpdir=/dev/shm olh-obs_scm.XXX
+exec mktemp --directory --tmpdir=/Tmpfs olh-obs_scm.XXX

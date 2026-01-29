@@ -11,8 +11,8 @@ do
 		;;
 	esac
 done
-export TMPDIR=/dev/shm
-td=`mktemp --directory --tmpdir=/dev/shm XXX`
+export TMPDIR=/Tmpfs
+td=`mktemp --directory --tmpdir=/Tmpfs XXX`
 trap 'rm -rf "$td" ; echo " rm -rf $SCRATCH_AREA"' EXIT
 sf="${td}/status.txt"
 branch=

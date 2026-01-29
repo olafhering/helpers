@@ -14,7 +14,7 @@ do
 done
 #
 test -n "${gitdir}"
-td=`mktemp --directory --tmpdir=/dev/shm XXX`
+td=`mktemp --directory --tmpdir=/Tmpfs XXX`
 trap "rm -rf '${td}'" EXIT
 export TMPDIR=${td}
 pushd "${gitdir}"

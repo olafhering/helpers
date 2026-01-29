@@ -7,7 +7,7 @@ rev="$1"
 reference="$2"
 test -n "${rev}"
 test -n "${reference}" || reference='git-fixes'
-td="`mktemp --directory --tmpdir=/dev/shm .XXX`"
+td="`mktemp --directory --tmpdir=/Tmpfs .XXX`"
 t="${td}/.t"
 trap "rm -rf '${td}'" EXIT
 

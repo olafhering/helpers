@@ -277,7 +277,7 @@ do
 done
 if test -z "${tmpdir}"
 then
-	tmpdir=`mktemp --directory --tmpdir=/dev/shm/ XXX`
+	tmpdir=`mktemp --directory --tmpdir=/Tmpfs XXX`
 	trap 'rm -rf "${tmpdir}"' EXIT
 fi
 numbered_dir="${tmpdir}/.numbered"

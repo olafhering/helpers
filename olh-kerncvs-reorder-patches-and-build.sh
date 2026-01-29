@@ -60,7 +60,7 @@ then
 	exit 1
 fi
 #
-read td < <(mktemp --directory --tmpdir=/dev/shm .XXX)
+read td < <(mktemp --directory --tmpdir=/Tmpfs .XXX)
 trap "rm -rf '${td}'" EXIT
 commits_order_old="${td}/commits_old"
 commits_order_new="${td}/commits_new"

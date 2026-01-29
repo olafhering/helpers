@@ -2,7 +2,7 @@
 set -e
 unset LANG
 unset ${!LC_*}
-read td < <(mktemp --directory --tmpdir=/dev/shm .XXX)
+read td < <(mktemp --directory --tmpdir=/Tmpfs .XXX)
 trap "rm -rf '${td}'" EXIT
 export TMPDIR="${td}"
 list_of_verified_commits=(
@@ -221,7 +221,7 @@ err_exit() {
 	cat <<_EOH_
 Usage: $0 <updates.suse.com-dir> <kernel-source.git-dir> <output-file>
 
-${0##*/} /RMTData/repo ~/work/src/kernel/kerncvs.kernel-source.bare.mirror /dev/shm/\$\$
+${0##*/} /RMTData/repo ~/work/src/kernel/kerncvs.kernel-source.bare.mirror /Tmpfs/\$\$
 _EOH_
 	exit 1
 }

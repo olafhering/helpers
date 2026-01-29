@@ -3,7 +3,7 @@ set -x
 set -e
 unset LANG
 unset ${!LC_*}
-t=`mktemp --directory --tmpdir=/dev/shm XXX`
+t=`mktemp --directory --tmpdir=/Tmpfs XXX`
 trap "rm -rf ${t}" EXIT
 #
 remote=github_olafhering

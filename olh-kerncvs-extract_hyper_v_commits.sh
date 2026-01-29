@@ -6,7 +6,7 @@ renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
 unset LANG
 unset ${!LC_*}
-tmpdir=`mktemp --directory --tmpdir=/dev/shm/ .XXX`
+tmpdir=`mktemp --directory --tmpdir=/Tmpfs .XXX`
 trap "rm -rf '${tmpdir}'" EXIT
 test -z "${tmpdir}" && exit 1
 script_dir=${0%/*}
