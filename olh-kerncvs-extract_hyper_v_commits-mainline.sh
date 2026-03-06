@@ -72,6 +72,7 @@ do_format_patch() {
 	format-patch \
 	--no-base \
 	--no-signature \
+	--no-encode-email-headers \
 	--output-directory "${target_dir}" \
 	--break-rewrites \
 	--keep-subject \

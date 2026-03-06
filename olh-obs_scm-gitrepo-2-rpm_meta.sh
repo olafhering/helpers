@@ -323,6 +323,7 @@ then
       --no-signature \
       --break-rewrites=100%/100% \
       --no-renames \
+      --no-encode-email-headers \
       --keep-subject \
       --stat-width=88 \
       --stat-name-width=77 \

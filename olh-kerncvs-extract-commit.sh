@@ -19,6 +19,7 @@ ${g} 'format-patch' \
 	--no-signature \
 	--break-rewrites=100%/100% \
 	--no-renames \
+	--no-encode-email-headers \
 	--keep-subject \
 	--quiet \
 	--output-directory "${td}" "${rev}^!"

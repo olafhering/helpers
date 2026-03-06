@@ -72,6 +72,7 @@ git --no-pager format-patch \
 	--output-directory "${commits_order_old}" \
 	--keep-subject \
 	--no-renames \
+	--no-encode-email-headers \
 	--stat=1234 \
 	--stat-graph-width=1 \
 	--stat-name-width=1234 \

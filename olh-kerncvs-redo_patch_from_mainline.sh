@@ -89,6 +89,7 @@ process_patch_file() {
 			--stdout \
 			--break-rewrites \
 			--no-renames \
+			--no-encode-email-headers \
 			--keep-subject \
 			--stat-width=88 \
 			--stat-name-width=77 \

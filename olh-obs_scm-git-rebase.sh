@@ -33,6 +33,7 @@ git checkout "${fix_branch}"
 git rebase ${interactive_flag} "${base_branch}"
 rm -rf $$
 git format-patch \
+	--no-encode-email-headers \
 	--unified=12 \
 	--base="${base_branch}" \
 	-ko $$ "${base_branch}".."${fix_branch}"
