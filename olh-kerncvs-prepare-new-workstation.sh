@@ -98,7 +98,6 @@ _EOC_
 	zypper mr -p 123 'Kernel_tools' || : FAIL $?
 
 	zypper ref -s
-	zypper al libressl-devel
 	zypper in -y helpers || : FAIL $?
 	zypper in osc \
 		obs-service-download_files \
