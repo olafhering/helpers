@@ -9,6 +9,7 @@ pkgs=(
 'git-core'
 'helpers'
 'make'
+'openssl-3'
 'patchutils'
 'pkgconfig(libelf)'
 'pkgconfig(openssl)'
