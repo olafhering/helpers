@@ -86,7 +86,6 @@ case "${branch}" in
 	SL-16.1)         clone_branch='SL-16.1'        ;;
 	SL-16.0)         clone_branch='SL-16.0'        ;;
 	SLE15-SP7)       clone_branch='SLE15-SP7'      ;;
-	SLE15-SP7-AZURE) clone_branch='SLE15-SP7-AZURE';;
 	SLE15-SP6)       clone_branch='SLE15-SP6-LTSS' ;;
 	SLE15-SP5)       clone_branch='SLE15-SP5-LTSS' ;;
 	SLE15-SP4)       clone_branch='SLE15-SP4-LTSS' ;;
