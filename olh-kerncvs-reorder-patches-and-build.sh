@@ -171,7 +171,7 @@ do
 	then
 		vi '+ normal G' series.conf
 	fi
-	rm -rf $SCRATCH_AREA
+	rm -rf $SCRATCH_AREA || rm -rf $SCRATCH_AREA
 	failed=
 	if scripts/sequence-patch --rapid
 	then
@@ -199,7 +199,7 @@ do
 	else
 		failed='apply'
 	fi
-	rm -rf $SCRATCH_AREA
+	rm -rf $SCRATCH_AREA || rm -rf $SCRATCH_AREA
 	git --no-pager diff
 	git --no-pager status
 	test -n "${failed}" && echo "FAILED to ${failed}"
