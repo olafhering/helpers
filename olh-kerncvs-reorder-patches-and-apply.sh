@@ -15,6 +15,7 @@ declare -i ts
 declare -i ts_author
 declare -i ts_commit
 date_string='now'
+edit=
 git_base=
 git_head=
 git_test=
@@ -24,7 +25,7 @@ help() {
 	local rc=$1
 	trap - EXIT
 	cat <<_EOF_
-Usage: ${0##*/} -b <base_commit> -h <head_commit> -t <new_local_branch> [-d <date_string>] [-s|--stop_after_export]
+Usage: ${0##*/} -b <base_commit> -h <head_commit> -t <new_local_branch> [-d <date_string>] [-s|--stop_after_export] [-n|--no-edit]
 Usage: ${0##*/} [--help|--error]
 
 This script rebases all new patch files between base..head to a new branch.
@@ -61,6 +62,7 @@ do
 	-t|--test) git_test="$2" ; shift ;;
 	-d|--date) date_string="$2" ; shift ;;
 	-s|--stop_after_export) stop_after_export='stop_after_export' ;;
+	-n|--no-edit) edit='--no-edit' ;;
 	--help) help 0 ;;
 	--error) help 1 ;;
 	*) echo "Unknown: $1" >&2 ; help 1 ;;
@@ -188,6 +190,6 @@ do
 	env \
 	GIT_AUTHOR_DATE="@${ts_author}" \
 	GIT_COMMITTER_DATE="@${ts_commit}" \
-	git --no-pager commit --amend --reset-author
+	git --no-pager commit --amend --reset-author ${edit}
 	: $(( ts_commit++ ))
 done
