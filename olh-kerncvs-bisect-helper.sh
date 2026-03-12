@@ -1,5 +1,5 @@
 #!/bin/bash
-# vim: ts=2 shiftwidth=2 expandtab nowrap
+# vim: ts=2 shiftwidth=2 noexpandtab nowrap
 set -e
 set +x
 do_apply=
@@ -18,8 +18,9 @@ do
 	-i) do_install='do_install' ;;
 	-t) do_tags='do_tags' ;;
 	-u) do_upload='do_upload' ;;
+	*) echo "Unknown option $1" ;;
 	esac
-  shift
+	shift
 done
 f_apply() {
 	time scripts/sequence-patch --rapid
