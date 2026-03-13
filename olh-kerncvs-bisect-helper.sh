@@ -9,6 +9,8 @@ do_install=
 do_tags=
 do_upload=
 use_config=
+declare -a sequence_path=('--rapid')
+declare -a build_kernel=()
 while test $# -gt 0
 do
 	case "$1" in
@@ -23,11 +25,11 @@ do
 	shift
 done
 f_apply() {
-	time scripts/sequence-patch --rapid
+	time scripts/sequence-patch "${sequence_path[@]}"
 }
 f_build() {
 	pushd "$SCRATCH_AREA/current" > /dev/null
-	time olh-build-x86_64-kernel > /dev/null
+	time olh-build-x86_64-kernel "${build_kernel[@]}" > /dev/null
 	popd > /dev/null
 }
 f_clean() {
@@ -41,7 +43,7 @@ f_clean() {
 }
 f_install() {
 	pushd "$SCRATCH_AREA/current" > /dev/null
-	time olh-build-x86_64-kernel modules_install
+	time olh-build-x86_64-kernel modules_install "${build_kernel[@]}"
 	popd > /dev/null
 }
 f_tags() {
