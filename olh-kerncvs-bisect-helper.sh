@@ -2,6 +2,7 @@
 # vim: ts=2 shiftwidth=2 noexpandtab nowrap
 set -e
 set +x
+do_arch=
 do_apply=
 do_build=
 do_clean=
@@ -14,6 +15,7 @@ declare -a build_kernel=()
 while test $# -gt 0
 do
 	case "$1" in
+	-A) do_arch=$2 ; shift ;;
 	-a) do_apply='do_apply' ;;
 	-b) do_build='do_build' ;;
 	-c) do_clean='do_clean' ;;
@@ -24,12 +26,40 @@ do
 	esac
 	shift
 done
+read native_arch < <(uname -m)
+case "${do_arch}" in
+x64|x86|x86_64)
+	sequence_path+=('--config=x86_64-default')
+	build_cmd=olh-build-x86_64-kernel
+	case "${native_arch}" in
+	aarch64) build_kernel+=('CC=x86_64-suse-linux-gcc-7' 'CROSS_COMPILE=') ;;
+	*) ;;
+	esac
+;;
+a64|arm64|aarch64)
+	sequence_path+=('--config=arm64-default')
+	build_cmd=olh-build-arm64-kernel
+	case "${native_arch}" in
+	x86_64) build_kernel+=('CC=aarch64-suse-linux-gcc-7' 'CROSS_COMPILE=') ;;
+	*) ;;
+	esac
+;;
+*)
+	case "${native_arch}" in
+	aarch64) build_cmd=olh-build-arm64-kernel ;;
+	x86_64) build_cmd=olh-build-x86_64-kernel ;;
+	*)
+		echo "Unhandled arch '${do_arch}' on '${native_arch}'"
+		exit 1
+	esac
+;;
+esac
 f_apply() {
 	time scripts/sequence-patch "${sequence_path[@]}"
 }
 f_build() {
 	pushd "$SCRATCH_AREA/current" > /dev/null
-	time olh-build-x86_64-kernel "${build_kernel[@]}" > /dev/null
+	time "${build_cmd}" "${build_kernel[@]}" > /dev/null
 	popd > /dev/null
 }
 f_clean() {
@@ -43,7 +73,7 @@ f_clean() {
 }
 f_install() {
 	pushd "$SCRATCH_AREA/current" > /dev/null
-	time olh-build-x86_64-kernel modules_install "${build_kernel[@]}"
+	time "${build_cmd}" modules_install "${build_kernel[@]}"
 	popd > /dev/null
 }
 f_tags() {
