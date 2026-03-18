@@ -17,4 +17,5 @@ do
 	do
 		git --no-pager grep "${string}" "${branch}" || :
 	done
+	grep "${string}" /usr/share/helpers/bin/olh-kerncvs-ignore_hyper_v_commits-*.txt || :
 done
