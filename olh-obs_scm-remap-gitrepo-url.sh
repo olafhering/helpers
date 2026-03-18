@@ -22,7 +22,7 @@ claws_url()       { echo "git://git.claws-mail.org/claws.git" ; }
 gnulib_dir()       { echo "none" ; }
 gnulib_url()       { echo "https://github.com/coreutils/gnulib.git" ; }
 grub_dir()         { readlink -f ~/git/for_obs/grub.git ; }
-grub_url()         { echo "https://git.savannah.gnu.org/git/grub.git" ; }
+grub_url()         { echo "https://gitlab.freedesktop.org/gnu-grub/grub.git" ; }
 ipxe_dir()         { readlink -f ~/git/for_obs/ipxe.git ; }
 ipxe_url()         { echo "https://github.com/ipxe/ipxe.git" ; }
 keycodemapdb_dir() { readlink -f ~/git/for_obs/keycodemapdb.git ; }
@@ -246,6 +246,7 @@ case "${url}" in
   https://gitlab.com/qemu-project/u-boot-sam460ex.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/u-boot.git) unhandled=1 ;;
   https://gitlab.com/qemu-project/vbootrom.git) unhandled=1 ;;
+  https://gitlab.freedesktop.org/gnu-grub/grub.git) grub ;;
   https://libvirt.org/git/libvirt.git) libvirt ;;
   https://xenbits.xen.org/git-http/mini-os.git) minios ;;
   https://xenbits.xen.org/git-http/ovmf.git) ovmf ;;
