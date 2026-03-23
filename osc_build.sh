@@ -63,7 +63,7 @@ then
 		arch=${repo##*:}
 		repo=${repo%:*}
 	fi
-	if test -z "${arg_root[*]}"
+	if test -n "${arg_root[*]}"
 	then
 		args+=("${arg_root[@]}")
 	else
