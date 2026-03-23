@@ -3,6 +3,7 @@ set -ex
 unset LANG
 unset ${!LC_*}
 declare -a args
+declare -a arg_root
 root=/Tmpfs
 apiurl=
 api=
@@ -26,6 +27,8 @@ do
 	--no-checks) checks_args=$1 ;;
 	*.spec) spec=$1 ;;
 	--alternative-project|-t|-j|-x|-k|-p|-M) args+=( "$1" "$2" ) ; shift ;;
+	--root) arg_root=('--root' "$2");;
+	--root*) arg_root=("$1") ;;
 	--*) args+=( "$1" ) ;;
 	-*) args+=( "$1" ) ;;
 	esac
@@ -60,6 +63,12 @@ then
 		arch=${repo##*:}
 		repo=${repo%:*}
 	fi
+	if test -z "${arg_root[*]}"
+	then
+		args+=("${arg_root[@]}")
+	else
+		args+=("--root=${root}/${pkg}.${api}.${prj}.${repo}.${arch}")
+	fi
 	if test -n "${repo}" && test -n "${arch}"
 	then
 		time \
@@ -69,7 +78,6 @@ then
 		--no-verify \
 		--release=`date -u +%y%m%d%H%M%S`.0 \
 		"${args[@]}" \
-		--root=${root}/${pkg}.${api}.${prj}.${repo}.${arch} \
 		${repo} \
 		${arch} \
 		${spec}
