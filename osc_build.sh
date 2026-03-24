@@ -14,6 +14,7 @@ repo=$1
 arch=$2
 spec=
 checks_args=--no-checks
+vm_type=
 if test $# -gt 1
 then
 	shift 2
@@ -27,8 +28,10 @@ do
 	--no-checks) checks_args=$1 ;;
 	*.spec) spec=$1 ;;
 	--alternative-project|-t|-j|-x|-k|-p|-M) args+=( "$1" "$2" ) ; shift ;;
-	--root) arg_root=('--root' "$2");;
+	--root) arg_root=('--root' "$2") ; shift ;;
 	--root*) arg_root=("$1") ;;
+	--vm-type=*) vm_type=${1##*=} ;;
+	--vm-type) vm_type=$2 ; shift ;;
 	--*) args+=( "$1" ) ;;
 	-*) args+=( "$1" ) ;;
 	esac
@@ -67,6 +70,12 @@ then
 	then
 		args+=("${arg_root[@]}")
 	else
+		case "${vm_type}" in
+		chroot) args+=('--vm-type' "${vm_type}") ; root_suffix= ;;
+		kvm)    args+=('--vm-type' "${vm_type}") ; root_suffix='.k' ;;
+		qemu)   args+=('--vm-type' "${vm_type}") ; root_suffix='.q' ;;
+		*) ;;
+		esac
 		case "${arch}" in
 		aarch64) root_arch=a64 ;;
 		x86_64) root_arch=x64 ;;
@@ -78,7 +87,7 @@ then
 		openSUSE_Tumbleweed) root_repo=TW ;;
 		*) root_repo=${repo} ;;
 		esac
-		root_dir="${root}/${pkg}.${api}.${prj}.${root_repo}.${root_arch}"
+		root_dir="${root}/${pkg}.${api}.${prj}.${root_repo}.${root_arch}${root_suffix}"
 		args+=("--root" "${root_dir}")
 		: length of root_dir: ${#root_dir}
 	fi
