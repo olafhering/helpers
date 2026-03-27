@@ -245,6 +245,7 @@ case "${upstream}" in
 	react) pkg='ocaml-react' ;;
 	regex_parser_intf) pkg='ocaml-regex_parser_intf' ;;
 	result) pkg='ocaml-result' ;;
+	rocq) pkg='ocaml-coq' ;;
 	rresult) pkg='ocaml-rresult' ;;
 	sedlex) pkg='ocaml-sedlex' ;;
 	sexp_pretty) pkg='ocaml-sexp_pretty' ;;
