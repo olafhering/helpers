@@ -66,27 +66,27 @@ then
 		arch=${repo##*:}
 		repo=${repo%:*}
 	fi
+	case "${vm_type}" in
+	chroot) args+=('--vm-type' "${vm_type}") ; root_suffix= ;;
+	kvm)    args+=('--vm-type' "${vm_type}") ; root_suffix='.k' ;;
+	qemu)   args+=('--vm-type' "${vm_type}") ; root_suffix='.q' ;;
+	*) ;;
+	esac
+	case "${arch}" in
+	aarch64) root_arch=a64 ;;
+	x86_64) root_arch=x64 ;;
+	*) root_arch=${arch} ;;
+	esac
+	case "${repo}" in
+	openSUSE_Factory) root_repo=F ;;
+	openSUSE_Leap_*) root_repo=${repo##*_} ;;
+	openSUSE_Tumbleweed) root_repo=TW ;;
+	*) root_repo=${repo} ;;
+	esac
 	if test -n "${arg_root[*]}"
 	then
 		args+=("${arg_root[@]}")
 	else
-		case "${vm_type}" in
-		chroot) args+=('--vm-type' "${vm_type}") ; root_suffix= ;;
-		kvm)    args+=('--vm-type' "${vm_type}") ; root_suffix='.k' ;;
-		qemu)   args+=('--vm-type' "${vm_type}") ; root_suffix='.q' ;;
-		*) ;;
-		esac
-		case "${arch}" in
-		aarch64) root_arch=a64 ;;
-		x86_64) root_arch=x64 ;;
-		*) root_arch=${arch} ;;
-		esac
-		case "${repo}" in
-		openSUSE_Factory) root_repo=F ;;
-		openSUSE_Leap_*) root_repo=${repo##*_} ;;
-		openSUSE_Tumbleweed) root_repo=TW ;;
-		*) root_repo=${repo} ;;
-		esac
 		root_dir="${root}/${pkg}.${api}.${prj}.${root_repo}.${root_arch}${root_suffix}"
 		args+=("--root" "${root_dir}")
 		: length of root_dir: ${#root_dir}
