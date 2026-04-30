@@ -12,6 +12,17 @@ do_upload=
 use_config=
 declare -a sequence_path=('--rapid')
 declare -a build_kernel=()
+usage() {
+cat <<_EOF_
+Usage: $0 -[a|b|c|i|t|u] [-h|--help]
+-c: clean SCRATCH_AREA
+-a: apply all patches
+-b: build a kernel
+-i: prepare a kernel install
+-u: upload the compiled kernel to azure:/dev/shm/kernel
+-t: run ctags
+_EOF_
+}
 while test $# -gt 0
 do
 	case "$1" in
@@ -22,6 +33,7 @@ do
 	-i) do_install='do_install' ;;
 	-t) do_tags='do_tags' ;;
 	-u) do_upload='do_upload' ;;
+	-h|--help) usage ; exit 0 ;;
 	*) echo "Unknown option $1" ;;
 	esac
 	shift
