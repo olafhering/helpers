@@ -14,6 +14,7 @@ pkgs=(
 'pkgconfig(libelf)'
 'pkgconfig(openssl)'
 'procmail'
+'python3-PyYAML'
 'python3-dbm'
 'python3-pygit2'
 'quilt'
