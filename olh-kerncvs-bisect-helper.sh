@@ -10,6 +10,9 @@ do_install=
 do_tags=
 do_upload=
 use_config=
+ssh_dir='/dev/shm/kernel'
+ssh_host='azure'
+ssh_user=''
 declare -a sequence_path=('--rapid')
 declare -a build_kernel=()
 usage() {
@@ -19,14 +22,21 @@ Usage: $0 -[a|b|c|i|t|u] [-h|--help]
 -a: apply all patches
 -b: build a kernel
 -i: prepare a kernel install
--u: upload the compiled kernel to azure:/dev/shm/kernel
+-u: upload the compiled kernel to ${ssh_host}:${ssh_dir}
 -t: run ctags
+-A arch: target arch
+-D dir: upload kernel to this directory instead of '${ssh_dir}'
+-H host: ssh host instead of '${ssh_host}'
+-U user: ssh user instead of the configured default user
 _EOF_
 }
 while test $# -gt 0
 do
 	case "$1" in
 	-A) do_arch=$2 ; shift ;;
+	-D) ssh_dir=$2 ; shift ;;
+	-H) ssh_host=$2 ; shift ;;
+	-U) ssh_user="$2@" ; shift ;;
 	-a) do_apply='do_apply' ;;
 	-b) do_build='do_build' ;;
 	-c) do_clean='do_clean' ;;
@@ -94,7 +104,7 @@ f_tags() {
 	popd > /dev/null
 }
 f_upload() {
-	time rsync -a --delete /Tmpfs/kernel.$$/ azure:/dev/shm/kernel
+	time rsync -a --delete /Tmpfs/kernel.$$/ ${ssh_user}${ssh_host}:${ssh_dir}
 }
 git --no-pager log --oneline -1
 . /usr/share/helpers/bin/olh-kerncvs-env
