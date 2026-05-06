@@ -103,6 +103,7 @@ f_bisect_run() {
 		b|B) echo ; exit "${bisect_exit_bad}" ;;
 		s|S) echo ; exit "${bisect_exit_skip}" ;;
 		x|X) echo ; echo "SCRATCH_AREA='$SCRATCH_AREA'" ; bash || : $? ; echo ;;
+		*) echo ;;
 		esac
 	done
 }
