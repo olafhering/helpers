@@ -2,17 +2,18 @@
 # vim: ts=2 shiftwidth=2 noexpandtab nowrap
 set -e
 set +x
-do_arch=
 do_apply=
+do_arch=
+do_bisect_run=
 do_build=
 do_clean=
 do_install=
 do_tags=
 do_upload=
-use_config=
 ssh_dir='/dev/shm/kernel'
 ssh_host='azure'
 ssh_user=''
+use_config=
 declare -a sequence_path=('--rapid')
 declare -a build_kernel=()
 usage() {
@@ -25,6 +26,7 @@ Usage: $0 -[a|b|c|i|t|u] [-h|--help]
 -u: upload the compiled kernel to ${ssh_host}:${ssh_dir}
 -t: run ctags
 -A arch: target arch
+-B: interactive, ask for 'bisect run' result
 -D dir: upload kernel to this directory instead of '${ssh_dir}'
 -H host: ssh host instead of '${ssh_host}'
 -U user: ssh user instead of the configured default user
@@ -34,6 +36,7 @@ while test $# -gt 0
 do
 	case "$1" in
 	-A) do_arch=$2 ; shift ;;
+	-B) do_bisect_run='do_bisect_run' ;;
 	-D) ssh_dir=$2 ; shift ;;
 	-H) ssh_host=$2 ; shift ;;
 	-U) ssh_user="$2@" ; shift ;;
@@ -79,6 +82,18 @@ esac
 f_apply() {
 	time scripts/sequence-patch "${sequence_path[@]}"
 }
+f_bisect_run() {
+	while true
+	do
+		read -n 1 -p "result for bisect: [G]ood -> exit 0, [B]ad -> exit 1, [S]kip -> exit 123, [X] bash ... "
+		case "${REPLY}" in
+		g|G) exit 0 ;;
+		b|B) exit 1 ;;
+		s|S) exit 125 ;;
+		x|X) echo ; echo "SCRATCH_AREA='$SCRATCH_AREA'" ; bash ; echo ;;
+		esac
+	done
+}
 f_build() {
 	pushd "$SCRATCH_AREA/current" > /dev/null
 	time "${build_cmd}" "${build_kernel[@]}" > /dev/null
@@ -118,4 +133,5 @@ test -n "${do_tags}" && f_tags
 test -n "${do_build}" && f_build
 test -n "${do_install}" && f_install
 test -n "${do_upload}" && f_upload
+test -n "${do_bisect_run}" && f_bisect_run
 exit 0
