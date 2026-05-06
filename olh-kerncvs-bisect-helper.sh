@@ -13,6 +13,8 @@ ${bisect_exit_bad}) exit 1 ;;
 esac
 " EXIT
 #
+read uptime_start rest < /proc/uptime
+#
 do_apply=
 do_arch=
 do_bisect_run=
@@ -95,6 +97,10 @@ f_apply() {
 	time scripts/sequence-patch "${sequence_path[@]}"
 }
 f_bisect_run() {
+	local uptime_now seconds
+	read uptime_now rest < /proc/uptime
+	seconds=$(( ${uptime_now%%.*} - ${uptime_start%%.*} ))
+	echo "Runtime ${seconds} seconds."
 	while true
 	do
 		read -n 1 -p "result for bisect: [G]ood -> exit 0, [B]ad -> exit 1, [S]kip -> exit 123, [X] bash ... "
