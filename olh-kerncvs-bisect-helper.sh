@@ -93,6 +93,9 @@ f_clean() {
 		rm -rf "$SCRATCH_AREA"
 	fi
 }
+f_connect_check() {
+	ssh "${ssh_user}${ssh_host}" ls -ld "${ssh_dir%/*}"
+}
 f_install() {
 	pushd "$SCRATCH_AREA/current" > /dev/null
 	time "${build_cmd}" modules_install "${build_kernel[@]}"
@@ -104,10 +107,11 @@ f_tags() {
 	popd > /dev/null
 }
 f_upload() {
-	time rsync -a --delete /Tmpfs/kernel.$$/ ${ssh_user}${ssh_host}:${ssh_dir}
+	time rsync -a --delete /Tmpfs/kernel.$$/ "${ssh_user}${ssh_host}:${ssh_dir}"
 }
 git --no-pager log --oneline -1
 . /usr/share/helpers/bin/olh-kerncvs-env
+test -n "${do_upload}" && f_connect_check
 test -n "${do_clean}" && f_clean
 test -n "${do_apply}" && f_apply
 test -n "${do_tags}" && f_tags
