@@ -2,6 +2,17 @@
 # vim: ts=2 shiftwidth=2 noexpandtab nowrap
 set -e
 set +x
+bisect_exit_bad='123'
+bisect_exit_skip='125'
+trap "
+rc=\$?
+case "\${rc}" in
+0) exit 0 ;;
+${bisect_exit_bad}) exit 1 ;;
+*) exit ${bisect_exit_skip} ;;
+esac
+" EXIT
+#
 do_apply=
 do_arch=
 do_bisect_run=
@@ -89,8 +100,8 @@ f_bisect_run() {
 		read -n 1 -p "result for bisect: [G]ood -> exit 0, [B]ad -> exit 1, [S]kip -> exit 123, [X] bash ... "
 		case "${REPLY}" in
 		g|G) exit 0 ;;
-		b|B) exit 1 ;;
-		s|S) exit 125 ;;
+		b|B) exit "${bisect_exit_bad}" ;;
+		s|S) exit "${bisect_exit_skip}" ;;
 		x|X) echo ; echo "SCRATCH_AREA='$SCRATCH_AREA'" ; bash ; echo ;;
 		esac
 	done
