@@ -102,7 +102,7 @@ f_bisect_run() {
 		g|G) exit 0 ;;
 		b|B) exit "${bisect_exit_bad}" ;;
 		s|S) exit "${bisect_exit_skip}" ;;
-		x|X) echo ; echo "SCRATCH_AREA='$SCRATCH_AREA'" ; bash ; echo ;;
+		x|X) echo ; echo "SCRATCH_AREA='$SCRATCH_AREA'" ; bash || : $? ; echo ;;
 		esac
 	done
 }
@@ -121,6 +121,7 @@ f_clean() {
 	fi
 }
 f_connect_check() {
+	echo "Testing upload from '/Tmpfs/kernel.$$/' to '${ssh_user}${ssh_host}:${ssh_dir}'"
 	ssh "${ssh_user}${ssh_host}" ls -ld "${ssh_dir%/*}"
 }
 f_install() {
@@ -134,6 +135,7 @@ f_tags() {
 	popd > /dev/null
 }
 f_upload() {
+	echo "Uploading from '/Tmpfs/kernel.$$/' to '${ssh_user}${ssh_host}:${ssh_dir}'"
 	time rsync -a --delete /Tmpfs/kernel.$$/ "${ssh_user}${ssh_host}:${ssh_dir}"
 }
 git --no-pager log --oneline -1
