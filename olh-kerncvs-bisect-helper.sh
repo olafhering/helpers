@@ -99,9 +99,9 @@ f_bisect_run() {
 	do
 		read -n 1 -p "result for bisect: [G]ood -> exit 0, [B]ad -> exit 1, [S]kip -> exit 123, [X] bash ... "
 		case "${REPLY}" in
-		g|G) exit 0 ;;
-		b|B) exit "${bisect_exit_bad}" ;;
-		s|S) exit "${bisect_exit_skip}" ;;
+		g|G) echo ; exit 0 ;;
+		b|B) echo ; exit "${bisect_exit_bad}" ;;
+		s|S) echo ; exit "${bisect_exit_skip}" ;;
 		x|X) echo ; echo "SCRATCH_AREA='$SCRATCH_AREA'" ; bash || : $? ; echo ;;
 		esac
 	done
