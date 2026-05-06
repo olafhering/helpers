@@ -16,10 +16,11 @@ ssh_user=''
 use_config=
 declare -a sequence_path=('--rapid')
 declare -a build_kernel=()
+. /usr/share/helpers/bin/olh-kerncvs-env
 usage() {
 cat <<_EOF_
 Usage: $0 -[a|b|c|i|t|u] [-h|--help]
--c: clean SCRATCH_AREA
+-c: clean SCRATCH_AREA='$SCRATCH_AREA'
 -a: apply all patches
 -b: build a kernel
 -i: prepare a kernel install
@@ -125,7 +126,6 @@ f_upload() {
 	time rsync -a --delete /Tmpfs/kernel.$$/ "${ssh_user}${ssh_host}:${ssh_dir}"
 }
 git --no-pager log --oneline -1
-. /usr/share/helpers/bin/olh-kerncvs-env
 test -n "${do_upload}" && f_connect_check
 test -n "${do_clean}" && f_clean
 test -n "${do_apply}" && f_apply
