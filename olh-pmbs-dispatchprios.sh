@@ -14,7 +14,6 @@ openSUSE_Tumbleweed
 openSUSE_Slowroll
 openSUSE_Leap_16.1
 openSUSE_Leap_16.0
-openSUSE_Leap_15.6
 SLE_15
 )
 
