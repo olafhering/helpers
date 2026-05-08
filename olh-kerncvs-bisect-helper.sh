@@ -23,6 +23,7 @@ do_clean=
 do_install=
 do_tags=
 do_upload=
+skip_file=
 ssh_dir='/dev/shm/kernel'
 ssh_host='azure'
 ssh_user=''
@@ -43,6 +44,7 @@ Usage: $0 -[a|b|c|i|t|u] [-h|--help]
 -B: interactive, ask for 'bisect run' result
 -D dir: upload kernel to this directory instead of '${ssh_dir}'
 -H host: ssh host instead of '${ssh_host}'
+-S skip_file: exit early if this file exists.
 -U user: ssh user instead of the configured default user
 _EOF_
 }
@@ -53,6 +55,7 @@ do
 	-B) do_bisect_run='do_bisect_run' ;;
 	-D) ssh_dir=$2 ; shift ;;
 	-H) ssh_host=$2 ; shift ;;
+	-S) skip_file=$2 ; shift ;;
 	-U) ssh_user="$2@" ; shift ;;
 	-a) do_apply='do_apply' ;;
 	-b) do_build='do_build' ;;
@@ -146,6 +149,11 @@ f_upload() {
 	time rsync -a --delete /Tmpfs/kernel.$$/ "${ssh_user}${ssh_host}:${ssh_dir}"
 }
 git --no-pager log --oneline -1
+if test -n "${skip_file}"
+then
+	test -f "${skip_file}" && exit 0
+	echo "-S '${skip_file}' does not exist, continuing..."
+fi
 test -n "${do_upload}" && f_connect_check
 test -n "${do_clean}" && f_clean
 test -n "${do_apply}" && f_apply
