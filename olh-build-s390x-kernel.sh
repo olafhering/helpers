@@ -290,26 +290,6 @@ menuentry '\$kver' {
     echo "\$vmlinuz or \$initrd NOT found"
   fi
 }
-menuentry 'Xen \$kver' {
-  insmod part_msdos
-  insmod btrfs
-  insmod ext2
-  search --no-floppy --set=my_kern -f /boot/\$vmlinuz
-  search --no-floppy --set=my_ramd -f /boot/\$initrd
-  search --no-floppy --set=my_xen  -f /boot/xen.gz
-  if  [ -n "\\\${my_xen}" -a  -n "\\\${my_kern}" -a -n "\\\${my_ramd}" -a "\\\${my_kern}" = "\\\${my_ramd}" ] ; then
-    set root="\\\${my_kern}"
-    echo 'Loading Xen ...'
-    multiboot /boot/xen.gz placeholder  loglvl=all guest_loglvl=all console=com1 com1=57600
-    echo 'Loading \$vmlinuz ...'
-    module /boot/\$vmlinuz placeholder sysrq_always_enabled panic=9 console=hvc0
-    echo 'Loading \$initrd ...'
-    module --nounzip   /boot/\$initrd
-    echo 'Go'
-  else
-    echo "xen.gz or \$vmlinuz or \$initrd NOT found"
-  fi
-}
 _EOGC_
 date
 EOF

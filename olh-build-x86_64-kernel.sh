@@ -294,7 +294,7 @@ menuentry 'Xen \$kver' {
   if  [ -n "\\\${my_xen}" -a  -n "\\\${my_kern}" -a -n "\\\${my_ramd}" -a "\\\${my_kern}" = "\\\${my_ramd}" ] ; then
     set root="\\\${my_kern}"
     echo 'Loading Xen ...'
-    multiboot /boot/xen.gz placeholder  loglvl=all guest_loglvl=all console=com1 com1=57600
+    multiboot /boot/xen.gz placeholder  loglvl=all guest_loglvl=all console=com1 com1=115200
     echo 'Loading \$vmlinuz ...'
     module /boot/\$vmlinuz placeholder sysrq_always_enabled panic=9 console=hvc0
     echo 'Loading \$initrd ...'
