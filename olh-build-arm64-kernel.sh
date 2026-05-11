@@ -259,16 +259,16 @@ then
   time mkinitrd -k \$vmlinuz -i \$initrd \$splash -m "xen:vbd xen:vif \${modules}"
 elif command -V dracut
 then
-  add_drivers=()
+  dracut_args=('--force')
   for module in xen:vbd xen:vif \${modules}
   do
-    add_drivers+=('--add-drivers' "\${module}")
+    dracut_args+=('--add-drivers' "\${module}")
   done
   for rule in /etc/udev/rules.d/*.rules
   do
-    test -e "\${rule}" && add_drivers+=('--install' "\${rule}")
+    test -e "\${rule}" && dracut_args+=('--install' "\${rule}")
   done
-  time dracut --force \${add_drivers[@]} /boot/\$initrd \$kver
+  time dracut \${dracut_args[@]} /boot/\$initrd \$kver
   time grub2-mkconfig -o /boot/grub2/grub.cfg 
 fi
 rm -fv /boot/custom.grub-\$kver.cfg
