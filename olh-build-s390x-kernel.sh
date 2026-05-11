@@ -266,7 +266,7 @@ then
   done
   for rule in /etc/udev/rules.d/*.rules
   do
-    add_drivers+=('--install' "\${rule}")
+    test -e "\${rule}" && add_drivers+=('--install' "\${rule}")
   done
   time dracut --force \${add_drivers[@]} /boot/\$initrd \$kver
   time grub2-mkconfig -o /boot/grub2/grub.cfg 
