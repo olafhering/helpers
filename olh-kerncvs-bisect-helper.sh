@@ -110,8 +110,14 @@ a64|arm64|aarch64)
 ;;
 *)
 	case "${native_arch}" in
-	aarch64) build_cmd=olh-build-arm64-kernel ;;
-	x86_64) build_cmd=olh-build-x86_64-kernel ;;
+	aarch64)
+		build_cmd=olh-build-arm64-kernel
+		test -n "${build_compiler}" || build_kernel+=("CC=$CC")
+	;;
+	x86_64)
+		build_cmd=olh-build-x86_64-kernel
+		test -n "${build_compiler}" || build_kernel+=("CC=$CC")
+	;;
 	*)
 		echo "Unhandled arch '${do_arch}' on '${native_arch}'"
 		exit 1
