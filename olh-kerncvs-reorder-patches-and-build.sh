@@ -51,7 +51,7 @@ test -n "${git_test}" || exit 1
 #
 
 # verify if base, head and target branch exist
-git --no-pager branch | awk '/^\*[[:blank:]]/{ printf "Current branch: %s\n", $2 }'
+git --no-pager branch | gawk '/^\*[[:blank:]]/{ printf "Current branch: %s\n", $2 }'
 git --no-pager log --oneline -n1 "${git_base}^!"
 git --no-pager log --oneline -n1 "${git_head}^!"
 if git --no-pager log --oneline -n1 "${git_test}^!" 2>/dev/null
@@ -82,7 +82,7 @@ git --no-pager format-patch \
 # extract all new patches in series.conf in the order they need to appear
 new_patches_in_series_conf=( $(git --no-pager diff -u "${git_base}..${git_head}" |
 	filterdiff -p1 -i series.conf |
-	awk '/^+[[:blank:]]/{print $2}')
+	gawk '/^\+[[:blank:]]/{print $2}')
 	)
 #
 # look for each patch in existing commits
@@ -97,7 +97,7 @@ do
 		test -f "${commit_old}" || continue
 		if cat "${commit_old}" |
 			filterdiff -p1 -i series.conf |
-			awk '/^+[[:blank:]]/{print $2}' |
+			gawk '/^\+[[:blank:]]/{print $2}' |
 			grep -q "${newly_added_patch}$"
 		then
 			read commit_number < <(printf '%05d\n' "${new_patch_number}")
@@ -147,7 +147,7 @@ do
 		esac
 	done
 	test -n "${skip_this_patch}" && continue
-	new_patches_in_series_conf=( $(filterdiff -p1 -i series.conf < "${commit_new}" | awk '/^+[[:blank:]]/{print $2}') )
+	new_patches_in_series_conf=( $(filterdiff -p1 -i series.conf < "${commit_new}" | gawk '/^\+[[:blank:]]/{print $2}') )
 	filterdiff -p1 -x series.conf < "${commit_new}" | patch -p1 || : patch failed
 	has_non_upstream_patch=()
 	if ls ${new_patches_in_series_conf[@]}
