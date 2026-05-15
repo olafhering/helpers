@@ -79,7 +79,7 @@ ts_author="${ts}"
 ts_commit="${ts}"
 
 # verify if base, head and target branch exist
-git --no-pager branch | awk '/^*[[:blank:]]/{ printf "Current branch: %s\n", $2 }'
+git --no-pager branch | awk '/^\*[[:blank:]]/{ printf "Current branch: %s\n", $2 }'
 git --no-pager log --oneline -n1 "${git_base}^!"
 git --no-pager log --oneline -n1 "${git_head}^!"
 if git --no-pager log --oneline -n1 "${git_test}^!" 2>/dev/null
