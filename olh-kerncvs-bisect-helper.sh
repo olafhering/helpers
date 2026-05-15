@@ -56,7 +56,7 @@ do
 	case "$1" in
 	-A) do_arch=$2 ; shift ;;
 	-B) do_bisect_run='do_bisect_run' ;;
-	-C) build_compiler+=("$2") ; shift ;;
+	-C) build_compiler=$2 ; shift ;;
 	-D) ssh_dir=$2 ; shift ;;
 	-H) ssh_host=$2 ; shift ;;
 	-S) skip_file=$2 ; shift ;;
