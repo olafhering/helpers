@@ -15,6 +15,7 @@ esac
 #
 read uptime_start rest < /proc/uptime
 #
+build_compiler=
 do_apply=
 do_arch=
 do_bisect_run=
@@ -30,6 +31,7 @@ ssh_user=''
 use_config=
 declare -a sequence_path=('--rapid')
 declare -a build_kernel=()
+declare -a build_extra_args=()
 . /usr/share/helpers/bin/olh-kerncvs-env
 usage() {
 cat <<_EOF_
@@ -42,6 +44,7 @@ Usage: $0 -[a|b|c|i|t|u] [-h|--help]
 -t: run ctags
 -A arch: target arch
 -B: interactive, ask for 'bisect run' result
+-C arg: compiler to use, like gcc-7
 -D dir: upload kernel to this directory instead of '${ssh_dir}'
 -H host: ssh host instead of '${ssh_host}'
 -S skip_file: exit early if this file exists.
@@ -53,6 +56,7 @@ do
 	case "$1" in
 	-A) do_arch=$2 ; shift ;;
 	-B) do_bisect_run='do_bisect_run' ;;
+	-C) build_compiler+=("$2") ; shift ;;
 	-D) ssh_dir=$2 ; shift ;;
 	-H) ssh_host=$2 ; shift ;;
 	-S) skip_file=$2 ; shift ;;
@@ -68,13 +72,28 @@ do
 	esac
 	shift
 done
+if test -n "${build_compiler}"
+then
+	build_extra_args+=("CC=${build_compiler}")
+else
+	read SRCVERSION < <(grep ^SRCVERSION= rpm/config.sh||echo)
+	case "${SRCVERSION}" in
+	SRCVERSION=5.14) CC=gcc-7 ;;
+	SRCVERSION=6.4) CC=gcc-7 ;;
+	SRCVERSION=6.12) CC=gcc-13 ;;
+	*) CC=gcc ;;
+	esac
+fi
 read native_arch < <(uname -m)
 case "${do_arch}" in
 x64|x86|x86_64)
 	sequence_path+=('--config=x86_64-default')
 	build_cmd=olh-build-x86_64-kernel
 	case "${native_arch}" in
-	aarch64) build_kernel+=('CC=x86_64-suse-linux-gcc-7' 'CROSS_COMPILE=') ;;
+	aarch64)
+		test -n "${build_compiler}" || build_kernel+=("CC=x86_64-suse-linux-$CC")
+		build_kernel+=('CROSS_COMPILE=')
+	;;
 	*) ;;
 	esac
 ;;
@@ -82,7 +101,10 @@ a64|arm64|aarch64)
 	sequence_path+=('--config=arm64-default')
 	build_cmd=olh-build-arm64-kernel
 	case "${native_arch}" in
-	x86_64) build_kernel+=('CC=aarch64-suse-linux-gcc-7' 'CROSS_COMPILE=') ;;
+	x86_64)
+		test -n "${build_compiler}" || build_kernel+=("CC=aarch64-suse-linux-$CC")
+		build_kernel+=('CROSS_COMPILE=')
+	;;
 	*) ;;
 	esac
 ;;
@@ -96,6 +118,7 @@ a64|arm64|aarch64)
 	esac
 ;;
 esac
+build_kernel+=("${build_extra_args[@]}")
 f_apply() {
 	time scripts/sequence-patch "${sequence_path[@]}"
 }
