@@ -28,9 +28,9 @@ do
 	-d|--debug|--debuginfo) dbg=--debuginfo ;;
 	--checks) checks_args=$1 ;;
 	--no-checks) checks_args=$1 ;;
-	--service) service_args=$1 ;;
+	--service) service_args= ;;
 	--no-service) service_args=$1 ;;
-	--verify) verify_args=$1 ;;
+	--verify) verify_args= ;;
 	--no-verify) verify_args=$1 ;;
 	*.spec) spec=$1 ;;
 	--alternative-project|-t|-j|-x|-k|-p|-M) args+=( "$1" "$2" ) ; shift ;;
