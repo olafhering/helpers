@@ -14,6 +14,8 @@ repo=$1
 arch=$2
 spec=
 checks_args=--no-checks
+service_args=--no-service
+verify_args=--no-verify
 vm_type=
 if test $# -gt 1
 then
@@ -26,6 +28,10 @@ do
 	-d|--debug|--debuginfo) dbg=--debuginfo ;;
 	--checks) checks_args=$1 ;;
 	--no-checks) checks_args=$1 ;;
+	--service) service_args=$1 ;;
+	--no-service) service_args=$1 ;;
+	--verify) verify_args=$1 ;;
+	--no-verify) verify_args=$1 ;;
 	*.spec) spec=$1 ;;
 	--alternative-project|-t|-j|-x|-k|-p|-M) args+=( "$1" "$2" ) ; shift ;;
 	--root) arg_root=('--root' "$2") ; shift ;;
@@ -38,6 +44,8 @@ do
 	shift
 done
 args+=( "${checks_args}" )
+args+=( "${service_args}" )
+args+=( "${verify_args}" )
 #
 test -z "${apiurl}" && test -f '.osc/_apiurl' && read apiurl < "$_"
 test -z "${apiurl}" && test -f '../.osc/_apiurl' && read apiurl < "$_"
@@ -96,8 +104,6 @@ then
 		time \
 		osc build \
 		${dbg} \
-		--no-service \
-		--no-verify \
 		--release=`date -u +%y%m%d%H%M%S`.0 \
 		"${args[@]}" \
 		${repo} \
