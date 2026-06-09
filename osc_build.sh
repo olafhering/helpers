@@ -43,9 +43,9 @@ do
 	esac
 	shift
 done
-args+=( "${checks_args}" )
-args+=( "${service_args}" )
-args+=( "${verify_args}" )
+args+=( ${checks_args} )
+args+=( ${service_args} )
+args+=( ${verify_args} )
 #
 test -z "${apiurl}" && test -f '.osc/_apiurl' && read apiurl < "$_"
 test -z "${apiurl}" && test -f '../.osc/_apiurl' && read apiurl < "$_"
