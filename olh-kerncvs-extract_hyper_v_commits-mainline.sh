@@ -106,6 +106,7 @@ do_format_patch() {
 		drivers/hv \
 		drivers/infiniband/hw/mana \
 		drivers/input/serio/hyperv-keyboard.c \
+		drivers/iommu/hyperv \
 		drivers/iommu/hyperv-iommu.c \
 		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.c \
 		drivers/net/ethernet/mellanox/mlx5/core/lib/hv.h \
