@@ -25,7 +25,7 @@ ${g} 'format-patch' \
 	--output-directory "${td}" "${rev}^!"
 read patch_file < <(echo ${td}/*.patch)
 : patch_file ${patch_file}
-read mainline < <(${g} 'describe' '--contains' "${rev}" || echo)
+read mainline < <(${g} 'describe' '--contains' --exclude 'refs/merge-window/*' "${rev}" || echo)
 mainline="${mainline%%~*}"
 : mainline ${mainline}
 if test -z "${mainline}"

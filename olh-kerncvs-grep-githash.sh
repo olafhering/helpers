@@ -11,7 +11,7 @@ for string in "$@"
 do
 	pushd "${LINUX_GIT}"
 	echo -n "${string} "
-	git --no-pager describe --contains "${string}" || :
+	git --no-pager describe --contains --exclude 'refs/merge-window/*' "${string}" || :
 	popd
 	for branch in ${kerncvs_active_branches_base[@]}
 	do

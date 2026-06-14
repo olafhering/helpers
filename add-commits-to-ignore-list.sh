@@ -17,7 +17,7 @@ do
 	for commit in "$@"
 	do
 		: ${commit}
-		read patch_tag < <(git --no-pager --git-dir=${LINUX_GIT}/.git describe --contains "${commit}")
+		read patch_tag < <(git --no-pager --git-dir=${LINUX_GIT}/.git describe --contains --exclude 'refs/merge-window/*' "${commit}")
 		patch_tag=${patch_tag%%-*}
 		patch_tag=${patch_tag%%~*}
 		patch_tag=${patch_tag#v*}

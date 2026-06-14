@@ -100,7 +100,7 @@ process_patch_file() {
 		tag=`git tag --sort=taggerdate --contains  ${commit_id} | sed q`
 		if test -z "${tag}"
 		then
-			tag=`git describe ${commit_id} | cut -f 1 -d '~'`
+			tag=`git describe --exclude 'refs/merge-window/*' ${commit_id} | cut -f 1 -d '~'`
 		fi
 		popd > /dev/null
 	fi
