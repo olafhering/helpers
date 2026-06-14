@@ -97,7 +97,7 @@ process_patch_file() {
 			--stat-graph-width=9 \
 			--summary \
 			"${commit_id}^..${commit_id}" > "${upstream_commit}"
-		tag=`git tag --sort=taggerdate --contains  ${commit_id} | sed q`
+		tag=`git tag --sort=taggerdate --contains  ${commit_id} | sed -n '/^v[0-9]/{p;q}'`
 		if test -z "${tag}"
 		then
 			tag=`git describe --exclude 'refs/merge-window/*' ${commit_id} | cut -f 1 -d '~'`
