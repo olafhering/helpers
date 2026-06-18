@@ -263,6 +263,7 @@ case "${upstream}" in
 	stdcompat) pkg='ocaml-stdcompat' ;;
 	stdio) pkg='ocaml-stdio' ;;
 	stdlib-shims) pkg='ocaml-stdlib-shims' ;;
+	swhid_core) pkg='ocaml-swhid_core' ;;
 	textutils) pkg='ocaml-textutils' ;;
 	textutils_kernel) pkg='ocaml-textutils_kernel' ;;
 	thread-table) pkg='ocaml-thread-table' ;;
