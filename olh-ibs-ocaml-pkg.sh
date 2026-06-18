@@ -84,6 +84,7 @@ select_lwt() {
 test -n "${upstream}"
 test -n "${gitrev}"
 case "${upstream}" in
+	0install) pkg='ocaml-0install-solver' ;;
 	Camomile) pkg='ocaml-camomile' ;;
 	Zarith) pkg='ocaml-zarith' ;;
 	alcotest) pkg='ocaml-alcotest' ;;
