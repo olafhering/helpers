@@ -242,6 +242,7 @@ case "${upstream}" in
 	ppxlib) pkg='ocaml-ppxlib' ;;
 	psq) pkg='ocaml-psq' ;;
 	ptime) pkg='ocaml-ptime' ;;
+	ptmap) pkg='ocaml-ptmap' ;;
 	pyml) pkg='ocaml-pyml' ;;
 	qcheck) pkg='ocaml-qcheck' ;;
 	qtest) pkg='ocaml-qtest' ;;
