@@ -123,6 +123,7 @@ case "${upstream}" in
 	easy-format) pkg='ocaml-easy-format' ;;
 	eio) pkg='ocaml-eio' ;;
 	expect_test_helpers_core) pkg='ocaml-expect_test_helpers_core' ;;
+	facile) pkg='ocaml-facile' ;;
 	fieldslib) pkg='ocaml-fieldslib' ;;
 	fix) pkg='ocaml-fix' ;;
 	fmt) pkg='ocaml-fmt' ;;
