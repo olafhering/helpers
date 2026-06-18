@@ -190,6 +190,7 @@ case "${upstream}" in
 	odoc-parser) pkg='ocaml-odoc-parser' ;;
 	omd) pkg='ocaml-omd' ;;
 	opam) pkg='opam' ;;
+	opam-0install-cudf) pkg='ocaml-opam-0install-cudf' ;;
 	opam-file-format) pkg='opam-file-format' ;;
 	optint) pkg='ocaml-optint' ;;
 	ounit) pkg='ocaml-ounit' ;;
