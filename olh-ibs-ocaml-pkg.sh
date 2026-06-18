@@ -207,6 +207,7 @@ case "${upstream}" in
 	ppx_cold) pkg='ocaml-ppx_cold' ;;
 	ppx_compare) pkg='ocaml-ppx_compare' ;;
 	ppx_custom_printf) pkg='ocaml-ppx_custom_printf' ;;
+	ppx_derivers) pkg='ocaml-ppx_derivers' ;;
 	ppx_deriving) pkg='ocaml-ppx_deriving' ;;
 	ppx_deriving_yojson) pkg='ocaml-ppx_deriving_yojson' ;;
 	ppx_disable_unused_warnings) pkg='ocaml-ppx_disable_unused_warnings' ;;
