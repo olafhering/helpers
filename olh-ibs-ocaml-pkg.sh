@@ -179,7 +179,7 @@ case "${upstream}" in
 	ocaml-wayland) pkg='ocaml-wayland' ;;
 	ocaml_intrinsics) pkg='ocaml-ocaml_intrinsics' ;;
 	ocamlbuild) pkg='ocaml-ocamlbuild' ;;
-	ocamlfind) pkg='ocaml-findlib' ; echo "download tar.gz" ; exit 1 ;;
+	ocamlfind) pkg='ocaml-findlib' ;;
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
 	ocamlfuse) pkg='ocaml-fuse' ;;
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
