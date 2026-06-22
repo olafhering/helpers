@@ -32,6 +32,7 @@ do
 	--no-service) service_args=$1 ;;
 	--verify) verify_args= ;;
 	--no-verify) verify_args=$1 ;;
+	*.dsc) spec=$1 ;;
 	*.spec) spec=$1 ;;
 	--alternative-project|-t|-j|-x|-k|-p|-M) args+=( "$1" "$2" ) ; shift ;;
 	--root) arg_root=('--root' "$2") ; shift ;;
