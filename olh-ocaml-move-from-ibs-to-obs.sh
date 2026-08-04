@@ -123,6 +123,9 @@ maybe_update() {
 		sed -i~ "
 s@^# Copyright .*SUSE.*@# Copyright (c) ${copyright_year} SUSE LLC and contributors@
 s@^BuildRequires:[[:blank:]]\\+ocaml-rpm-macros.*@BuildRequires:  ocaml-rpm-macros >= ${ocaml_rpm_macros}@
+/^BuildRoot::/d
+/^Group:/d
+/^%defattr/d
 		" *.spec
 		read version < <( awk '/^Version:/{print $2}' "${pkg}.spec" )
 		echo "Checking ${obs}/${pkg}/_link"
