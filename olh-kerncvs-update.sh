@@ -14,7 +14,7 @@ kerncvs.kernel-source.git
 kerncvs.kernel.git
 )
 #
-do_upstream_linux="$1"
+update_everything="$1"
 #
 renice -n 11 -p "$$"
 ionice --class 3 -p "$$"
@@ -79,7 +79,15 @@ do
 	if pushd "${repo}"
 	then
 		claim_lock "${PWD##*/}"
-		git fetch --all --tags --prune
+		if test -n "${update_everything}"
+		then
+			git fetch --all --tags --prune
+		else
+			for branch in "${kerncvs_active_branches_base[@]}"
+			do
+				git fetch "${branch}"
+			done
+		fi
 		git_gc
 		release_lock "${PWD##*/}"
 		popd
@@ -96,10 +104,21 @@ do
 			remotes[${remote}]="${remote}"
 		done
 		claim_lock "${PWD##*/}"
-		test -n "${remotes[openSUSE]}"   && git --no-pager fetch "$_"
-		test -n "${remotes[olafhering]}" && git --no-pager fetch "$_"
-		test -n "${remotes[code-mirror]}" && git --no-pager fetch "$_"
-		test -n "${remotes[kerncvs]}"    && git --no-pager fetch --prune --tags --prune-tags --force "$_"
+		if test -n "${update_everything}"
+		then
+			test -n "${remotes[openSUSE]}"   && git --no-pager fetch "$_"
+			test -n "${remotes[olafhering]}" && git --no-pager fetch "$_"
+			test -n "${remotes[code-mirror]}" && git --no-pager fetch "$_"
+			test -n "${remotes[kerncvs]}"    && git --no-pager fetch --prune --tags --prune-tags --force "$_"
+		else
+			if test -n "${remotes[kerncvs]}"
+			then
+				for branch in "${kerncvs_active_branches_base[@]}"
+				do
+					git fetch kerncvs "${branch}"
+				done
+			fi
+		fi
 		git_gc
 		release_lock "${PWD##*/}"
 		unset remotes
@@ -118,7 +137,7 @@ do
 		popd
 	fi
 done
-test -n "${do_upstream_linux}" || exit 0
+test -n "${update_everything}" || exit 0
 if pushd "${UPSTREAM_REPOS}"
 then
 	claim_lock "${PWD##*/}"
