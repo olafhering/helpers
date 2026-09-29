@@ -6,7 +6,7 @@ ionice --class 3 -p "$$"
 export TZ=UTC
 unset LANG
 unset ${!LC_*}
-pushd "${WORK_KERNEL}/kerncvs.kernel-source.bare.mirror"
+pushd "${WORK_KERNEL}/kerncvs.kernel-source.bare.mirror" > /dev/null
 for string in "$@"
 do
 	for branch in ${kerncvs_active_branches_base[@]}
