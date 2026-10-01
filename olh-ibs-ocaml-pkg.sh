@@ -117,6 +117,7 @@ case "${upstream}" in
 	csexp) pkg='ocaml-csexp' ;;
 	cudf) pkg='ocaml-cudf' ;;
 	curses) pkg='ocaml-curses' ;;
+	decompress) pkg='ocaml-decompress' ;;
 	domain-local-await) pkg='ocaml-domain-local-await' ;;
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
