@@ -104,6 +104,7 @@ case "${upstream}" in
 	camlp5) pkg='ocaml-camlp5' ;;
 	camlzip) pkg='ocaml-camlzip' ;;
 	charinfo_width) pkg='ocaml-charinfo_width' ;;
+	checkseum) pkg='ocaml-checkseum' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
 	cmdliner) pkg='ocaml-cmdliner' ;;
 	coccinelle) pkg='coccinelle' ;;
