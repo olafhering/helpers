@@ -85,7 +85,7 @@ do
 		else
 			for branch in "${kerncvs_active_branches_base[@]}"
 			do
-				git fetch "${branch}"
+				git fetch kerncvs "${branch}"
 			done
 		fi
 		git_gc
