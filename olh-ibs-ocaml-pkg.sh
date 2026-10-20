@@ -181,6 +181,7 @@ case "${upstream}" in
 	ocaml-version) pkg='ocaml-version' ;;
 	ocaml-wayland) pkg='ocaml-wayland' ;;
 	ocaml_intrinsics) pkg='ocaml-ocaml_intrinsics' ;;
+	ocaml_intrinsics_kernel) pkg='ocaml-ocaml_intrinsics_kernel' ;;
 	ocamlbuild) pkg='ocaml-ocamlbuild' ;;
 	ocamlfind) pkg='ocaml-findlib' ;;
 	ocamlformat) pkg='ocaml-ocamlformat' ;;
