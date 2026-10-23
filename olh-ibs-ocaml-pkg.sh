@@ -249,6 +249,7 @@ case "${upstream}" in
 	ppx_disable_unused_warnings) pkg='ocaml-ppx_disable_unused_warnings' ;;
 	ppx_enumerate) pkg='ocaml-ppx_enumerate' ;;
 	ppx_expect) pkg='ocaml-ppx_expect' ;;
+	ppx_fail) pkg='ocaml-ppx_fail' ;;
 	ppx_fields_conv) pkg='ocaml-ppx_fields_conv' ;;
 	ppx_fixed_literal) pkg='ocaml-ppx_fixed_literal' ;;
 	ppx_globalize) pkg='ocaml-ppx_globalize' ;;
