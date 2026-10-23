@@ -144,6 +144,7 @@ case "${upstream}" in
 	dune) pkg='ocaml-dune' ;;
 	easy-format) pkg='ocaml-easy-format' ;;
 	eio) pkg='ocaml-eio' ;;
+	either) pkg='ocaml-either' ;;
 	expect_test_helpers_core) pkg='ocaml-expect_test_helpers_core' ;;
 	facile) pkg='ocaml-facile' ;;
 	fieldslib) pkg='ocaml-fieldslib' ;;
