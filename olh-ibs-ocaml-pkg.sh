@@ -95,6 +95,7 @@ case "${upstream}" in
 	Zarith) pkg='ocaml-zarith' ;;
 	alcotest) pkg='ocaml-alcotest' ;;
 	astring) pkg='ocaml-astring' ;;
+	async) pkg='ocaml-async' ;;
 	base) pkg='ocaml-base' ;;
 	base_bigstring) pkg='ocaml-base_bigstring' ;;
 	base_quickcheck) pkg='ocaml-base_quickcheck' ;;
