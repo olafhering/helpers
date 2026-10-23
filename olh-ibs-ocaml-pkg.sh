@@ -245,6 +245,7 @@ case "${upstream}" in
 	ppx_derivers) pkg='ocaml-ppx_derivers' ;;
 	ppx_deriving) pkg='ocaml-ppx_deriving' ;;
 	ppx_deriving_yojson) pkg='ocaml-ppx_deriving_yojson' ;;
+	ppx_diff) pkg='ocaml-ppx_diff' ;;
 	ppx_disable_unused_warnings) pkg='ocaml-ppx_disable_unused_warnings' ;;
 	ppx_enumerate) pkg='ocaml-ppx_enumerate' ;;
 	ppx_expect) pkg='ocaml-ppx_expect' ;;
