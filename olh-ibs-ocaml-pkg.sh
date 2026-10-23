@@ -217,6 +217,7 @@ case "${upstream}" in
 	ocamlgraph) pkg='ocaml-ocamlgraph' ;;
 	ocp-indent) pkg='ocaml-ocp-indent' ;;
 	ocplib-endian) pkg='ocaml-ocplib-endian' ;;
+	octavius) pkg='ocaml-octavius' ;;
 	ocurl) pkg='ocaml-ocurl' ;;
 	odoc) pkg='ocaml-odoc' ;;
 	odoc-parser) pkg='ocaml-odoc-parser' ;;
