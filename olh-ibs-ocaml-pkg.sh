@@ -317,6 +317,7 @@ case "${upstream}" in
 	typerep) pkg='ocaml-typerep' ;;
 	tyxml) pkg='ocaml-tyxml' ;;
 	unison) pkg='unison' ;;
+	uopt) pkg='ocaml-uopt' ;;
 	utop) pkg='ocaml-utop' ;;
 	uucd) pkg='ocaml-uucd' ;;
 	uucp) pkg='ocaml-uucp' ;;
