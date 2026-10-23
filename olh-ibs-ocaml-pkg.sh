@@ -127,6 +127,7 @@ case "${upstream}" in
 	coq) pkg='ocaml-coq' ;;
 	core) pkg='ocaml-core' ;;
 	core_bench) pkg='ocaml-core_bench' ;;
+	core_extended) pkg='ocaml-core_extended' ;;
 	core_kernel) pkg='ocaml-core_kernel' ;;
 	core_unix) pkg='ocaml-core_unix' ;;
 	cppo) pkg='ocaml-cppo' ;;
