@@ -153,6 +153,7 @@ case "${upstream}" in
 	fmt) pkg='ocaml-fmt' ;;
 	fpath) pkg='ocaml-fpath' ;;
 	gapi-ocaml) pkg='ocaml-gapi' ;;
+	gel) pkg='ocaml-gel' ;;
 	gen) pkg='ocaml-gen' ;;
 	google-drive-ocamlfuse) pkg='google-drive-ocamlfuse' ;;
 	graphics) pkg='ocaml-graphics' ;;
