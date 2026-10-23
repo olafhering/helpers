@@ -204,6 +204,7 @@ case "${upstream}" in
 	ocaml-re) pkg='ocaml-re' ;;
 	ocaml-sha) pkg='ocaml-sha' ;;
 	ocaml-ssl) pkg='ocaml-ssl' ;;
+	ocaml-syntax-shims) pkg='ocaml-syntax-shims' ;;
 	ocaml-tar) pkg='ocaml-tar' ;;
 	ocaml-uring) pkg='ocaml-uring' ;;
 	ocaml-version) pkg='ocaml-version' ;;
