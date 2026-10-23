@@ -177,6 +177,7 @@ case "${upstream}" in
 	menhir) pkg='ocaml-menhir' ;;
 	merlin) pkg='ocaml-merlin' ;;
 	mew) pkg='ocaml-mew' ;;
+	mew_vi) pkg='ocaml-mew_vi' ;;
 	mmap) pkg='ocaml-mmap' ;;
 	mtime) pkg='ocaml-mtime' ;;
 	num) pkg='ocaml-num' ;;
