@@ -131,6 +131,7 @@ case "${upstream}" in
 	core_kernel) pkg='ocaml-core_kernel' ;;
 	core_unix) pkg='ocaml-core_unix' ;;
 	cppo) pkg='ocaml-cppo' ;;
+	crowbar) pkg='ocaml-crowbar' ;;
 	cryptokit) pkg='ocaml-cryptokit' ;;
 	csexp) pkg='ocaml-csexp' ;;
 	cudf) pkg='ocaml-cudf' ;;
