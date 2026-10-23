@@ -312,6 +312,7 @@ case "${upstream}" in
 	time_now ) pkg='ocaml-time_now' ;;
 	timezone ) pkg='ocaml-timezone' ;;
 	tiny_httpd) pkg='ocaml-tiny_httpd' ;;
+	trie) pkg='ocaml-trie' ;;
 	tsdl) pkg='ocaml-tsdl' ;;
 	typerep) pkg='ocaml-typerep' ;;
 	tyxml) pkg='ocaml-tyxml' ;;
