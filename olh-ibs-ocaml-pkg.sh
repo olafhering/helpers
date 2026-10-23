@@ -11,6 +11,12 @@ ibs_path=
 spec=
 service=
 start_pwd=$PWD
+verify=
+if test "${1}" = '--verify'
+then
+	verify='verify'
+	shift
+fi
 #
 if test "$#" -eq 1
 then
@@ -292,6 +298,8 @@ case "${upstream}" in
 	zed) pkg='ocaml-zed' ;;
 	*) exit 1 ;;
 esac
+#
+test -n "${verify}" && exit 0
 #
 pushd "${obs}" > /dev/null
 	pushd "${pkg}/.osc" > /dev/null
