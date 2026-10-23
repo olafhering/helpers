@@ -139,6 +139,7 @@ case "${upstream}" in
 	decompress) pkg='ocaml-decompress' ;;
 	delimited_parsing) pkg='ocaml-delimited_parsing' ;;
 	domain-local-await) pkg='ocaml-domain-local-await' ;;
+	domain-shims) pkg='ocaml-domain-shims' ;;
 	dose3) pkg='ocaml-dose' ;;
 	dune) pkg='ocaml-dune' ;;
 	easy-format) pkg='ocaml-easy-format' ;;
