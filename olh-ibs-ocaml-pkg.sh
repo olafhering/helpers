@@ -176,6 +176,7 @@ case "${upstream}" in
 	mdx) pkg='ocaml-mdx' ;;
 	menhir) pkg='ocaml-menhir' ;;
 	merlin) pkg='ocaml-merlin' ;;
+	mew) pkg='ocaml-mew' ;;
 	mmap) pkg='ocaml-mmap' ;;
 	mtime) pkg='ocaml-mtime' ;;
 	num) pkg='ocaml-num' ;;
