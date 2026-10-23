@@ -118,6 +118,7 @@ case "${upstream}" in
 	camlp-streams) pkg='ocaml-camlp-streams' ;;
 	camlp5) pkg='ocaml-camlp5' ;;
 	camlzip) pkg='ocaml-camlzip' ;;
+	capitalization) pkg='ocaml-capitalization' ;;
 	charinfo_width) pkg='ocaml-charinfo_width' ;;
 	checkseum) pkg='ocaml-checkseum' ;;
 	cinaps) pkg='ocaml-cinaps' ;;
