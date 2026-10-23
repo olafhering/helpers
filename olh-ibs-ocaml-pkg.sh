@@ -147,6 +147,7 @@ case "${upstream}" in
 	either) pkg='ocaml-either' ;;
 	expect_test_helpers_core) pkg='ocaml-expect_test_helpers_core' ;;
 	facile) pkg='ocaml-facile' ;;
+	fiber) pkg='ocaml-fiber' ;;
 	fieldslib) pkg='ocaml-fieldslib' ;;
 	fix) pkg='ocaml-fix' ;;
 	fmt) pkg='ocaml-fmt' ;;
