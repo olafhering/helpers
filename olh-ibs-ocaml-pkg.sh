@@ -192,6 +192,7 @@ case "${upstream}" in
 	ocaml-fileutils) pkg='ocaml-fileutils' ;;
 	ocaml-gettext) pkg='ocaml-gettext' ;;
 	ocaml-integers) pkg='ocaml-integers' ;;
+	ocaml-iostream) pkg='ocaml-iostream' ;;
 	ocaml-lsp) pkg='ocaml-lsp-server' ;;
 	ocaml-lwt-dllist) pkg='ocaml-lwt-dllist' ;;
 	ocaml-mccs) pkg='ocaml-mccs' ;;
