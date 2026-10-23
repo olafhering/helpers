@@ -226,6 +226,7 @@ case "${upstream}" in
 	opam-0install-cudf) pkg='ocaml-opam-0install-cudf' ;;
 	opam-file-format) pkg='opam-file-format' ;;
 	optint) pkg='ocaml-optint' ;;
+	otoml) pkg='ocaml-otoml' ;;
 	ounit) pkg='ocaml-ounit' ;;
 	parmap) pkg='ocaml-parmap' ;;
 	parsexp) pkg='ocaml-parsexp' ;;
