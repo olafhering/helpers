@@ -271,6 +271,7 @@ case "${upstream}" in
 	ppx_stable) pkg='ocaml-ppx_stable' ;;
 	ppx_stable_witness) pkg='ocaml-ppx_stable_witness' ;;
 	ppx_string) pkg='ocaml-ppx_string' ;;
+	ppx_string_conv) pkg='ocaml-ppx_string_conv' ;;
 	ppx_tools) pkg='ocaml-ppx_tools' ;;
 	ppx_tydi) pkg='ocaml-ppx_tydi' ;;
 	ppx_typerep_conv) pkg='ocaml-ppx_typerep_conv' ;;
