@@ -111,6 +111,7 @@ case "${upstream}" in
 	bos) pkg='ocaml-bos' ;;
 	boulder-dash) pkg='ocaml-boulder-dash' ;;
 	bstr) pkg='ocaml-bstr' ;;
+	bytesrw) pkg='ocaml-bytesrw' ;;
 	calendar) pkg='ocaml-calendar' ;;
 	caml-mode) pkg='caml-mode' ;;
 	camlidl) pkg='ocaml-camlidl' ;;
