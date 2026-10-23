@@ -98,6 +98,7 @@ case "${upstream}" in
 	async) pkg='ocaml-async' ;;
 	async_kernel) pkg='ocaml-async_kernel' ;;
 	async_log) pkg='ocaml-async_log' ;;
+	async_rpc_kernel) pkg='ocaml-async_rpc_kernel' ;;
 	base) pkg='ocaml-base' ;;
 	base_bigstring) pkg='ocaml-base_bigstring' ;;
 	base_quickcheck) pkg='ocaml-base_quickcheck' ;;
