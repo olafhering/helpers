@@ -163,6 +163,7 @@ case "${upstream}" in
 	mmap) pkg='ocaml-mmap' ;;
 	mtime) pkg='ocaml-mtime' ;;
 	num) pkg='ocaml-num' ;;
+	ocaml-afl-persistent) pkg='ocaml-afl-persistent' ;;
 	ocaml-base64) pkg='ocaml-base64' ;;
 	ocaml-benchmark) pkg='ocaml-benchmark' ;;
 	ocaml-cairo) pkg='ocaml-cairo' ;;
