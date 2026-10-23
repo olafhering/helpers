@@ -279,6 +279,7 @@ case "${upstream}" in
 	ppx_yojson_conv_lib) pkg='ocaml-ppx_yojson_conv_lib' ;;
 	ppxlib) pkg='ocaml-ppxlib' ;;
 	ppxlib_jane) pkg='ocaml-ppxlib_jane' ;;
+	protocol_version_header) pkg='ocaml-protocol_version_header' ;;
 	psq) pkg='ocaml-psq' ;;
 	ptime) pkg='ocaml-ptime' ;;
 	ptmap) pkg='ocaml-ptmap' ;;
