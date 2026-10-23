@@ -234,6 +234,7 @@ case "${upstream}" in
 	pcre-ocaml) pkg='ocaml-pcre' ;;
 	pcre2-ocaml) pkg='ocaml-pcre2' ;;
 	pp) pkg='ocaml-pp' ;;
+	pprint) pkg='ocaml-pprint' ;;
 	ppx_assert) pkg='ocaml-ppx_assert' ;;
 	ppx_base) pkg='ocaml-ppx_base' ;;
 	ppx_bench) pkg='ocaml-ppx_bench' ;;
