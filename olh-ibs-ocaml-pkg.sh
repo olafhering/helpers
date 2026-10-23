@@ -322,6 +322,7 @@ case "${upstream}" in
 	uucd) pkg='ocaml-uucd' ;;
 	uucp) pkg='ocaml-uucp' ;;
 	uuidm) pkg='ocaml-uuidm' ;;
+	uunf) pkg='ocaml-uunf' ;;
 	uuseg) pkg='ocaml-uuseg' ;;
 	uutf) pkg='ocaml-uutf' ;;
 	variantslib) pkg='ocaml-variantslib' ;;
