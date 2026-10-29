@@ -90,6 +90,8 @@ _EOC_
 	fi
 	if test "${devtools}" = 'y'
 	then
+		SUSEConnect -p sle-module-basesystem/${VERSION_ID}/$(uname -m) || : FAIL :?
+		SUSEConnect -p sle-module-desktop-applications/${VERSION_ID}/$(uname -m) || : FAIL :?
 		SUSEConnect -p sle-module-development-tools/${VERSION_ID}/$(uname -m) || : FAIL :?
 	fi
 	zypper ar -cf "${URL}" 'obs-olh' || : FAIL $?
