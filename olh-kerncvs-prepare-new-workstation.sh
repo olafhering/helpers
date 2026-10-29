@@ -86,6 +86,7 @@ _EOC_
 	URL="http://download.opensuse.org/repositories/home:/olh/${URL_repository}"
 	if test "${package_hub}" = 'y'
 	then
+		SUSEConnect -p sle-module-basesystem/${VERSION_ID}/$(uname -m) || : FAIL :?
 		SUSEConnect -p PackageHub/${VERSION_ID}/$(uname -m) || : FAIL :?
 	fi
 	if test "${devtools}" = 'y'
