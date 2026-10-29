@@ -43,6 +43,7 @@ as_root() {
 		adjust_user
 		return 0
 	fi
+	test -e "${local_home_basedir}" || mkdir -vp "$_"
 	pushd "${local_home_basedir}"
 	if getent group "${group_users}"
 	then
