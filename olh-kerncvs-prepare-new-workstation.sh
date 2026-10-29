@@ -68,6 +68,15 @@ _EOC_
 
 	. /etc/os-release
 
+	if grep -E '[[:blank:]]/Tmpfs[[:blank:]]' /etc/fstab
+	then
+		:
+	else
+		mkdir -vpm 0 /Tmpfs
+		echo "Tmpfs /Tmpfs tmpfs size=77% 0 0" >> /etc/fstab
+		mount -v /Tmpfs
+	fi
+
 	case "${VERSION}" in
 	12*) package_hub=y;devtools=n; URL_repository='SLE_12' ;;
 	15*) package_hub=y;devtools=y; URL_repository='SLE_15' ;;
