@@ -69,14 +69,18 @@ _EOC_
 	. /etc/os-release
 
 	case "${VERSION}" in
-	12*) package_hub=y ; URL_repository='SLE_12' ;;
-	15*) package_hub=y ; URL_repository='SLE_15' ;;
-	*)   package_hub=n ; URL_repository='openSUSE_Tumbleweed' ;;
+	12*) package_hub=y;devtools=n; URL_repository='SLE_12' ;;
+	15*) package_hub=y;devtools=y; URL_repository='SLE_15' ;;
+	*)   package_hub=n;devtools=n; URL_repository='openSUSE_Tumbleweed' ;;
 	esac
 	URL="http://download.opensuse.org/repositories/home:/olh/${URL_repository}"
 	if test "${package_hub}" = 'y'
 	then
 		SUSEConnect -p PackageHub/${VERSION_ID}/$(uname -m) || : FAIL :?
+	fi
+	if test "${devtools}" = 'y'
+	then
+		SUSEConnect -p sle-module-development-tools/${VERSION_ID}/$(uname -m) || : FAIL :?
 	fi
 	zypper ar -cf "${URL}" 'obs-olh' || : FAIL $?
 	zypper mr -p 123 'obs-olh' || : FAIL $?
