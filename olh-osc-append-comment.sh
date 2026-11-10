@@ -8,10 +8,18 @@ IFS=/
 set -- $@
 IFS=$oIFS
 : $*
+: $4/$5
 case "$4/$5" in
 # https://api-host/request/show/RQ#-comment-NR
 request/show)
 	host=$3
+	target=$4
+	RQ_comment=$6
+	;;
+# https://api-host/project/show/PRJ#comment-NR
+project/show)
+	host=$3
+	target=$4
 	RQ_comment=$6
 	;;
 *) echo "${0##*/}: Unknown request $4/$5" ; exit 1 ;;
@@ -29,5 +37,5 @@ RQ=${RQ_comment%%#*}
 comment=${RQ_comment##*-}
 args+=('comment' 'create')
 test "${RQ}" != "${comment}" && args+=('-p' "${comment}")
-args+=('request' "${RQ}")
+args+=("${target}" "${RQ}")
 exec "${cmd}" "${args[@]}"
