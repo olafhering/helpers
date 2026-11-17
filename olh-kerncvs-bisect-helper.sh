@@ -40,8 +40,8 @@ Usage: $0 -[a|b|c|i|t|u] [-h|--help]
 -a: apply all patches
 -b: build a kernel
 -i: prepare a kernel install
--u: upload the compiled kernel to ${ssh_host}:${ssh_dir}
 -t: run ctags
+-u: upload the compiled kernel to ${ssh_host}:${ssh_dir}
 -A arch: target arch
 -B: interactive, ask for 'bisect run' result
 -C arg: compiler to use, like gcc-7
