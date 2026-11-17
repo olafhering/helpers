@@ -24,6 +24,7 @@ do_clean=
 do_install=
 do_tags=
 do_upload=
+config_variant='default'
 skip_file=
 ssh_dir='/dev/shm/kernel'
 ssh_host='azure'
@@ -42,6 +43,7 @@ Usage: $0 -[a|b|c|i|t|u] [-h|--help]
 -i: prepare a kernel install
 -t: run ctags
 -u: upload the compiled kernel to ${ssh_host}:${ssh_dir}
+-v: user .config variant, instead of '${config_variant}'. Requires also '-A $(uname -m)'
 -A arch: target arch
 -B: interactive, ask for 'bisect run' result
 -C arg: compiler to use, like gcc-7
@@ -67,6 +69,7 @@ do
 	-i) do_install='do_install' ;;
 	-t) do_tags='do_tags' ;;
 	-u) do_upload='do_upload' ;;
+	-v) config_variant=$2; shift ;;
 	-h|--help) usage ; exit 0 ;;
 	*) echo "Unknown option $1" ;;
 	esac
@@ -87,7 +90,7 @@ fi
 read native_arch < <(uname -m)
 case "${do_arch}" in
 x64|x86|x86_64)
-	sequence_path+=('--config=x86_64-default')
+	sequence_path+=("--config=x86_64-${config_variant}")
 	build_cmd=olh-build-x86_64-kernel
 	case "${native_arch}" in
 	aarch64)
@@ -98,7 +101,7 @@ x64|x86|x86_64)
 	esac
 ;;
 a64|arm64|aarch64)
-	sequence_path+=('--config=arm64-default')
+	sequence_path+=("--config=arm64-${config_variant}")
 	build_cmd=olh-build-arm64-kernel
 	case "${native_arch}" in
 	x86_64)
